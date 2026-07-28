@@ -1,0 +1,32 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.uid == '5Eo9GEhVMGgfmvKgDt68H5lBlcw2' ||
+        request.auth.uid == 'QWQHFo4xUxevsRZronUVa1IzJTc2'    // Claude (QA)
+      );
+    }
+
+    // Checklist de produção de imagens: só o admin e os dois amigos autorizados
+    // (Liu e Zeck) podem marcar/editar/reorganizar/criar/apagar itens.
+    function isChecklistEditor() {
+      return request.auth != null && (
+        isAdmin() ||
+        request.auth.uid == 'G2YvfxwlWoRz2TH878cnugTi8gi1' || // Liu
+        request.auth.uid == 'csE07Qq2LLaUwg3wYSeNXWbVrE73'    // Zeck
+      );
+    }
+    match /imageChecklist/{docId} {
+      allow read: if true;
+      allow write: if isChecklistEditor();
+    }
+
+    match /{document=**} {
+      allow read: if true;        // qualquer um ve as fichas
+      allow write: if isAdmin();  // so o admin logado cria/edita/apaga
+    }
+  }
+}

@@ -1,0 +1,1188 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {
+  X, Shield, Zap, Star, Backpack, Scroll, Award, Heart, Activity,
+  BicepsFlexed, Hand, Move, Brain, Ghost, Eye, Trophy, Terminal, Lock, Skull, Flame,
+  Target, Info, FileText, AlertTriangle, Fingerprint, Database, Binary, Image as ImageIcon,
+  ChevronRight, ChevronLeft, ChevronDown, Globe, Share2, Pencil, Trash2, Palette
+} from 'lucide-react';
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Radar } from 'react-chartjs-2';
+import { Character, EVENT_SEASONS } from '../types';
+import { Equipment } from '../types/Equipment';
+import { slugify } from '../data/firestore';
+
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
+import AttributeBox from './AttributeBox';
+import ResourceBar from './ResourceBar';
+import { formatImageUrl } from '../utils/formatters';
+
+interface CharacterModalProps {
+  char: Character | null;
+  onClose: () => void;
+  isAdmin?: boolean;
+  onEdit?: (char: Character) => void;
+  onDelete?: (char: Character) => Promise<void> | void;
+  onFilterClan?: (clan: string) => void;
+  onFilterTag?: (tag: string) => void;
+  arsenalOptions?: Equipment[];
+}
+
+const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin, onEdit, onDelete, onFilterClan, onFilterTag, arsenalOptions = [] }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [imgError, setImgError] = useState(false);
+  const [techImgError, setTechImgError] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
+  const [forceColor, setForceColor] = useState(false);
+  const eraStripRef = useRef<HTMLDivElement>(null);
+  const scrollEraStrip = (direction: 1 | -1) => {
+    const el = eraStripRef.current;
+    if (!el) return;
+    el.scrollBy({ left: direction * el.clientWidth * 0.8, behavior: 'smooth' });
+  };
+
+  const copyLink = () => {
+    if (!char?.docId) return;
+    const url = `${window.location.origin}${location.pathname}`;
+    navigator.clipboard.writeText(url);
+    setLinkCopied(true);
+    setTimeout(() => setLinkCopied(false), 2000);
+  };
+
+  useEffect(() => {
+    setImgError(false);
+    setTechImgError(false);
+  }, [char]);
+
+  // Prevent scroll on body when modal is open
+  useEffect(() => {
+    if (char) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [char]);
+
+  const [eventosViewMode, setEventosViewMode] = useState<'completa' | 'temporada'>('completa');
+  const [expandedSeasons, setExpandedSeasons] = useState<Set<string>>(new Set());
+  const toggleSeason = (season: string) => {
+    setExpandedSeasons(prev => {
+      const next = new Set(prev);
+      if (next.has(season)) next.delete(season); else next.add(season);
+      return next;
+    });
+  };
+  const [statsView, setStatsView] = useState<'bars' | 'radar'>('bars');
+  const [radarAnimationData, setRadarAnimationData] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (statsView === 'radar' && char) {
+      const targetData = [
+        char.stats.strength,
+        char.stats.dexterity,
+        char.stats.agility,
+        char.stats.perception,
+        char.stats.intelligence,
+        char.stats.vigor,
+        char.stats.spirit
+      ].map(v => typeof v === 'number' ? v : 0);
+      
+      setRadarAnimationData(new Array(targetData.length).fill(0));
+      const timer = setTimeout(() => {
+        setRadarAnimationData(targetData);
+      }, 150);
+      return () => clearTimeout(timer);
+    } else {
+      setRadarAnimationData([]);
+    }
+  }, [statsView, char]);
+
+  if (!char) return null;
+
+  const allTechniques = char.techniques || [];
+
+  const characterArsenal = (char.arsenal || [])
+    .map(id => arsenalOptions.find(item => item.id === id))
+    .filter(Boolean);
+
+  const characterGallery = char.gallery || [];
+  const galleryWithIndex = characterGallery.map((img, idx) => ({ img, idx }));
+  const eraGallery = galleryWithIndex.filter(({ img }) => img.category === 'era');
+  const eventoGallery = galleryWithIndex.filter(({ img }) => img.category === 'evento');
+
+  // Aba ativa e item selecionado (jutsu/arma/imagem) vêm direto da URL — segmentos depois
+  // do slug do personagem: /<slug>/jutsus[/<tecnica>], /<slug>/arsenal[/<arma>], /<slug>/galeria[/<imagem>].
+  // Sem estado próprio pra duplicar (mesmo princípio já usado pra aba principal em App.tsx).
+  const restSegments = location.pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean).slice(1);
+  const subTabRaw = restSegments[0];
+  const itemSlugRaw = restSegments[1] ? decodeURIComponent(restSegments[1]) : undefined;
+  const activeTab: 'data' | 'techniques' | 'arsenal' | 'gallery' =
+    subTabRaw === 'jutsus' ? 'techniques' :
+    subTabRaw === 'arsenal' ? 'arsenal' :
+    subTabRaw === 'galeria' ? 'gallery' : 'data';
+
+  const gallerySlugFor = (img: { caption?: string }, idx: number) => img.caption ? slugify(img.caption) : `img-${idx + 1}`;
+
+  const selectedTechIndex = activeTab === 'techniques' && itemSlugRaw
+    ? (() => { const i = allTechniques.findIndex(t => slugify(t.name) === itemSlugRaw); return i >= 0 ? i : null; })()
+    : null;
+  const selectedWeaponIndex = activeTab === 'arsenal' && itemSlugRaw
+    ? (() => { const i = characterArsenal.findIndex(w => w && slugify(w.name) === itemSlugRaw); return i >= 0 ? i : null; })()
+    : null;
+  const selectedGalleryIndex = activeTab === 'gallery' && itemSlugRaw
+    ? (() => { const i = characterGallery.findIndex((g, gi) => gallerySlugFor(g, gi) === itemSlugRaw); return i >= 0 ? i : null; })()
+    : null;
+
+  const charBasePath = `/${encodeURIComponent(char.docId!)}`;
+  const goTo = (path: string) => navigate(path, { state: location.state });
+  const goToTab = (tab: 'data' | 'techniques' | 'arsenal' | 'gallery') => goTo(
+    tab === 'data' ? charBasePath
+      : tab === 'techniques' ? `${charBasePath}/jutsus`
+      : tab === 'arsenal' ? `${charBasePath}/arsenal`
+      : `${charBasePath}/galeria`
+  );
+  const goToTechnique = (idx: number) => goTo(`${charBasePath}/jutsus/${encodeURIComponent(slugify(allTechniques[idx].name))}`);
+  const goToWeapon = (idx: number) => {
+    const w = characterArsenal[idx];
+    if (w) goTo(`${charBasePath}/arsenal/${encodeURIComponent(slugify(w.name))}`);
+  };
+  const goToGalleryImage = (idx: number) => goTo(`${charBasePath}/galeria/${encodeURIComponent(gallerySlugFor(characterGallery[idx], idx))}`);
+
+  const SEM_TEMPORADA = 'Sem Temporada';
+  const seasonOrder = [...EVENT_SEASONS, SEM_TEMPORADA];
+  const eventosBySeason = seasonOrder
+    .map(season => ({
+      season,
+      items: eventoGallery.filter(({ img }) => (img.season || SEM_TEMPORADA) === season),
+    }))
+    .filter(g => g.items.length > 0);
+
+  const attributesList = [
+    { label: "FORÇA", value: char.stats.strength, icon: BicepsFlexed },
+    { label: "DESTREZA", value: char.stats.dexterity, icon: Hand },
+    { label: "AGILIDADE", value: char.stats.agility, icon: Move },
+    { label: "PERCEPÇÃO", value: char.stats.perception, icon: Eye },
+    { label: "INTELIGÊNCIA", value: char.stats.intelligence, icon: Brain },
+    { label: "VIGOR", value: char.stats.vigor, icon: Activity },
+    { label: "ESPÍRITO", value: char.stats.spirit, icon: Ghost },
+  ];
+
+  const radarData = {
+    labels: attributesList.map(a => a.label),
+    datasets: [{
+      label: 'Atributos',
+      data: radarAnimationData.length > 0 ? radarAnimationData : new Array(attributesList.length).fill(0),
+      fill: true,
+      backgroundColor: "rgba(0, 255, 65, 0.25)",
+      borderColor: "#00ff41",
+      pointBackgroundColor: "#00ff41",
+      pointBorderColor: "#00ff41",
+      pointHoverBackgroundColor: "#fff",
+      pointHoverBorderColor: "#00ff41",
+      borderWidth: 2
+    }]
+  };
+
+  const radarOptions = {
+    animation: {
+      duration: 1500,
+      easing: 'easeOutQuart' as const,
+    },
+    scales: {
+      r: {
+        min: 0,
+        max: 30,
+        ticks: {
+          stepSize: 5,
+          display: false,
+        },
+        grid: {
+          color: "rgba(0, 255, 65, 0.1)"
+        },
+        angleLines: {
+          color: "rgba(0, 255, 65, 0.15)"
+        },
+        pointLabels: {
+          color: "#00ff41",
+          padding: 5,
+          font: {
+            size: 9,
+            family: 'monospace'
+          }
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    elements: {
+      line: {
+        borderWidth: 2,
+        tension: 0.1
+      },
+      point: {
+        radius: 3,
+        hoverRadius: 5
+      }
+    },
+    layout: {
+      padding: 10
+    },
+    maintainAspectRatio: false
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-6 bg-black/95 backdrop-blur-sm">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,65,0.05),transparent)] pointer-events-none"></div>
+      <div className="absolute inset-0" onClick={onClose}></div>
+      
+      <div className="relative w-full max-w-7xl h-full md:h-[90vh] bg-tech-bg border-2 border-tech-primary/50 shadow-[0_0_30px_rgba(0,255,65,0.1)] flex flex-col md:flex-row overflow-hidden clip-corner animate-in fade-in zoom-in-95 duration-300">
+        <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-tech-primary z-50 pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-tech-primary z-50 pointer-events-none"></div>
+
+
+        <div className="w-full md:w-[400px] border-r border-tech-border flex flex-col bg-tech-panel/30 relative overflow-y-auto scrollbar-custom">
+           <div className={`p-2 border-b text-[10px] flex justify-between sticky top-0 bg-black/90 z-10 backdrop-blur-sm ${char.isDead ? 'border-red-900/50 text-red-500/50' : 'border-tech-border text-tech-primary/50'}`}>
+              <span>IMG_DATA_BLOCK_01</span>
+              <span>SECURE_CONNECTION</span>
+           </div>
+
+           <div className="p-4 flex flex-col">
+              <div className={`relative border-2 h-[350px] shrink-0 w-full bg-black overflow-hidden relative group ${char.isDead ? 'border-red-600/50 shadow-[0_0_15px_rgba(255,0,0,0.2)]' : 'border-tech-dim'}`}>
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.1)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none z-20"></div>
+                  {!char.isDead && (
+                      <div className="absolute top-2 right-2 text-[10px] bg-red-600 text-black px-1 font-bold z-20 blink">LIVE</div>
+                  )}
+                  {char.isDead && (
+                    <div className="absolute top-6 -right-12 bg-red-600 text-black font-black text-xs py-1 w-40 text-center rotate-45 z-30 border border-black shadow-[0_0_15px_rgba(255,0,0,0.6)] tracking-widest">
+                        MORTO
+                    </div>
+                  )}
+
+                  {char.image && !imgError ? (
+                     <img 
+                      src={formatImageUrl(char.image)} 
+                      alt={char.name} 
+                      onError={() => setImgError(true)}
+                      className={`w-full h-full object-cover transition-all duration-500 ${char.isDead ? 'contrast-110 brightness-90' : ''}`} 
+                     />
+                  ) : (
+                     <div className="w-full h-full flex flex-col items-center justify-center text-tech-dim">
+                        <Lock size={48} className="mb-2 animate-pulse" />
+                        <span className="text-xs">NO_SIGNAL</span>
+                     </div>
+                  )}
+                  {!char.isDead && (
+                    <div className="absolute top-0 left-0 w-full h-1 bg-tech-primary/50 shadow-[0_0_10px_#00ff41] animate-[scanline_3s_linear_infinite] pointer-events-none z-30 opacity-50"></div>
+                  )}
+              </div>
+
+              <div className="mt-4 border border-tech-border bg-black p-4 relative shrink-0">
+                <div className="absolute -top-3 left-4 bg-tech-bg px-2 text-tech-primary text-xs">IDENTIFICAÇÃO</div>
+                <h1 className={`text-2xl uppercase font-bold tracking-tighter mb-1 text-glow ${char.isDead ? 'text-red-700 decoration-line-through' : 'text-white'}`}>{char.name}</h1>
+                <div className="flex items-center gap-4 text-sm text-tech-secondary font-bold border-b border-tech-dim pb-2 mb-2">
+                    <span>{(char.titles[0] || 'Desconhecido').toUpperCase()}</span>
+                    <span>//</span>
+                    <span>RANK: {char.position.toUpperCase()}</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    {char.titles.slice(1).map((t, i) => (
+                        <span key={i} className="text-[10px] bg-tech-accent/10 text-tech-accent border border-tech-accent/30 px-2 py-0.5">
+                            {t.toUpperCase()}
+                        </span>
+                    ))}
+                </div>
+                {/* Clã e tags clicáveis (filtram a lista) */}
+                <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-tech-dim">
+                    {char.clan && (
+                        <button
+                            onClick={() => onFilterClan?.(char.clan)}
+                            title={`Filtrar pelo clã ${char.clan}`}
+                            className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 border border-tech-primary/40 text-tech-primary bg-tech-primary/5 hover:bg-tech-primary hover:text-black transition-colors"
+                        >
+                            🧬 {char.clan}
+                        </button>
+                    )}
+                    {char.categories.map((cat, i) => (
+                        <button
+                            key={i}
+                            onClick={() => onFilterTag?.(cat)}
+                            title={`Filtrar pela tag ${cat}`}
+                            className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 border border-tech-secondary/40 text-tech-secondary bg-tech-secondary/5 hover:bg-tech-secondary hover:text-black transition-colors"
+                        >
+                            #{cat}
+                        </button>
+                    ))}
+                </div>
+              </div>
+              
+              <div className="mt-4 pt-4 space-y-2 shrink-0">
+                 <ResourceBar label="Integridade Física (HP)" value={char.hp} icon={Heart} isDead={char.isDead} />
+                 <ResourceBar label="Energia Espiritual (CP)" value={char.chakra} icon={Zap} isDead={char.isDead} />
+              </div>
+
+              {char.isDead && (
+                <div className="mt-6 border border-red-900/50 bg-red-950/20 p-3 shrink-0 relative animate-pulse">
+                    <div className="absolute -top-2 left-2 bg-black px-2 text-[10px] text-red-500 border border-red-900/50 font-bold uppercase tracking-wider">
+                        CAUSA MORTIS
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 bg-red-900/20 border border-red-500/30">
+                            <Skull className="text-red-500" size={24} />
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] text-red-400/60 uppercase font-bold mb-0.5">MORTO POR:</span>
+                            <span className="text-sm text-red-500 font-mono font-bold uppercase tracking-wide text-glow">
+                                {char.killedBy || 'DESCONHECIDO'}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+              )}
+           </div>
+        </div>
+
+        <div className="flex-1 flex flex-col bg-tech-bg relative overflow-hidden">
+            <div className="h-12 bg-tech-panel border-b border-tech-border flex items-center px-4 justify-between">
+                <div className="flex items-center gap-4">
+                    <Terminal size={14} className="text-tech-primary" />
+                    <div className="flex gap-2">
+                        <button 
+                            onClick={() => goToTab('data')}
+                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === 'data' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
+                        >
+                            DADOS_GERAIS
+                        </button>
+                        <button 
+                            onClick={() => goToTab('techniques')}
+                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === 'techniques' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
+                        >
+                            JUTSUS E ATAQUES [{allTechniques.length}]
+                        </button>
+                        <button 
+                            onClick={() => goToTab('arsenal')}
+                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === 'arsenal' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
+                        >
+                            ARSENAL_DETALHADO [{characterArsenal.length}]
+                        </button>
+                        <button
+                            onClick={() => goToTab('gallery')}
+                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === 'gallery' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
+                        >
+                            GALERIA [{(char.gallery || []).length}]
+                        </button>
+                    </div>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                    <span className="text-[10px] text-tech-primary/30 hidden lg:inline mr-2">SYSTEM_ID: {char.id}</span>
+                    <button
+                        onClick={() => setForceColor(v => !v)}
+                        title="Colorir todas as imagens"
+                        className={`border p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm ${forceColor ? 'bg-tech-primary text-black border-tech-primary' : 'bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border-tech-primary'}`}
+                    >
+                        <Palette size={14} /> <span className="hidden xl:group-hover:inline">{forceColor ? 'Colorido' : 'Colorir'}</span>
+                    </button>
+                    <button
+                        onClick={copyLink}
+                        title="Copiar link da ficha"
+                        className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm"
+                    >
+                        <Share2 size={14} /> <span className="hidden xl:group-hover:inline">{linkCopied ? 'Copiado!' : 'Link'}</span>
+                    </button>
+                    {isAdmin && onEdit && (
+                        <button
+                            onClick={() => onEdit(char)}
+                            title="Editar personagem"
+                            className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm"
+                        >
+                            <Pencil size={14} /> <span className="hidden xl:group-hover:inline">Editar</span>
+                        </button>
+                    )}
+                    {isAdmin && onDelete && (
+                        <button
+                            onClick={async () => {
+                                if (confirm(`Excluir "${char.name}" do banco? Esta ação não pode ser desfeita.`)) {
+                                    await onDelete(char);
+                                }
+                            }}
+                            title="Excluir personagem"
+                            className="bg-red-900/20 hover:bg-red-600 text-red-500 hover:text-black border border-red-600 p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm"
+                        >
+                            <Trash2 size={14} /> <span className="hidden xl:group-hover:inline">Excluir</span>
+                        </button>
+                    )}
+                    <button
+                        onClick={onClose}
+                        title="Fechar"
+                        className="bg-red-900/20 hover:bg-red-500 text-red-500 hover:text-black border border-red-500 p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm"
+                    >
+                        <span className="hidden xl:group-hover:inline">Encerrar</span> <X size={16} />
+                    </button>
+                </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-8 scrollbar-custom">
+                {activeTab === 'data' ? (
+                    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+                        <div className="grid grid-cols-3 gap-4 mb-8">
+                            <div className="border border-tech-border p-4 bg-tech-panel/20 text-center">
+                                <div className="text-[10px] text-tech-primary/80 font-bold uppercase mb-1">Nível de Combate</div>
+                                <div className="text-4xl text-tech-primary font-bold text-glow">{char.nc}</div>
+                            </div>
+                            <div className="border border-tech-border p-4 bg-tech-panel/20 text-center">
+                                <div className="text-[10px] text-tech-primary/80 font-bold uppercase mb-1">Especialização</div>
+                                <div className="text-xl text-white font-bold">{char.role.toUpperCase()}</div>
+                            </div>
+                            <div className="border border-tech-border p-4 bg-tech-panel/20 text-center">
+                                <div className="text-[10px] text-tech-primary/80 font-bold uppercase mb-1">Afiliação</div>
+                                <div className="text-xl text-tech-secondary font-bold">{char.categories[1] || 'DESCONHECIDO'}</div>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div className="space-y-4">
+                                <div className="flex items-center justify-between mb-2 border-b border-tech-primary/30 pb-1">
+                                    <div className="flex items-center gap-2">
+                                        <Shield size={16} className="text-tech-primary" />
+                                        <h3 className="text-sm font-bold text-tech-primary uppercase">Atributos</h3>
+                                    </div>
+                                    <button 
+                                        onClick={() => setStatsView(statsView === 'bars' ? 'radar' : 'bars')}
+                                        className="text-[10px] bg-tech-primary/10 text-tech-primary border border-tech-primary/30 px-2 py-0.5 hover:bg-tech-primary hover:text-black transition-all uppercase font-bold flex items-center gap-1"
+                                    >
+                                        <Share2 size={10} />
+                                        {statsView === 'bars' ? 'Ver Teia' : 'Ver Barras'}
+                                    </button>
+                                </div>
+                                
+                                <div className="h-[280px] overflow-y-auto scrollbar-custom pr-2">
+                                    {statsView === 'bars' ? (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                            {attributesList.map((attr, idx) => (
+                                                <AttributeBox key={idx} {...attr} />
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="bg-tech-panel/20 border border-tech-primary/30 p-2 h-full flex items-center justify-center relative overflow-hidden">
+                                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,65,0.05),transparent)] pointer-events-none"></div>
+                                            <Radar 
+                                                data={radarData}
+                                                options={radarOptions}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-2 mb-2 border-b border-tech-accent/30 pb-1">
+                                    <Zap size={16} className="text-tech-accent" />
+                                    <h3 className="text-sm font-bold text-tech-accent uppercase">Poderes</h3>
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    {char.powers.map((power, idx) => {
+                                        const isUnknown = power.level === '?' || power.level === '？';
+                                        const level = isUnknown ? 0 : Math.min(Math.max(power.level as number, 0), 15);
+                                        return (
+                                        <div key={idx} className="flex items-center group">
+                                            <div className={`w-1 h-6 mr-2 transition-colors ${isUnknown ? 'bg-tech-dim' : 'bg-tech-accent/50 group-hover:bg-tech-accent'}`}></div>
+                                            <div className="flex-1 bg-tech-panel/40 p-2 flex items-center justify-between border-b border-tech-dim/30">
+                                                <span className={`text-xs uppercase font-bold tracking-tight truncate mr-2 w-32 ${isUnknown ? 'text-tech-dim' : 'text-slate-300'}`}>{power.name}</span>
+                                                <div className="flex-1 border-b border-dotted border-tech-dim/50 mx-2 h-1 relative top-[1px]"></div>
+                                                <div className="flex items-center gap-3">
+                                                    <div className="flex gap-[2px]">
+                                                        {isUnknown ? (
+                                                            <div className="w-20 h-3 bg-tech-dim/10 flex items-center justify-center">
+                                                                <span className="text-[8px] text-tech-dim">UNKNOWN</span>
+                                                            </div>
+                                                        ) : (
+                                                            [...Array(15)].map((_, i) => (
+                                                                <div key={i} className={`w-1.5 h-3 skew-x-[-10deg] ${i < level ? 'bg-tech-accent shadow-[0_0_5px_rgba(255,176,0,0.5)]' : 'bg-tech-dim/30'}`}></div>
+                                                            ))
+                                                        )}
+                                                    </div>
+                                                    <span className={`text-sm font-mono font-bold w-5 text-right tabular-nums ${isUnknown ? 'text-tech-dim' : 'text-tech-accent'}`}>{isUnknown ? '??' : level}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )})}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="mt-8">
+                            <div className="flex items-center gap-2 mb-2 border-b border-tech-secondary/30 pb-1">
+                                <Star size={16} className="text-tech-secondary" />
+                                <h3 className="text-sm font-bold text-tech-secondary uppercase">Aptidões</h3>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {char.aptitudes.map((apt, idx) => (
+                                    <div key={idx} className="bg-tech-secondary/10 border border-tech-secondary/30 px-3 py-1 text-xs text-tech-secondary clip-corner-sm">{apt}</div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Description Log */}
+                        <div className="mt-8 border border-tech-border p-4 bg-tech-panel/20 font-mono text-xs leading-relaxed text-slate-400 relative">
+                            <div className="absolute -top-2 left-4 bg-tech-bg px-2 text-tech-primary text-[10px] border border-tech-border">HISTÓRICO.LOG</div>
+                            <Scroll size={14} className="text-tech-primary mb-2" />
+                            <p className="whitespace-pre-wrap">{char.description || "ARQUIVO CORROMPIDO OU INEXISTENTE."}</p>
+                        </div>
+                    </div>
+                ) : activeTab === 'techniques' ? (
+                    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+                        {selectedTechIndex === null ? (
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                {allTechniques.length > 0 ? (
+                                    allTechniques.map((tech, idx) => (
+                                        <button 
+                                            key={idx}
+                                            onClick={() => goToTechnique(idx)}
+                                            className="group relative aspect-square border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300"
+                                        >
+                                            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
+                                            
+                                            {/* Threat Status Badge */}
+                                            {tech.classification && (
+                                                <div className="absolute top-2 left-2 z-30">
+                                                    <div className="bg-tech-accent text-black text-[8px] font-black px-1.5 py-0.5 clip-corner-sm shadow-[0_0_10px_rgba(255,176,0,0.3)] border-r-2 border-black/20">
+                                                        {tech.classification}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {tech.image ? (
+                                                <img
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    src={formatImageUrl(tech.image)}
+                                                    alt={tech.name} 
+                                                    className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                />
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center text-tech-dim">
+                                                    <Flame size={32} className="opacity-20" />
+                                                </div>
+                                            )}
+
+                                            <div className="absolute bottom-0 left-0 right-0 h-14 p-2 bg-black/90 backdrop-blur-sm border-t border-tech-border group-hover:border-tech-accent transition-colors z-20 flex flex-col justify-center">
+                                                <div className="text-[9px] text-white font-bold uppercase leading-tight line-clamp-2 break-words">
+                                                    {tech.name}
+                                                </div>
+                                            </div>
+
+                                            <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <div className="bg-tech-accent text-black p-1">
+                                                    <ChevronRight size={12} />
+                                                </div>
+                                            </div>
+                                        </button>
+                                    ))
+                                ) : (
+                                    <div className="col-span-full h-64 flex flex-col items-center justify-center border border-tech-border border-dashed bg-tech-panel/10">
+                                        <AlertTriangle size={32} className="text-tech-dim mb-4" />
+                                        <span className="text-xs text-tech-dim uppercase tracking-widest">Nenhuma técnica avançada registrada para este sujeito.</span>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="space-y-6">
+                                <button 
+                                    onClick={() => goToTab('techniques')}
+                                    className="flex items-center gap-2 text-tech-accent hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest mb-4 group"
+                                >
+                                    <div className="p-1 border border-tech-accent group-hover:bg-tech-accent group-hover:text-black transition-all">
+                                        <X size={12} className="rotate-90" />
+                                    </div>
+                                    VOLTAR_PARA_GALERIA
+                                </button>
+
+                                {(() => {
+                                    const tech = allTechniques[selectedTechIndex];
+                                    if (!tech) return null;
+                                    return (
+                                        <div className="group animate-in fade-in slide-in-from-right-4 duration-500">
+                                            {/* Section Label */}
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-1.5 bg-tech-accent/20 border border-tech-accent/40 rounded-full">
+                                                        <Flame size={18} className="text-tech-accent animate-pulse" />
+                                                    </div>
+                                                    <h3 className="text-xs font-black text-tech-accent uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(255,176,0,0.5)]">
+                                                        {`Registro Técnico // #${selectedTechIndex + 1}`}
+                                                    </h3>
+                                                </div>
+                                                <div className="h-px bg-gradient-to-r from-tech-accent/40 to-transparent flex-1 ml-4"></div>
+                                            </div>
+                                            
+                                            {/* Main Technical Frame */}
+                                            <div className="relative border border-tech-accent/30 bg-tech-panel/40 p-1 group-hover:border-tech-accent/60 transition-all duration-500 overflow-hidden">
+                                                {/* Decorative Brackets */}
+                                                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-tech-accent"></div>
+                                                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-tech-accent"></div>
+                                                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-tech-accent"></div>
+                                                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-tech-accent"></div>
+                                                
+                                                {/* Interior Content Grid */}
+                                                <div className="bg-black/60 relative">
+                                                    {/* Technique Image Banner */}
+                                                    {tech.image && (
+                                                        <div className={`w-full aspect-video border-b relative overflow-hidden ${char.isDead ? 'border-red-900/50' : 'border-tech-accent/30'}`}>
+                                                            <div className="absolute inset-0 bg-[linear-gradient(transparent_60%,rgba(0,0,0,0.8))] z-10 pointer-events-none"></div>
+                                                            <img 
+                                                                src={formatImageUrl(tech.image)} 
+                                                                alt={tech.name} 
+                                                                className={`w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100 ${char.isDead ? 'opacity-90 group-hover:opacity-100' : forceColor ? 'opacity-100' : 'grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                            />
+                                                            <div className="absolute top-4 left-4 z-20 flex gap-2">
+                                                                <span className={`text-[8px] font-black px-2 py-0.5 border clip-corner-sm ${char.isDead ? 'bg-black/80 text-red-500 border-red-900/50' : 'bg-black/80 text-tech-accent border-tech-accent/30'}`}>TECH_VISUAL_{selectedTechIndex + 1}</span>
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    <div className="p-5 md:p-8 space-y-6 relative">
+                                                        {/* HUD Scanlines */}
+                                                        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,176,0,0.02)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none opacity-50"></div>
+
+                                                        {/* Top Header: Name & Classification */}
+                                                        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 border-b border-tech-accent/20 pb-6 relative">
+                                                            <div className="space-y-1.5 flex-1 pr-2">
+                                                                <span className="text-[9px] font-black text-tech-accent/50 uppercase tracking-widest flex items-center gap-2">
+                                                                    <Binary size={10} /> Identificador Único
+                                                                </span>
+                                                                <h4 className="text-xl md:text-3xl font-black text-white uppercase tracking-tighter leading-tight text-glow italic break-words">
+                                                                    {tech.name}
+                                                                </h4>
+                                                            </div>
+                                                            
+                                                            {tech.classification && (
+                                                                <div className="flex flex-col items-start md:items-end shrink-0 min-w-[120px]">
+                                                                    <span className="text-[8px] text-tech-accent/40 font-bold uppercase mb-1.5 tracking-wider">Status de Ameaça</span>
+                                                                    <div className="relative group/status">
+                                                                        <div className="bg-tech-accent text-black px-5 py-2 text-base font-black uppercase shadow-[0_0_20px_rgba(255,176,0,0.3)] clip-corner-sm border-r-4 border-black/20 flex items-center justify-center min-w-[60px]">
+                                                                            {tech.classification}
+                                                                        </div>
+                                                                        <div className="absolute -right-2 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+                                                                            <div className="w-1 h-3 bg-tech-accent/40"></div>
+                                                                            <div className="w-1 h-3 bg-tech-accent/40"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            )}
+                                                        </div>
+
+                                                        {/* Technical Specs Grid */}
+                                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                                                            {tech.nature && (
+                                                                <div className="space-y-1.5 p-3 bg-white/5 border-l-2 border-tech-accent/40">
+                                                                    <span className="text-[10px] text-tech-accent font-black uppercase flex items-center gap-2">
+                                                                        <Zap size={12} /> Natureza & Elementalismo
+                                                                    </span>
+                                                                    <p className="text-xs text-slate-200 font-mono leading-relaxed pl-5">
+                                                                        {tech.nature}
+                                                                    </p>
+                                                                </div>
+                                                            )}
+                                                            
+                                                            {tech.destruction && (
+                                                                <div className="space-y-1.5 p-3 bg-white/5 border-l-2 border-red-500/40">
+                                                                    <span className="text-[10px] text-red-500 font-black uppercase flex items-center gap-2">
+                                                                        <AlertTriangle size={12} /> Escala de Destruição
+                                                                    </span>
+                                                                    <p className="text-xs text-slate-200 font-mono leading-relaxed pl-5">
+                                                                        {tech.destruction}
+                                                                    </p>
+                                                                </div>
+                                                            )}
+
+                                                            {tech.status && (
+                                                                <div className="md:col-span-2 space-y-1.5 p-3 bg-tech-accent/5 border border-tech-accent/20">
+                                                                    <span className="text-[10px] text-tech-accent font-black uppercase flex items-center gap-2">
+                                                                        <Lock size={12} /> Protocolo de Utilização
+                                                                    </span>
+                                                                    <p className="text-xs text-tech-accent/90 font-bold font-mono italic pl-5">
+                                                                        {tech.status}
+                                                                    </p>
+                                                                </div>
+                                                            )}
+                                                        </div>
+
+                                                        {/* Deep Intelligence / Description */}
+                                                        {tech.description && (
+                                                            <div className="relative group/desc">
+                                                                <div className="absolute -top-2 left-4 bg-black px-2 text-[9px] font-black text-tech-accent/60 border border-tech-accent/20 z-20">
+                                                                    ANÁLISE_DO_PROCESSO
+                                                                </div>
+                                                                <div className="bg-tech-panel/80 border border-tech-accent/10 p-4 pt-5 group-hover/desc:border-tech-accent/30 transition-colors">
+                                                                    <p className="text-[11px] text-slate-400 font-mono leading-relaxed text-justify first-letter:text-lg first-letter:font-black first-letter:text-tech-accent first-letter:mr-1">
+                                                                        {tech.description}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        )}
+
+                                                        {/* Historical Data Snippet */}
+                                                        {tech.history && (
+                                                            <div className="flex gap-4 items-start pt-2 opacity-80 hover:opacity-100 transition-opacity">
+                                                                <div className="p-2 bg-tech-accent/10 border border-tech-accent/20 text-tech-accent shrink-0">
+                                                                    <Fingerprint size={20} />
+                                                                </div>
+                                                                <div className="space-y-1">
+                                                                    <span className="text-[9px] text-tech-accent/60 font-black uppercase tracking-tighter italic block">ARQUIVOS_HISTORICOS.TXT</span>
+                                                                    <p className="text-[10px] text-slate-500 italic leading-snug border-l-2 border-tech-dim pl-3">
+                                                                        "{tech.history}"
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
+                            </div>
+                        )}
+                    </div>
+                ) : activeTab === 'arsenal' ? (
+                    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+                        {selectedWeaponIndex === null ? (
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                {characterArsenal.length > 0 ? (
+                                    characterArsenal.map((weapon, idx) => (
+                                        <button 
+                                            key={idx}
+                                            onClick={() => goToWeapon(idx)}
+                                            className="group relative aspect-square border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300"
+                                        >
+                                            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
+                                            
+                                            {weapon.classification && (
+                                                <div className="absolute top-2 left-2 z-30">
+                                                    <div className="bg-tech-accent text-black text-[8px] font-black px-1.5 py-0.5 clip-corner-sm shadow-[0_0_10px_rgba(255,176,0,0.3)] border-r-2 border-black/20">
+                                                        {weapon.classification}
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {weapon.image ? (
+                                                <img
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    src={formatImageUrl(weapon.image)} 
+                                                    alt={weapon.name} 
+                                                    className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                />
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center text-tech-dim">
+                                                    <Backpack size={32} className="opacity-20" />
+                                                </div>
+                                            )}
+
+                                            <div className="absolute bottom-0 left-0 right-0 h-14 p-2 bg-black/90 backdrop-blur-sm border-t border-tech-border group-hover:border-tech-accent transition-colors z-20 flex flex-col justify-center">
+                                                <div className="text-[9px] text-white font-bold uppercase leading-tight line-clamp-2 break-words">
+                                                    {weapon.name}
+                                                </div>
+                                            </div>
+
+                                            <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                <div className="bg-tech-accent text-black p-1">
+                                                    <ChevronRight size={12} />
+                                                </div>
+                                            </div>
+                                        </button>
+                                    ))
+                                ) : (
+                                    <div className="col-span-full h-64 flex flex-col items-center justify-center border border-tech-border border-dashed bg-tech-panel/10">
+                                        <AlertTriangle size={32} className="text-tech-dim mb-4" />
+                                        <span className="text-xs text-tech-dim uppercase tracking-widest">Nenhum armamento registrado para este sujeito.</span>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="space-y-6">
+                                <button 
+                                    onClick={() => goToTab('arsenal')}
+                                    className="flex items-center gap-2 text-tech-accent hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest mb-4 group"
+                                >
+                                    <div className="p-1 border border-tech-accent group-hover:bg-tech-accent group-hover:text-black transition-all">
+                                        <X size={12} className="rotate-90" />
+                                    </div>
+                                    VOLTAR_PARA_ARSENAL
+                                </button>
+
+                                {(() => {
+                                    const weapon = characterArsenal[selectedWeaponIndex];
+                                    if (!weapon) return null;
+                                    return (
+                                        <div className="group animate-in fade-in slide-in-from-right-4 duration-500">
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="p-1.5 bg-tech-accent/20 border border-tech-accent/40 rounded-full">
+                                                        <Backpack size={18} className="text-tech-accent animate-pulse" />
+                                                    </div>
+                                                    <h3 className="text-xs font-black text-tech-accent uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(255,176,0,0.5)]">
+                                                        Registro de Armamento // #{selectedWeaponIndex + 1}
+                                                    </h3>
+                                                </div>
+                                                <div className="h-px bg-gradient-to-r from-tech-accent/40 to-transparent flex-1 ml-4"></div>
+                                            </div>
+                                            
+                                            <div className="relative border border-tech-accent/30 bg-tech-panel/40 p-1 group-hover:border-tech-accent/60 transition-all duration-500 overflow-hidden">
+                                                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-tech-accent"></div>
+                                                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-tech-accent"></div>
+                                                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-tech-accent"></div>
+                                                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-tech-accent"></div>
+                                                
+                                                <div className="bg-black/60 relative p-6 md:p-10">
+                                                    {/* Header: Name & Classification */}
+                                                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 border-b border-tech-accent/20 pb-8 mb-8 relative">
+                                                        <div className="space-y-2 flex-1">
+                                                            <span className="text-[10px] font-black text-tech-accent/50 uppercase tracking-[0.3em] flex items-center gap-2">
+                                                                <Binary size={12} /> Registro de Arsenal // #{selectedWeaponIndex + 1}
+                                                            </span>
+                                                            <h4 className="text-2xl md:text-4xl font-black text-white uppercase tracking-tighter leading-tight text-glow italic">
+                                                                {weapon.name}
+                                                            </h4>
+                                                        </div>
+                                                        
+                                                        <div className="flex flex-col items-start md:items-end shrink-0">
+                                                            <span className="text-[8px] text-tech-accent/40 font-bold uppercase mb-2 tracking-wider">Classificação de Poder</span>
+                                                            <div className="bg-tech-accent text-black px-6 py-2 text-xl font-black uppercase shadow-[0_0_25px_rgba(255,176,0,0.4)] clip-corner-sm border-r-4 border-black/20">
+                                                                {weapon.classification || 'N/A'}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                                                        {/* Left Column: 1080x1080 Image Frame */}
+                                                        {weapon.image && (
+                                                            <div className="lg:col-span-5 space-y-4">
+                                                                <div className={`relative aspect-square border bg-tech-panel/20 p-1 transition-all duration-500 overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] ${char.isDead ? 'border-red-600/50 group-hover:border-red-500' : 'border-tech-accent/30 group-hover:border-tech-accent/60'}`}>
+                                                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,176,0,0.03)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none z-20"></div>
+                                                                    <img 
+                                                                        src={formatImageUrl(weapon.image)} 
+                                                                        alt={weapon.name} 
+                                                                        width={1080}
+                                                                        height={1080}
+                                                                        className={`w-full h-full object-contain transition-all duration-700 ${char.isDead ? 'opacity-90 group-hover:opacity-100' : forceColor ? 'opacity-100' : 'grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                                    />
+                                                                    <div className="absolute bottom-4 left-4 z-30">
+                                                                        <span className={`text-[8px] font-black px-2 py-1 border clip-corner-sm uppercase tracking-widest ${char.isDead ? 'bg-black/80 text-red-500 border-red-900/50' : 'bg-black/80 text-tech-accent border-tech-accent/30'}`}>Visual_Data_1080p</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        )}
+
+                                                        {/* Right Column: Technical Specs & Description */}
+                                                        <div className={`${weapon.image ? 'lg:col-span-7' : 'lg:col-span-12'} space-y-8`}>
+                                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                                {weapon.origin && (
+                                                                    <div className="space-y-2 p-4 bg-white/5 border-l-2 border-tech-primary/40">
+                                                                        <span className="text-[10px] text-tech-primary font-black uppercase flex items-center gap-2 tracking-wider">
+                                                                            <Globe size={14} /> Origem
+                                                                        </span>
+                                                                        <p className="text-xs text-slate-200 font-mono leading-relaxed">
+                                                                            {weapon.origin}
+                                                                        </p>
+                                                                    </div>
+                                                                )}
+
+                                                                {weapon.nature && (
+                                                                    <div className="space-y-2 p-4 bg-white/5 border-l-2 border-tech-accent/40">
+                                                                        <span className="text-[10px] text-tech-accent font-black uppercase flex items-center gap-2 tracking-wider">
+                                                                            <Zap size={14} /> Propriedades
+                                                                        </span>
+                                                                        <p className="text-xs text-slate-200 font-mono leading-relaxed">
+                                                                            {weapon.nature}
+                                                                        </p>
+                                                                    </div>
+                                                                )}
+                                                                
+                                                                {weapon.destruction && (
+                                                                    <div className="space-y-2 p-4 bg-white/5 border-l-2 border-red-500/40">
+                                                                        <span className="text-[10px] text-red-500 font-black uppercase flex items-center gap-2 tracking-wider">
+                                                                            <AlertTriangle size={14} /> Destruição
+                                                                        </span>
+                                                                        <p className="text-xs text-slate-200 font-mono leading-relaxed">
+                                                                            {weapon.destruction}
+                                                                        </p>
+                                                                    </div>
+                                                                )}
+
+                                                                {weapon.status && (
+                                                                    <div className="md:col-span-2 space-y-2 p-4 bg-tech-accent/5 border border-tech-accent/20">
+                                                                        <span className="text-[10px] text-tech-accent font-black uppercase flex items-center gap-2 tracking-wider">
+                                                                            <Lock size={14} /> Protocolo
+                                                                        </span>
+                                                                        <p className="text-xs text-tech-accent/90 font-bold font-mono italic">
+                                                                            {weapon.status}
+                                                                        </p>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+
+                                                            {weapon.description && (
+                                                                <div className="relative group/desc">
+                                                                    <div className="absolute -top-2 left-4 bg-black px-2 text-[9px] font-black text-tech-accent/60 border border-tech-accent/20 z-20">
+                                                                        ESPECIFICAÇÕES_DO_JUTSU
+                                                                    </div>
+                                                                    <div className="bg-tech-panel/60 border border-tech-accent/10 p-5 pt-6 group-hover/desc:border-tech-accent/30 transition-colors">
+                                                                        <p className="text-[12px] text-slate-300 font-mono leading-relaxed text-justify">
+                                                                            {weapon.description}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            )}
+
+                                                            {weapon.history && (
+                                                                <div className="flex gap-4 items-start pt-4 border-t border-tech-border/30">
+                                                                    <div className="p-2 bg-tech-accent/10 border border-tech-accent/20 text-tech-accent shrink-0">
+                                                                        <Fingerprint size={20} />
+                                                                    </div>
+                                                                    <div className="space-y-1">
+                                                                        <span className="text-[9px] text-tech-accent/60 font-black uppercase tracking-tighter italic block">REGISTROS_HISTORICOS.LOG</span>
+                                                                        <p className="text-[11px] text-slate-500 italic leading-relaxed">
+                                                                            "{weapon.history}"
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
+                            </div>
+                        )}
+                    </div>
+                ) : (
+                    <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+                        {selectedGalleryIndex === null ? (
+                            <div className="space-y-10">
+                                {eraGallery.length > 0 && (
+                                    <div>
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <h3 className="text-xs font-bold text-black bg-tech-accent p-1 pl-2 uppercase clip-corner-sm">Linha do Tempo</h3>
+                                            <span className="h-px flex-1 bg-tech-border"></span>
+                                        </div>
+                                        <div className="relative group/strip">
+                                            <button
+                                                type="button"
+                                                onClick={() => scrollEraStrip(-1)}
+                                                className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-40 items-center justify-center w-8 h-8 -ml-3 bg-black/90 border border-tech-accent text-tech-accent hover:bg-tech-accent hover:text-black transition-colors opacity-0 group-hover/strip:opacity-100"
+                                                title="Voltar"
+                                            >
+                                                <ChevronLeft size={16} />
+                                            </button>
+                                            <div ref={eraStripRef} className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-custom scroll-smooth">
+                                                {eraGallery.map(({ img, idx }, i) => (
+                                                    <button
+                                                        key={idx}
+                                                        onClick={() => goToGalleryImage(idx)}
+                                                        className="group relative shrink-0 w-40 sm:w-48 aspect-[2/3] border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300 snap-start"
+                                                    >
+                                                        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
+                                                        <div className="absolute top-2 left-2 z-30 bg-tech-accent text-black text-[8px] font-black w-5 h-5 flex items-center justify-center clip-corner-sm">
+                                                            {i + 1}
+                                                        </div>
+                                                        <img
+                                                            loading="lazy"
+                                                            decoding="async"
+                                                            src={formatImageUrl(img.url)}
+                                                            alt={img.caption || char.name}
+                                                            className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                        />
+                                                        {i < eraGallery.length - 1 && (
+                                                            <div className="hidden sm:block absolute top-1/2 -right-3 -translate-y-1/2 w-3 h-px bg-tech-accent/40 z-30"></div>
+                                                        )}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => scrollEraStrip(1)}
+                                                className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-40 items-center justify-center w-8 h-8 -mr-3 bg-black/90 border border-tech-accent text-tech-accent hover:bg-tech-accent hover:text-black transition-colors opacity-0 group-hover/strip:opacity-100"
+                                                title="Avançar"
+                                            >
+                                                <ChevronRight size={16} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {eventoGallery.length > 0 && (
+                                    <div>
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <h3 className="text-xs font-bold text-black bg-tech-accent p-1 pl-2 uppercase clip-corner-sm">Eventos</h3>
+                                            <span className="h-px flex-1 bg-tech-border"></span>
+                                            <div className="flex gap-1.5 shrink-0">
+                                                <button
+                                                    onClick={() => setEventosViewMode('completa')}
+                                                    className={`px-2.5 py-1 text-[9px] font-black uppercase tracking-widest border transition-all ${eventosViewMode === 'completa' ? 'bg-tech-accent text-black border-tech-accent' : 'text-tech-accent/50 border-tech-border hover:border-tech-accent/50'}`}
+                                                >
+                                                    Completa
+                                                </button>
+                                                <button
+                                                    onClick={() => setEventosViewMode('temporada')}
+                                                    className={`px-2.5 py-1 text-[9px] font-black uppercase tracking-widest border transition-all ${eventosViewMode === 'temporada' ? 'bg-tech-accent text-black border-tech-accent' : 'text-tech-accent/50 border-tech-border hover:border-tech-accent/50'}`}
+                                                >
+                                                    Temporada
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {eventosViewMode === 'completa' ? (
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                {eventoGallery.map(({ img, idx }) => (
+                                                    <button
+                                                        key={idx}
+                                                        onClick={() => goToGalleryImage(idx)}
+                                                        className="group relative aspect-video border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300"
+                                                    >
+                                                        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
+                                                        <img
+                                                            loading="lazy"
+                                                            decoding="async"
+                                                            src={formatImageUrl(img.url)}
+                                                            alt={img.caption || char.name}
+                                                            className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                        />
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <div className="space-y-3">
+                                                {eventosBySeason.map(({ season, items }) => {
+                                                    const isOpen = expandedSeasons.has(season);
+                                                    return (
+                                                        <div key={season} className="border border-tech-border bg-tech-panel/20">
+                                                            <button
+                                                                onClick={() => toggleSeason(season)}
+                                                                className="w-full flex items-center justify-between px-4 py-2.5 hover:bg-tech-accent/10 transition-colors"
+                                                            >
+                                                                <span className="text-[11px] font-black text-tech-accent uppercase tracking-widest">
+                                                                    {season} <span className="text-tech-primary/40 font-normal">[{items.length}]</span>
+                                                                </span>
+                                                                <ChevronDown size={14} className={`text-tech-accent transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                                                            </button>
+                                                            {isOpen && (
+                                                                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-4 pt-0">
+                                                                    {items.map(({ img, idx }) => (
+                                                                        <button
+                                                                            key={idx}
+                                                                            onClick={() => goToGalleryImage(idx)}
+                                                                            className="group relative aspect-video border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300"
+                                                                        >
+                                                                            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
+                                                                            <img
+                                                                                loading="lazy"
+                                                                                decoding="async"
+                                                                                src={formatImageUrl(img.url)}
+                                                                                alt={img.caption || char.name}
+                                                                                className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                                            />
+                                                                        </button>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+
+                                {eraGallery.length === 0 && eventoGallery.length === 0 && (
+                                    <div className="h-64 flex flex-col items-center justify-center border border-tech-border border-dashed bg-tech-panel/10">
+                                        <ImageIcon size={32} className="text-tech-dim mb-4" />
+                                        <span className="text-xs text-tech-dim uppercase tracking-widest">Nenhuma imagem registrada na galeria.</span>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="space-y-6">
+                                <button
+                                    onClick={() => goToTab('gallery')}
+                                    className="flex items-center gap-2 text-tech-accent hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest mb-4 group"
+                                >
+                                    <div className="p-1 border border-tech-accent group-hover:bg-tech-accent group-hover:text-black transition-all">
+                                        <X size={12} className="rotate-90" />
+                                    </div>
+                                    VOLTAR_PARA_GALERIA
+                                </button>
+                                {(() => {
+                                    const img = characterGallery[selectedGalleryIndex];
+                                    if (!img) return null;
+                                    return (
+                                        <div className="group animate-in fade-in slide-in-from-right-4 duration-500">
+                                            <div className="relative border border-tech-accent/30 bg-tech-panel/40 p-1 overflow-hidden">
+                                                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-tech-accent"></div>
+                                                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-tech-accent"></div>
+                                                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-tech-accent"></div>
+                                                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-tech-accent"></div>
+                                                <div className="bg-black/60 relative">
+                                                    <div className={`relative overflow-hidden mx-auto ${img.category === 'era' ? 'aspect-[2/3] max-h-[75vh] w-auto' : 'w-full aspect-video'}`}>
+                                                        <img src={formatImageUrl(img.url)} alt={img.caption || char.name} className="w-full h-full object-contain" />
+                                                        <div className="absolute top-4 left-4 z-20">
+                                                            <span className="text-[8px] font-black px-2 py-0.5 border clip-corner-sm bg-black/80 text-tech-accent border-tech-accent/30 uppercase">
+                                                                {img.category}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    {img.caption && (
+                                                        <div className="p-5 md:p-8">
+                                                            <span className="text-[9px] font-black text-tech-accent/50 uppercase tracking-widest flex items-center gap-2 mb-2">
+                                                                <Binary size={10} /> Legenda
+                                                            </span>
+                                                            <p className="text-sm text-slate-200 font-mono leading-relaxed">{img.caption}</p>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+
+            <div className="h-6 bg-tech-panel border-t border-tech-border flex justify-between items-center px-4 text-[10px] text-tech-dim uppercase">
+                <span>MEM: 64KB OK</span>
+                <span className={`animate-pulse ${char.isDead ? 'text-red-500' : ''}`}>
+                    {char.isDead ? 'CONNECTION LOST - SUBJECT DECEASED' : 'CONNECTED TO KONOHA_NET'}
+                </span>
+            </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CharacterModal;

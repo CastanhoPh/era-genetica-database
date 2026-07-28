@@ -1,0 +1,39 @@
+{
+  "name": "era-genética",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit",
+    "prerender": "node scripts/prerender-og.mjs",
+    "sync:diff": "node scripts/sync-diff.mjs",
+    "sync:push": "node scripts/sync-push.mjs",
+    "sync:push:apply": "node scripts/sync-push.mjs --apply",
+    "deploy": "vite build && node scripts/prerender-og.mjs && firebase deploy --only hosting --project era-genetica-db",
+    "login": "firebase login"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "firebase": "^12.15.0",
+    "jszip": "^3.10.1",
+    "lucide-react": "^0.562.0",
+    "react": "^19.2.3",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^19.2.3",
+    "react-router-dom": "^7.18.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.5.4",
+    "firebase-admin": "^13.10.0",
+    "firebase-tools": "^15.22.3",
+    "postcss": "^8.5.24",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}
