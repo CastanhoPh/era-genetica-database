@@ -7,17 +7,21 @@ interface ResourceBarProps {
   colorClass?: string;
   icon: LucideIcon;
   isDead?: boolean;
+  /** Teto usado pra calcular o preenchimento da barra (não é um limite real do personagem). */
+  max?: number;
 }
 
-const ResourceBar: React.FC<ResourceBarProps> = ({ label, value, icon: Icon, isDead }) => {
+const ResourceBar: React.FC<ResourceBarProps> = ({ label, value, icon: Icon, isDead, max = 100 }) => {
   // Determine specific styling based on label content
-  const isHp = label.toLowerCase().includes('vida') || 
-               label.toLowerCase().includes('hp') || 
+  const isHp = label.toLowerCase().includes('vida') ||
+               label.toLowerCase().includes('hp') ||
                label.toLowerCase().includes('integridade');
-               
-  const isChakra = label.toLowerCase().includes('chakra') || 
-                   label.toLowerCase().includes('cp') || 
+
+  const isChakra = label.toLowerCase().includes('chakra') ||
+                   label.toLowerCase().includes('cp') ||
                    label.toLowerCase().includes('energia');
+
+  const fillPercent = max > 0 ? Math.max(0, Math.min(100, (value / max) * 100)) : 0;
 
   let barGradient = 'bg-tech-secondary';
   let glowColor = 'shadow-[0_0_10px_rgba(14,165,233,0.4)]';
@@ -75,8 +79,8 @@ const ResourceBar: React.FC<ResourceBarProps> = ({ label, value, icon: Icon, isD
         {/* The Animated Bar */}
         <div className="relative w-full h-full bg-gray-900/50">
             <div 
-              className={`h-full ${barGradient} ${glowColor} relative overflow-hidden transition-all duration-1000 ${pulseAnimation}`} 
-              style={{ width: '100%' }}
+              className={`h-full ${barGradient} ${glowColor} relative overflow-hidden transition-all duration-1000 ${pulseAnimation}`}
+              style={{ width: `${fillPercent}%` }}
             >
                 {/* Fluid Shimmer Effect - ONLY if alive */}
                 {!isDead && (

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Database, Filter, ChevronDown, Shield, Crosshair, Terminal, AlertTriangle, Loader, Plus } from 'lucide-react';
+import { Search, Database, ChevronDown, Shield, Terminal, AlertTriangle, Loader, Plus } from 'lucide-react';
 import { Equipment } from '../types/Equipment';
 import ArsenalCard from '../components/ArsenalCard';
 
@@ -9,13 +9,15 @@ interface ArsenalProps {
   onOpenItem: (item: Equipment) => void;
   isAdmin?: boolean;
   onAddNew?: () => void;
+  /** Controlado por fora (App.tsx) pra ficar em sincronia com a URL (/arsenal/<origem>). */
+  selectedOrigin: string;
+  onSelectOrigin: (origin: string) => void;
 }
 
-const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, isAdmin, onAddNew }) => {
+const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, isAdmin, onAddNew, selectedOrigin, onSelectOrigin }) => {
   const arsenalData = arsenalItems;
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedClassification, setSelectedClassification] = useState('Todos');
-  const [selectedOrigin, setSelectedOrigin] = useState('Todos');
   const [selectedNature, setSelectedNature] = useState('Todos');
   const [sortBy, setSortBy] = useState('id');
 
@@ -57,10 +59,16 @@ const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, is
   // Filter logic
   const filteredItems = useMemo(() => {
     const filtered = arsenalData.filter(item => {
+      const searchLower = searchTerm.toLowerCase();
       const matchesSearch =
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.origin.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.nature.toLowerCase().includes(searchTerm.toLowerCase());
+        item.name.toLowerCase().includes(searchLower) ||
+        item.origin.toLowerCase().includes(searchLower) ||
+        item.nature.toLowerCase().includes(searchLower) ||
+        item.classification.toLowerCase().includes(searchLower) ||
+        (item.originalOwner || '').toLowerCase().includes(searchLower) ||
+        (item.currentOwner || '').toLowerCase().includes(searchLower) ||
+        (item.pastOwners || []).some(o => o.toLowerCase().includes(searchLower)) ||
+        (item.variants || []).some(v => v.name.toLowerCase().includes(searchLower) || v.owner.toLowerCase().includes(searchLower));
 
       const matchesClassification =
         selectedClassification === 'Todos' || item.classification === selectedClassification;
@@ -92,7 +100,7 @@ const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, is
   const resetFilters = () => {
     setSearchTerm('');
     setSelectedClassification('Todos');
-    setSelectedOrigin('Todos');
+    onSelectOrigin('Todos');
     setSelectedNature('Todos');
     setSortBy('id');
   };
@@ -126,11 +134,22 @@ const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, is
       {/* Controls Bar */}
       <div className="bg-tech-panel/80 backdrop-blur-sm border border-tech-border p-4 mb-8 flex flex-col gap-4 clip-corner shadow-[0_0_20px_rgba(0,255,65,0.05)] animate-fade-in-up" style={{ animationDelay: '100ms' }}>
 
-        {/* Top Row: Search */}
+        {/* Top Row: Origin Tabs & Search */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div className="flex items-center gap-3 text-tech-primary text-xs font-bold uppercase tracking-wider">
-            <Crosshair size={14} />
-            <span>Localizar Equipamento</span>
+          {/* Filter Tabs */}
+          <div className="flex flex-nowrap gap-1.5 min-w-0 overflow-x-auto">
+            {['Todos', ...uniqueOrigins].map(origin => (
+              <button
+                key={origin}
+                onClick={() => onSelectOrigin(origin)}
+                className={`shrink-0 whitespace-nowrap px-2.5 py-1.5 border uppercase text-[11px] font-bold tracking-wider transition-all duration-300 clip-corner-sm
+                  ${selectedOrigin === origin
+                    ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_15px_rgba(0,255,65,0.4)] translate-y-[-2px]'
+                    : 'bg-transparent text-tech-primary border-tech-border hover:border-tech-primary hover:text-white hover:bg-tech-primary/10'}`}
+              >
+                {origin}
+              </button>
+            ))}
           </div>
 
           <div className="flex gap-4 w-full md:w-auto">
@@ -156,10 +175,9 @@ const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, is
         </div>
 
         {/* Bottom Row: Filters */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-tech-border/50 pt-4 mt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 border-t border-tech-border/50 pt-4 mt-2">
           {[
             { label: 'CLASSIFICAÇÃO', icon: Shield, value: selectedClassification, setter: setSelectedClassification, options: uniqueClassifications },
-            { label: 'ORIGEM', icon: Filter, value: selectedOrigin, setter: setSelectedOrigin, options: uniqueOrigins },
             { label: 'NATUREZA', icon: Database, value: selectedNature, setter: setSelectedNature, options: uniqueNatures },
           ].map((filter, idx) => (
             <div key={idx} className="flex flex-col gap-1">
@@ -228,7 +246,7 @@ const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, is
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredItems.map((item, index) => (
               <ArsenalCard
-                key={item.id}
+                key={item.docId ?? item.id}
                 item={item}
                 index={index}
                 onClick={() => onOpenItem(item)}

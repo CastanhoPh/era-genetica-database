@@ -15,6 +15,7 @@ import admin from 'firebase-admin';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const APPLY = process.argv.includes('--apply');
+const FORCE = process.argv.includes('--force');
 const ONLY_ARG = process.argv.find(a => a.startsWith('--only='));
 const ONLY = ONLY_ARG ? new Set(ONLY_ARG.slice('--only='.length).split(',').map(s => s.trim())) : null;
 
@@ -70,9 +71,12 @@ function withDocIds(items) {
   });
 }
 
-async function pushCollection(db, collectionName, items, existingDocIds) {
+// existingDocs: Map<docId, dadosAtuaisNoFirestore> — precisamos do conteúdo
+// completo (não só a lista de ids) pra detectar os dois riscos abaixo.
+async function pushCollection(db, collectionName, items, existingDocs) {
   let entries = withDocIds(items);
   const localDocIds = new Set(entries.map(e => e.docId));
+  const existingDocIds = [...existingDocs.keys()];
   const orphans = existingDocIds.filter(id => !localDocIds.has(id));
 
   if (ONLY) {
@@ -84,20 +88,114 @@ async function pushCollection(db, collectionName, items, existingDocIds) {
     console.log(`  Presentes no Firestore mas ausentes no arquivo local (NÃO serão apagados): ${orphans.join(', ')}`);
   }
 
-  if (!APPLY) {
-    console.log(`  [dry run] ${entries.length} documentos seriam gravados: ${entries.map(e => e.docId).join(', ')}`);
-    return;
+  // Risco 1: docId novo (ainda não existe no Firestore) cujo `id` numérico já
+  // pertence a outro doc existente. NÃO é uma checagem de rename (o `id` não
+  // costuma sobreviver a um rename feito pelo Painel — confirmado em
+  // 2026-08-03: "Alpha" tinha id 41, "Katakana Yotsuki (Alpha)" tem id 70).
+  // É uma checagem de reuso acidental de id entre personagens SEM relação
+  // nenhuma, que já aconteceu neste projeto (ex: "Asami Hyuga" e "Ryuta
+  // Hyuga" com id 20 os dois).
+  const idCollisions = [];
+  for (const { docId, data } of entries) {
+    if (existingDocs.has(docId)) continue;
+    for (const [otherDocId, otherData] of existingDocs) {
+      if (otherData.id === data.id) {
+        idCollisions.push({ docId, name: data.name, collidesWith: otherDocId, otherName: otherData.name });
+      }
+    }
   }
 
+  // Risco 3: docId novo cujo nome é EXATAMENTE o codinome entre parênteses no
+  // nome de outro doc já existente (ex: doc novo "Alpha" vs doc existente
+  // "Katakana Yotsuki (Alpha)") — esse sim é o padrão real de rename ao vivo
+  // que causou a duplicata do Alpha/Gama/Delta/Theta/Togo Kage em 2026-08-03.
+  const renameDuplicates = [];
+  for (const { docId, data } of entries) {
+    if (existingDocs.has(docId)) continue;
+    if (!data.name) continue;
+    for (const [otherDocId, otherData] of existingDocs) {
+      const m = String(otherData.name || '').match(/\(([^)]+)\)\s*$/);
+      if (m && m[1].trim() === data.name.trim()) {
+        renameDuplicates.push({ docId, name: data.name, collidesWith: otherDocId, otherName: otherData.name });
+      }
+    }
+  }
+
+  // Risco 2: doc já existe no Firestore e tem um campo preenchido que o
+  // arquivo local não tem — provável edição feita direto no Painel (ex:
+  // isDead/killedBy) que um push completo apagaria silenciosamente.
+  const fieldDrops = [];
+  // Aviso informativo (não bloqueia): campos que existem nos dois lados mas
+  // com VALOR diferente. Não dá pra saber se é a mudança que eu quis fazer
+  // ou se estou sobrescrevendo uma edição ao vivo — só deixa visível.
+  const fieldChanges = [];
+  for (const { docId, data } of entries) {
+    const existing = existingDocs.get(docId);
+    if (!existing) continue;
+    for (const key of Object.keys(existing)) {
+      if (existing[key] === undefined || existing[key] === null) continue;
+      if (!(key in data)) { fieldDrops.push({ docId, field: key, oldValue: existing[key] }); continue; }
+      if (JSON.stringify(existing[key]) !== JSON.stringify(data[key])) {
+        fieldChanges.push({ docId, field: key });
+      }
+    }
+  }
+
+  if (idCollisions.length || renameDuplicates.length || fieldDrops.length) {
+    console.log(`\n  ⚠ RISCOS DETECTADOS em ${collectionName}:`);
+    if (renameDuplicates.length) {
+      console.log(`  Possível duplicata de rename (nome bate com o codinome entre parênteses de outro doc):`);
+      for (const c of renameDuplicates) {
+        console.log(`    "${c.docId}" (${c.name}) é provavelmente a versão antiga de "${c.collidesWith}" (${c.otherName}), antes de renomear.`);
+      }
+    }
+    if (idCollisions.length) {
+      console.log(`  Reuso acidental de id numérico (personagens sem relação, id em comum):`);
+      for (const c of idCollisions) {
+        console.log(`    "${c.docId}" (${c.name}) tem o mesmo id de "${c.collidesWith}" (${c.otherName}).`);
+      }
+    }
+    if (fieldDrops.length) {
+      console.log(`  Campos que existem no Firestore e sumiriam com esse push (arquivo local não tem):`);
+      for (const d of fieldDrops) console.log(`    ${d.docId}.${d.field} = ${JSON.stringify(d.oldValue)}`);
+    }
+    if (!FORCE) {
+      console.log(`\n  Push de ${collectionName} ABORTADO por segurança — nada foi gravado nesta coleção.`);
+      console.log(`  Revise os avisos acima. Se for intencional, rode de novo com --force.`);
+      return { aborted: true };
+    }
+    console.log('  --force informado: prosseguindo mesmo assim.');
+  }
+
+  if (fieldChanges.length) {
+    console.log(`\n  ℹ campos com valor diferente do Firestore atual (só aviso, não bloqueia):`);
+    const byDoc = new Map();
+    for (const c of fieldChanges) (byDoc.get(c.docId) ?? byDoc.set(c.docId, []).get(c.docId)).push(c.field);
+    for (const [docId, fields] of byDoc) console.log(`    ${docId}: ${fields.join(', ')}`);
+  }
+
+  if (!APPLY) {
+    console.log(`  [dry run] ${entries.length} documentos seriam gravados: ${entries.map(e => e.docId).join(', ')}`);
+    return { aborted: false };
+  }
+
+  // `merge: true` é a proteção estrutural de verdade contra o caso do Oddy/Shinrin no
+  // Kanmuri (2026-08-03): um campo (pastOwners) editado direto no Firestore e nunca
+  // espelhado no arquivo local. Sem merge, um `.set()` puro sobrescreve o documento
+  // inteiro e apaga qualquer campo que o arquivo local não conheça. Com merge, campos
+  // ausentes no payload local simplesmente não são tocados. Isso NÃO cobre o caso mais
+  // sutil de um array com menos itens localmente (merge substitui o array inteiro) — é
+  // por isso que o aviso de `fieldChanges` acima continua existindo, só não bloqueia.
   const BATCH_LIMIT = 400;
   for (let i = 0; i < entries.length; i += BATCH_LIMIT) {
     const batch = db.batch();
     for (const { docId, data } of entries.slice(i, i + BATCH_LIMIT)) {
-      batch.set(db.collection(collectionName).doc(docId), data);
+      batch.set(db.collection(collectionName).doc(docId), data, { merge: true });
     }
     await batch.commit();
   }
   console.log(`  ✓ ${entries.length} documentos gravados no Firestore.`);
+  return { aborted: false };
 }
 
 async function main() {
@@ -113,15 +211,21 @@ async function main() {
   ]);
 
   const [charSnap, arsenalSnap] = await Promise.all([
-    db.collection('characters').listDocuments(),
-    db.collection('arsenal').listDocuments(),
+    db.collection('characters').get(),
+    db.collection('arsenal').get(),
   ]);
+  const charDocs = new Map(charSnap.docs.map(d => [d.id, d.data()]));
+  const arsenalDocs = new Map(arsenalSnap.docs.map(d => [d.id, d.data()]));
 
-  await pushCollection(db, 'characters', characters, charSnap.map(d => d.id));
-  await pushCollection(db, 'arsenal', arsenal, arsenalSnap.map(d => d.id));
+  const charResult = await pushCollection(db, 'characters', characters, charDocs);
+  const arsenalResult = await pushCollection(db, 'arsenal', arsenal, arsenalDocs);
 
   if (!APPLY) {
     console.log('\nModo dry run — nada foi gravado. Rode com --apply para sincronizar de verdade.');
+  }
+  if (charResult?.aborted || arsenalResult?.aborted) {
+    console.log('\nUma ou mais coleções foram abortadas por segurança (veja os avisos acima).');
+    process.exit(1);
   }
   process.exit(0);
 }

@@ -13,9 +13,6 @@ dist-ssr
 *.local
 .firebase
 
-# Cópia local da migração Cloudinary->Firebase Storage (24MB, já está tudo no Storage)
-imagens-migradas
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

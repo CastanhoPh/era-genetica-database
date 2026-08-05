@@ -19,7 +19,9 @@ const AddEquipmentModal: React.FC<AddEquipmentModalProps> = ({ onClose, onSave, 
     nature: initialEquipment?.nature || '',
     origin: initialEquipment?.origin || '',
     originalOwner: initialEquipment?.originalOwner || '',
+    pastOwners: (initialEquipment?.pastOwners || []).join(', '),
     currentOwner: initialEquipment?.currentOwner || '',
+    variants: (initialEquipment?.variants || []).map(v => v.description ? `${v.name} | ${v.owner} | ${v.description}` : `${v.name} | ${v.owner}`).join('\n'),
     description: initialEquipment?.description || '',
   });
   const [previewError, setPreviewError] = useState(false);
@@ -48,7 +50,19 @@ const AddEquipmentModal: React.FC<AddEquipmentModalProps> = ({ onClose, onSave, 
       description: form.description,
       image: form.image,
       originalOwner: form.originalOwner,
+      pastOwners: form.pastOwners.split(',').map(s => s.trim()).filter(Boolean),
       currentOwner: form.currentOwner,
+      variants: form.variants
+        .split('\n')
+        .map(line => {
+          const [name, owner, description] = line.split('|').map(s => s.trim());
+          if (!name || !owner) return null;
+          // Preserva a imagem de uma variação já existente com o mesmo nome — este
+          // formulário não sabe fazer upload de imagem por variação ainda.
+          const existing = initialEquipment?.variants?.find(v => v.name.trim().toLowerCase() === name.toLowerCase());
+          return { ...(existing ?? {}), name, owner, ...(description ? { description } : {}) };
+        })
+        .filter((v): v is { name: string; owner: string; image?: string } => v !== null),
     };
     try {
       await onSave(item);
@@ -116,8 +130,19 @@ const AddEquipmentModal: React.FC<AddEquipmentModalProps> = ({ onClose, onSave, 
               <input name="nature" value={form.nature} onChange={handleChange} className={inputClass} placeholder="Raiton + Fuinjutsu..." />
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div><label className={labelClass}>Portador Atual</label><input name="currentOwner" value={form.currentOwner} onChange={handleChange} className={inputClass} placeholder="Nome do personagem" /></div>
-              <div><label className={labelClass}>Portadores Históricos</label><input name="originalOwner" value={form.originalOwner} onChange={handleChange} className={inputClass} placeholder="Nome1, Nome2..." /></div>
+              <div><label className={labelClass}>Portador Original</label><input name="originalOwner" value={form.originalOwner} onChange={handleChange} className={inputClass} placeholder="Nome do personagem" /></div>
+              <div><label className={labelClass}>Portadores Antigos</label><input name="pastOwners" value={form.pastOwners} onChange={handleChange} className={inputClass} placeholder="Nome1, Nome2... (entre o original e o atual)" /></div>
+              <div><label className={labelClass}>Portador Atual</label><input name="currentOwner" value={form.currentOwner} onChange={handleChange} className={inputClass} placeholder="Nome do personagem (o site prioriza o que estiver no arsenal da ficha, isso aqui é só reserva)" /></div>
+            </div>
+            <div>
+              <label className={labelClass}>Variações (mesma arma, outro portador)</label>
+              <textarea
+                name="variants"
+                value={form.variants}
+                onChange={handleChange}
+                className={`${inputClass} h-20 resize-none font-mono`}
+                placeholder={'Uma por linha: Nome da variação | Portador | Descrição (opcional)\nEx: Shiden no Kage | Naomi Uzumaki'}
+              />
             </div>
             <div>
               <label className={labelClass}>Descrição</label>

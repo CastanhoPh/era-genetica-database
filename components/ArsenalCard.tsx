@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight, Cpu, Crosshair, Hexagon } from 'lucide-react';
+import { ChevronRight, Cpu, Hexagon } from 'lucide-react';
 import { Equipment, classificationColors } from '../types/Equipment';
 import { formatImageUrl } from '../utils/formatters';
 
@@ -16,7 +16,10 @@ const ArsenalCard: React.FC<ArsenalCardProps> = ({ item, index, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="group relative border border-tech-border bg-black/50 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col h-full opacity-0 animate-fade-in-up hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,255,65,0.2)]"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } }}
+      className="group relative border border-tech-border bg-black/50 transition-all duration-500 cursor-pointer overflow-hidden flex flex-col h-full opacity-0 animate-fade-in-up hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,255,65,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-tech-primary"
       style={{ animationDelay: `${Math.min(index * 70, 1200)}ms` }}
     >
       {/* Holographic shimmer overlay */}
@@ -53,11 +56,6 @@ const ArsenalCard: React.FC<ArsenalCardProps> = ({ item, index, onClick }) => {
         <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-tech-primary z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4" />
         <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-tech-primary z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4" />
         <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-tech-primary z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4" />
-
-        {/* Crosshair center on hover */}
-        <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none">
-          <Crosshair size={48} className="text-tech-primary animate-pulse-fast" />
-        </div>
 
         {/* Tech corner detail */}
         <div className="absolute bottom-2 left-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">

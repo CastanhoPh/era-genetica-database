@@ -20,6 +20,10 @@ interface EquipmentModalProps {
 const EquipmentModal: React.FC<EquipmentModalProps> = ({ item, onClose, characters = [], onOpenCharacter, isAdmin, onEdit, onDelete }) => {
   const [imgError, setImgError] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+  // null = mostrando a arma-base; um índice = mostrando aquela variação em tela cheia
+  // (nome, foto e descrição trocam; classificação/natureza/origem continuam as da base,
+  // já que é a mesma arma por baixo).
+  const [selectedVariant, setSelectedVariant] = useState<number | null>(null);
 
   const copyLink = () => {
     if (!item) return;
@@ -43,7 +47,12 @@ const EquipmentModal: React.FC<EquipmentModalProps> = ({ item, onClose, characte
 
   useEffect(() => {
     setImgError(false);
+    setSelectedVariant(null);
   }, [item]);
+
+  useEffect(() => {
+    setImgError(false);
+  }, [selectedVariant]);
 
   // Prevent scroll on body when modal is open
   useEffect(() => {
@@ -69,6 +78,11 @@ const EquipmentModal: React.FC<EquipmentModalProps> = ({ item, onClose, characte
   if (!item) return null;
 
   const classStyle = classificationColors[item.classification] || classificationColors['F'];
+  const activeVariant = selectedVariant !== null ? item.variants?.[selectedVariant] : undefined;
+  const displayName = activeVariant?.name ?? item.name;
+  const displayImage = activeVariant?.image ?? item.image;
+  const displayDescription = activeVariant?.description ?? (activeVariant ? undefined : item.description);
+  const displayOwnerChar = activeVariant ? resolveCharByName(activeVariant.owner) : undefined;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-6 bg-black/95 backdrop-blur-sm animate-in fade-in duration-300">
@@ -87,43 +101,79 @@ const EquipmentModal: React.FC<EquipmentModalProps> = ({ item, onClose, characte
         <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-tech-primary/30 z-50 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-tech-primary/30 z-50 pointer-events-none" />
 
-        {/* Action Buttons */}
-        <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
-          {isAdmin && onEdit && (
+        {/* Barra de topo: variações à esquerda, ações à direita — em fluxo normal (não mais
+            flutuando por cima da imagem/dados), pra nunca tampar informação embaixo. */}
+        <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 pl-20 border-b border-tech-border bg-black/60 shrink-0 relative z-40">
+          {/* Trocar entre a arma-base e cada variação — muda nome/foto/descrição/portador
+              da tela toda, em vez de só listar as variações num cantinho apertado. */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            {item.variants && item.variants.length > 0 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setSelectedVariant(null)}
+                  className={`px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wide border transition-colors clip-corner-sm ${selectedVariant === null
+                      ? 'bg-tech-primary text-black border-tech-primary'
+                      : 'bg-black/60 text-tech-primary/70 border-tech-border hover:border-tech-primary/50'
+                    }`}
+                >
+                  {item.name}
+                </button>
+                {item.variants.map((v, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setSelectedVariant(i)}
+                    className={`px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wide border transition-colors clip-corner-sm ${selectedVariant === i
+                        ? 'bg-tech-accent text-black border-tech-accent'
+                        : 'bg-black/60 text-tech-accent/70 border-tech-border hover:border-tech-accent/50'
+                      }`}
+                  >
+                    {v.name}
+                  </button>
+                ))}
+              </>
+            )}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center gap-2">
+            {isAdmin && onEdit && (
+              <button
+                onClick={() => onEdit(item)}
+                title="Editar arma"
+                className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-2 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm"
+              >
+                <Pencil size={16} />
+              </button>
+            )}
+            {isAdmin && onDelete && (
+              <button
+                onClick={async () => {
+                  if (confirm(`Excluir "${item.name}" do banco? Esta ação não pode ser desfeita.`)) {
+                    await onDelete(item);
+                  }
+                }}
+                title="Excluir arma"
+                className="bg-red-900/20 hover:bg-red-600 text-red-500 hover:text-black border border-red-600 p-2 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm"
+              >
+                <Trash2 size={16} />
+              </button>
+            )}
             <button
-              onClick={() => onEdit(item)}
-              title="Editar arma"
-              className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-2 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-2 group clip-corner-sm"
+              onClick={copyLink}
+              title="Copiar link da arma"
+              className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-2 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm"
             >
-              <Pencil size={16} /> <span className="hidden group-hover:inline">Editar</span>
+              {linkCopied ? <span className="text-[10px]">Copiado!</span> : <Share2 size={16} />}
             </button>
-          )}
-          {isAdmin && onDelete && (
             <button
-              onClick={async () => {
-                if (confirm(`Excluir "${item.name}" do banco? Esta ação não pode ser desfeita.`)) {
-                  await onDelete(item);
-                }
-              }}
-              title="Excluir arma"
-              className="bg-red-900/20 hover:bg-red-600 text-red-500 hover:text-black border border-red-600 p-2 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-2 group clip-corner-sm"
+              onClick={onClose}
+              className="bg-red-900/20 hover:bg-red-500 text-red-500 hover:text-black border border-red-500 p-2 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm"
             >
-              <Trash2 size={16} /> <span className="hidden group-hover:inline">Excluir</span>
+              <X size={18} />
             </button>
-          )}
-          <button
-            onClick={copyLink}
-            title="Copiar link da arma"
-            className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-2 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-2 group clip-corner-sm"
-          >
-            <Share2 size={16} /> <span className="hidden group-hover:inline">{linkCopied ? 'Copiado!' : 'Link'}</span>
-          </button>
-          <button
-            onClick={onClose}
-            className="bg-red-900/20 hover:bg-red-500 text-red-500 hover:text-black border border-red-500 p-2 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-2 group clip-corner-sm"
-          >
-            <span className="hidden group-hover:inline">Encerrar</span> <X size={18} />
-          </button>
+          </div>
         </div>
 
         {/* Top System Bar */}
@@ -162,10 +212,10 @@ const EquipmentModal: React.FC<EquipmentModalProps> = ({ item, onClose, characte
                 <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-tech-primary z-20 opacity-60" />
                 <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-tech-primary z-20 opacity-60" />
 
-                {item.image && !imgError ? (
+                {displayImage && !imgError ? (
                   <img
-                    src={formatImageUrl(item.image)}
-                    alt={item.name}
+                    src={formatImageUrl(displayImage)}
+                    alt={displayName}
                     onError={() => setImgError(true)}
                     className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02]"
                   />
@@ -197,7 +247,7 @@ const EquipmentModal: React.FC<EquipmentModalProps> = ({ item, onClose, characte
                         <Binary size={10} /> Registro Único
                       </span>
                       <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tighter leading-tight text-glow">
-                        {item.name}
+                        {displayName}
                       </h2>
                     </div>
 
@@ -248,61 +298,106 @@ const EquipmentModal: React.FC<EquipmentModalProps> = ({ item, onClose, characte
                     <div className="flex items-start gap-3">
                       <Crosshair size={14} className="text-tech-accent/40 shrink-0 mt-1" />
                       <p className="text-[12px] text-slate-300 font-mono leading-relaxed text-justify first-letter:text-lg first-letter:font-black first-letter:text-tech-accent first-letter:mr-1">
-                        {item.description || "ARQUIVO CORROMPIDO OU INEXISTENTE. DADOS NÃO DISPONÍVEIS PARA LEITURA."}
+                        {displayDescription || "ARQUIVO CORROMPIDO OU INEXISTENTE. DADOS NÃO DISPONÍVEIS PARA LEITURA."}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Ownership — reverso clicável */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Portador Atual (reverso: quem equipa esta arma) */}
-                  <div className="space-y-2 p-4 bg-black/40 border border-tech-border group/spec hover:border-tech-primary/30 transition-colors">
-                    <span className="text-[10px] text-tech-primary font-black uppercase flex items-center gap-2 tracking-wider">
-                      <Crosshair size={14} /> Portador Atual
+                {/* Posse. Numa variação selecionada, é só "quem manifesta essa forma" (não
+                    é uma cadeia de posse sequencial) — mostra um bloco único e simples.
+                    Na arma-base, mantém Original / Antigos / Atual (o "Atual" calculado
+                    automaticamente a partir de quem lista essa arma no `character.arsenal`,
+                    não do texto digitado — assim nunca fica desatualizado). */}
+                {activeVariant ? (
+                  <div className="space-y-2 p-4 bg-black/40 border border-tech-border">
+                    <span className="text-[10px] text-tech-accent font-black uppercase flex items-center gap-2 tracking-wider">
+                      <Crosshair size={14} /> Portador desta variação
                     </span>
                     <div className="pl-5 flex flex-wrap gap-2">
-                      {(() => {
-                        const holders = characters.filter(c => (c.arsenal || []).includes(item.id));
-                        const fallback = holders.length === 0 ? resolveCharByName(item.currentOwner) : null;
-                        const list = holders.length > 0 ? holders : (fallback ? [fallback] : []);
-                        if (list.length > 0) {
-                          return list.map(c => (
-                            <button key={c.id} onClick={() => goToCharacter(c)}
-                              className="inline-flex items-center gap-1 px-2 py-1 text-xs font-mono text-tech-primary border border-tech-primary/40 bg-tech-primary/5 hover:bg-tech-primary hover:text-black transition-colors">
-                              {c.name} <ExternalLink size={11} />
-                            </button>
-                          ));
-                        }
-                        return <p className="text-sm text-slate-300 font-mono">{item.currentOwner || '—'}</p>;
-                      })()}
+                      {displayOwnerChar ? (
+                        <button onClick={() => goToCharacter(displayOwnerChar)}
+                          className="inline-flex items-center gap-1 px-2 py-1 text-xs font-mono text-tech-accent border border-tech-accent/40 bg-tech-accent/5 hover:bg-tech-accent hover:text-black transition-colors">
+                          {displayOwnerChar.name} <ExternalLink size={11} />
+                        </button>
+                      ) : (
+                        <p className="text-sm text-slate-300 font-mono">{activeVariant.owner || '—'}</p>
+                      )}
                     </div>
                   </div>
+                ) : (() => {
+                  const currentHolders = characters.filter(c => (c.arsenal || []).includes(item.id));
+                  const currentFallback = currentHolders.length === 0 ? resolveCharByName(item.currentOwner) : null;
+                  const currentList = currentHolders.length > 0 ? currentHolders : (currentFallback ? [currentFallback] : []);
+                  const currentNameSet = new Set(currentList.map(c => c.name.trim().toLowerCase()));
+                  if (currentList.length === 0 && item.currentOwner) currentNameSet.add(item.currentOwner.trim().toLowerCase());
 
-                  {/* Portadores Históricos */}
-                  <div className="space-y-2 p-4 bg-black/40 border border-tech-border group/spec hover:border-yellow-500/30 transition-colors">
-                    <span className="text-[10px] text-yellow-500 font-black uppercase flex items-center gap-2 tracking-wider">
-                      <History size={14} /> Portadores Históricos
-                    </span>
-                    <div className="pl-5 flex flex-wrap gap-2">
-                      {(() => {
-                        const names = (item.originalOwner || '').split(',').map(s => s.trim()).filter(Boolean);
-                        if (names.length === 0) return <p className="text-sm text-slate-300 font-mono">—</p>;
-                        return names.map((name, i) => {
-                          const c = resolveCharByName(name);
-                          return c ? (
-                            <button key={i} onClick={() => goToCharacter(c)}
-                              className="inline-flex items-center gap-1 px-2 py-1 text-xs font-mono text-yellow-400 border border-yellow-500/40 bg-yellow-500/5 hover:bg-yellow-500 hover:text-black transition-colors">
-                              {c.name} <ExternalLink size={11} />
-                            </button>
+                  // O portador original já conta como "antigo" automaticamente, contanto que
+                  // não seja também quem tem a arma hoje — não precisa registrar duas vezes.
+                  const pastNames = [
+                    ...(item.originalOwner && !currentNameSet.has(item.originalOwner.trim().toLowerCase()) ? [item.originalOwner] : []),
+                    ...(item.pastOwners ?? []),
+                  ];
+
+                  const renderName = (name: string, key: React.Key, colorClass: string, borderClass: string, bgClass: string) => {
+                    const c = resolveCharByName(name);
+                    return c ? (
+                      <button key={key} onClick={() => goToCharacter(c)}
+                        className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-mono ${colorClass} border ${borderClass} ${bgClass} hover:bg-current hover:text-black transition-colors`}>
+                        {c.name} <ExternalLink size={11} />
+                      </button>
+                    ) : (
+                      <span key={key} className="px-2 py-1 text-xs font-mono text-slate-300 border border-tech-border">{name}</span>
+                    );
+                  };
+
+                  return (
+                    <div className="grid grid-cols-1 gap-3">
+                      {/* Portador Original */}
+                      <div className="space-y-2 p-4 bg-black/40 border border-tech-border group/spec hover:border-sky-500/30 transition-colors">
+                        <span className="text-[10px] text-sky-400 font-black uppercase flex items-center gap-2 tracking-wider">
+                          <Hexagon size={14} /> Portador Original
+                        </span>
+                        <div className="pl-5 flex flex-wrap gap-2">
+                          {item.originalOwner
+                            ? renderName(item.originalOwner, 'original', 'text-sky-400', 'border-sky-500/40', 'bg-sky-500/5')
+                            : <p className="text-sm text-slate-300 font-mono">—</p>}
+                        </div>
+                      </div>
+
+                      {/* Portadores Antigos */}
+                      <div className="space-y-2 p-4 bg-black/40 border border-tech-border group/spec hover:border-yellow-500/30 transition-colors">
+                        <span className="text-[10px] text-yellow-500 font-black uppercase flex items-center gap-2 tracking-wider">
+                          <History size={14} /> Portadores Antigos
+                        </span>
+                        <div className="pl-5 flex flex-wrap gap-2">
+                          {pastNames.length > 0
+                            ? pastNames.map((name, i) => renderName(name, i, 'text-yellow-400', 'border-yellow-500/40', 'bg-yellow-500/5'))
+                            : <p className="text-sm text-slate-300 font-mono">—</p>}
+                        </div>
+                      </div>
+
+                      {/* Portador Atual (automático) */}
+                      <div className="space-y-2 p-4 bg-black/40 border border-tech-border group/spec hover:border-tech-primary/30 transition-colors">
+                        <span className="text-[10px] text-tech-primary font-black uppercase flex items-center gap-2 tracking-wider">
+                          <Crosshair size={14} /> Portador Atual
+                        </span>
+                        <div className="pl-5 flex flex-wrap gap-2">
+                          {currentList.length > 0 ? (
+                            currentList.map(c => (
+                              <button key={c.docId ?? c.id} onClick={() => goToCharacter(c)}
+                                className="inline-flex items-center gap-1 px-2 py-1 text-xs font-mono text-tech-primary border border-tech-primary/40 bg-tech-primary/5 hover:bg-tech-primary hover:text-black transition-colors">
+                                {c.name} <ExternalLink size={11} />
+                              </button>
+                            ))
                           ) : (
-                            <span key={i} className="px-2 py-1 text-xs font-mono text-slate-300 border border-tech-border">{name}</span>
-                          );
-                        });
-                      })()}
+                            <p className="text-sm text-slate-300 font-mono">{item.currentOwner || '—'}</p>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  );
+                })()}
 
                 {/* Bottom status */}
                 <div className="flex items-center justify-between text-[9px] text-tech-primary/30 uppercase pt-2 border-t border-tech-border/30">

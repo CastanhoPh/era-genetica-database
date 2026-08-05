@@ -1,7 +1,7 @@
 // Acesso aos dados no Firestore (leitura e escrita de admin).
 import { collection, getDocs, doc, addDoc, setDoc, deleteDoc, updateDoc, onSnapshot, writeBatch } from 'firebase/firestore';
 import { db } from '../firebase';
-import { Character, ChecklistItem, PrototypeEntry } from '../types';
+import { Character, ChecklistItem, PrototypeEntry, FamilyTree } from '../types';
 import { Equipment } from '../types/Equipment';
 import { groupItems } from './checklistGrouping';
 
@@ -194,4 +194,22 @@ export function subscribePrototype(
 
 export async function deletePrototypeEntry(docId: string): Promise<void> {
   await deleteDoc(doc(db, 'prototypeEntries', docId));
+}
+
+// Árvores genealógicas (aba "Árvore") — recurso experimental, coleção isolada de propósito:
+// se não funcionar bem, dá pra apagar a coleção inteira sem afetar mais nada no site.
+export function subscribeFamilyTrees(
+  onData: (trees: FamilyTree[]) => void,
+  onError?: (err: Error) => void,
+): () => void {
+  return onSnapshot(
+    collection(db, 'familyTrees'),
+    snap => {
+      const data = snap.docs
+        .map(d => ({ ...(d.data() as FamilyTree), docId: d.id }))
+        .sort((a, b) => a.order - b.order);
+      onData(data);
+    },
+    onError,
+  );
 }

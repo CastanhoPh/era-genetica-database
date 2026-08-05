@@ -5,7 +5,7 @@ import { ref, listAll, getMetadata, StorageReference } from 'firebase/storage';
 import JSZip from 'jszip';
 import { storage } from '../firebaseStorage';
 import { subscribeChecklist, fixChecklistOrder, subscribePrototype, deletePrototypeEntry, slugify } from '../data/firestore';
-import { Character, ChecklistItem, PrototypeEntry, SEASON_LORE, SEASON_ORDER, PENDING_CHARACTERS } from '../types';
+import { Character, ChecklistItem, PrototypeEntry, SEASON_LORE, SEASON_ORDER, PENDING_CHARACTERS, PENDING_ARSENAL } from '../types';
 import { Equipment } from '../types/Equipment';
 
 interface AdminPanelProps {
@@ -48,7 +48,7 @@ const StatCard: React.FC<{ icon: React.ElementType; label: string; value: React.
   </div>
 );
 
-const PANEL_TABS = ['geral', 'personagens', 'producao', 'prototipos', 'classificacoes'] as const;
+const PANEL_TABS = ['geral', 'personagens', 'arsenal', 'producao', 'prototipos', 'classificacoes'] as const;
 type PanelTab = typeof PANEL_TABS[number];
 
 const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => {
@@ -74,6 +74,8 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
 
   const [expandedVillages, setExpandedVillages] = useState<Set<string>>(new Set());
   const [expandedClans, setExpandedClans] = useState<Set<string>>(new Set());
+  const [expandedArsenalOrigins, setExpandedArsenalOrigins] = useState<Set<string>>(new Set());
+  const [expandedArsenalNatures, setExpandedArsenalNatures] = useState<Set<string>>(new Set());
 
   // Aba ativa (e, dentro de Protótipos, o item aberto) vêm direto da URL — /painel/<aba>[/<item>] —
   // mesmo princípio já usado na ficha do personagem: nada de estado próprio pra duplicar a URL.
@@ -84,6 +86,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
 
   const [prototypeEntries, setPrototypeEntries] = useState<PrototypeEntry[]>([]);
   const [prototypeVillage, setPrototypeVillage] = useState('Konohagakure');
+  const [prototypeViewMode, setPrototypeViewMode] = useState<'grid' | 'kanban'>('grid');
   const [classificationVillage, setClassificationVillage] = useState('Konohagakure');
   const [classificationFilter, setClassificationFilter] = useState<'nc30' | 'nc26' | 'nc20' | 'nc16' | 'nc8' | null>(null);
   const openPrototypeId = prototypeSlugFromUrl
@@ -125,7 +128,13 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
     }
   }, []);
 
-  useEffect(() => { loadStorageStats(); }, [loadStorageStats]);
+  // Só varre o Storage inteiro (custoso) quando a aba "Geral" é aberta pela primeira vez —
+  // não em toda montagem do Painel, independente de em qual aba a gente cai.
+  useEffect(() => {
+    if (activeTab === 'geral' && !storageStats && !storageLoading) {
+      loadStorageStats();
+    }
+  }, [activeTab, storageStats, storageLoading, loadStorageStats]);
 
   const handleFixOrder = useCallback(async () => {
     if (!window.confirm('Renumerar a ordem de todos os itens da checklist? Isso corrige a sequência caso a Galeria "Geral" esteja fora de ordem. Não afeta nomes, imagens ou status de "feito".')) return;
@@ -156,6 +165,55 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
   const totalCharactersOverall = characters.length + pendingCount;
   const aliveCount = characters.length - deadCount;
   const nc30Count = characters.filter(c => c.nc === 30).length;
+
+  // Painel de arsenal (aba Arsenal): com ficha vs. pendentes, e contagem pelos ranks
+  // mais altos da classificação (Z, S++, S+, S).
+  const pendingArsenalCount = PENDING_ARSENAL.reduce((sum, g) => sum + g.entries.length, 0);
+  const totalArsenalOverall = arsenalItems.length + pendingArsenalCount;
+  const rankZCount = arsenalItems.filter(a => a.classification === 'Z').length;
+  const rankSPlusPlusCount = arsenalItems.filter(a => a.classification === 'S++').length;
+  const rankSPlusCount = arsenalItems.filter(a => a.classification === 'S+').length;
+  const rankSCount = arsenalItems.filter(a => a.classification === 'S').length;
+
+  // Arsenal por vila (origem) — com ficha + pendentes, mesmo padrão de "Personagens por Vila".
+  const arsenalVillageRows = useMemo(() => {
+    const registeredNames = new Map<string, string[]>();
+    for (const a of arsenalItems) {
+      const origin = a.origin || 'Sem origem';
+      const list = registeredNames.get(origin) ?? [];
+      list.push(a.name);
+      registeredNames.set(origin, list);
+    }
+    const pendingNames = new Map<string, string[]>();
+    for (const g of PENDING_ARSENAL) pendingNames.set(g.village, g.entries.map(e => e.name));
+    const allOrigins = new Set([...registeredNames.keys(), ...pendingNames.keys()]);
+    const rows = Array.from(allOrigins)
+      .map(origin => {
+        const reg = [...(registeredNames.get(origin) ?? [])].sort();
+        const pend = [...(pendingNames.get(origin) ?? [])].sort();
+        return { village: origin, registered: reg.length, pending: pend.length, total: reg.length + pend.length, registeredNames: reg, pendingNames: pend };
+      })
+      .sort((a, b) => b.total - a.total);
+    return { rows, maxTotal: Math.max(1, ...rows.map(r => r.total)) };
+  }, [arsenalItems]);
+
+  // Arsenal por natureza — o campo `nature` junta várias naturezas com "+" (ex: "Suiton +
+  // Fuinjutsu"), então uma arma conta em cada natureza separada, não só na string inteira.
+  const arsenalNatureRows = useMemo(() => {
+    const map = new Map<string, string[]>();
+    for (const a of arsenalItems) {
+      const parts = (a.nature || 'Desconhecida').split('+').map(s => s.trim()).filter(Boolean);
+      for (const p of parts) {
+        const list = map.get(p) ?? [];
+        list.push(a.name);
+        map.set(p, list);
+      }
+    }
+    const rows = Array.from(map.entries())
+      .map(([nature, names]) => ({ nature, names: [...names].sort(), total: names.length }))
+      .sort((a, b) => b.total - a.total);
+    return { rows, maxTotal: Math.max(1, ...rows.map(r => r.total)) };
+  }, [arsenalItems]);
 
   // Personagens por vila de nascença: soma quem já tem ficha (`birthVillage`, um valor só por
   // pessoa — evita contar duas vezes quem tem mais de uma vila em `categories`, tipo afiliação
@@ -421,6 +479,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
         {([
           { key: 'geral' as const, label: 'Visão Geral' },
           { key: 'personagens' as const, label: 'Personagens' },
+          { key: 'arsenal' as const, label: 'Arsenal' },
           { key: 'producao' as const, label: 'Produção' },
           { key: 'prototipos' as const, label: 'Protótipos' },
           { key: 'classificacoes' as const, label: 'Classificações' },
@@ -944,6 +1003,132 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
       </>
       )}
 
+      {activeTab === 'arsenal' && (
+      <>
+      <section>
+        <div className="text-[10px] font-black text-tech-primary/60 uppercase tracking-widest mb-3 flex items-center gap-2">
+          <span>Arsenal</span>
+          <span className="flex-1 h-px bg-tech-border"></span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <StatCard icon={Shield} label="Arsenal" value={totalArsenalOverall} sub="Com ficha + pendentes" />
+          <StatCard icon={UserX} label="Arsenal sem ficha" value={pendingArsenalCount} sub="Pendentes" />
+          <StatCard icon={Award} label="Rank Z" value={rankZCount} />
+          <StatCard icon={Award} label="Rank S++" value={rankSPlusPlusCount} />
+          <StatCard icon={Award} label="Rank S+" value={rankSPlusCount} />
+          <StatCard icon={Award} label="Rank S" value={rankSCount} />
+        </div>
+      </section>
+
+      <section>
+        <div className="text-[10px] font-black text-tech-primary/60 uppercase tracking-widest mb-3 flex items-center gap-2">
+          <span>Arsenal por Vila</span>
+          <span className="flex-1 h-px bg-tech-border"></span>
+        </div>
+
+        <div className="border border-tech-border bg-tech-panel/30 p-5 space-y-3">
+          <div className="flex items-center gap-2 text-tech-primary/70 mb-1">
+            <MapPin size={14} />
+            <span className="text-[10px] font-black uppercase tracking-widest">Origem — com ficha + pendentes</span>
+          </div>
+
+          {arsenalVillageRows.rows.map(r => {
+            const isOpen = expandedArsenalOrigins.has(r.village);
+            return (
+              <div key={r.village}>
+                <button
+                  type="button"
+                  onClick={() => toggleInSet(expandedArsenalOrigins, setExpandedArsenalOrigins, r.village)}
+                  disabled={r.total === 0}
+                  className="w-full text-left group disabled:cursor-default"
+                >
+                  <div className="flex items-end justify-between mb-1">
+                    <span className="flex items-center gap-1.5 text-white font-bold text-sm group-hover:text-tech-primary transition-colors">
+                      {r.total > 0 && (isOpen ? <ChevronUp size={13} className="text-tech-primary shrink-0" /> : <ChevronDown size={13} className="text-tech-primary/50 shrink-0" />)}
+                      {r.village}
+                    </span>
+                    <span className="text-[10px] text-tech-primary/50 uppercase tracking-wide">
+                      <span className="text-tech-primary font-bold">{r.registered}</span> com ficha
+                      {r.pending > 0 && <> + <span className="text-tech-primary font-bold">{r.pending}</span> pendente{r.pending === 1 ? '' : 's'}</>}
+                      {' '}= <span className="text-white font-black">{r.total}</span>
+                    </span>
+                  </div>
+                  <div className="h-2 bg-black border border-tech-border overflow-hidden">
+                    <div
+                      className="h-full bg-tech-primary shadow-[0_0_8px_rgba(0,255,65,0.5)] transition-all duration-700"
+                      style={{ width: `${(r.total / arsenalVillageRows.maxTotal) * 100}%` }}
+                    />
+                  </div>
+                </button>
+                {isOpen && (
+                  <div className="mt-2 mb-1 pl-1 flex flex-wrap gap-1.5">
+                    {r.registeredNames.map(name => (
+                      <span key={name} className="px-2 py-0.5 border border-tech-border/60 bg-black/30 text-white text-[10px]">{name}</span>
+                    ))}
+                    {r.pendingNames.map(name => (
+                      <span key={name} className="px-2 py-0.5 border border-tech-border/40 text-tech-primary/50 text-[10px] italic">{name} (pendente)</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section>
+        <div className="text-[10px] font-black text-tech-primary/60 uppercase tracking-widest mb-3 flex items-center gap-2">
+          <span>Arsenal por Natureza</span>
+          <span className="flex-1 h-px bg-tech-border"></span>
+        </div>
+
+        <div className="border border-tech-border bg-tech-panel/30 p-5 space-y-3">
+          <div className="flex items-center gap-2 text-tech-primary/70 mb-1">
+            <Scroll size={14} />
+            <span className="text-[10px] font-black uppercase tracking-widest">Uma arma com natureza composta (ex: "Suiton + Fuinjutsu") conta em cada natureza separada</span>
+          </div>
+
+          {arsenalNatureRows.rows.map(r => {
+            const isOpen = expandedArsenalNatures.has(r.nature);
+            return (
+              <div key={r.nature}>
+                <button
+                  type="button"
+                  onClick={() => toggleInSet(expandedArsenalNatures, setExpandedArsenalNatures, r.nature)}
+                  disabled={r.total === 0}
+                  className="w-full text-left group disabled:cursor-default"
+                >
+                  <div className="flex items-end justify-between mb-1">
+                    <span className="flex items-center gap-1.5 text-white font-bold text-sm group-hover:text-tech-primary transition-colors">
+                      {r.total > 0 && (isOpen ? <ChevronUp size={13} className="text-tech-primary shrink-0" /> : <ChevronDown size={13} className="text-tech-primary/50 shrink-0" />)}
+                      {r.nature}
+                    </span>
+                    <span className="text-[10px] text-tech-primary/50 uppercase tracking-wide">
+                      <span className="text-white font-black">{r.total}</span> arma{r.total === 1 ? '' : 's'}
+                    </span>
+                  </div>
+                  <div className="h-2 bg-black border border-tech-border overflow-hidden">
+                    <div
+                      className="h-full bg-tech-primary shadow-[0_0_8px_rgba(0,255,65,0.5)] transition-all duration-700"
+                      style={{ width: `${(r.total / arsenalNatureRows.maxTotal) * 100}%` }}
+                    />
+                  </div>
+                </button>
+                {isOpen && (
+                  <div className="mt-2 mb-1 pl-1 flex flex-wrap gap-1.5">
+                    {r.names.map(name => (
+                      <span key={name} className="px-2 py-0.5 border border-tech-border/60 bg-black/30 text-white text-[10px]">{name}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+      </>
+      )}
+
       {activeTab === 'prototipos' && (
       <>
       <section>
@@ -977,36 +1162,139 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
             })}
           </div>
 
-          {(() => {
+          {prototypeVillage === 'Kirigakure' && (
+            <div className="flex gap-1.5">
+              {(['grid', 'kanban'] as const).map(mode => (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => setPrototypeViewMode(mode)}
+                  className={`px-2.5 py-1 border text-[9px] font-bold uppercase tracking-wide transition-all ${prototypeViewMode === mode ? 'bg-tech-primary/20 border-tech-primary text-tech-primary' : 'border-tech-border/60 text-tech-primary/50 hover:border-tech-primary/40'}`}
+                >
+                  {mode === 'grid' ? 'Quadrados' : 'Kanban (frotas)'}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {prototypeVillage === 'Kirigakure' && prototypeViewMode === 'kanban' ? (() => {
+            const FLEET_ORDER = ['Kraken', 'Leviatã', 'Megalodon', 'Jörmungandr'];
+            const RANK_ORDER = ['Almirante', 'Vice-Almirante', 'Capitão de Frota', 'Capitão-Tenente'];
+            const entryFor = (fleet: string, rank: string) =>
+              prototypeEntries.find(e => e.village === 'Kirigakure' && e.subgroup === fleet && e.rank === rank);
+            return (
+              <div className="overflow-x-auto">
+                <div className="grid gap-2 min-w-[720px]" style={{ gridTemplateColumns: `120px repeat(${FLEET_ORDER.length}, 1fr)` }}>
+                  <div />
+                  {FLEET_ORDER.map(fleet => (
+                    <div key={fleet} className="text-center text-[10px] font-black text-tech-primary uppercase tracking-widest border-b border-tech-border pb-1.5">
+                      {fleet}
+                    </div>
+                  ))}
+                  {RANK_ORDER.map(rank => (
+                    <React.Fragment key={rank}>
+                      <div className="flex items-center text-[9px] font-black text-tech-primary/50 uppercase tracking-wide">
+                        {rank}
+                      </div>
+                      {FLEET_ORDER.map(fleet => {
+                        const entry = entryFor(fleet, rank);
+                        return (
+                          <div key={fleet} className="aspect-square">
+                            {entry ? (
+                              <button
+                                type="button"
+                                onClick={() => navigate(`/painel/prototipos/${encodeURIComponent(slugify(entry.title))}`)}
+                                className="w-full h-full border border-tech-border/60 bg-black/30 hover:border-tech-primary/60 transition-all relative overflow-hidden group text-left"
+                              >
+                                {entry.images[0] ? (
+                                  <img src={entry.images[0]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" />
+                                ) : (
+                                  <FlaskConical size={16} className="absolute inset-0 m-auto text-tech-primary/30" />
+                                )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                                <span className="absolute bottom-1 left-1 right-1 text-white font-bold text-[10px] leading-tight">{entry.title}</span>
+                              </button>
+                            ) : (
+                              <div className="w-full h-full border border-dashed border-tech-border/30 flex items-center justify-center">
+                                <span className="text-tech-primary/20 text-[9px] uppercase">vago</span>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            );
+          })() : (() => {
             const filtered = prototypeVillage === 'Todos' ? prototypeEntries : prototypeEntries.filter(e => e.village === prototypeVillage);
             if (filtered.length === 0) {
               return <div className="text-tech-primary/40 text-xs uppercase tracking-widest text-center py-6">Nada guardado ainda em {prototypeVillage}.</div>;
             }
+
+            // A primeira linha do texto do protótipo é sempre o cargo/posição (ex: "Almirante
+            // da Frota Kraken.") — mostra ela como subtítulo embaixo do nome no card.
+            const roleOf = (entry: PrototypeEntry) => entry.text?.split('\n')[0]?.trim().replace(/\.$/, '') || '';
+
+            const renderCard = (entry: PrototypeEntry) => (
+              <button
+                key={entry.docId}
+                type="button"
+                onClick={() => navigate(`/painel/prototipos/${encodeURIComponent(slugify(entry.title))}`)}
+                className="aspect-square border border-tech-border/60 bg-black/30 hover:border-tech-primary/60 transition-all relative overflow-hidden group text-left"
+              >
+                {entry.images[0] ? (
+                  <img src={entry.images[0]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" />
+                ) : (
+                  <FlaskConical size={20} className="absolute inset-0 m-auto text-tech-primary/30" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                <div className="absolute bottom-1.5 left-1.5 right-1.5">
+                  <span className="block text-white font-bold text-xs leading-tight">{entry.title}</span>
+                  {roleOf(entry) && (
+                    <span className="block text-tech-primary/70 text-[9px] uppercase tracking-wide leading-tight truncate">{roleOf(entry)}</span>
+                  )}
+                </div>
+                {pendingNcByName.get(entry.title) !== undefined && (
+                  <span className="absolute top-1.5 left-1.5 bg-black/70 text-tech-primary text-[9px] font-black px-1.5 py-0.5 border border-tech-border/60">NC {pendingNcByName.get(entry.title)}</span>
+                )}
+                {entry.images.length > 1 && (
+                  <span className="absolute top-1.5 right-1.5 bg-black/70 text-tech-primary text-[9px] font-bold px-1.5 py-0.5 border border-tech-border/60">{entry.images.length}</span>
+                )}
+              </button>
+            );
+
+            const hasSubgroups = filtered.some(e => e.subgroup);
+            if (!hasSubgroups) {
+              return (
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {filtered.map(renderCard)}
+                </div>
+              );
+            }
+
+            const FLEET_ORDER = ['Kraken', 'Leviatã', 'Megalodon', 'Jörmungandr'];
+            const subgroupNames = [...new Set<string>(filtered.map(e => e.subgroup || 'Outros'))].sort((a, b) => {
+              const ia = FLEET_ORDER.indexOf(a);
+              const ib = FLEET_ORDER.indexOf(b);
+              if (ia === -1 && ib === -1) return a.localeCompare(b);
+              if (ia === -1) return 1;
+              if (ib === -1) return -1;
+              return ia - ib;
+            });
+
             return (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {filtered.map(entry => (
-                <button
-                  key={entry.docId}
-                  type="button"
-                  onClick={() => navigate(`/painel/prototipos/${encodeURIComponent(slugify(entry.title))}`)}
-                  className="aspect-square border border-tech-border/60 bg-black/30 hover:border-tech-primary/60 transition-all relative overflow-hidden group text-left"
-                >
-                  {entry.images[0] ? (
-                    <img src={entry.images[0]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" />
-                  ) : (
-                    <FlaskConical size={20} className="absolute inset-0 m-auto text-tech-primary/30" />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                  <span className="absolute bottom-1.5 left-1.5 right-1.5 text-white font-bold text-xs leading-tight">{entry.title}</span>
-                  {pendingNcByName.get(entry.title) !== undefined && (
-                    <span className="absolute top-1.5 left-1.5 bg-black/70 text-tech-primary text-[9px] font-black px-1.5 py-0.5 border border-tech-border/60">NC {pendingNcByName.get(entry.title)}</span>
-                  )}
-                  {entry.images.length > 1 && (
-                    <span className="absolute top-1.5 right-1.5 bg-black/70 text-tech-primary text-[9px] font-bold px-1.5 py-0.5 border border-tech-border/60">{entry.images.length}</span>
-                  )}
-                </button>
-              ))}
-            </div>
+              <div className="space-y-5">
+                {subgroupNames.map(sg => (
+                  <div key={sg}>
+                    <div className="text-[9px] font-black text-tech-primary/50 uppercase tracking-widest mb-2">{sg}</div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                      {filtered.filter(e => (e.subgroup || 'Outros') === sg).map(renderCard)}
+                    </div>
+                  </div>
+                ))}
+              </div>
             );
           })()}
         </div>
@@ -1078,7 +1366,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
                   {entry.images.map(url => (
                     <a key={url} href={url} target="_blank" rel="noopener noreferrer">
-                      <img src={url} alt="" className="w-full h-32 object-cover border border-tech-border" />
+                      <img src={url} alt="" className="w-full h-32 object-cover object-top border border-tech-border" />
                     </a>
                   ))}
                 </div>

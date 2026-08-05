@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, lazy, Suspense } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Plus, Search, Terminal, Cpu, Database, ChevronRight, Skull, Filter, ChevronDown, Award, Power, Radio, Shield, Lock, LogIn, LogOut, LayoutDashboard, ListChecks, Images } from 'lucide-react';
+import { Plus, Search, Terminal, Cpu, Database, ChevronRight, Skull, Filter, ChevronDown, Award, Power, Radio, Shield, Lock, LogIn, LogOut, LayoutDashboard, ListChecks, Images, GitBranch } from 'lucide-react';
 import { subscribeCharacters, subscribeArsenal, saveCharacter, deleteCharacter, saveEquipment, deleteEquipment, slugify } from './data/firestore';
 import { Character } from './types';
 import { Equipment } from './types/Equipment';
@@ -18,6 +18,7 @@ const Arsenal = lazy(() => import('./pages/Arsenal'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel'));
 const ChecklistPanel = lazy(() => import('./pages/ChecklistPanel'));
 const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const FamilyTreePage = lazy(() => import('./pages/FamilyTreePage'));
 
 export default function App() {
     const [loading, setLoading] = useState(true);
@@ -28,22 +29,26 @@ export default function App() {
     // Aba ativa e slug (ficha aberta) vêm direto da URL — nada de estado próprio pra
     // duplicar o que o navegador já sabe. Isso é o que torna cada aba uma página de
     // verdade (compartilhável, com voltar/avançar funcionando).
-    const KNOWN_TABS = ['database', 'arsenal', 'painel', 'checklist', 'galeria', 'login'] as const;
+    const KNOWN_TABS = ['characters', 'arsenal', 'painel', 'checklist', 'galeria', 'arvore', 'login'] as const;
     type MainTab = typeof KNOWN_TABS[number];
     const pathSegments = location.pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
     const firstSegment = pathSegments[0] ?? '';
     const activeMainTab: Exclude<MainTab, 'login'> = (
         (KNOWN_TABS as readonly string[]).includes(firstSegment) && firstSegment !== 'login'
             ? firstSegment as Exclude<MainTab, 'login'>
-            : (location.state as { underTab?: Exclude<MainTab, 'login'> } | null)?.underTab ?? 'database'
+            : (location.state as { underTab?: Exclude<MainTab, 'login'> } | null)?.underTab ?? 'characters'
     );
     const showLoginModal = firstSegment === 'login';
     const slug = firstSegment && !(KNOWN_TABS as readonly string[]).includes(firstSegment) ? decodeURIComponent(firstSegment) : '';
+    // Segundo segmento da URL, só usado como filtro (categoria em /characters/<x>,
+    // origem em /arsenal/<x>) quando o primeiro segmento já é uma dessas duas abas.
+    const filterSegment = (activeMainTab === 'characters' || activeMainTab === 'arsenal') ? pathSegments[1] : undefined;
     const [characters, setCharacters] = useState<Character[]>([]);
     const [arsenalItems, setArsenalItems] = useState<Equipment[]>([]);
     const [arsenalReady, setArsenalReady] = useState(false);
     const [selectedItem, setSelectedItem] = useState<Equipment | null>(null);
     const [selectedCategory, setSelectedCategory] = useState('Todos');
+    const [selectedOrigin, setSelectedOrigin] = useState('Todos');
     const [selectedChar, setSelectedChar] = useState<Character | null>(null);
     const [showAddModal, setShowAddModal] = useState(false);
     const [editingChar, setEditingChar] = useState<Character | null>(null);
@@ -51,7 +56,9 @@ export default function App() {
     const [editingEquipment, setEditingEquipment] = useState<Equipment | null>(null);
     const { user, isAdmin, isChecklistEditor, authReady, login, logout } = useAuth();
     const [searchTerm, setSearchTerm] = useState('');
-    const [imgErrors, setImgErrors] = useState<Record<number, boolean>>({});
+    // Chave = id+URL da imagem (não só o id), pra que uma correção de URL feita no Painel
+    // "esqueça" o erro antigo automaticamente, sem precisar de F5.
+    const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
 
     // Advanced Filters State
     const [selectedClan, setSelectedClan] = useState('Todos');
@@ -100,9 +107,9 @@ export default function App() {
     useEffect(() => {
         if (!authReady) return;
         if (!isAdmin && activeMainTab === 'painel') {
-            navigate('/database', { replace: true });
+            navigate('/characters', { replace: true });
         } else if (!isChecklistEditor && activeMainTab === 'checklist') {
-            navigate('/database', { replace: true });
+            navigate('/characters', { replace: true });
         }
     }, [authReady, isAdmin, isChecklistEditor, activeMainTab, navigate]);
 
@@ -112,9 +119,17 @@ export default function App() {
     const openCharacter = (c: Character) => navigate(`/${encodeURIComponent(c.docId!)}`, { state: { underTab: activeMainTab } });
     const openItem = (it: Equipment) => navigate(`/${encodeURIComponent(slugify(it.name))}`, { state: { underTab: 'arsenal' } });
 
-    // Tempo mínimo do splash de boas-vindas (~3s)
+    // Tempo mínimo do splash de boas-vindas (~3s) — só na primeira vez em cada sessão do
+    // navegador. Quem já viu (recarregou a página, voltou de outra aba) não espera de novo.
     useEffect(() => {
-        const timer = setTimeout(() => setSplashDone(true), 3000);
+        if (sessionStorage.getItem('splashSeen')) {
+            setSplashDone(true);
+            return;
+        }
+        const timer = setTimeout(() => {
+            sessionStorage.setItem('splashSeen', '1');
+            setSplashDone(true);
+        }, 3000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -138,6 +153,45 @@ export default function App() {
         setSelectedChar(null); setSelectedItem(null);
     }, [slug, loading, arsenalReady, characters, arsenalItems]);
 
+    // Extract unique origins dynamically (usado pra validar /arsenal/<origem> na URL)
+    const uniqueOrigins = useMemo(() => {
+        const set = new Set(arsenalItems.map(i => i.origin).filter(Boolean));
+        return Array.from(set);
+    }, [arsenalItems]);
+
+    // ---- Categoria/origem também vivem na URL: /characters/<categoria>, /arsenal/<origem> ----
+    // Sincroniza só URL -> estado (a direção estado -> URL é feita explicitamente em cada
+    // ação que muda o filtro, via mainTabPath/handleSelectOrigin/handleFilterTag etc.).
+    useEffect(() => {
+        if (activeMainTab === 'characters') {
+            if (!filterSegment) { if (selectedCategory !== 'Todos') setSelectedCategory('Todos'); return; }
+            const match = categories.find(c => slugify(c) === filterSegment.toLowerCase());
+            if (match && match !== selectedCategory) setSelectedCategory(match);
+        } else if (activeMainTab === 'arsenal') {
+            if (!filterSegment) { if (selectedOrigin !== 'Todos') setSelectedOrigin('Todos'); return; }
+            const match = uniqueOrigins.find(o => slugify(o) === filterSegment.toLowerCase());
+            if (match && match !== selectedOrigin) setSelectedOrigin(match);
+        }
+    }, [activeMainTab, filterSegment, uniqueOrigins]);
+
+    // Path da aba atual, incluindo o filtro ativo (categoria/origem) quando houver —
+    // usado sempre que navegamos "de volta" pra aba sem trocar o filtro selecionado.
+    const mainTabPath = (tab: Exclude<MainTab, 'login'>) => {
+        if (tab === 'characters' && selectedCategory !== 'Todos') return `/characters/${slugify(selectedCategory)}`;
+        if (tab === 'arsenal' && selectedOrigin !== 'Todos') return `/arsenal/${slugify(selectedOrigin)}`;
+        return `/${tab}`;
+    };
+
+    const handleSelectCategory = (category: string) => {
+        setSelectedCategory(category);
+        navigate(category === 'Todos' ? '/characters' : `/characters/${slugify(category)}`);
+    };
+
+    const handleSelectOrigin = (origin: string) => {
+        setSelectedOrigin(origin);
+        navigate(origin === 'Todos' ? '/arsenal' : `/arsenal/${slugify(origin)}`);
+    };
+
     // Extract unique clans dynamically
     const uniqueClans = useMemo(() => {
         const clans = new Set(characters.map(c => c.clan).filter(Boolean));
@@ -154,8 +208,13 @@ export default function App() {
         const filtered = characters.filter(c => {
             // Basic Filters
             const matchesCategory = selectedCategory === 'Todos' || c.categories.includes(selectedCategory);
-            const matchesSearch = c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                c.clan.toLowerCase().includes(searchTerm.toLowerCase());
+            const term = searchTerm.toLowerCase();
+            const matchesSearch = term === '' ||
+                c.name.toLowerCase().includes(term) ||
+                c.clan.toLowerCase().includes(term) ||
+                c.position.toLowerCase().includes(term) ||
+                c.titles.some(t => t.toLowerCase().includes(term)) ||
+                c.aptitudes.some(a => a.toLowerCase().includes(term));
 
             // Advanced Filters
             const matchesClan = selectedClan === 'Todos' || c.clan === selectedClan;
@@ -212,7 +271,7 @@ export default function App() {
     const handleDeleteCharacter = async (target: Character) => {
         if (target.docId) await deleteCharacter(target.docId);
         setCharacters(characters.filter(c => c.id !== target.id));
-        navigate(`/${activeMainTab}`);
+        navigate(mainTabPath(activeMainTab));
     };
 
     // ----- Admin de Arsenal (armas) -----
@@ -232,26 +291,27 @@ export default function App() {
     const handleDeleteEquipment = async (item: Equipment) => {
         if (item.docId) await deleteEquipment(item.docId);
         setArsenalItems(arsenalItems.filter(i => i.id !== item.id));
-        navigate(`/${activeMainTab}`);
+        navigate(mainTabPath(activeMainTab));
     };
 
     // Filtros a partir da ficha (clã / tag clicáveis)
     const handleFilterClan = (clan: string) => {
-        navigate('/database');
+        navigate('/characters');
         setSearchTerm(''); setSelectedCategory('Todos'); setSelectedRole('Todos');
         setSelectedStatus('Todos'); setSelectedPosition('Todos'); setSelectedClan(clan);
     };
     const handleFilterTag = (tag: string) => {
-        navigate('/database');
+        navigate(tag === 'Todos' ? '/characters' : `/characters/${slugify(tag)}`);
         setSearchTerm(''); setSelectedClan('Todos'); setSelectedRole('Todos');
         setSelectedStatus('Todos'); setSelectedPosition('Todos'); setSelectedCategory(tag);
     };
 
-    const handleImageError = (id: number) => {
-        setImgErrors(prev => ({ ...prev, [id]: true }));
+    const handleImageError = (id: number, image: string) => {
+        setImgErrors(prev => ({ ...prev, [`${id}:${image}`]: true }));
     };
 
     const resetFilters = () => {
+        navigate('/characters');
         setSelectedCategory('Todos');
         setSearchTerm('');
         setSelectedClan('Todos');
@@ -318,8 +378,8 @@ export default function App() {
                     {/* Main Navigation Tabs */}
                     <div className="hidden sm:flex gap-1 items-center">
                         <button
-                            onClick={() => navigate('/database')}
-                            className={`px-3 py-0.5 text-[10px] font-black uppercase tracking-widest border transition-all flex items-center gap-1.5 ${activeMainTab === 'database'
+                            onClick={() => navigate(mainTabPath('characters'))}
+                            className={`px-3 py-0.5 text-[10px] font-black uppercase tracking-widest border transition-all flex items-center gap-1.5 ${activeMainTab === 'characters'
                                     ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]'
                                     : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50 hover:text-tech-primary'
                                 }`}
@@ -327,7 +387,7 @@ export default function App() {
                             <Database size={10} /> CHARACTERS
                         </button>
                         <button
-                            onClick={() => navigate('/arsenal')}
+                            onClick={() => navigate(mainTabPath('arsenal'))}
                             className={`px-3 py-0.5 text-[10px] font-black uppercase tracking-widest border transition-all flex items-center gap-1.5 ${activeMainTab === 'arsenal'
                                     ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]'
                                     : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50 hover:text-tech-primary'
@@ -344,6 +404,16 @@ export default function App() {
                                 }`}
                         >
                             <Images size={10} /> GALERIA
+                        </button>
+                        <button
+                            onClick={() => navigate('/arvore')}
+                            title="Árvore genealógica das famílias"
+                            className={`px-3 py-0.5 text-[10px] font-black uppercase tracking-widest border transition-all flex items-center gap-1.5 ${activeMainTab === 'arvore'
+                                    ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]'
+                                    : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50 hover:text-tech-primary'
+                                }`}
+                        >
+                            <GitBranch size={10} /> ÁRVORE
                         </button>
                     </div>
                 </div>
@@ -400,8 +470,8 @@ export default function App() {
             {/* Mobile Tab Navigation */}
             <div className="sm:hidden fixed top-8 left-0 right-0 h-9 bg-black/95 backdrop-blur border-b border-tech-border z-40 flex items-center justify-center gap-2 px-4">
                 <button
-                    onClick={() => navigate('/database')}
-                    className={`flex-1 py-1 text-[10px] font-black uppercase tracking-widest border transition-all flex items-center justify-center gap-1.5 ${activeMainTab === 'database'
+                    onClick={() => navigate(mainTabPath('characters'))}
+                    className={`flex-1 py-1 text-[10px] font-black uppercase tracking-widest border transition-all flex items-center justify-center gap-1.5 ${activeMainTab === 'characters'
                             ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]'
                             : 'text-tech-primary/50 border-tech-border'
                         }`}
@@ -409,7 +479,7 @@ export default function App() {
                     <Database size={10} /> CHARACTERS
                 </button>
                 <button
-                    onClick={() => navigate('/arsenal')}
+                    onClick={() => navigate(mainTabPath('arsenal'))}
                     className={`flex-1 py-1 text-[10px] font-black uppercase tracking-widest border transition-all flex items-center justify-center gap-1.5 ${activeMainTab === 'arsenal'
                             ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]'
                             : 'text-tech-primary/50 border-tech-border'
@@ -437,12 +507,21 @@ export default function App() {
                 >
                     <Images size={10} /> GALERIA
                 </button>
+                <button
+                    onClick={() => navigate('/arvore')}
+                    className={`flex-1 py-1 text-[10px] font-black uppercase tracking-widest border transition-all flex items-center justify-center gap-1.5 ${activeMainTab === 'arvore'
+                            ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]'
+                            : 'text-tech-primary/50 border-tech-border'
+                        }`}
+                >
+                    <GitBranch size={10} /> ÁRVORE
+                </button>
             </div>
 
             <div className="max-w-7xl mx-auto pt-20 sm:pt-20 px-4">
                 <div className="sm:hidden h-9" />
 
-                {activeMainTab === 'database' ? (
+                {activeMainTab === 'characters' ? (
                     <>
                         {/* Header Section */}
                         <header className="mb-12 pl-6 py-2 relative group cursor-default">
@@ -467,7 +546,7 @@ export default function App() {
                                     {categories.map(cat => (
                                         <button
                                             key={cat}
-                                            onClick={() => setSelectedCategory(cat)}
+                                            onClick={() => handleSelectCategory(cat)}
                                             className={`shrink-0 whitespace-nowrap px-2.5 py-1.5 border uppercase text-[11px] font-bold tracking-wider transition-all duration-300 clip-corner-sm
                             ${selectedCategory === cat
                                                     ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_15px_rgba(0,255,65,0.4)] translate-y-[-2px]'
@@ -567,9 +646,12 @@ export default function App() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                             {filteredCharacters.map((char, index) => (
                                 <div
-                                    key={char.id}
+                                    key={char.docId ?? char.id}
                                     onClick={() => openCharacter(char)}
-                                    className={`group relative border bg-black/50 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col h-full opacity-0 animate-fade-in-up hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] ${char.isDead
+                                    role="button"
+                                    tabIndex={0}
+                                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCharacter(char); } }}
+                                    className={`group relative border bg-black/50 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col h-full opacity-0 animate-fade-in-up hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-tech-primary ${char.isDead
                                             ? 'border-red-900/30 hover:border-red-500 hover:shadow-[0_0_20px_rgba(220,38,38,0.2)]'
                                             : 'border-tech-border hover:bg-tech-panel/50 hover:border-tech-primary hover:shadow-[0_0_20px_rgba(0,255,65,0.15)]'
                                         }`}
@@ -607,13 +689,13 @@ export default function App() {
                                             </>
                                         )}
 
-                                        {char.image && !imgErrors[char.id] ? (
+                                        {char.image && !imgErrors[`${char.id}:${char.image}`] ? (
                                             <img
                                                 src={formatImageUrl(char.image)}
                                                 alt={char.name}
                                                 loading="lazy"
                                                 decoding="async"
-                                                onError={() => handleImageError(char.id)}
+                                                onError={() => handleImageError(char.id, char.image)}
                                                 className={`w-full h-full object-cover transition-transform duration-700 ${char.isDead
                                                         ? 'grayscale brightness-50 contrast-125'
                                                         : 'grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110'
@@ -673,11 +755,21 @@ export default function App() {
                 ) : (
                     <Suspense fallback={<div className="text-tech-primary/40 text-xs uppercase tracking-widest py-12 text-center">Carregando...</div>}>
                         {activeMainTab === 'arsenal' ? (
-                            <Arsenal arsenalItems={arsenalItems} loading={!arsenalReady} onOpenItem={openItem} isAdmin={isAdmin} onAddNew={() => setShowAddEquipment(true)} />
+                            <Arsenal
+                                arsenalItems={arsenalItems}
+                                loading={!arsenalReady}
+                                onOpenItem={openItem}
+                                isAdmin={isAdmin}
+                                onAddNew={() => setShowAddEquipment(true)}
+                                selectedOrigin={selectedOrigin}
+                                onSelectOrigin={handleSelectOrigin}
+                            />
                         ) : activeMainTab === 'checklist' ? (
                             <ChecklistPanel canEdit={isChecklistEditor} displayName={user?.displayName ?? null} onRequestLogin={() => navigate('/login')} />
                         ) : activeMainTab === 'galeria' ? (
                             <GalleryPage />
+                        ) : activeMainTab === 'arvore' ? (
+                            <FamilyTreePage characters={characters} onOpenCharacter={openCharacter} />
                         ) : (
                             <AdminPanel characters={characters} arsenalItems={arsenalItems} />
                         )}
@@ -688,10 +780,11 @@ export default function App() {
 
             <Suspense fallback={null}>
                 <CharacterModal
+                    key={selectedChar ? (selectedChar.docId ?? String(selectedChar.id)) : 'closed'}
                     char={selectedChar}
-                    onClose={() => navigate(`/${activeMainTab}`)}
+                    onClose={() => navigate(mainTabPath(activeMainTab))}
                     isAdmin={isAdmin}
-                    onEdit={(c) => { setEditingChar(c); navigate(`/${activeMainTab}`); }}
+                    onEdit={(c) => { setEditingChar(c); navigate(mainTabPath(activeMainTab)); }}
                     onDelete={handleDeleteCharacter}
                     onFilterClan={handleFilterClan}
                     onFilterTag={handleFilterTag}
@@ -699,11 +792,11 @@ export default function App() {
                 />
                 <EquipmentModal
                     item={selectedItem}
-                    onClose={() => navigate(`/${activeMainTab}`)}
+                    onClose={() => navigate(mainTabPath(activeMainTab))}
                     characters={characters}
                     onOpenCharacter={openCharacter}
                     isAdmin={isAdmin}
-                    onEdit={(it) => { setEditingEquipment(it); navigate(`/${activeMainTab}`); }}
+                    onEdit={(it) => { setEditingEquipment(it); navigate(mainTabPath(activeMainTab)); }}
                     onDelete={handleDeleteEquipment}
                 />
                 {showAddModal && <AddCharacterModal onClose={() => setShowAddModal(false)} onAdd={handleAddCharacter} arsenalOptions={arsenalItems} />}
@@ -723,7 +816,7 @@ export default function App() {
                         onSave={handleEditEquipment}
                     />
                 )}
-                {showLoginModal && <LoginModal onClose={() => navigate(`/${activeMainTab}`)} onLogin={login} />}
+                {showLoginModal && <LoginModal onClose={() => navigate(mainTabPath(activeMainTab))} onLogin={login} />}
             </Suspense>
         </div>
     );

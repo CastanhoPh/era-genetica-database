@@ -1,36 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   X, Shield, Zap, Star, Backpack, Scroll, Award, Heart, Activity,
   BicepsFlexed, Hand, Move, Brain, Ghost, Eye, Trophy, Terminal, Lock, Skull, Flame,
   Target, Info, FileText, AlertTriangle, Fingerprint, Database, Binary, Image as ImageIcon,
-  ChevronRight, ChevronLeft, ChevronDown, Globe, Share2, Pencil, Trash2, Palette
+  ChevronRight, ChevronLeft, ChevronDown, Globe, Share2, Pencil, Trash2, Palette, ScanLine
 } from 'lucide-react';
-import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Radar } from 'react-chartjs-2';
 import { Character, EVENT_SEASONS } from '../types';
 import { Equipment } from '../types/Equipment';
 import { slugify } from '../data/firestore';
-
-ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend
-);
 import AttributeBox from './AttributeBox';
 import ResourceBar from './ResourceBar';
 import { formatImageUrl } from '../utils/formatters';
+
+// Carregado sob demanda: chart.js + react-chartjs-2 só entram no bundle quando
+// alguém realmente clica em "Radar" (a ficha abre com a visão de barras por padrão).
+const AttributeRadar = lazy(() => import('./AttributeRadar'));
 
 interface CharacterModalProps {
   char: Character | null;
@@ -50,6 +35,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
   const [techImgError, setTechImgError] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [forceColor, setForceColor] = useState(false);
+  const [hideMask, setHideMask] = useState(false);
   const eraStripRef = useRef<HTMLDivElement>(null);
   const scrollEraStrip = (direction: 1 | -1) => {
     const el = eraStripRef.current;
@@ -81,6 +67,14 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
       document.body.style.overflow = 'unset';
     };
   }, [char]);
+
+  // Fecha com Esc, igual à lightbox da Galeria.
+  useEffect(() => {
+    if (!char) return;
+    const onKeyDown = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [char, onClose]);
 
   const [eventosViewMode, setEventosViewMode] = useState<'completa' | 'temporada'>('completa');
   const [expandedSeasons, setExpandedSeasons] = useState<Set<string>>(new Set());
@@ -120,9 +114,52 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
 
   const allTechniques = char.techniques || [];
 
+  // Se a arma tem uma variação manifestada por ESTE personagem (ex: Kaito com a Guren no
+  // Kage, dentro da Sōen no Kage), mostra o nome/imagem/descrição da variação dele aqui —
+  // não os da arma-base, que seriam de outro portador.
   const characterArsenal = (char.arsenal || [])
     .map(id => arsenalOptions.find(item => item.id === id))
-    .filter(Boolean);
+    .filter(Boolean)
+    .map(item => {
+      const variant = item!.variants?.find(v => v.owner.trim().toLowerCase() === char.name.trim().toLowerCase());
+      if (!variant) return item!;
+      return { ...item!, name: variant.name, image: variant.image ?? item!.image, description: variant.description ?? item!.description };
+    });
+
+  // Armas marcadas (campo `diedHolding`) como estando com ESTE personagem quando ele morreu,
+  // mas que não estão no `arsenal` pessoal dele (senão já apareceriam ali) — junta com
+  // characterArsenal pra formar a seção de cima, sem duplicar.
+  const characterDiedHoldingArsenal = arsenalOptions.filter(item =>
+    !characterArsenal.some(w => w.id === item.id) &&
+    (item.diedHolding || []).some(name => name.trim().toLowerCase() === char.name.trim().toLowerCase())
+  );
+
+  // Seção de cima: pra quem já morreu, é tudo que ele tinha (arsenal pessoal + o que foi
+  // marcado como "morreu em posse" na arma) — não faz sentido separar os dois, é a mesma
+  // coisa (o que ele tinha na hora da morte). Pra quem tá vivo, é só o arsenal pessoal mesmo.
+  const characterCurrentSectionArsenal = [...characterArsenal, ...characterDiedHoldingArsenal];
+
+  // Armas que ESTE personagem já teve — é o `originalOwner`, aparece em `pastOwners`, ou é
+  // dono de uma variação da arma (ex: Naomi com a Shiden no Kage) — mas não estão na seção
+  // de cima (pra não duplicar). Se for dono de variação, mostra o nome/imagem da variação dele.
+  const characterPastArsenal = arsenalOptions
+    .filter(item => {
+      if (characterCurrentSectionArsenal.some(w => w.id === item.id)) return false;
+      const nameLower = char.name.trim().toLowerCase();
+      const wasOriginal = (item.originalOwner || '').trim().toLowerCase() === nameLower;
+      const wasPast = (item.pastOwners || []).some(o => o.trim().toLowerCase() === nameLower);
+      const wasVariantOwner = (item.variants || []).some(v => v.owner.trim().toLowerCase() === nameLower);
+      return wasOriginal || wasPast || wasVariantOwner;
+    })
+    .map(item => {
+      const variant = item.variants?.find(v => v.owner.trim().toLowerCase() === char.name.trim().toLowerCase());
+      if (!variant) return item;
+      return { ...item, name: variant.name, image: variant.image ?? item.image, description: variant.description ?? item.description };
+    });
+
+  // Lista combinada (seção de cima + já utilizou), só pra rotear/abrir o detalhe de
+  // qualquer uma das seções a partir de um índice único.
+  const characterArsenalAll = [...characterCurrentSectionArsenal, ...characterPastArsenal];
 
   const characterGallery = char.gallery || [];
   const galleryWithIndex = characterGallery.map((img, idx) => ({ img, idx }));
@@ -146,7 +183,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
     ? (() => { const i = allTechniques.findIndex(t => slugify(t.name) === itemSlugRaw); return i >= 0 ? i : null; })()
     : null;
   const selectedWeaponIndex = activeTab === 'arsenal' && itemSlugRaw
-    ? (() => { const i = characterArsenal.findIndex(w => w && slugify(w.name) === itemSlugRaw); return i >= 0 ? i : null; })()
+    ? (() => { const i = characterArsenalAll.findIndex(w => w && slugify(w.name) === itemSlugRaw); return i >= 0 ? i : null; })()
     : null;
   const selectedGalleryIndex = activeTab === 'gallery' && itemSlugRaw
     ? (() => { const i = characterGallery.findIndex((g, gi) => gallerySlugFor(g, gi) === itemSlugRaw); return i >= 0 ? i : null; })()
@@ -162,7 +199,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
   );
   const goToTechnique = (idx: number) => goTo(`${charBasePath}/jutsus/${encodeURIComponent(slugify(allTechniques[idx].name))}`);
   const goToWeapon = (idx: number) => {
-    const w = characterArsenal[idx];
+    const w = characterArsenalAll[idx];
     if (w) goTo(`${charBasePath}/arsenal/${encodeURIComponent(slugify(w.name))}`);
   };
   const goToGalleryImage = (idx: number) => goTo(`${charBasePath}/galeria/${encodeURIComponent(gallerySlugFor(characterGallery[idx], idx))}`);
@@ -186,71 +223,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
     { label: "ESPÍRITO", value: char.stats.spirit, icon: Ghost },
   ];
 
-  const radarData = {
-    labels: attributesList.map(a => a.label),
-    datasets: [{
-      label: 'Atributos',
-      data: radarAnimationData.length > 0 ? radarAnimationData : new Array(attributesList.length).fill(0),
-      fill: true,
-      backgroundColor: "rgba(0, 255, 65, 0.25)",
-      borderColor: "#00ff41",
-      pointBackgroundColor: "#00ff41",
-      pointBorderColor: "#00ff41",
-      pointHoverBackgroundColor: "#fff",
-      pointHoverBorderColor: "#00ff41",
-      borderWidth: 2
-    }]
-  };
-
-  const radarOptions = {
-    animation: {
-      duration: 1500,
-      easing: 'easeOutQuart' as const,
-    },
-    scales: {
-      r: {
-        min: 0,
-        max: 30,
-        ticks: {
-          stepSize: 5,
-          display: false,
-        },
-        grid: {
-          color: "rgba(0, 255, 65, 0.1)"
-        },
-        angleLines: {
-          color: "rgba(0, 255, 65, 0.15)"
-        },
-        pointLabels: {
-          color: "#00ff41",
-          padding: 5,
-          font: {
-            size: 9,
-            family: 'monospace'
-          }
-        }
-      }
-    },
-    plugins: {
-      legend: {
-        display: false
-      }
-    },
-    elements: {
-      line: {
-        borderWidth: 2,
-        tension: 0.1
-      },
-      point: {
-        radius: 3,
-        hoverRadius: 5
-      }
-    },
-    layout: {
-      padding: 10
-    },
-    maintainAspectRatio: false
-  };
+  const radarValues = radarAnimationData.length > 0 ? radarAnimationData : new Array(attributesList.length).fill(0);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-6 bg-black/95 backdrop-blur-sm">
@@ -269,7 +242,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
            </div>
 
            <div className="p-4 flex flex-col">
-              <div className={`relative border-2 h-[350px] shrink-0 w-full bg-black overflow-hidden relative group ${char.isDead ? 'border-red-600/50 shadow-[0_0_15px_rgba(255,0,0,0.2)]' : 'border-tech-dim'}`}>
+              <div className={`relative border-2 h-[350px] shrink-0 w-full bg-black overflow-hidden relative group ${hideMask ? 'z-[9999] ' : ''}${char.isDead ? 'border-red-600/50 shadow-[0_0_15px_rgba(255,0,0,0.2)]' : 'border-tech-dim'}`}>
                   <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.1)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none z-20"></div>
                   {!char.isDead && (
                       <div className="absolute top-2 right-2 text-[10px] bg-red-600 text-black px-1 font-bold z-20 blink">LIVE</div>
@@ -338,8 +311,8 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
               </div>
               
               <div className="mt-4 pt-4 space-y-2 shrink-0">
-                 <ResourceBar label="Integridade Física (HP)" value={char.hp} icon={Heart} isDead={char.isDead} />
-                 <ResourceBar label="Energia Espiritual (CP)" value={char.chakra} icon={Zap} isDead={char.isDead} />
+                 <ResourceBar label="Integridade Física (HP)" value={char.hp} max={300} icon={Heart} isDead={char.isDead} />
+                 <ResourceBar label="Energia Espiritual (CP)" value={char.chakra} max={250} icon={Zap} isDead={char.isDead} />
               </div>
 
               {char.isDead && (
@@ -368,27 +341,27 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                 <div className="flex items-center gap-4">
                     <Terminal size={14} className="text-tech-primary" />
                     <div className="flex gap-2">
-                        <button 
+                        <button
                             onClick={() => goToTab('data')}
-                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === 'data' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
+                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all whitespace-nowrap ${activeTab === 'data' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
                         >
                             DADOS_GERAIS
                         </button>
-                        <button 
+                        <button
                             onClick={() => goToTab('techniques')}
-                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === 'techniques' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
+                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all whitespace-nowrap ${activeTab === 'techniques' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
                         >
-                            JUTSUS E ATAQUES [{allTechniques.length}]
+                            Jutsus [{allTechniques.length}]
                         </button>
-                        <button 
+                        <button
                             onClick={() => goToTab('arsenal')}
-                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === 'arsenal' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
+                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all whitespace-nowrap ${activeTab === 'arsenal' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
                         >
-                            ARSENAL_DETALHADO [{characterArsenal.length}]
+                            Arsenal [{characterCurrentSectionArsenal.length}]
                         </button>
                         <button
                             onClick={() => goToTab('gallery')}
-                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === 'gallery' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
+                            className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest border transition-all whitespace-nowrap ${activeTab === 'gallery' ? 'bg-tech-primary text-black border-tech-primary shadow-[0_0_10px_rgba(0,255,65,0.3)]' : 'text-tech-primary/50 border-tech-border hover:border-tech-primary/50'}`}
                         >
                             GALERIA [{(char.gallery || []).length}]
                         </button>
@@ -399,24 +372,31 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                     <button
                         onClick={() => setForceColor(v => !v)}
                         title="Colorir todas as imagens"
-                        className={`border p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm ${forceColor ? 'bg-tech-primary text-black border-tech-primary' : 'bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border-tech-primary'}`}
+                        className={`border p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm ${forceColor ? 'bg-tech-primary text-black border-tech-primary' : 'bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border-tech-primary'}`}
                     >
-                        <Palette size={14} /> <span className="hidden xl:group-hover:inline">{forceColor ? 'Colorido' : 'Colorir'}</span>
+                        <Palette size={14} />
+                    </button>
+                    <button
+                        onClick={() => setHideMask(v => !v)}
+                        title="Remover máscara das imagens"
+                        className={`border p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm ${hideMask ? 'bg-tech-primary text-black border-tech-primary' : 'bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border-tech-primary'}`}
+                    >
+                        <ScanLine size={14} />
                     </button>
                     <button
                         onClick={copyLink}
                         title="Copiar link da ficha"
-                        className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm"
+                        className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm"
                     >
-                        <Share2 size={14} /> <span className="hidden xl:group-hover:inline">{linkCopied ? 'Copiado!' : 'Link'}</span>
+                        {linkCopied ? <span className="text-[10px]">Copiado!</span> : <Share2 size={14} />}
                     </button>
                     {isAdmin && onEdit && (
                         <button
                             onClick={() => onEdit(char)}
                             title="Editar personagem"
-                            className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm"
+                            className="bg-tech-primary/10 hover:bg-tech-primary text-tech-primary hover:text-black border border-tech-primary p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm"
                         >
-                            <Pencil size={14} /> <span className="hidden xl:group-hover:inline">Editar</span>
+                            <Pencil size={14} />
                         </button>
                     )}
                     {isAdmin && onDelete && (
@@ -427,17 +407,17 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                 }
                             }}
                             title="Excluir personagem"
-                            className="bg-red-900/20 hover:bg-red-600 text-red-500 hover:text-black border border-red-600 p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm"
+                            className="bg-red-900/20 hover:bg-red-600 text-red-500 hover:text-black border border-red-600 p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm"
                         >
-                            <Trash2 size={14} /> <span className="hidden xl:group-hover:inline">Excluir</span>
+                            <Trash2 size={14} />
                         </button>
                     )}
                     <button
                         onClick={onClose}
                         title="Fechar"
-                        className="bg-red-900/20 hover:bg-red-500 text-red-500 hover:text-black border border-red-500 p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center gap-1.5 group clip-corner-sm"
+                        className="bg-red-900/20 hover:bg-red-500 text-red-500 hover:text-black border border-red-500 p-1.5 transition-colors uppercase text-xs font-bold tracking-widest flex items-center clip-corner-sm"
                     >
-                        <span className="hidden xl:group-hover:inline">Encerrar</span> <X size={16} />
+                        <X size={16} />
                     </button>
                 </div>
             </div>
@@ -486,10 +466,12 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                     ) : (
                                         <div className="bg-tech-panel/20 border border-tech-primary/30 p-2 h-full flex items-center justify-center relative overflow-hidden">
                                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,65,0.05),transparent)] pointer-events-none"></div>
-                                            <Radar 
-                                                data={radarData}
-                                                options={radarOptions}
-                                            />
+                                            <Suspense fallback={<div className="text-tech-primary/40 text-xs uppercase tracking-widest">Carregando radar...</div>}>
+                                                <AttributeRadar
+                                                    labels={attributesList.map(a => a.label)}
+                                                    values={radarValues}
+                                                />
+                                            </Suspense>
                                         </div>
                                     )}
                                 </div>
@@ -559,7 +541,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                         <button 
                                             key={idx}
                                             onClick={() => goToTechnique(idx)}
-                                            className="group relative aspect-square border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300"
+                                            className={`group relative aspect-square border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300 ${hideMask ? 'z-[9999]' : ''}`}
                                         >
                                             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
                                             
@@ -586,11 +568,13 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                 </div>
                                             )}
 
-                                            <div className="absolute bottom-0 left-0 right-0 h-14 p-2 bg-black/90 backdrop-blur-sm border-t border-tech-border group-hover:border-tech-accent transition-colors z-20 flex flex-col justify-center">
-                                                <div className="text-[9px] text-white font-bold uppercase leading-tight line-clamp-2 break-words">
-                                                    {tech.name}
+                                            {!hideMask && (
+                                                <div className="absolute bottom-0 left-0 right-0 h-14 p-2 bg-black/90 backdrop-blur-sm border-t border-tech-border group-hover:border-tech-accent transition-colors z-20 flex flex-col justify-center">
+                                                    <div className="text-[9px] text-white font-bold uppercase leading-tight line-clamp-2 break-words">
+                                                        {tech.name}
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
 
                                             <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
                                                 <div className="bg-tech-accent text-black p-1">
@@ -608,34 +592,42 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                             </div>
                         ) : (
                             <div className="space-y-6">
-                                <button 
-                                    onClick={() => goToTab('techniques')}
-                                    className="flex items-center gap-2 text-tech-accent hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest mb-4 group"
-                                >
-                                    <div className="p-1 border border-tech-accent group-hover:bg-tech-accent group-hover:text-black transition-all">
-                                        <X size={12} className="rotate-90" />
-                                    </div>
-                                    VOLTAR_PARA_GALERIA
-                                </button>
+                                {(() => {
+                                    const tech = allTechniques[selectedTechIndex];
+                                    return (
+                                        <div className="flex items-center flex-wrap gap-4 mb-4">
+                                            <button
+                                                onClick={() => goToTab('techniques')}
+                                                className="flex items-center gap-2 text-tech-accent hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest group shrink-0"
+                                            >
+                                                <div className="p-1 border border-tech-accent group-hover:bg-tech-accent group-hover:text-black transition-all">
+                                                    <X size={12} className="rotate-90" />
+                                                </div>
+                                                VOLTAR_PARA_JUTSUS
+                                            </button>
+                                            {tech && (
+                                                <>
+                                                    <div className="hidden sm:block h-4 w-px bg-tech-border shrink-0"></div>
+                                                    <div className="flex items-center gap-3 shrink-0">
+                                                        <div className="p-1.5 bg-tech-accent/20 border border-tech-accent/40 rounded-full">
+                                                            <Flame size={18} className="text-tech-accent animate-pulse" />
+                                                        </div>
+                                                        <h3 className="text-xs font-black text-tech-accent uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(255,176,0,0.5)]">
+                                                            {`Registro Técnico // #${selectedTechIndex + 1}`}
+                                                        </h3>
+                                                    </div>
+                                                </>
+                                            )}
+                                            <div className="h-px bg-gradient-to-r from-tech-accent/40 to-transparent flex-1"></div>
+                                        </div>
+                                    );
+                                })()}
 
                                 {(() => {
                                     const tech = allTechniques[selectedTechIndex];
                                     if (!tech) return null;
                                     return (
                                         <div className="group animate-in fade-in slide-in-from-right-4 duration-500">
-                                            {/* Section Label */}
-                                            <div className="flex items-center justify-between mb-4">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="p-1.5 bg-tech-accent/20 border border-tech-accent/40 rounded-full">
-                                                        <Flame size={18} className="text-tech-accent animate-pulse" />
-                                                    </div>
-                                                    <h3 className="text-xs font-black text-tech-accent uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(255,176,0,0.5)]">
-                                                        {`Registro Técnico // #${selectedTechIndex + 1}`}
-                                                    </h3>
-                                                </div>
-                                                <div className="h-px bg-gradient-to-r from-tech-accent/40 to-transparent flex-1 ml-4"></div>
-                                            </div>
-                                            
                                             {/* Main Technical Frame */}
                                             <div className="relative border border-tech-accent/30 bg-tech-panel/40 p-1 group-hover:border-tech-accent/60 transition-all duration-500 overflow-hidden">
                                                 {/* Decorative Brackets */}
@@ -648,7 +640,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                 <div className="bg-black/60 relative">
                                                     {/* Technique Image Banner */}
                                                     {tech.image && (
-                                                        <div className={`w-full aspect-video border-b relative overflow-hidden ${char.isDead ? 'border-red-900/50' : 'border-tech-accent/30'}`}>
+                                                        <div className={`w-full aspect-video border-b relative overflow-hidden ${hideMask ? 'z-[9999] ' : ''}${char.isDead ? 'border-red-900/50' : 'border-tech-accent/30'}`}>
                                                             <div className="absolute inset-0 bg-[linear-gradient(transparent_60%,rgba(0,0,0,0.8))] z-10 pointer-events-none"></div>
                                                             <img 
                                                                 src={formatImageUrl(tech.image)} 
@@ -768,87 +760,123 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                 ) : activeTab === 'arsenal' ? (
                     <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
                         {selectedWeaponIndex === null ? (
-                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                                {characterArsenal.length > 0 ? (
-                                    characterArsenal.map((weapon, idx) => (
-                                        <button 
-                                            key={idx}
-                                            onClick={() => goToWeapon(idx)}
-                                            className="group relative aspect-square border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300"
-                                        >
-                                            <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
-                                            
-                                            {weapon.classification && (
-                                                <div className="absolute top-2 left-2 z-30">
-                                                    <div className="bg-tech-accent text-black text-[8px] font-black px-1.5 py-0.5 clip-corner-sm shadow-[0_0_10px_rgba(255,176,0,0.3)] border-r-2 border-black/20">
-                                                        {weapon.classification}
-                                                    </div>
-                                                </div>
-                                            )}
+                            (() => {
+                                const renderWeaponCard = (weapon: typeof characterArsenal[number], idx: number, dimmed?: boolean) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => goToWeapon(idx)}
+                                        className={`group relative aspect-square border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300 ${dimmed ? 'opacity-70 hover:opacity-100' : ''} ${hideMask ? 'z-[9999]' : ''}`}
+                                    >
+                                        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
 
-                                            {weapon.image ? (
-                                                <img
-                                                    loading="lazy"
-                                                    decoding="async"
-                                                    src={formatImageUrl(weapon.image)} 
-                                                    alt={weapon.name} 
-                                                    className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
-                                                />
+                                        {weapon.classification && (
+                                            <div className="absolute top-2 left-2 z-30">
+                                                <div className="bg-tech-accent text-black text-[8px] font-black px-1.5 py-0.5 clip-corner-sm shadow-[0_0_10px_rgba(255,176,0,0.3)] border-r-2 border-black/20">
+                                                    {weapon.classification}
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {weapon.image ? (
+                                            <img
+                                                loading="lazy"
+                                                decoding="async"
+                                                src={formatImageUrl(weapon.image)}
+                                                alt={weapon.name}
+                                                className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center text-tech-dim">
+                                                <Backpack size={32} className="opacity-20" />
+                                            </div>
+                                        )}
+
+                                        <div className="absolute bottom-0 left-0 right-0 h-14 p-2 bg-black/90 backdrop-blur-sm border-t border-tech-border group-hover:border-tech-accent transition-colors z-20 flex flex-col justify-center">
+                                            <div className="text-[9px] text-white font-bold uppercase leading-tight line-clamp-2 break-words">
+                                                {weapon.name}
+                                            </div>
+                                        </div>
+
+                                        <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <div className="bg-tech-accent text-black p-1">
+                                                <ChevronRight size={12} />
+                                            </div>
+                                        </div>
+                                    </button>
+                                );
+
+                                return (
+                                    <div className="space-y-8">
+                                        <div>
+                                            <h3 className={`text-[10px] font-black uppercase tracking-widest mb-3 flex items-center gap-2 ${char.isDead ? 'text-red-500' : 'text-tech-accent'}`}>
+                                                {char.isDead ? 'Morreu em posse' : 'Em posse atual'}
+                                                <span className="h-px flex-1 bg-tech-border"></span>
+                                            </h3>
+                                            {characterCurrentSectionArsenal.length > 0 ? (
+                                                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                    {characterCurrentSectionArsenal.map((weapon, idx) => renderWeaponCard(weapon, idx))}
+                                                </div>
                                             ) : (
-                                                <div className="w-full h-full flex items-center justify-center text-tech-dim">
-                                                    <Backpack size={32} className="opacity-20" />
+                                                <div className="h-64 flex flex-col items-center justify-center border border-tech-border border-dashed bg-tech-panel/10">
+                                                    <AlertTriangle size={32} className="text-tech-dim mb-4" />
+                                                    <span className="text-xs text-tech-dim uppercase tracking-widest">Nenhum armamento registrado para este sujeito.</span>
                                                 </div>
                                             )}
+                                        </div>
 
-                                            <div className="absolute bottom-0 left-0 right-0 h-14 p-2 bg-black/90 backdrop-blur-sm border-t border-tech-border group-hover:border-tech-accent transition-colors z-20 flex flex-col justify-center">
-                                                <div className="text-[9px] text-white font-bold uppercase leading-tight line-clamp-2 break-words">
-                                                    {weapon.name}
+                                        {characterPastArsenal.length > 0 && (
+                                            <div>
+                                                <h3 className="text-[10px] font-black text-tech-primary/50 uppercase tracking-widest mb-3 flex items-center gap-2">
+                                                    Já utilizou
+                                                    <span className="h-px flex-1 bg-tech-border"></span>
+                                                </h3>
+                                                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                    {characterPastArsenal.map((weapon, i) => renderWeaponCard(weapon, characterCurrentSectionArsenal.length + i, true))}
                                                 </div>
                                             </div>
-
-                                            <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <div className="bg-tech-accent text-black p-1">
-                                                    <ChevronRight size={12} />
-                                                </div>
-                                            </div>
-                                        </button>
-                                    ))
-                                ) : (
-                                    <div className="col-span-full h-64 flex flex-col items-center justify-center border border-tech-border border-dashed bg-tech-panel/10">
-                                        <AlertTriangle size={32} className="text-tech-dim mb-4" />
-                                        <span className="text-xs text-tech-dim uppercase tracking-widest">Nenhum armamento registrado para este sujeito.</span>
+                                        )}
                                     </div>
-                                )}
-                            </div>
+                                );
+                            })()
                         ) : (
                             <div className="space-y-6">
-                                <button 
-                                    onClick={() => goToTab('arsenal')}
-                                    className="flex items-center gap-2 text-tech-accent hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest mb-4 group"
-                                >
-                                    <div className="p-1 border border-tech-accent group-hover:bg-tech-accent group-hover:text-black transition-all">
-                                        <X size={12} className="rotate-90" />
-                                    </div>
-                                    VOLTAR_PARA_ARSENAL
-                                </button>
+                                {(() => {
+                                    const weapon = characterArsenalAll[selectedWeaponIndex];
+                                    return (
+                                        <div className="flex items-center flex-wrap gap-4 mb-4">
+                                            <button
+                                                onClick={() => goToTab('arsenal')}
+                                                className="flex items-center gap-2 text-tech-accent hover:text-white transition-colors text-[10px] font-black uppercase tracking-widest group shrink-0"
+                                            >
+                                                <div className="p-1 border border-tech-accent group-hover:bg-tech-accent group-hover:text-black transition-all">
+                                                    <X size={12} className="rotate-90" />
+                                                </div>
+                                                VOLTAR_PARA_ARSENAL
+                                            </button>
+                                            {weapon && (
+                                                <>
+                                                    <div className="hidden sm:block h-4 w-px bg-tech-border shrink-0"></div>
+                                                    <div className="flex items-center gap-3 shrink-0">
+                                                        <div className="p-1.5 bg-tech-accent/20 border border-tech-accent/40 rounded-full">
+                                                            <Backpack size={18} className="text-tech-accent animate-pulse" />
+                                                        </div>
+                                                        <h3 className="text-xs font-black text-tech-accent uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(255,176,0,0.5)]">
+                                                            Registro de Armamento // #{selectedWeaponIndex + 1}
+                                                        </h3>
+                                                    </div>
+                                                </>
+                                            )}
+                                            <div className="h-px bg-gradient-to-r from-tech-accent/40 to-transparent flex-1"></div>
+                                        </div>
+                                    );
+                                })()}
 
                                 {(() => {
-                                    const weapon = characterArsenal[selectedWeaponIndex];
+                                    const weapon = characterArsenalAll[selectedWeaponIndex];
                                     if (!weapon) return null;
                                     return (
                                         <div className="group animate-in fade-in slide-in-from-right-4 duration-500">
-                                            <div className="flex items-center justify-between mb-4">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="p-1.5 bg-tech-accent/20 border border-tech-accent/40 rounded-full">
-                                                        <Backpack size={18} className="text-tech-accent animate-pulse" />
-                                                    </div>
-                                                    <h3 className="text-xs font-black text-tech-accent uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(255,176,0,0.5)]">
-                                                        Registro de Armamento // #{selectedWeaponIndex + 1}
-                                                    </h3>
-                                                </div>
-                                                <div className="h-px bg-gradient-to-r from-tech-accent/40 to-transparent flex-1 ml-4"></div>
-                                            </div>
-                                            
+
                                             <div className="relative border border-tech-accent/30 bg-tech-panel/40 p-1 group-hover:border-tech-accent/60 transition-all duration-500 overflow-hidden">
                                                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-tech-accent"></div>
                                                 <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-tech-accent"></div>
@@ -879,7 +907,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                         {/* Left Column: 1080x1080 Image Frame */}
                                                         {weapon.image && (
                                                             <div className="lg:col-span-5 space-y-4">
-                                                                <div className={`relative aspect-square border bg-tech-panel/20 p-1 transition-all duration-500 overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] ${char.isDead ? 'border-red-600/50 group-hover:border-red-500' : 'border-tech-accent/30 group-hover:border-tech-accent/60'}`}>
+                                                                <div className={`relative aspect-square border bg-tech-panel/20 p-1 transition-all duration-500 overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] ${hideMask ? 'z-[9999] ' : ''}${char.isDead ? 'border-red-600/50 group-hover:border-red-500' : 'border-tech-accent/30 group-hover:border-tech-accent/60'}`}>
                                                                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,176,0,0.03)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none z-20"></div>
                                                                     <img 
                                                                         src={formatImageUrl(weapon.image)} 
@@ -1003,7 +1031,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                     <button
                                                         key={idx}
                                                         onClick={() => goToGalleryImage(idx)}
-                                                        className="group relative shrink-0 w-40 sm:w-48 aspect-[2/3] border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300 snap-start"
+                                                        className={`group relative shrink-0 w-40 sm:w-48 aspect-[2/3] border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300 snap-start ${hideMask ? 'z-[9999]' : ''}`}
                                                     >
                                                         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
                                                         <div className="absolute top-2 left-2 z-30 bg-tech-accent text-black text-[8px] font-black w-5 h-5 flex items-center justify-center clip-corner-sm">
@@ -1014,7 +1042,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                             decoding="async"
                                                             src={formatImageUrl(img.url)}
                                                             alt={img.caption || char.name}
-                                                            className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                            className={`w-full h-full object-cover transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
                                                         />
                                                         {i < eraGallery.length - 1 && (
                                                             <div className="hidden sm:block absolute top-1/2 -right-3 -translate-y-1/2 w-3 h-px bg-tech-accent/40 z-30"></div>
@@ -1061,7 +1089,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                     <button
                                                         key={idx}
                                                         onClick={() => goToGalleryImage(idx)}
-                                                        className="group relative aspect-video border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300"
+                                                        className={`group relative aspect-video border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300 ${hideMask ? 'z-[9999]' : ''}`}
                                                     >
                                                         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
                                                         <img
@@ -1069,7 +1097,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                             decoding="async"
                                                             src={formatImageUrl(img.url)}
                                                             alt={img.caption || char.name}
-                                                            className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                            className={`w-full h-full object-cover transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
                                                         />
                                                     </button>
                                                 ))}
@@ -1095,7 +1123,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                                         <button
                                                                             key={idx}
                                                                             onClick={() => goToGalleryImage(idx)}
-                                                                            className="group relative aspect-video border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300"
+                                                                            className={`group relative aspect-video border border-tech-border bg-tech-panel/40 overflow-hidden hover:border-tech-accent transition-all duration-300 ${hideMask ? 'z-[9999]' : ''}`}
                                                                         >
                                                                             <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:10px_10px] pointer-events-none z-10"></div>
                                                                             <img
@@ -1103,7 +1131,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                                                 decoding="async"
                                                                                 src={formatImageUrl(img.url)}
                                                                                 alt={img.caption || char.name}
-                                                                                className={`w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
+                                                                                className={`w-full h-full object-cover transition-all duration-500 ${forceColor ? 'opacity-100' : 'grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100'}`}
                                                                             />
                                                                         </button>
                                                                     ))}
@@ -1146,7 +1174,7 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-tech-accent"></div>
                                                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-tech-accent"></div>
                                                 <div className="bg-black/60 relative">
-                                                    <div className={`relative overflow-hidden mx-auto ${img.category === 'era' ? 'aspect-[2/3] max-h-[75vh] w-auto' : 'w-full aspect-video'}`}>
+                                                    <div className={`relative overflow-hidden mx-auto ${hideMask ? 'z-[9999] ' : ''}${img.category === 'era' ? 'aspect-[2/3] max-h-[75vh] w-auto' : 'w-full aspect-video'}`}>
                                                         <img src={formatImageUrl(img.url)} alt={img.caption || char.name} className="w-full h-full object-contain" />
                                                         <div className="absolute top-4 left-4 z-20">
                                                             <span className="text-[8px] font-black px-2 py-0.5 border clip-corner-sm bg-black/80 text-tech-accent border-tech-accent/30 uppercase">

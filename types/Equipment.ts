@@ -8,7 +8,22 @@ export interface Equipment {
   description: string;
   image: string;
   originalOwner: string;
+  /** Donos intermediários, entre o original e o atual, na ordem em que passaram pela arma.
+   * O portador original NÃO entra aqui — ele já é mostrado separado como "Portador original". */
+  pastOwners?: string[];
+  /** Nomes (dentre originalOwner/pastOwners) de quem morreu em posse desta arma — na ficha
+   * desse personagem, ela aparece numa seção própria ("Morreu em posse"), separada de quem
+   * só teve a arma e passou adiante antes de morrer. */
+  diedHolding?: string[];
+  /** Campo legado, digitado à mão. O "Portador atual" exibido pro usuário é calculado
+   * automaticamente a partir de `character.arsenal` (ver `resolveCurrentOwner` em Arsenal) —
+   * esse campo só serve de fallback quando nenhum personagem cadastrado lista essa arma. */
   currentOwner: string;
+  /** Outras variações da mesma arma/jutsu, cada uma manifestada por um portador diferente
+   * (ex: Sōen no Kage do Nishinoya, Guren no Kage do Kaito, Shiden no Kage da Naomi — a
+   * mesma arma-base, com nome e efeito diferentes conforme quem a manifesta). Cada variação
+   * tem seu próprio nome e portador; a imagem é opcional (some entra na busca também). */
+  variants?: { name: string; owner: string; image?: string; description?: string }[];
 }
 
 export type ClassificationLevel = 'Z' | 'S++' | 'S+' | 'S' | 'A+' | 'A' | 'B' | 'F';

@@ -24,7 +24,7 @@ export const initialData: Character[] = [
         destruction: "Extremamente elevado. Capaz de devastar áreas equivalentes a múltiplos quarteirões ou mais, dependendo da quantidade de chakra investida.",
         history: "Registros indicam que nenhum inimigo sobreviveu após ser atingido diretamente por esta técnica. Considerada uma das técnicas mais destrutivas já documentadas no mundo shinobi.",
         status: "Uso extremamente restrito. Requer compatibilidade com Bijuu e domínio avançado de Senjutsu.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F01%20-%20Senpo%20Enka%20Aoi%20Katon%3A%20Bijuudama%20OodamaRasenShuriken.jpg?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F01%20-%20Senpo%20Enka%20Aoi%20Katon%3A%20Bijuudama%20OodamaRasenShuriken.jpg?alt=media&v=1785957819760"
       },
       {
         name: "Senpo: Modo Matatabi",
@@ -34,7 +34,7 @@ export const initialData: Character[] = [
         destruction: "Cataclísmica em larga escala. O simples liberar de chakra gera tempestades de fogo azul que consomem campos inteiros de batalha. As chamas sábias não apenas queimam o corpo, mas afetam diretamente o fluxo de chakra do oponente, causando dano interno severo e dificultando regeneração. Seus ataques de cauda criam crateras massivas, e uma única investida pode obliterar defesas de nível Kage com facilidade.",
         history: "Após ultrapassar os limites do Senpo e dominar completamente o chakra da Matatabi, Nishinoya buscou não apenas utilizar o poder da besta, mas fundir sua própria essência à dela. Inspirado nas transformações supremas dos jinchūriki lendários, ele refinou o controle do chakra azul e o combinou com energia natural em perfeita simbiose. Assim nasceu o Avatar da Chama Azul Sábia — uma forma que transcende a transformação comum de jinchūriki e alcança o ápice do Rank Z.",
         status: "Forma suprema e extremamente rara. Exige sincronia total entre Nishinoya e Matatabi, além de absorção constante de energia natural. O consumo de chakra é colossal, e qualquer desequilíbrio pode romper a transformação ou causar danos severos ao corpo do usuário. Quando estabilizada, porém, torna-se uma manifestação quase divina do fogo azul sábio.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F02%20-%20Senpo%3A%20Modo%20Matatabi.png?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F02%20-%20Senpo%3A%20Modo%20Matatabi.png?alt=media&v=1785957821416"
       },
       {
         name: "Senpo: Matatabi Rinku",
@@ -44,7 +44,7 @@ export const initialData: Character[] = [
         destruction: "Extremamente elevado. Todas as técnicas de fogo azul são potencializadas a um nível devastador, capazes de incinerar vastas áreas instantaneamente, evaporar defesas de alto nível e gerar explosões térmicas comparáveis a cataclismos naturais.",
         history: "Forma raríssima alcançada apenas quando há sincronia total entre o jinchuuriki e a Matatabi, aliada ao domínio completo do Senjutsu. Diz-se que poucos na história conseguiram equilibrar a energia natural com o chakra ardente da Duas-Caudas sem perder o controle.",
         status: "Uso altamente restrito. Exige domínio absoluto do Senjutsu e harmonia perfeita com a Matatabi. Caso o equilíbrio falhe, o excesso de energia natural ou o descontrole do chakra da Bijuu pode causar colapso físico severo.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F03%20-%20Senpo%3A%20Matatabi%20Rinku.png?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F03%20-%20Senpo%3A%20Matatabi%20Rinku.png?alt=media&v=1785957822994"
       },
       {
         name: "Senpo Fuinjutsu: Matatabi Korin",
@@ -54,7 +54,7 @@ export const initialData: Character[] = [
         destruction: "Cataclísmica em larga escala. A presença da Matatabi no campo de batalha altera completamente o ambiente, liberando ondas de calor espiritual, tempestades de chamas azuis e pressão de chakra capaz de intimidar inimigos de alto nível. Suas garras podem rasgar defesas físicas e espirituais, suas caudas criam impactos massivos, e suas chamas azuis queimam matéria e chakra simultaneamente. Apesar do poder absurdo, a técnica exige que Nishinoya abdique temporariamente do uso direto dos poderes da Matatabi em seu próprio corpo, tornando a invocação uma escolha estratégica entre lutar junto da Bijuu ou canalizar seu poder internamente.",
         history: "Matatabi não foi selada em Nishinoya à força. Ela escolheu se abrigar nele por enxergar no jovem Senju um amigo, um herdeiro da Vontade do Fogo e alguém que jamais a trataria como uma arma. Com o passar dos anos, o vínculo entre os dois deixou de ser uma relação entre jinchuuriki e Bijuu para se tornar um pacto espiritual de confiança absoluta. A partir desse laço, Nishinoya desenvolveu o Senpo Fuinjutsu: Matatabi Korin, uma técnica que permite à Duas-Caudas deixar temporariamente o selo sem romper sua conexão com ele. Considerada uma manifestação lendária de amizade entre humano e Bijuu, essa técnica simboliza o momento em que Matatabi luta não como poder emprestado, mas como companheira de Nishinoya.",
         status: "Técnica suprema e extremamente rara. Exige harmonia perfeita entre Nishinoya e Matatabi, domínio absoluto de Fuinjutsu, controle avançado de Senjutsu e estabilidade emocional total de ambos. A técnica só pode ser ativada se Matatabi aceitar sair voluntariamente do selo. Caso Nishinoya perca a consciência, tenha seu fluxo de chakra bloqueado ou sofra uma ruptura no selo, a manifestação se desfaz imediatamente e Matatabi retorna ao seu interior. Durante a ativação, Nishinoya fica impedido de usar técnicas derivadas diretamente do chakra da Matatabi até que ela retorne ao selo.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F04%20-%20Senpo%20Fuinjutsu%3A%20Matatabi%20Korin.jpg?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F04%20-%20Senpo%20Fuinjutsu%3A%20Matatabi%20Korin.jpg?alt=media&v=1785957824571"
       },
       {
         name: "Soen no Kage",
@@ -74,7 +74,7 @@ export const initialData: Character[] = [
         destruction: "Extremamente destrutiva em curto alcance. O impacto inicial perfura defesas com a rotação do Rasenshuriken, enquanto as chamas azuis ampliadas por senjutsu causam uma explosão concentrada que incinera e dilacera a área ao redor do alvo. O dano celular causado pela natureza cortante da técnica torna a regeneração difícil e deixa o oponente gravemente incapacitado.",
         history: "Após dominar o Senpo: Hiraishin, técnica inspirada no lendário Hiraishin de Tobirama, Nishinoya buscou elevar sua letalidade ofensiva. Ele fundiu seu Aoi Katon com energia natural, criando uma variação azul de poder esmagador. O resultado foi o Relâmpago Azul — uma execução quase impossível de reagir.",
         status: "Uso extremamente exigente. Requer Modo Sábio ativo, controle absoluto de chakra elemental e precisão milimétrica na ativação do Hiraishin antes e depois do impacto. Qualquer atraso no teleporte pode resultar em danos severos ao próprio usuário devido à explosão do Oodama Rasenshuriken.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F06%20-%20Senpo%20Hiraishin%3A%20Rel%C3%A2mpago%20Azul.png?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F06%20-%20Senpo%20Hiraishin%3A%20Rel%C3%A2mpago%20Azul.png?alt=media&v=1785957826560"
       },
       {
         name: "Aoi Katon: Komyunikēshon",
@@ -97,6 +97,16 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F08%20-%20Clone%20Perfeito.png?alt=media"
       },
       {
+        name: "Sennin Fuka: Modo Sábio Aoi Katon",
+        classification: "S++",
+        nature: "Senjutsu + Aoi Katon",
+        description: "Aos 14 anos, em meio à guerra, Nishinoya alcança a harmonia entre a energia natural absorvida pelo Senjutsu e o Aoi Katon — a chama azul que já era exclusivamente sua antes de qualquer vínculo com a Matatabi ou o Hiraishin. Diferente de um pacto espiritual externo, essa fusão não depende de mestre, linhagem ou espírito-guia: é a energia natural aperfeiçoando aquilo que ele já é. Ao ativar o modo, chamas azuis espirituais percorrem sua pele como veios luminosos, seus olhos ganham um brilho felino intenso, e sua percepção de chakra se expande a ponto de sentir a menor oscilação de energia hostil a grande distância.",
+        destruction: "Amplifica proporcionalmente todo o Aoi Katon de Nishinoya, elevando velocidade, força e precisão de cada chama azul muito além do alcançável sem o modo ativo — a base que sustenta sua fama de Relâmpago Azul de Konoha.",
+        history: "Foi essa fusão, alcançada aos 14 anos junto ao domínio absoluto do Katon e do lendário Hiraishin, que fez Nishinoya ser reconhecido como o Relâmpago Azul de Konoha. Diferente de outros usuários de Senjutsu, ele nunca precisou buscar um mestre ou selar um pacto — a fonte já estava dentro dele, na própria chama que carregava desde criança.",
+        status: "Estado estável e sustentável por longos períodos, sem os riscos de instabilidade comuns em fusões incompletas. É a base sobre a qual Nishinoya constrói o Senpo: Modo Matatabi (fusão com a Matatabi) e o Senpo Enka Aoi Katon: Bijuudama OodamaRasenShuriken, suas formas mais extremas.",
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F15%20-%20Sennin%20Fuka%3A%20Modo%20S%C3%A1bio%20Aoi%20Katon.jpg?alt=media&v=1785957947563"
+      },
+      {
         name: "Bijuudama",
         classification: "S++",
         nature: "Matatabi",
@@ -114,7 +124,7 @@ export const initialData: Character[] = [
         destruction: "Extremamente destrutiva. O impacto inicial causa perfuração massiva devido à rotação do Rasenshuriken, enquanto as chamas azuis ampliadas pelo senjutsu intensificam a explosão e espalham fogo de alta intensidade pelo campo. A técnica também causa dano celular profundo devido às lâminas microscópicas de chakra, dificultando regeneração e recuperação do alvo.",
         history: "Após dominar o controle do Aoi Katon, Nishinoya buscou aprimorar ainda mais suas técnicas baseadas no Rasengan. Inspirando-se no conceito do Rasenshuriken criado por lendários shinobi, ele desenvolveu uma versão própria alimentada por suas chamas azuis especiais. Com o domínio do Modo Sábio, passou a incorporar energia natural à técnica, criando o Senpo Enka Aoi Katon: Oodama Rasenshuriken — uma forma ainda mais poderosa que combina calor extremo, rotação absoluta e senjutsu em um único ataque devastador.",
         status: "Uso extremamente exigente. Requer Modo Sábio ativo, controle avançado de chakra e domínio da natureza Aoi Katon para manter a estabilidade das chamas durante a rotação do Rasenshuriken. Se mal controlada, a técnica pode causar danos graves ao próprio usuário.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F10%20-%20Senpo%20Enka%20Aoi%20Katon%3A%20Oodama%20Rasenshuriken.png?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F10%20-%20Senpo%20Enka%20Aoi%20Katon%3A%20Oodama%20Rasenshuriken.png?alt=media&v=1785957828142"
       },
       {
         name: "Shiki Fūjin",
@@ -124,7 +134,7 @@ export const initialData: Character[] = [
         destruction: "Absoluta contra alvos individuais. O selamento resulta na remoção completa da alma, anulando regeneração, reencarnação, possessão ou transferência de consciência. A pressão espiritual liberada durante o ritual também pode causar colapso de chakra em inimigos próximos, enfraquecendo-os temporariamente.",
         history: "Após estudar pergaminhos proibidos e registros antigos de técnicas supremas de selamento, Nishinoya dominou o Shiki Fūjin como uma arma definitiva contra inimigos imortais ou entidades espirituais. Seu domínio refinado e força espiritual elevam o jutsu a um nível superior, permitindo execução mais rápida e com maior estabilidade do ritual.",
         status: "Técnica proibida e de uso extremo. Uma vez iniciada, não pode ser interrompida. O preço é a própria alma do usuário, que também é consumida pelo Ceifador após o selamento. Considerada um último recurso absoluto, utilizada apenas quando não existe outra forma de vitória.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F11%20-%20Shiki%20F%C5%ABjin.png?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F11%20-%20Shiki%20F%C5%ABjin.png?alt=media&v=1785957829728"
       },
       {
         name: "Senpo Hiraishin",
@@ -134,7 +144,7 @@ export const initialData: Character[] = [
         destruction: "Não é uma técnica de destruição em massa, mas sua letalidade é extrema em duelos — ataques sucessivos embasados em teleporte são quase impossíveis de bloquear ou prever. Perfurações rápidas, esquivas instantâneas e interceptações relâmpago deixam adversários desorientados e incapazes de reagir.",
         history: "Desenvolvida por Nishinoya após anos de treinamento em Senjutsu e estudo das propriedades espaço-temporais, esta técnica foi inspirada no lendário *Hiraishin no Jutsu* de Tobirama. Ao infundir energia natural no núcleo da técnica, Nishinoya atingiu uma velocidade reflexiva que ultrapassa o limite humano convencional.",
         status: "Uso avançado e exigente. Para alcançar a velocidade máxima, Nishinoya deve manter o Modo Sábio ativo e ter selos pré-posicionados pelo campo. O uso imprudente pode causar fadiga extrema, colapsos momentâneos e sobrecarga nos pontos de chakra.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F12%20-%20Senpo%20Hiraishin.jpg?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F12%20-%20Senpo%20Hiraishin.jpg?alt=media&v=1785957831739"
       },
       {
         name: "Senpo: Oodama Rasengan",
@@ -144,7 +154,7 @@ export const initialData: Character[] = [
         destruction: "Altamente destrutiva em combate direto. O impacto do Oodama Rasengan amplificado por senjutsu cria uma explosão concentrada de força rotatória capaz de destruir grandes estruturas, abrir crateras no solo e causar danos internos massivos ao alvo atingido.",
         history: "Após dominar o Modo Sábio, Nishinoya começou a experimentar maneiras de aprimorar técnicas clássicas de alto nível com energia natural. Inspirado pelo poder bruto do Oodama Rasengan utilizado por lendários shinobi, ele adaptou a técnica ao Senjutsu, criando uma versão mais estável e muito mais poderosa. O Senpo: Oodama Rasengan tornou-se uma de suas principais técnicas de impacto direto em combate.",
         status: "Requer Modo Sábio ativo e controle preciso da mistura entre chakra e energia natural. Embora seja mais estável que muitas técnicas de senjutsu avançado, ainda exige grande quantidade de chakra e concentração para manter a rotação do Rasengan em escala ampliada.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F13%20-%20Senpo%3A%20Oodama%20Rasengan.jpg?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F13%20-%20Senpo%3A%20Oodama%20Rasengan.jpg?alt=media&v=1785957833808"
       },
       {
         name: "Senpo: Ryūen Aoi",
@@ -154,15 +164,27 @@ export const initialData: Character[] = [
         destruction: "Altamente destrutiva em médio e longo alcance. O impacto do dragão gera uma detonação massiva de fogo azul amplificado por senjutsu, capaz de devastar grandes áreas e incinerar múltiplos inimigos simultaneamente. As chamas sábias queimam não apenas a matéria física, mas também desestabilizam o fluxo de chakra do oponente, dificultando técnicas defensivas e regenerativas.",
         history: "Após dominar o Aoi Katon concedido pela Matatabi, Nishinoya buscou uma forma de transformar suas chamas em algo mais versátil e imponente. Inspirado nas antigas técnicas de dragões elementais e ao aperfeiçoar seu controle de energia natural, ele desenvolveu o Ryūen Aoi — uma técnica que simboliza a fusão entre instinto bestial e sabedoria espiritual.",
         status: "Exige controle avançado de chakra e equilíbrio constante com a energia natural. O consumo é elevado, mas sustentável para usuários experientes em Modo Sábio. Quanto maior a quantidade de senjutsu aplicada, mais resistente e devastador o dragão se torna.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F14%20-%20Senpo%3A%20Ry%C5%ABen%20Aoi.png?alt=media"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F14%20-%20Senpo%3A%20Ry%C5%ABen%20Aoi.png?alt=media&v=1785957835452"
+      },
+      {
+        name: "Senpo Rasengan",
+        classification: "S",
+        nature: "Senjutsu + Rasengan",
+        description: "Versão mais simples e rápida do Rasengan de Nishinoya, moldada com o auxílio da energia natural do Modo Sábio. Diferente da variante Oodama, aqui ele prioriza velocidade de execução sobre escala: a esfera atinge o tamanho padrão em uma fração do tempo normal, permitindo encaixá-la no meio de uma sequência de golpes sem quebrar o ritmo do combate.",
+        destruction: "Moderada e concentrada em um único ponto de impacto — suficiente para romper defesas comuns e causar dano interno localizado, sem o alcance ou a escala da versão Oodama.",
+        history: "Foi a primeira adaptação de Nishinoya do Rasengan ao Modo Sábio, desenvolvida antes de ele dominar a escala necessária para o Senpo: Oodama Rasengan. Manteve-se em seu repertório mesmo depois, útil justamente por ser mais rápida de formar.",
+        status: "Uso simples e de baixo custo de chakra em comparação às demais técnicas de Senjutsu de Nishinoya — não exige o mesmo nível de controle que o Oodama Rasengan.",
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FTecnicas%2F16%20-%20Senpo%20Rasengan.jpg?alt=media&v=1785957838638"
       }
     ],
     arsenal: [1, 2],
     gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F01%20-%20Cl%C3%A1ssico.png?alt=media", caption: "Prólogo", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F01%20-%20Cl%C3%A1ssico.png?alt=media", caption: "Clássico", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F02%20-%201%C2%AA%20Temporada.png?alt=media", caption: "1ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F03%20-%202%C2%AA%20Temporada.png?alt=media", caption: "2ª Temporada", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F04%20-%20Terceiro%20Hokage.png?alt=media", caption: "Terceiro Hokage", category: "era" }
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F04%20-%20Terceiro%20Hokage.png?alt=media", caption: "Terceiro Hokage", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNishinoya%20Senju%2FLuta_contra_o_Omega.png?alt=media&token=d2b276a0-73b7-42ab-8776-829cf1d25ac6&v=1785769839249", caption: "Luta contra o Omega", category: "era" },
     ],
     stats: { strength: 12, dexterity: 30, agility: 12, intelligence: 30, spirit: 30, vigor: 18, perception: 30 },
     powers: [
@@ -201,7 +223,7 @@ export const initialData: Character[] = [
     description: "O prodígio que já é uma realidade, um gênio dentro do campo de batalha com suas habilidades técnicas e seu estilo de luta versátil e completo, sua resistência é invejável, dominante no estilo madeira, usuário do Oodama Rasengan Vermelho e treinado no modo eremita mokuton, misturando inteligência, resistência e determinação, é o ninja coringa de Konoha.\n\nKaito não promete mais levar o legado de seu pai, ele promete salvar o mundo da sujeira ninja.\n\nEle acredita em uma revolução em todo o mundo ninja, onde todos se unem em uma mesma ideia, em uma mesma mente e em um único poder principal.\n\nEle luta apenas para proteger a paz, mas guerreiros também não são inocentes, ele já matou uma pessoa por vingança e o ódio que o consumiu é o mesmo ódio que o sistema ninja impõe na mente das pessoas para que haja guerra, e seu irmão é a prova disso.\n\nA revolução de Kaito não busca poder; ela nasce do desespero de um mundo à beira do fim.",
     hp: 117,
     chakra: 58,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FKaito%20Senju.png?alt=media",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FKaito%20Senju.png?alt=media&v=1785775302899",
     techniques: [
       {
         name: "Mokuton: Eien no Tomo",
@@ -212,6 +234,26 @@ export const initialData: Character[] = [
         history: "Kaito desenvolveu esta técnica logo após assumir o posto de novo capitão, no momento mais sombrio de sua jornada: a morte de Katsumi, Najin e Shoei. Diante da dor da perda, compreendeu que a Vontade do Fogo não se apaga com a morte — ela é passada adiante por aqueles que escolhem carregá-la. Em vez de deixar que o luto o paralisasse, decidiu transformar a lembrança de seus companheiros em força viva, fundindo seu domínio do Mokuton à memória de cada um deles. Assim nasceu o Eien no Tomo, o primeiro grande jutsu criado por Kaito como capitão, e a prova de que os laços formados em vida jamais desaparecem verdadeiramente.",
         status: "Uso emocionalmente exigente. A técnica está diretamente ligada ao estado emocional de Kaito — quanto mais genuína for sua determinação em proteger o que ama, mais poderosos os golens se tornam, mas invocá-los também reabre a dor da perda de Katsumi, Najin e Shoei a cada ativação. Exige domínio avançado de Mokuton e grande estabilidade mental para não ser consumido pela tristeza durante o combate.",
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FTecnicas%2F01%20-%20Mokuton%3A%20Eien%20no%20Tomo.jpg?alt=media"
+      },
+      {
+        name: "Mokuton: Shi no Shugomori",
+        classification: "S++",
+        nature: "Senjutsu + Mokuton",
+        description: "Kaito finca as mãos no solo e libera uma vasta invocação de Mokuton, erguendo uma floresta densa que nasce diretamente do seu corpo e se estende por até 50 metros ao redor. Dentro desse domínio, cada raiz, tronco e folha está conectado ao seu chakra, concedendo-lhe controle absoluto sobre o terreno e uma percepção quase perfeita — capaz de notar até a menor alteração no fluxo de chakra do oponente. Enquanto luta dentro da floresta, o próprio corpo de Kaito se torna mais resistente, sustentado pela energia natural que circula entre as árvores, e cada golpe desferido contra o intruso é guiado com uma precisão que beira o acerto garantido. Poucos sobrevivem tempo suficiente para tentar escapar; a floresta que guarda a morte não costuma deixar ninguém vencer Kaito Senju dentro de seus próprios domínios.",
+        destruction: "Controle territorial absoluto. Dentro do raio de 50 metros, praticamente todo ataque de Kaito acerta o alvo, e a vantagem sensorial e de resistência concedida pela floresta torna a diferença de poder entre ele e o oponente quase intransponível — mais uma sentença do que um combate.",
+        history: "Kaito desenvolveu essa técnica ao aprofundar seu domínio sobre o Mokuton herdado do legado Senju, buscando criar um espaço onde nenhuma vantagem de velocidade, força ou surpresa do inimigo pudesse superar seu controle total sobre o campo de batalha. O nome 'Shi no Shugomori' — a floresta guardiã da morte — reflete a filosofia por trás dela: um domínio onde Kaito protege o que precisa proteger e elimina qualquer ameaça sem margem para erro.",
+        status: "Exige grande quantidade de chakra para erguer e sustentar uma floresta de 50 metros de raio, além do monitoramento simultâneo de tudo que se move dentro dela. Fora dos limites da Shi no Shugomori, Kaito perde as vantagens sensoriais e de controle que a técnica concede.",
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FTecnicas%2F09%20-%20Mokuton%3A%20Shi%20no%20Shugomori.jpeg?alt=media&v=1785790773305"
+      },
+      {
+        name: "Senpo Enka Mokuton: Oodama Rasen Shuriken",
+        classification: "S++",
+        nature: "Senjutsu + Mokuton + Rasengan",
+        description: "Kaito funde seu Mokuton ao núcleo giratório do Rasengan, moldando uma esfera imensa de chakra vivo revestida por lâminas de madeira ancestral que se projetam como as pontas de um Rasen Shuriken. A instabilidade natural da técnica, que normalmente impede seu arremesso, é contida pelo equilíbrio do Modo Sábio — o fluxo constante de energia natural estabiliza a rotação caótica sem apagar seu poder de corte. O resultado é um Oodama Rasen Shuriken que Kaito consegue lançar a distância, girando pelo ar como uma tempestade de madeira e chakra até se chocar contra o alvo, onde libera toda a energia comprimida numa explosão giratória de escala devastadora.",
+        destruction: "Escala devastadora. Ao atingir o alvo, a esfera libera incontáveis lâminas de chakra-madeira em rotação, dilacerando tecido, estruturas e defesas num raio amplo antes de culminar numa explosão final que arrasa tudo o que resta em pé.",
+        history: "Kaito desenvolveu essa variação ao tentar resolver o maior problema do Rasen Shuriken: sua instabilidade impede que seja arremessado sem se dissipar no ar. Recorrendo ao mesmo domínio do Modo Sábio que já sustentava suas técnicas mais avançadas de Mokuton, conseguiu manter a forma da técnica estável o suficiente para lançá-la a distância — algo que nem mesmo o Rasen Shuriken original permite.",
+        status: "Exige domínio simultâneo do Modo Sábio e controle refinado de transformação de chakra. Qualquer falha na estabilização pode fazer a esfera colapsar prematuramente nas próprias mãos de Kaito, tornando o preparo um dos momentos mais vulneráveis do combate.",
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FTecnicas%2F10%20-%20Senpo%20Enka%20Mokuton%3A%20Oodama%20Rasen%20Shuriken.jpeg?alt=media&v=1785791508509"
       },
       {
         name: "Senpo: Hiraishin Oodama Rasengan",
@@ -255,7 +297,7 @@ export const initialData: Character[] = [
       },
       {
         name: "Sennin Fuka",
-        classification: "S++",
+        classification: "S+",
         nature: "Senjutsu + Mokuton",
         description: "Kaito Senju ativa seu Modo Sábio Completo, unindo duas fontes distintas de energia natural em perfeito equilíbrio. A primeira é a energia natural do Mokuton, herdada da linhagem de Hashirama Senju, que conecta seu chakra diretamente ao pulso da floresta. A segunda é a energia natural transmutada segundo os ensinamentos dos monges do País da Terra, uma disciplina espiritual voltada à imobilidade absoluta e à absorção gradual do meio ambiente. Ao fundir as duas correntes, Kaito atinge uma sincronia que nenhuma das duas linhagens alcançaria isoladamente: padrões de madeira viva e marcas de pigmentação natural se espalham por seu corpo em harmonia, seus olhos assumem tonalidade dourada e sua percepção se expande até sentir cada vibração de chakra em quilômetros ao redor.",
         destruction: "Extremamente elevado. Amplifica todas as técnicas de madeira, físicas e sensoriais de Kaito simultaneamente, permitindo a criação instantânea de florestas densas, prisões de raízes colossais e estruturas defensivas praticamente indestrutíveis, tudo sustentado por um fluxo de chakra virtualmente inesgotável enquanto o modo se mantém ativo.",
@@ -284,17 +326,17 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FTecnicas%2F08%20-%20Senpo%3A%20Daijurin%20no%20jutsu.jpg?alt=media"
       }
     ],
-    arsenal: [3, 4],
+    arsenal: [1, 3],
     gallery: [
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F01%20-%20Beb%C3%AA.png?alt=media", caption: "Bebê", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKaito%20Senju%2FPr_logo.png?alt=media&v=1784658553093310", caption: "Prólogo", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F02%20-%20Cl%C3%A1ssico.png?alt=media", caption: "Clássico", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F03%20-%201%C2%AA%20Temporada.png?alt=media", caption: "1ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F04%20-%202%C2%AA%20Temporada.png?alt=media", caption: "2ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F05%20-%20Ambu.png?alt=media", caption: "Ambu", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F06%20-%20Luta%20contra%20Omega.png?alt=media", caption: "Luta contra Omega", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F06%20-%20Luta%20contra%20Omega.png?alt=media", caption: "Luta contra o Omega", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F07%20-%203%C2%AA%20Temporada.png?alt=media", caption: "3ª Temporada", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F08%20-%20Luta%20contra%20Kages.png?alt=media", caption: "Luta contra Kages", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F09%20-%204%C2%AA%20Temporada.png?alt=media", caption: "4ª Temporada", category: "era" }
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F09%20-%204%C2%AA%20Temporada.png?alt=media", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F02%20-%20Kaito%20Senju%2FGaleria%2FLinha%20do%20Tempo%2F09%20-%204%C2%AA%20Temporada.png?alt=media", caption: "5ª Temporada", category: "era" },
     ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 15, spirit: 16, vigor: 9, perception: 16 },
     powers: [
@@ -317,7 +359,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     name: "Oddy Uchiha",
     clan: "Uchiha",
     categories: ["Personagem", "Konohagakure"],
@@ -451,15 +493,16 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FTecnicas%2F12%20-%20Katon%3A%20Ensh%C5%8D%20Daiendan.png?alt=media"
       }
     ],
-    arsenal: [5, 2, 6, 7, 8, 19],
+    arsenal: [4, 2, 5, 6, 7, 18],
     gallery: [
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FGaleria%2FLinha%20do%20Tempo%2F01%20-%20Beb%C3%AA.png?alt=media", caption: "Bebê", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FGaleria%2FLinha%20do%20Tempo%2F01%20-%20Beb%C3%AA.png?alt=media", caption: "Prólogo", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FGaleria%2FLinha%20do%20Tempo%2F02%20-%20Cl%C3%A1ssico.png?alt=media", caption: "Clássico", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FGaleria%2FLinha%20do%20Tempo%2F03%20-%201%C2%AA%20Temporada.png?alt=media", caption: "1ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FGaleria%2FLinha%20do%20Tempo%2F04%20-%202%C2%AA%20Temporada.png?alt=media", caption: "2ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FGaleria%2FLinha%20do%20Tempo%2F05%20-%20Ambu.png?alt=media", caption: "Ambu", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FGaleria%2FLinha%20do%20Tempo%2F06%20-%203%C2%AA%20Temporada.png?alt=media", caption: "3ª Temporada", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FGaleria%2FLinha%20do%20Tempo%2F07%20-%20Luta%20contra%20os%20Kages.png?alt=media", caption: "Luta contra os Kages", category: "era" }
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FOddy%20Uchiha%2F4__Temporada.png?alt=media&v=1784658587696755", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FOddy%20Uchiha%2F5__Temporada.png?alt=media&v=1785784623548", caption: "5ª Temporada", category: "era" },
     ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 8, spirit: 16, vigor: 16, perception: 16 },
     powers: [
@@ -487,7 +530,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     name: "Katsumi Hyuga",
     clan: "Hyuga",
     categories: ["Personagem", "Konohagakure"],
@@ -498,7 +541,9 @@ export const initialData: Character[] = [
     description: "Líder e capitão da última força de Konoha\n\nJovem prodígio do clã Hyuga, Katsumi desde jovem convive com a pressão de corresponder às expectativas de todos como sucessor direto de seu clã. Aos 10 anos viveu um verdadeiro pesadelo ao ser sequestrado pela OCA, onde chegou bem perto de morrer sendo salvo por seus companheiros com o uso de uma substância até então desconhecida\n\nKatsumi passou a sofrer com dores de cabeça recorrentes e insuportáveis que vieram a acabar com a ajuda de seu tio, uma pessoa que até então era desconhecida em sua vida. Com a ajuda de seu tio Kai, Katsumi aprendeu que aquelas dores tinham um motivo, o despertar da arma mais poderosa do clã Hyuga, o Fujogan.\n\nAos 12 anos mesmo não tendo o desempenho que esperava no exame chunin, foi reconhecido por Nishinoya como o mais qualificado a ser capitão da mais nova divisão ANBU de Konoha.\n\nJá vivenciou diversas situações traumáticas em suas missões, como a morte de seu pai e de Shoei bem a sua frente, mortes essas responsáveis por despertar ainda mais seu Fujogan, mas ao mesmo tempo tornar seu estado mental algo preocupante\n\nAgora Katsumi tem uma vila inteira em sua responsabilidade além da vida de seus amigos, todas em suas mãos.",
     hp: 138,
     chakra: 58,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F04%20-%20Katsumi%20Hyuga%2FKatsumi%20Hyuga.png?alt=media",
+    isDead: true,
+    killedBy: "Kai",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F04%20-%20Katsumi%20Hyuga%2FKatsumi%20Hyuga.png?alt=media&v=1785960034914",
     techniques: [
       {
         name: "Shippū Hyōkai",
@@ -591,7 +636,17 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F04%20-%20Katsumi%20Hyuga%2FTecnicas%2F09%20-%20Tenketsu%20Byakugan.png?alt=media"
       }
     ],
-    arsenal: [74, 75, 9],
+    arsenal: [74, 75, 8],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsumi%20Hyuga%2FPr_logo.png?alt=media&v=1784658555583435", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsumi%20Hyuga%2FCl_ssico.png?alt=media&v=1784579799215930", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsumi%20Hyuga%2F1__Temporada.png?alt=media&v=1784579801884678", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsumi%20Hyuga%2F2__Temporada.png?alt=media&v=1784579804356218", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsumi%20Hyuga%2FAmbu.png?alt=media&v=1784579806879806", caption: "Ambu", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsumi%20Hyuga%2FLuta_contra_o_Omega.png?alt=media&v=1784579809561973", caption: "Luta contra o Omega", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsumi%20Hyuga%2F3__Temporada.png?alt=media&v=1784579812202149", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsumi%20Hyuga%2F4__Temporada.png?alt=media&v=1784579814862411", caption: "4ª Temporada", category: "era" }
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 8, spirit: 16, vigor: 16, perception: 16 },
     powers: [
       { name: "Juken", level: 8 },
@@ -616,7 +671,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     name: "Najin Hatake",
     clan: "Hatake",
     categories: ["Personagem", "Konohagakure"],
@@ -627,6 +682,8 @@ export const initialData: Character[] = [
     description: "Um ninja sempre muito ambicioso e ganancioso que buscava poder para restaurar a honra de seu clã acima de tudo.\n\nEm sua jornada ele encontrou desafios, mas com os ensinamentos de seu mestre ele entendeu que a paz e a guerra caminham na mesma corda, najin evoluiu, amadureceu e entendeu como alimentar o desejo no seu coração.\n\nAinda muito jovem entrou para anbu e logo se tornou o recurso final da folha, Najin entendeu que sua vida pode ser um sacrifício pelas pessoas da vila, mesmo que seu mestre tenha se revelado seu pai e tentou levar por um caminho sombrio, Najin escolheu o próprio caminho, ele perdoou seu pai e hoje luta não por honra ou glória, nem mesmo pelas fissuras no seu coração, mas como um protetor, protetor dos inocentes e dos seus amigos, ele luta por aquilo que julga justo e vai defender até a morte aqueles que ele julga que devem viver.\n\nSua principal habilidade se baseia em explosão de chakra conhecida como técnica dos oito portões e diferentes técnicas de luta que se unem em um estilo único conhecido como Lótus taijutsu",
     hp: 138,
     chakra: 55,
+    isDead: true,
+    killedBy: "9º Portão: Ressureição",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FNajin%20Hatake.png?alt=media",
     techniques: [
       {
@@ -711,7 +768,7 @@ export const initialData: Character[] = [
       },
       {
         name: "Sennin Fuka",
-        classification: "S",
+        classification: "A+",
         nature: "Senjutsu",
         description: "Após estudar cuidadosamente a antiga bandana de Raikun, Najin percebe um símbolo escondido em sua parte interna acompanhado da inscrição: 'Se precisar, utilize'. Investigando o significado daquele selo ancestral, ele descobre que se trata de um contrato espiritual ligado aos lendários cães sábios. Ao realizar o ritual de invocação descrito no símbolo, Najin convoca um antigo espírito canino que imediatamente reconhece o chakra de Raikun fluindo dentro dele. Ao perceber que Najin é filho do antigo guerreiro, o cão lendário aceita treiná-lo nas artes do Senjutsu canino. Durante o treinamento nas montanhas espirituais, Najin consegue despertar uma forma inicial do Modo Sábio dos Cães. Porém, devido ao chakra profano que circula permanentemente em seu corpo, o equilíbrio entre energia natural e chakra interno torna-se extremamente instável. Ao ativar essa forma incompleta, uma aura azul densa misturada com tons arroxeados envolve seu corpo, enquanto marcas luminosas surgem em seu rosto lembrando presas e padrões tribais caninos. Seus olhos assumem um brilho predatório e seus sentidos são drasticamente amplificados, permitindo detectar chakra oculto e intenções hostis. No entanto, Najin ainda não domina completamente o fluxo de energia natural, fazendo com que o modo seja irregular e difícil de sustentar.",
         destruction: "Altamente destrutiva, porém imprevisível. O aumento de força física, velocidade e percepção transforma Najin em um combatente extremamente perigoso. Entretanto, por ser uma forma incompleta, a energia pode explodir de maneira instável, gerando ondas de choque descontroladas ou falhas no fluxo de chakra durante o combate.",
@@ -740,14 +797,15 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FTecnicas%2F11%20-%20Tomon%3A%20Ura%20Renge.jpg?alt=media"
       }
     ],
-    arsenal: [10, 11],
+    arsenal: [9, 10],
     gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNajin%20Hatake%2FPr_logo.png?alt=media&v=1784658585741971", caption: "Prólogo", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FGaleria%2FLinha%20do%20Tempo%2F01%20-%20Cl%C3%A1ssico.png?alt=media", caption: "Clássico", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FGaleria%2FLinha%20do%20Tempo%2F02%20-%201%C2%AA%20Temporada.png?alt=media", caption: "1ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FGaleria%2FLinha%20do%20Tempo%2F03%20-%202%C2%AA%20Temporada.png?alt=media", caption: "2ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FGaleria%2FLinha%20do%20Tempo%2F04%20-%20Ambu.png?alt=media", caption: "Ambu", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FGaleria%2FLinha%20do%20Tempo%2F05%20-%203%C2%AA%20Temporada.png?alt=media", caption: "3ª Temporada", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FGaleria%2FLinha%20do%20Tempo%2F06%20-%20Luta%20contra%20os%20Kages.png?alt=media", caption: "Luta contra os Kages", category: "era" }
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNajin%20Hatake%2F4__Temporada.png?alt=media&v=1784658584260783", caption: "4ª Temporada", category: "era" },
     ],
     stats: { strength: 16, dexterity: 6, agility: 16, intelligence: 9, spirit: 15, vigor: 16, perception: 6 },
     powers: [
@@ -776,7 +834,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     name: "Takeshi Hatake",
     clan: "Hatake",
     categories: ["Personagem", "Konohagakure"],
@@ -850,7 +908,17 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F06%20-%20Takeshi%20Hatake%2FTecnicas%2F06%20-%20Raiton%3A%20Chidori.png?alt=media"
       }
     ],
-    arsenal: [12, 13, 14, 15],
+    arsenal: [11, 12, 13, 14],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTakeshi%20Hatake%2FPr_logo.png?alt=media&v=1784658775265048", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTakeshi%20Hatake%2FCl_ssico.png?alt=media&v=1784579817581327", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTakeshi%20Hatake%2F1__Temporada.png?alt=media&v=1784579820193594", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTakeshi%20Hatake%2F2__Temporada.png?alt=media&v=1784579822782599", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTakeshi%20Hatake%2FAmbu.png?alt=media&v=1784658608995206", caption: "Ambu", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTakeshi%20Hatake%2F3__Temporada.png?alt=media&v=1784579825422449", caption: "Luta contra o Omega", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTakeshi%20Hatake%2F3__Temporada.png?alt=media&v=1784658604434695", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTakeshi%20Hatake%2F4__Temporada.png?alt=media&v=1784658606921125", caption: "4ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 13, spirit: 16, vigor: 11, perception: 16 },
     powers: [
       { name: "Ranton", level: 8 },
@@ -874,7 +942,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 7,
+    id: 8,
     name: "Shoei Sarutobi",
     clan: "Sarutobi",
     categories: ["Personagem", "Konohagakure"],
@@ -888,7 +956,15 @@ export const initialData: Character[] = [
     isDead: true,
     killedBy: "Omega",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F07%20-%20Shoei%20Sarutobi%2FShoei%20Sarutobi.jpg?alt=media",
-    arsenal: [10],
+    arsenal: [9],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShoei%20Sarutobi%2FPr_logo.png?alt=media&v=1784658602065060", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShoei%20Sarutobi%2FCl_ssico.png?alt=media&v=1784579830803781", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShoei%20Sarutobi%2F1__Temporada.png?alt=media&v=1784579833440494", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShoei%20Sarutobi%2F2__Temporada.png?alt=media&v=1784579836036249", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShoei%20Sarutobi%2FAmbu.png?alt=media&v=1784579838698504", caption: "Ambu", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShoei%20Sarutobi%2FLuta_contra_o_Omega.png?alt=media&v=1784658599993727", caption: "Luta contra o Omega", category: "era" },
+    ],
     stats: { strength: 4, dexterity: 12, agility: 4, intelligence: 9, spirit: 11, vigor: 8, perception: 12 },
     powers: [
       { name: "Son Goku", level: 6 },
@@ -909,7 +985,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     name: "Furyuzan Chinoike",
     clan: "Chinoike",
     categories: ["Personagem", "OCA", "Konohagakure"],
@@ -1023,7 +1099,14 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F08%20-%20Furyuzan%20Chinoike%2FTecnicas%2F10%20-%20Doton%3A%20Ketton%20K%C5%8Dchi%20no%20Yagura.png?alt=media"
       }
     ],
-    arsenal: [16, 17],
+    arsenal: [15, 16],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FFuryuzan%20Chinoike%2FPr_logo.png?alt=media&v=1784658547841356", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FFuryuzan%20Chinoike%2F1__Temporada.png?alt=media&v=1784658537782136", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FFuryuzan%20Chinoike%2F2__Temporada.png?alt=media&v=1784658540232570", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FFuryuzan%20Chinoike%2F3__Temporada.png?alt=media&v=1784658542974015", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FFuryuzan%20Chinoike%2F4__Temporada.png?alt=media&v=1784658545291662", caption: "4ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 16, spirit: 16, vigor: 8, perception: 16 },
     powers: [
       { name: "Aokiba", level: 8 },
@@ -1047,7 +1130,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 9,
+    id: 3,
     name: "Nagare Uzumaki",
     clan: "Uzumaki",
     categories: ["Personagem", "Konohagakure", "OCA"],
@@ -1161,17 +1244,17 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FTecnicas%2F10%20-%20Kagura%20Shingan.png?alt=media"
       }
     ],
-    arsenal: [18, 20],
+    arsenal: [17, 19],
     gallery: [
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F01%20-%20Beb%C3%AA.png?alt=media", caption: "Bebê", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNagare%20Uzumaki%2FPr_logo.png?alt=media&v=1784658579901730", caption: "Prólogo", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F02%20-%20Cl%C3%A1ssico.png?alt=media", caption: "Clássico", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F03%20-%201%C2%AA%20Temporada.png?alt=media", caption: "1ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F04%20-%202%C2%AA%20Temporada.png?alt=media", caption: "2ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F05%20-%20Kaminari.png?alt=media", caption: "Kaminari", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F06%20-%20Luta%20contra%20Omega.png?alt=media", caption: "Luta contra Omega", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F06%20-%20Luta%20contra%20Omega.png?alt=media", caption: "Luta contra o Omega", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F07%20-%203%C2%AA%20Temporada.png?alt=media", caption: "3ª Temporada", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F08%20-%20Luta%20contra%20Kages.png?alt=media", caption: "Luta contra Kages", category: "era" },
-      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F09%20-%204%C2%AA%20Temporada.png?alt=media", caption: "4ª Temporada", category: "era" }
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F09%20-%204%C2%AA%20Temporada.png?alt=media", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F09%20-%204%C2%AA%20Temporada.png?alt=media", caption: "5ª Temporada", category: "era" },
     ],
     stats: { strength: 16, dexterity: 6, agility: 16, intelligence: 8, spirit: 16, vigor: 16, perception: 6 },
     powers: [
@@ -1222,7 +1305,13 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F10%20-%20Kazuki%20Hoshigaki%2FTecnicas%2F01%20-%20Kraken%3A%20Oodama%20Rasengan.png?alt=media"
       },
     ],
-    arsenal: [18],
+    arsenal: [17],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKazuki%20Hoshigaki%2FPr_logo.png?alt=media&v=1784658565874696", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKazuki%20Hoshigaki%2F1__Temporada.png?alt=media&v=1784658558132242", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKazuki%20Hoshigaki%2F2__Temporada.png?alt=media&v=1784658560720202", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKazuki%20Hoshigaki%2FLuta_contra_o_Omega.png?alt=media&v=1784658563457575", caption: "Luta contra o Omega", category: "era" },
+    ],
     stats: { strength: 12, dexterity: 4, agility: 12, intelligence: 4, spirit: 12, vigor: 12, perception: 4 },
     powers: [
       { name: "Geidetsu", level: 6 },
@@ -1307,7 +1396,12 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F11%20-%20Kenma%20Soryo%2FTecnicas%2F05%20-%20Doton%3A%20Kong%C5%8D%20Ganheki%20no%20Tate.jpg?alt=media"
       }
     ],
-    arsenal: [21, 22, 23, 24, 25, 26],
+    arsenal: [20, 21, 22, 24, 25, 26],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKenma%20Soryo%2F3__Temporada.png?alt=media&v=1784658568643724", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKenma%20Soryo%2F4__Temporada.png?alt=media&v=1784658571584961", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKenma%20Soryo%2F5_Temporada.png?alt=media&v=1784659203079239", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 16, dexterity: 6, agility: 16, intelligence: 16, spirit: 8, vigor: 16, perception: 6 },
     powers: [
       { name: "Senjutsu", level: 8 },
@@ -1329,7 +1423,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 12,
+    id: 18,
     name: "Naoki Uchiha",
     clan: "Uchiha",
     categories: ["NPC", "Konohagakure"],
@@ -1423,6 +1517,14 @@ export const initialData: Character[] = [
       },
     ],
     arsenal: [27],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaoki%20Uchiha%2FPr_logo.png?alt=media&v=1784569517901038", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaoki%20Uchiha%2FCl_ssico.png?alt=media&v=1784569515546745", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaoki%20Uchiha%2F1__Temporada.png?alt=media&v=1784751334238", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaoki%20Uchiha%2F2__Temporada.png?alt=media&v=1784569513074564", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaoki%20Uchiha%2F3__Temporada.png?alt=media&v=1784751335715", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaoki%20Uchiha%2F5__Temporada.png?alt=media&v=1784751337660", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 7, dexterity: 18, agility: 7, intelligence: 18, spirit: 18, vigor: 10, perception: 18 },
     powers: [
       { name: "Katon", level: 9 },
@@ -1450,7 +1552,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 13,
+    id: 19,
     name: "Hisoka Senju",
     clan: "Senju",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -1474,6 +1576,13 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F13%20-%20Hisoka%20Senju%2FTecnicas%2F01%20-%20Mokuton%3A%20Shinkai%20Senju%20no%20Majin.png?alt=media"
       },
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHisoka%20Senju%2FPr_logo.png?alt=media&v=1784569496247360", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHisoka%20Senju%2FCl_ssico.png?alt=media&v=1784569493683142", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHisoka%20Senju%2F1__Temporada.png?alt=media&v=1784751315158", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHisoka%20Senju%2F2__Temporada.png?alt=media&v=1784569491800938", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHisoka%20Senju%2F5__Temporada.png?alt=media&v=1784751316709", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 7, dexterity: 18, agility: 7, intelligence: 14, spirit: 18, vigor: 14, perception: 18 },
     powers: [
       { name: "Mokuton", level: 9 },
@@ -1494,7 +1603,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 14,
+    id: 21,
     name: "Rock Gunma",
     clan: "Gunma",
     categories: ["NPC", "Konohagakure", "Iwagakure"],
@@ -1571,6 +1680,11 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [26],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FRock%20Gunma%2FPr_logo.png?alt=media&v=1784569544304314", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FRock%20Gunma%2F1__Temporada.png?alt=media&v=1784751340626", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FRock%20Gunma%2F2__Temporada.png?alt=media&v=1784569541710133", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 10, dexterity: 26, agility: 10, intelligence: 26, spirit: 26, vigor: 18, perception: 26 },
     powers: [
       { name: "Gyuki", level: 13 },
@@ -1596,7 +1710,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 15,
+    id: 22,
     name: "Hiroshi Hanzo",
     clan: "Hanzo",
     categories: ["NPC", "Konohagakure", "OCA", "Kumogakure"],
@@ -1639,7 +1753,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 16,
+    id: 23,
     name: "Tobirama Senju",
     clan: "Senju",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -1654,6 +1768,11 @@ export const initialData: Character[] = [
     killedBy: "Omega",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F16%20-%20Tobirama%20Senju%2FTobirama%20Senju.jpg?alt=media",
     arsenal: [40, 41],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTobirama%20Senju%2FPr_logo.png?alt=media&v=1784579842794518", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTobirama%20Senju%2FCl_ssico.png?alt=media&v=1784579845339511", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTobirama%20Senju%2F1__Temporada.png?alt=media&v=1784579847926558", caption: "Segundo Hokage", category: "era" },
+    ],
     stats: { strength: 12, dexterity: 30, agility: 12, intelligence: 30, spirit: 30, vigor: 18, perception: 30 },
     powers: [
       { name: "Suiton", level: 15 },
@@ -1674,7 +1793,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 17,
+    id: 24,
     name: "Sho Uchiha",
     clan: "Uchiha",
     categories: ["NPC", "Konohagakure"],
@@ -1688,6 +1807,10 @@ export const initialData: Character[] = [
     isDead: true,
     killedBy: "Omega",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F17%20-%20Sho%20Uchiha%2FSho%20Uchiha.jpg?alt=media",
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FSho%20Uchiha%2F2__Temporada.png?alt=media&v=1784569559841890", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FSho%20Uchiha%2F1__Temporada.png?alt=media&v=1784569557425927", caption: "Luta contra o Hades", category: "era" },
+    ],
     stats: { strength: 28, dexterity: 12, agility: 28, intelligence: 12, spirit: 28, vigor: 28, perception: 18 },
     powers: [
       { name: "Katon", level: 14 },
@@ -1714,7 +1837,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 18,
+    id: 25,
     name: "Hoshiro Hyuga",
     clan: "Hyuga",
     categories: ["NPC", "Konohagakure"],
@@ -1728,6 +1851,11 @@ export const initialData: Character[] = [
     isDead: true,
     killedBy: "Omega",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F18%20-%20Hoshiro%20Hyuga%2FHoshiro%20Hyuga.jpg?alt=media",
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHoshiro%20Hyuga%2FCl_ssico.png?alt=media&v=1784569503443462", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHoshiro%20Hyuga%2F1__Temporada.png?alt=media&v=1784569498466720", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHoshiro%20Hyuga%2F2__Temporada.png?alt=media&v=1784569500965869", caption: "Luta contra o Hades", category: "era" },
+    ],
     stats: { strength: 12, dexterity: 28, agility: 12, intelligence: 28, spirit: 18, vigor: 28, perception: 28 },
     powers: [
       { name: "Juken", level: 14 },
@@ -1754,7 +1882,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 19,
+    id: 26,
     name: "Yumi Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure"],
@@ -1766,6 +1894,10 @@ export const initialData: Character[] = [
     hp: 180,
     chakra: 128,
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F19%20-%20Yumi%20Uzumaki%2FYumi%20Uzumaki.jpg?alt=media",
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYumi%20Uzumaki%2F1__Temporada.png?alt=media&v=1784665903124728", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYumi%20Uzumaki%2F4__Temporada.png?alt=media&v=1784751371543", caption: "4ª Temporada", category: "era" },
+    ],
     stats: { strength: 10, dexterity: 25, agility: 10, intelligence: 25, spirit: 25, vigor: 15, perception: 25 },
     powers: [
       { name: "Futon", level: 12 },
@@ -1789,7 +1921,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 20,
+    id: 27,
     name: "Asami Hyuga",
     clan: "Hyuga",
     categories: ["NPC", "Konohagakure"],
@@ -1825,7 +1957,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 21,
+    id: 28,
     name: "Kaizuka Hyuga",
     clan: "Hyuga",
     categories: ["NPC", "Konohagakure"],
@@ -1838,6 +1970,10 @@ export const initialData: Character[] = [
     chakra: 64,
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F21%20-%20Kaizuka%20Hyuga%2FKaizuka%20Hyuga.jpg?alt=media",
     arsenal: [28],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKaizuka%20Hyuga%2FPr_logo.png?alt=media&v=1784751319598", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKaizuka%20Hyuga%2F5__Temporada.png?alt=media&v=1784751318175", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 12, dexterity: 30, agility: 12, intelligence: 30, spirit: 18, vigor: 30, perception: 30 },
     powers: [
       { name: "Juken", level: 15 },
@@ -1861,7 +1997,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 22,
+    id: 29,
     name: "Raikun Hatake",
     clan: "Hatake",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -1917,7 +2053,13 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F22%20-%20Raikun%20Hatake%2FTecnicas%2F04%20-%20Fuinjutsu%3A%20Shiki%20Fujin%20%E2%80%94%20F%C5%ABin%20Ky%C5%8Dzetsu.png?alt=media"
       }
     ],
-    arsenal: [29],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FRaikun%20Hatake%2FPr_logo.png?alt=media&v=1785263395668", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FRaikun%20Hatake%2FCl_ssico.png?alt=media&v=1785263391691", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FRaikun%20Hatake%2F1__Temporada.png?alt=media&v=1785263387848", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FRaikun%20Hatake%2FLuta_contra_o_Hades.png?alt=media&v=1785263393623", caption: "Luta contra o Hades", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FRaikun%20Hatake%2F2__Temporada.png?alt=media&v=1785263389785", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 30, dexterity: 12, agility: 30, intelligence: 30, spirit: 18, vigor: 30, perception: 12 },
     powers: [
       { name: "Hashoumon Tonkou", level: 15 },
@@ -1943,7 +2085,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 23,
+    id: 35,
     name: "Hirato Ishi",
     clan: "Ishi",
     categories: ["NPC", "Iwagakure"],
@@ -1957,7 +2099,10 @@ export const initialData: Character[] = [
     isDead: true,
     killedBy: "Omega",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F23%20-%20Hirato%20Ishi%2FHirato%20Ishi.jpg?alt=media",
-    arsenal: [5],
+    arsenal: [4],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHirato%20Ishi%2F2__Temporada.png?alt=media&v=1784665887463666", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 8, dexterity: 20, agility: 20, intelligence: 12, spirit: 20, vigor: 20, perception: 8 },
     powers: [
       { name: "Katon", level: 10 },
@@ -1980,7 +2125,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 24,
+    id: 36,
     name: "Hikaru Ishi",
     clan: "Ishi",
     categories: ["NPC", "Iwagakure"],
@@ -1995,6 +2140,9 @@ export const initialData: Character[] = [
     killedBy: "Nagare Uzumaki",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F24%20-%20Hikaru%20Ishi%2FHikaru%20Ishi.jpg?alt=media",
     arsenal: [30],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHikaru%20Ishi%2F2__Temporada.png?alt=media&v=1784665885201237", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 8, dexterity: 20, agility: 8, intelligence: 20, spirit: 20, vigor: 12, perception: 20 },
     powers: [
       { name: "Raiton", level: 10 },
@@ -2016,7 +2164,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 25,
+    id: 69,
     name: "Kaien Ishi (Omega)",
     clan: "Ishi",
     categories: ["NPC", "OCA", "Iwagakure"],
@@ -2063,6 +2211,9 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [31],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKaien%20Ishi%20(Omega)%2F2__Temporada.png?alt=media&v=1784665890017497", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 30, dexterity: 12, agility: 12, intelligence: 30, spirit: 18, vigor: 30, perception: 30 },
     powers: [
       { name: "Doton", level: 15 },
@@ -2103,7 +2254,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 26,
+    id: 61,
     name: "Akairo Uchiha (A)",
     clan: "Uchiha",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -2160,6 +2311,10 @@ export const initialData: Character[] = [
       }
 
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAkairo%20Uchiha%20(A)%2F1__Temporada.png?alt=media&v=1784665846434707", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAkairo%20Uchiha%20(A)%2F2__Temporada.png?alt=media&v=1784665848268328", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 8, dexterity: 20, agility: 20, intelligence: 12, spirit: 20, vigor: 20, perception: 8 },
     powers: [
       { name: "Son Goku", level: 10 },
@@ -2195,7 +2350,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 27,
+    id: 62,
     name: "Borashi Hyuga (B)",
     clan: "Hyuga",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -2249,6 +2404,10 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F27%20-%20Borashi%20Hyuga%20(B)%2FTecnicas%2F04%20-%20Fuj%C5%8Dgan%3A%20Modo%20Chakra%20Profano.png?alt=media"
       }
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FBorashi%20Hyuga%20(B)%2F1__Temporada.png?alt=media&v=1784665851999751", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FBorashi%20Hyuga%20(B)%2F2__Temporada.png?alt=media&v=1784665854341680", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 8, dexterity: 20, agility: 8, intelligence: 12, spirit: 20, vigor: 20, perception: 20 },
     powers: [
       { name: "Juuken", level: 10 },
@@ -2284,7 +2443,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 28,
+    id: 63,
     name: "Chisaki Dokuhana (C)",
     clan: "Dokuhana",
     categories: ["NPC", "OCA", "Sunagakure"],
@@ -2328,6 +2487,10 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F28%20-%20Chisaki%20Dokuhana%20(C)%2FTecnicas%2F03%20-%20Senpo%3A%20Shikkotsu%20Sennin.png?alt=media"
       }
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FChisaki%20Dokuhana%20(C)%2F1__Temporada.png?alt=media&v=1784665856914914", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FChisaki%20Dokuhana%20(C)%2F2__Temporada.png?alt=media&v=1784665859155605", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 8, dexterity: 20, agility: 8, intelligence: 20, spirit: 20, vigor: 12, perception: 20 },
     powers: [
       { name: "Shoton", level: 10 },
@@ -2350,7 +2513,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 29,
+    id: 64,
     name: "Daiki Uzumaki (D)",
     clan: "Uzumaki",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -2416,6 +2579,10 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F29%20-%20Daiki%20Uzumaki%20(D)%2FTecnicas%2F05%20-%20Kagura%20Shingan.png?alt=media"
       }
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FDaiki%20Uzumaki%20(D)%2F1__Temporada.png?alt=media&v=1784665861653860", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FDaiki%20Uzumaki%20(D)%2F2__Temporada.png?alt=media&v=1784665863940737", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 7, dexterity: 18, agility: 7, intelligence: 10, spirit: 18, vigor: 18, perception: 18 },
     powers: [
       { name: "Hoshasenton", level: 9 },
@@ -2440,7 +2607,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 30,
+    id: 65,
     name: "Etsuko Senju (E)",
     clan: "Senju",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -2465,6 +2632,10 @@ export const initialData: Character[] = [
         status: "Uso restrito. Requer domínio absoluto de Hiraishin e controle preciso do elemento calor para evitar colapso de chakra.",
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F30%20-%20Etsuko%20Senju%20(E)%2FTecnicas%2F01%20-%20Shakuton%20Hiraishin%3A%20K%C5%8Dy%C5%8D%20Rasengan%20no%20Ame.png?alt=media"
       },
+    ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FEtsuko%20Senju%20(E)%2F1__Temporada.png?alt=media&v=1784665866438279", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FEtsuko%20Senju%20(E)%2F2__Temporada.png?alt=media&v=1784665868699115", caption: "2ª Temporada", category: "era" },
     ],
     stats: { strength: 5, dexterity: 14, agility: 5, intelligence: 13, spirit: 14, vigor: 7, perception: 14 },
     powers: [
@@ -2491,7 +2662,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 31,
+    id: 66,
     name: "Fuyuki Dokuhana (F)",
     clan: "Dokuhana",
     categories: ["NPC", "OCA", "Sunagakure"],
@@ -2517,6 +2688,10 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F31%20-%20Fuyuki%20Dokuhana%20(F)%2FTecnicas%2F01%20-%20Fuyuki%3A%20Jigoku%20Dokuketsu%20%E2%80%93%20Chi%20no%20Enkai%20Metsub%C5%8D.png?alt=media"
       },
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FFuyuki%20Dokuhana%20(F)%2F1__Temporada.png?alt=media&v=1784665871034541", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FFuyuki%20Dokuhana%20(F)%2F2__Temporada.png?alt=media&v=1784665873288940", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 5, dexterity: 14, agility: 5, intelligence: 13, spirit: 14, vigor: 7, perception: 14 },
     powers: [
       { name: "Dokujutsu", level: 7 },
@@ -2538,7 +2713,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 32,
+    id: 67,
     name: "Genei (G)",
     clan: "Desconhecido",
     categories: ["NPC", "OCA"],
@@ -2574,6 +2749,10 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F32%20-%20Genei%20(G)%2FTecnicas%2F02%20-%20Senpo%3A%20Trono%20da%20Forja%20Profana%20Absoluta.png?alt=media"
       },
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FGenei%20(G)%2F1__Temporada.png?alt=media&v=1784665875568368", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FGenei%20(G)%2F2__Temporada.png?alt=media&v=1784665877757957", caption: "2ª Temporada", category: "era" },
+    ],
     stats: { strength: 8, dexterity: 20, agility: 20, intelligence: 12, spirit: 20, vigor: 20, perception: 8 },
     powers: [
       { name: "Koton", level: 10 },
@@ -2606,7 +2785,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 33,
+    id: 68,
     name: "Hayato Hanzo (H)",
     clan: "Hanzo",
     categories: ["NPC", "OCA", "Kumogakure"],
@@ -2631,6 +2810,10 @@ export const initialData: Character[] = [
         status: "Consome quantidades colossais de chakra e exige controle mental absoluto. Uso prolongado pode causar sobrecarga neural e colapso sensorial devido à percepção simultânea de múltiplas trocas espaciais.",
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F33%20-%20Hayato%20Hanzo%20(H)%2FTecnicas%2F01%20-%20Hanzo%3A%20Shiroki%20Kaminari%20%E2%80%93%20Amenotejikara%20no%20Shinsei.png?alt=media"
       },
+    ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHayato%20Hanzo%20(H)%2F1__Temporada.png?alt=media&v=1784665880502246", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHayato%20Hanzo%20(H)%2F2__Temporada.png?alt=media&v=1784665882764819", caption: "2ª Temporada", category: "era" },
     ],
     stats: { strength: 7, dexterity: 18, agility: 7, intelligence: 18, spirit: 18, vigor: 10, perception: 18 },
     powers: [
@@ -2660,7 +2843,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 34,
+    id: 31,
     name: "Hashirama Senju",
     clan: "Senju",
     categories: ["NPC", "Konohagakure"],
@@ -2704,7 +2887,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 35,
+    id: 32,
     name: "Madara Uchiha",
     clan: "Uchiha",
     categories: ["NPC", "Konohagakure"],
@@ -2747,7 +2930,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 36,
+    id: 12,
     name: "Airi Senju",
     clan: "Senju",
     categories: ["NPC", "Konohagakure"],
@@ -2831,6 +3014,11 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F36%20-%20Airi%20Senju%2FTecnicas%2F07%20-%20Mokuton%3A%20Kisei%20no%20Hana.jpg?alt=media"
       }
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAiri%20Senju%2FPr_logo.png?alt=media&v=1784751292122", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAiri%20Senju%2FCl_ssico.png?alt=media&v=1784665844459365", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAiri%20Senju%2F3__Temporada.png?alt=media&v=1784665841541310", caption: "4ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 16, spirit: 16, vigor: 8, perception: 16 },
     powers: [
       { name: "Mokuton", level: 8 },
@@ -2853,7 +3041,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 37,
+    id: 13,
     name: "Ayumi Uchiha",
     clan: "Uchiha",
     categories: ["NPC", "Konohagakure"],
@@ -2927,6 +3115,14 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F37%20-%20Ayumi%20Uchiha%2FTecnicas%2F06%20-%20Fuinjutsu%3A%20Marca%20Carmesim.jpg?alt=media"
       }
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAyumi%20Uchiha%2FPr_logo.png?alt=media&v=1784751310559", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAyumi%20Uchiha%2FCl_ssico.png?alt=media&v=1784751309226", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAyumi%20Uchiha%2F1__Temporada.png?alt=media&v=1784751303556", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAyumi%20Uchiha%2F2__Temporada.png?alt=media&v=1784751304983", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAyumi%20Uchiha%2F4__Temporada.png?alt=media&v=1784751306506", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAyumi%20Uchiha%2F5__Temporada.png?alt=media&v=1784751307911", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 8, spirit: 16, vigor: 16, perception: 16 },
     powers: [
       { name: "Katon", level: 8 },
@@ -2949,7 +3145,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 38,
+    id: 14,
     name: "Shizumi Uchiha",
     clan: "Uchiha",
     categories: ["NPC", "Konohagakure"],
@@ -3013,6 +3209,14 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F38%20-%20Shizumi%20Uchiha%2FTecnicas%2F05%20-%20Kaminari%3A%20Chidori.jpg?alt=media"
       }
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShizumi%20Uchiha%2FPr_logo.png?alt=media&v=1784751367539", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShizumi%20Uchiha%2FCl_ssico.png?alt=media&v=1784751366684", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShizumi%20Uchiha%2F1__Temporada.png?alt=media&v=1784751361241", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShizumi%20Uchiha%2F2__Temporada.png?alt=media&v=1784751362639", caption: "2ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShizumi%20Uchiha%2F4__Temporada.png?alt=media&v=1784751364128", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShizumi%20Uchiha%2F5__Temporada.png?alt=media&v=1784751365273", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 15, spirit: 16, vigor: 9, perception: 16 },
     powers: [
       { name: "Katon", level: 8 },
@@ -3037,7 +3241,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 39,
+    id: 75,
     name: "Hades",
     clan: "Desconhecido",
     categories: ["NPC", "OCA"],
@@ -3080,7 +3284,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 40,
+    id: 74,
     name: "Beta",
     clan: "Desconhecido",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -3182,374 +3386,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 41,
-    name: "Alpha",
-    clan: "Desconhecido",
-    categories: ["NPC", "OCA", "Kumogakure"],
-    titles: ["Raikage", "Deus do Raiton"],
-    nc: 28,
-    position: "Raikage",
-    role: "?",
-    description: "",
-    hp: 0,
-    chakra: 0,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F41%20-%20Alpha%2FAlpha.jpg?alt=media",
-    techniques: [
-      {
-        name: "Shiroki Kaminari: Ten no Ikazuchi — Kōsaton no Shūen",
-        classification: "Z",
-        nature: "Shiroki Kaminari + Kōsaton",
-        description: "Alpha expande sua percepção ao limite absoluto e conecta o campo eletromagnético do ambiente diretamente ao fluxo do Kōsaton. Ao identificar o alvo, ele o marca com uma assinatura invisível de Shiroki Kaminari que não apenas rastreia, mas fixa sua existência como um ponto inevitável dentro da rede eletromagnética. Essa marca ignora distância, velocidade e ocultação, tornando impossível escapar ou se esconder. No instante seguinte, Alpha converte seu próprio corpo em um canal de luz fluida e estabelece uma conexão direta entre o alvo e os céus. Um raio primordial de energia branca desce instantaneamente, não viajando pelo espaço, mas surgindo já conectado ao ponto marcado. A descarga é composta por Purazomaton luminoso e energia eletromagnética absoluta, atravessando qualquer defesa, desintegrando matéria e colapsando o chakra no impacto. Caso o alvo resista, a conexão permanece ativa, permitindo que novos raios sejam reconectados repetidamente até a completa aniquilação. Durante a execução, o campo ao redor sofre ionização extrema, distorcendo percepção, movimento e estabilidade energética.",
-        destruction: "Nível apocalíptico inevitável. O ataque ignora evasão, atravessa defesas absolutas e causa aniquilação total no ponto de impacto. Pode ser repetido enquanto a marca estiver ativa, tornando a sobrevivência praticamente impossível.",
-        history: "Desenvolvida quando Alpha compreendeu que o Shiroki Kaminari poderia não apenas reconectar pontos no espaço, mas também ligar diretamente o campo de batalha a fontes naturais de energia absoluta. Ao combinar essa propriedade com o fluxo do Kōsaton, ele criou uma técnica onde o próprio céu se torna um instrumento de execução inevitável.",
-        status: "Consumo colossal de chakra e extrema exigência de controle. Requer marcação prévia do alvo e manutenção da conexão eletromagnética. Uso contínuo pode causar sobrecarga severa no sistema nervoso e colapso físico devido à quantidade de energia canalizada.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F41%20-%20Alpha%2FTecnicas%2F01%20-%20Shiroki%20Kaminari%3A%20Ten%20no%20Ikazuchi%20%E2%80%94%20K%C5%8Dsaton%20no%20Sh%C5%ABen.jpg?alt=media"
-      },
-      {
-        name: "Shiroki Kaminari: Amenotejikara",
-        classification: "Z",
-        nature: "Shiroki Kaminari",
-        description: "Alpha expande sua percepção eletromagnética ao máximo e infunde seu chakra no campo eletromagnético natural do ambiente. Ao conectar-se a essa rede invisível que permeia tudo, ele transcende o deslocamento físico e realiza uma troca instantânea de posição. Diferente de um simples teletransporte, Alpha pode trocar qualquer coisa dentro de seu campo de visão por outra — aliados, inimigos, ataques ou até partes do ambiente. O deslocamento ocorre através do Shiroki Kaminari, um raio branco que atravessa o espaço-tempo e reconecta as posições de forma instantânea, ignorando distância, barreiras físicas e até defesas de chakra profano.",
-        destruction: "Baixo direto, porém extremamente perigoso taticamente. Pode reposicionar inimigos para situações fatais, redirecionar ataques de nível alto ou remover completamente defesas do campo.",
-        history: "Desenvolvida após Alpha compreender que o Shiroki Kaminari não apenas destrói, mas também pode 'reconectar' pontos no espaço-tempo através de campos eletromagnéticos.",
-        status: "Consome grande quantidade de chakra e exige percepção extrema. Uso contínuo pode sobrecarregar o sistema nervoso devido à leitura constante do campo eletromagnético.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F41%20-%20Alpha%2FTecnicas%2F02%20-%20Shiroki%20Kaminari%3A%20Amenotejikara.jpg?alt=media"
-      },
-      {
-        name: "Shiroki Kaminari: Hakai no Raijin",
-        classification: "Z",
-        nature: "Shiroki Kaminari",
-        description: "Alpha invoca uma tempestade absoluta e canaliza o poder elétrico ao seu limite, condensando nuvens carregadas em um vórtice acima do campo. Um raio primordial desce dos céus e é convertido em Shiroki Kaminari — um raio branco puro que transcende matéria e energia. Em suas mãos, a eletricidade se transforma em uma lança divina de luz branca. No mesmo instante, um dragão colossal de relâmpago branco e Purazomaton ionizado desce dos céus, sincronizado com o arremesso da lança. O impacto duplo atravessa o espaço ao redor, rompendo barreiras dimensionais e desintegrando qualquer forma de defesa, incluindo técnicas espirituais ou de chakra profano.",
-        destruction: "Nível apocalíptico. O impacto atravessa tudo em linha reta, podendo apagar múltiplas camadas de defesa e causar destruição massiva em larga escala.",
-        history: "Evolução do conceito do Kaminoyari elevada ao estado absoluto através do Shiroki Kaminari.",
-        status: "Consumo extremo de chakra. Requer preparo e canalização prévia. Pode causar colapso físico se o corpo não suportar a energia condensada.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F41%20-%20Alpha%2FTecnicas%2F03%20-%20Shiroki%20Kaminari%3A%20Hakai%20no%20Raijin.jpg?alt=media"
-      },
-      {
-        name: "Kōsaton: Hikari Ryūdō — Raijin Senkō",
-        classification: "Z",
-        nature: "Kōsaton",
-        description: "Alpha ativa o Kōsaton em seu estado máximo e converte completamente seu corpo em um fluxo de luz ionizada fluida. Nesse estado, ele deixa de se mover de forma linear e passa a se propagar instantaneamente pelo campo como um raio líquido, surgindo diretamente no ponto de impacto. Cada avanço já é um golpe concluído, conectando socos e chutes sem trajetória perceptível. Durante o fluxo, seu corpo se fragmenta em feixes luminosos que se reconectam no momento do ataque, permitindo que ele atinja o alvo de múltiplos ângulos em sequência contínua. O movimento não pode ser rastreado por meios convencionais, tornando impossível prever ou reagir com base em velocidade ou reflexo.",
-        destruction: "Extremamente alto em combate direto. Cada impacto ocorre com força máxima sem possibilidade de defesa tradicional, permitindo execução rápida de alvos de alto nível.",
-        history: "Desenvolvida como a manifestação máxima da velocidade do Kōsaton, onde Alpha abandona completamente o deslocamento físico e passa a lutar como um fluxo luminoso contínuo.",
-        status: "Consumo extremo de chakra por segundo. Exige controle absoluto para reconstrução corporal após cada movimento. Uso prolongado pode causar instabilidade física e falhas na recomposição do corpo.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F41%20-%20Alpha%2FTecnicas%2F04%20-%20K%C5%8Dsaton%3A%20Hikari%20Ry%C5%ABd%C5%8D%20%E2%80%94%20Raijin%20Senk%C5%8D.jpg?alt=media"
-      },
-      {
-        name: "Shiroki Kaminari: Kūkan Senretsu",
-        classification: "S++",
-        nature: "Shiroki Kaminari",
-        description: "Alpha condensa o Shiroki Kaminari em múltiplos pontos ao seu redor, criando cortes de raio branco que atravessam o espaço instantaneamente. Esses cortes não viajam — eles simplesmente surgem já conectando dois pontos diferentes, rasgando tudo entre eles. O resultado é uma sequência de fendas luminosas que ignoram distância e defesa, atingindo o alvo de múltiplos ângulos simultaneamente. Cada corte deixa uma instabilidade residual no espaço, dificultando regeneração e reconstrução de chakra.",
-        destruction: "Extremamente alto e preciso. Ideal para eliminar alvos de alto nível ou cortar múltiplas defesas simultaneamente.",
-        history: "Criada como aplicação refinada do Shiroki Kaminari, focada em precisão absoluta ao invés de destruição em massa.",
-        status: "Alto consumo de chakra e exige percepção espacial extrema. Uso excessivo pode causar instabilidade no próprio espaço ao redor do usuário.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F41%20-%20Alpha%2FTecnicas%2F05%20-%20Shiroki%20Kaminari%3A%20K%C5%ABkan%20Senretsu.jpg?alt=media"
-      },
-    ],
-    stats: { strength: 0, dexterity: 0, agility: 0, intelligence: 0, spirit: 0, vigor: 0, perception: 0 },
-    powers: [
-      { name: "Kosaton", level: 0 },
-      { name: "Futon", level: 0 },
-      { name: "Suiton", level: 0 },
-      { name: "Raiton", level: 0 },
-      { name: "Ranton", level: 0 },
-      { name: "Nintaijutsu", level: 0 }
-    ],
-    aptitudes: [
-      "Shiroki Kaminari",
-      "Kaminari",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-    ],
-  },
-  {
-    id: 42,
-    name: "Gama",
-    clan: "Desconhecido",
-    categories: ["NPC", "OCA", "Kirigakure"],
-    titles: ["Mizukage", "O Íon Vivo"],
-    nc: 28,
-    position: "Mizukage",
-    role: "?",
-    description: "Desconhecido",
-    hp: 0,
-    chakra: 0,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F42%20-%20Gama%2FGama.png?alt=media",
-    techniques: [
-      {
-        name: "Saiken + Purazumaton",
-        classification: "Z",
-        nature: "Saiken + Purazumaton",
-        description: "Gama ativa a Invocação Absoluta de Saiken e entra em sincronização total com sua Bijū de nascença. Diferente do simples Manto, Saiken manifesta-se fisicamente e tem seu corpo convertido em uma entidade de Purazomaton soberano através da Kekkei Tōta: Purazumaton. A lesma colossal transforma-se em uma forma energética massiva composta por Purazomaton ultraviscoso e corrosivo, envolto por descargas eletromagnéticas violentas. Suas caudas tornam-se correntes de Purazomaton líquido ionizado, capazes de atravessar matéria sólida e desintegrar chakra ao contato. Gama permanece no núcleo da entidade, fundindo completamente seu fluxo de chakra ao da Bijū e controlando a forma como uma extensão direta de sua consciência. Ao liberar a técnica, um domínio de Purazomaton absoluto se expande pelo campo de batalha. O solo se liquefaz sob temperaturas extremas, o ar ioniza-se violentamente e tempestades eletromagnéticas se formam instantaneamente. Técnicas inimigas começam a se dissipar e superaquecer antes mesmo de serem concluídas, enquanto o alvo pode ser aprisionado em uma esfera de contenção plasmática que consome e desintegra chakra continuamente até a completa aniquilação estrutural.",
-        destruction: "Nível apocalíptico. Capaz de transformar cidades inteiras em um inferno de Purazomaton ionizado. Estruturas físicas são vaporizadas sob calor extremo e defesas de chakra avançadas entram em colapso devido à instabilidade eletromagnética contínua. O dano é progressivo, energético e praticamente irreversível.",
-        history: "Despertada quando Gama abandonou a separação entre jinchūriki e Bijū, aceitando Saiken como parte inseparável de sua própria essência. Ao fundir completamente a Kekkei Tōta Purazumaton ao chakra integral da Seis-Caudas, nasceu a forma suprema de domínio plasmático no mundo shinobi.",
-        status: "Uso extremamente perigoso. Consome quantidades colossais de chakra de Gama e de Saiken simultaneamente. A instabilidade natural do Purazomaton exige controle mental absoluto. Caso a sincronização falhe, o domínio pode colapsar em uma explosão termoeletromagnética indiscriminada, atingindo aliados e inimigos sem distinção.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F42%20-%20Gama%2FTecnicas%2F01%20-%20Saiken%20%2B%20Purazumaton.png?alt=media"
-      },
-      {
-        name: "Saiken: Gensho Nenshō Honryū",
-        classification: "Z",
-        nature: "Saiken + Purazumaton",
-        description: "O portador envolve seu corpo com o Manto do Saiken, liberando a   energia viscosa e corrosiva da lesma de seis caudas. Em seguida, ativa sua Kekkei Tōta: Purazumaton, convertendo essa secreção energética em Purazomaton ultraviscoso ionizado. O manto assume tons azul-violeta intensos com relâmpagos internos constantes, enquanto correntes de Purazomaton líquido envolvem o corpo como uma armadura viva. Tentáculos colossais emergem das costas, formados por Purazomaton semi-estável envolto em descargas elétricas e névoa superaquecida. Cada movimento libera ondas de choque térmicas e pulsos eletromagnéticos que desintegram matéria e dissipam técnicas de chakra por sobrecarga energética.",
-        destruction: "Massivo, progressivo e energético. O campo de batalha é convertido em uma zona de ionização extrema, onde estruturas são vaporizadas e defesas de chakra entram em colapso por instabilidade molecular. O dano persiste devido à radiação térmica e aos pulsos eletromagnéticos contínuos.",
-        history: "Desenvolvida após o domínio absoluto do Manto do Saiken e o despertar completo da Kekkei Tōta Purazumaton. Ao compreender que a viscosidade corrosiva poderia servir como meio condutor para geração de Purazomaton estável, o usuário criou uma forma de combate onde ataque, supressão energética e aniquilação coexistem em um único domínio vivo.",
-        status: "Consome quantidades extremas de chakra e exige controle absoluto da estabilidade plasmática. Se mal controlada, pode causar colapso energético interno no próprio usuário. Utilizada apenas em batalhas de escala Kage ou confrontos onde contenção e destruição total são necessárias.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F42%20-%20Gama%2FTecnicas%2F02%20-%20Saiken%3A%20Gensho%20Nensh%C5%8D%20Honry%C5%AB.png?alt=media"
-      },
-      {
-        name: "Saiken: Purazuma Ōgi",
-        classification: "Z",
-        nature: "Saiken + Purazumaton",
-        description: "Gama realiza a invocação completa de Saiken em sua forma física verdadeira. Diferente de uma manifestação parcial ou manto, a Bijū surge integralmente no campo de batalha. No instante da materialização, Gama libera sua Kekkei Tōta: Purazumaton e envolve todo o corpo colossal da Seis-Caudas com camadas densas de Purazomaton ionizado ultraviscoso. O corpo de Saiken passa a brilhar em tons violeta-azulados intensos, com correntes elétricas cruzando sua superfície como veias luminosas. As seis caudas transformam-se em chicotes de Purazomaton líquido, capazes de atravessar montanhas e vaporizar oceanos ao impacto. O muco natural da Bijū é convertido em Purazomaton corrosivo superpressurizado, formando tempestades eletrotérmicas ao redor da entidade. Gama posiciona-se sobre o topo da cabeça de Saiken ou funde parcialmente seu corpo ao núcleo da Bijū, sincronizando totalmente seus fluxos de chakra. Cada movimento da criatura gera tsunamis de calor e ondas de choque eletromagnéticas que desintegram matéria e interrompem técnicas inimigas antes mesmo da finalização.",
-        destruction: "Catastrófico em escala continental. A simples presença do Modo Bijū Plasmático eleva drasticamente a temperatura da região, ioniza a atmosfera e provoca colapsos estruturais massivos. Golpes diretos podem apagar cadeias montanhosas inteiras e evaporar grandes massas de água. Técnicas de alto nível sofrem instabilidade energética e podem ser dissipadas por interferência eletromagnética extrema.",
-        history: "Despertado quando Gama abandonou qualquer limitação entre jinchūriki e Bijū, permitindo que Saiken lutasse em sua forma completa enquanto envolvida pela supremacia do Purazumaton. Ao compreender que o Purazomaton poderia amplificar exponencialmente a natureza corrosiva e massiva da Seis-Caudas, nasceu o Modo Bijū mais destrutivo já registrado.",
-        status: "Consumo absurdo de chakra. Exige sincronização mental perfeita entre Gama e Saiken. A instabilidade plasmática aumenta proporcionalmente à intensidade emocional do usuário. Caso o controle vacile, pode ocorrer uma explosão termoeletromagnética de proporções devastadoras, afetando aliados e o próprio invocador.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F42%20-%20Gama%2FTecnicas%2F03%20-%20Saiken%3A%20Purazuma%20%C5%8Cgi.png?alt=media"
-      },
-      {
-        name: "Shikō Sanmi Ittai",
-        classification: "S++",
-        nature: "Ranton + Santon + Enton ",
-        description: "Gama eleva seu fluxo de chakra ao limite e ativa simultaneamente três Kekkei Genkai. Com a mão direita, condensa Ranton, formando uma esfera de tempestade azul-esbranquiçada composta por relâmpagos líquidos e vapor comprimido. Com a esquerda, manifesta Santon, criando um núcleo de ácido verde-luminescente ultraviscoso capaz de corroer chakra e matéria física. Ao redor do corpo, Enton se expande como chamas negras densas e intensas que não se apagam até consumirem o alvo. No clímax da técnica, Gama funde as três naturezas em um único vórtice giratório acima de sua cabeça. A tempestade ioniza o ácido, transformando-o em chuva corrosiva eletrificada, enquanto as chamas do Enton aderem às partículas ácidas, criando uma combustão infernal contínua. O resultado é uma supertempestade negra-esmeralda que avança como um furacão incendiário, derretendo defesas, neutralizando técnicas baseadas em chakra e incendiando o campo de batalha com relâmpagos flamejantes.",
-        destruction: "Massivo em escala regional. A técnica pode devastar cidades inteiras, corroer fortificações avançadas e gerar tempestades elétricas contínuas que persistem mesmo após o impacto inicial. A combinação do ácido ionizado com as chamas negras cria danos progressivos, dificultando regeneração e reconstrução imediata.",
-        history: "Criada após Gama dominar o equilíbrio entre destruição térmica, corrosão química e instabilidade atmosférica. Ao perceber que a tempestade poderia amplificar o alcance do ácido e que o Enton poderia impedir qualquer dissipação natural, ele consolidou a técnica como sua assinatura de supremacia elemental.",
-        status: "Altíssimo consumo de chakra e extrema exigência de controle. A fusão inadequada das três naturezas pode gerar reação em cadeia descontrolada, atingindo aliados e alterando drasticamente o ambiente ao redor. Requer concentração absoluta e estabilidade emocional para manter a convergência elemental.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F42%20-%20Gama%2FTecnicas%2F04%20-%20Shik%C5%8D%20Sanmi%20Ittai.png?alt=media"
-      },
-      {
-        name: "Kyokuten Sandon",
-        classification: "S++",
-        nature: "Ranton + Santon + Enton",
-        description: "Gama interrompe completamente o fluxo externo de chakra e inicia um processo de compressão extrema em seu tenketsu central, acumulando uma quantidade colossal de energia em um único ponto acima de suas mãos erguidas. O chakra começa em estado puro, denso e vibrante, formando um núcleo branco-ofuscante que distorce o ar ao redor. Em seguida, ele aplica simultaneamente as três naturezas. O Ranton envolve o núcleo com correntes elétricas azuladas e nuvens rotativas, estabilizando a compressão através de ionização atmosférica. O Santon é injetado no interior da esfera, transformando o chakra comprimido em uma massa corrosiva verde-luminescente, capaz de deteriorar matéria física e energética. Por fim, o Enton sela a camada externa com chamas negras intensas, criando uma crosta flamejante que impede qualquer dissipação de energia. A esfera final torna-se um astro tri-elemental pulsante, com relâmpagos internos, chuva ácida orbitando sua superfície e labaredas negras serpenteando ao redor. Ao ser lançada, a técnica implode no ponto de impacto antes de expandir violentamente, liberando uma onda eletrotérmica corrosiva em todas as direções.",
-        destruction: "Extremamente elevado em escala regional ampliada. O impacto gera um colapso atmosférico temporário, ioniza o ar, corrói estruturas maciças e incinera defesas com chamas negras persistentes. A área afetada permanece instável por um período prolongado devido à interferência eletromagnética e resíduos ácidos energizados.",
-        history: "Desenvolvida quando Gama compreendeu que o verdadeiro poder não estava apenas na combinação das naturezas, mas na condensação absoluta do chakra antes da aplicação elemental. Ao dominar a compressão energética sem perder estabilidade, ele criou uma técnica capaz de sobrepor qualidade e quantidade em perfeita convergência destrutiva.",
-        status: "Consome enormes reservas de chakra e exige controle minucioso da pressão interna do núcleo. Qualquer falha na sincronização das três naturezas pode provocar uma ruptura prematura, resultando em explosão descontrolada ao redor do próprio usuário. Técnica restrita a situações de combate decisivo.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F42%20-%20Gama%2FTecnicas%2F05%20-%20Kyokuten%20Sandon.png?alt=media"
-      }
-    ],
-    stats: { strength: 0, dexterity: 0, agility: 0, intelligence: 0, spirit: 0, vigor: 0, perception: 0 },
-    powers: [
-      { name: "Saiken", level: 0 },
-      { name: "Purazomaton", level: 0 },
-      { name: "Katon", level: 0 },
-      { name: "Suiton", level: 0 },
-      { name: "Raiton", level: 0 }
-    ],
-    aptitudes: [
-      "Chakra Expandido: Saiken",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-    ],
-  },
-  {
-    id: 43,
-    name: "Delta",
-    clan: "Desconhecido",
-    categories: ["NPC", "OCA", "Iwagakure"],
-    titles: ["Tsuchikage", "O Núcleo"],
-    nc: 28,
-    position: "Tsuchikage",
-    role: "?",
-    description: "",
-    hp: 0,
-    chakra: 0,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F43%20-%20Delta%2FDelta.jpg?alt=media",
-    techniques: [
-      {
-        name: "Juryūkuton: Kōtetsu no Chōjū",
-        classification: "Z",
-        nature: "Juryūkuton + Kotton",
-        description: "Delta funde completamente o poder do Juryūkuton com o Kotton, moldando o campo de batalha em uma forja viva de metal e gravidade. A partir do solo e do próprio ar, ele materializa inúmeros golens colossais de metal, cada um com proporções gigantescas e estrutura densa como aço divino. Esses golens não são meras invocações físicas — cada um possui um núcleo gravitacional próprio, concedendo a eles domínio absoluto sobre vetores gravitacionais ao seu redor. Eles podem aumentar drasticamente o peso de seus ataques, esmagar inimigos com campos gravitacionais ou inverter a gravidade local para arremessar tudo ao redor. Enquanto isso, Delta permanece suspenso no ar, voando livremente ao manipular a gravidade em si mesmo, coordenando suas criações como um soberano absoluto. Os golens podem agir em sincronia, criando zonas de aprisionamento gravitacional, esmagamento contínuo e destruição em larga escala, tornando impossível escapar do campo de batalha.",
-        destruction: "Nível apocalíptico massivo. Exércitos inteiros são obliterados sob o peso da gravidade combinada com força metálica colossal. Regiões inteiras são esmagadas, deformadas e soterradas por pressão gravitacional contínua.",
-        history: "Criada após Delta atingir maestria tanto no controle da gravidade quanto na manipulação do metal, percebendo que poderia não apenas destruir o ambiente, mas dominá-lo completamente. Ao unir essas duas naturezas, ele transcendeu o combate individual, passando a controlar múltiplas entidades com poder equivalente a armas de destruição em massa.",
-        status: "Extremamente exaustiva. Requer controle simultâneo de múltiplos núcleos gravitacionais e grande consumo de chakra. Caso perca o controle, os golens podem colapsar desordenadamente, causando destruição indiscriminada.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F43%20-%20Delta%2FTecnicas%2F01%20-%20Jury%C5%ABkuton%3A%20K%C5%8Dtetsu%20no%20Ch%C5%8Dj%C5%AB.jpg?alt=media"
-      },
-      {
-        name: "Juryūkuton: Shūen no Kyūshū",
-        classification: "Z",
-        nature: "Juryūkuton",
-        description: "Delta cria um núcleo gravitacional colapsado acima do campo de batalha, semelhante a uma singularidade incompleta. Tudo ao redor começa a ser puxado de forma inevitável — solo, estruturas, técnicas e até o fluxo de chakra dos inimigos. A gravidade distorce o espaço local, fazendo com que ataques percam direção e alvos sejam arrastados mesmo tentando escapar. Ao atingir densidade crítica, o núcleo colapsa sobre si mesmo, comprimindo tudo capturado em um ponto infinitesimal antes de liberar uma implosão silenciosa que apaga completamente matéria e energia na área afetada.",
-        destruction: "Nível apocalíptico. A área atingida é completamente apagada, deixando apenas um vazio comprimido e instável. Defesas convencionais não suportam a compressão absoluta.",
-        history: "Desenvolvida quando Delta ultrapassou o controle da gravidade e passou a manipular diretamente a curvatura do espaço.",
-        status: "Uso extremamente restrito. Consumo colossal de chakra. Pode afetar aliados e o próprio usuário se mal controlada.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F43%20-%20Delta%2FTecnicas%2F02%20-%20Jury%C5%ABkuton%3A%20Sh%C5%ABen%20no%20Ky%C5%ABsh%C5%AB.jpg?alt=media"
-      },
-      {
-        name: "Koton: Meidō no Kōtetsu Tensei",
-        classification: "Z",
-        nature: "Koton",
-        description: "Delta toca o solo e ativa uma transmutação em escala massiva, convertendo toda a terra ao redor em um metal negro vivo. O ambiente inteiro passa a se comportar como uma entidade controlada por ele: o chão ondula como um oceano metálico, pilares colossais emergem e lâminas gigantes se erguem do nada. Qualquer inimigo em contato com o solo começa a ser assimilado lentamente, tendo seu corpo convertido em metal e integrado ao campo de batalha. O terreno deixa de existir como natureza e passa a ser um domínio absoluto de Koton.",
-        destruction: "Nível apocalíptico global. Regiões inteiras são convertidas em um ecossistema metálico vivo, impossibilitando sobrevivência ou fuga convencional.",
-        history: "Criada quando Delta ultrapassou o limite da transmutação, percebendo que poderia reescrever a composição do ambiente em larga escala.",
-        status: "Consumo absurdo de chakra. Técnica extremamente rara. Pode afetar aliados e alterar permanentemente o ambiente.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F43%20-%20Delta%2FTecnicas%2F03%20-%20Koton%3A%20Meid%C5%8D%20no%20K%C5%8Dtetsu%20Tensei.jpg?alt=media"
-      },
-      {
-        name: "Koton: Kōtetsu Kōrin — Hakai no Kiba",
-        classification: "S++",
-        nature: "Koton",
-        description: "Delta faz o solo abaixo do inimigo explodir em múltiplas presas metálicas colossais, semelhantes a mandíbulas gigantes. Essas estruturas não são estáticas: elas se movem, se fecham e se reorganizam constantemente, perseguindo o alvo e formando um labirinto mortal de lâminas. As presas podem surgir em sequência, atacando de diferentes ângulos até esmagar completamente o inimigo.",
-        destruction: "Extremamente alto. Capaz de eliminar múltiplos alvos ou aprisionar inimigos de alto nível sem possibilidade de fuga.",
-        history: "Desenvolvida como técnica de execução rápida contra oponentes ágeis e difíceis de atingir diretamente.",
-        status: "Alto consumo de chakra, porém eficiente e de ativação rápida.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F43%20-%20Delta%2FTecnicas%2F04%20-%20Koton%3A%20K%C5%8Dtetsu%20K%C5%8Drin%20%E2%80%94%20Hakai%20no%20Kiba.jpg?alt=media"
-      },
-      {
-        name: "Koton: Shinzō no Kinzoku — Tekkai no Ō",
-        classification: "S++",
-        nature: "Koton",
-        description: "Delta converte seu próprio corpo em metal vivo avançado, formando uma armadura orgânica perfeita. Esse metal responde instantaneamente à sua vontade: endurece contra impactos, se liquefaz para absorver ataques e se reorganiza para regenerar danos. Além da defesa absoluta, Delta pode expandir essa armadura para fora do corpo, criando lâminas, braços gigantes ou estruturas ofensivas durante o combate.",
-        destruction: "Alto (combate direto). Amplifica drasticamente força, resistência e capacidade ofensiva.",
-        history: "Criada quando Delta passou a aplicar o Koton diretamente em si mesmo, alcançando um nível superior de controle.",
-        status: "Consumo constante de chakra. Extremamente estável, mas desgastante em batalhas prolongadas.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F43%20-%20Delta%2FTecnicas%2F05%20-%20Koton%3A%20Shinz%C5%8D%20no%20Kinzoku%20%E2%80%94%20Tekkai%20no%20%C5%8C.jpg?alt=media"
-      },
-      {
-        name: "Juryūkuton: Tenchi Gyakuten",
-        classification: "S++",
-        nature: "Juryūkuton",
-        description: "Delta inverte completamente o vetor gravitacional de uma área extensa, fazendo com que o 'céu' e a 'terra' troquem de posição. Inimigos são arremessados violentamente para cima enquanto o ambiente se fragmenta e colide em múltiplas direções. Delta pode redefinir pontos gravitacionais no ar, forçando colisões sucessivas.",
-        destruction: "Massivo. O dano vem de colisões múltiplas, desorientação extrema e destruição do terreno.",
-        history: "Criada como técnica de domínio total de campo tridimensional.",
-        status: "Alto consumo de chakra. Requer controle preciso para não atingir aliados.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F43%20-%20Delta%2FTecnicas%2F06%20-%20Jury%C5%ABkuton%3A%20Tenchi%20Gyakuten.jpg?alt=media"
-      },
-      {
-        name: "Juryūkuton: Jūryoku Kekkai — Zetsubō no Ori",
-        classification: "S++",
-        nature: "Juryūkuton",
-        description: "Delta cria uma barreira esférica de gravidade ao redor do alvo, onde múltiplas forças gravitacionais atuam simultaneamente em direções opostas. O corpo do inimigo é comprimido e distorcido constantemente, impedindo qualquer movimento ou execução de técnicas. A pressão aumenta progressivamente até esmagar completamente o alvo.",
-        destruction: "Extremamente alto e focado. Ideal para eliminação de alvos únicos de alto nível.",
-        history: "Desenvolvida para neutralizar oponentes que não podem ser derrotados com ataques convencionais.",
-        status: "Consumo elevado, porém mais estável que técnicas de larga escala. Pode ser quebrada apenas por técnicas equivalentes ou habilidades especiais.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F43%20-%20Delta%2FTecnicas%2F07%20-%20Jury%C5%ABkuton%3A%20J%C5%ABryoku%20Kekkai%20%E2%80%94%20Zetsub%C5%8D%20no%20Ori.jpg?alt=media"
-      },
-    ],
-    stats: { strength: 0, dexterity: 0, agility: 0, intelligence: 0, spirit: 0, vigor: 0, perception: 0 },
-    powers: [
-      { name: "Juryūkuton", level: 0 },
-      { name: "Koton", level: 0 },
-      { name: "Doton", level: 0 },
-      { name: "Raiton", level: 0 },
-      { name: "Futon", level: 0 }
-    ],
-    aptitudes: [
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-    ],
-  },
-  {
-    id: 44,
-    name: "Theta",
-    clan: "Desconhecido",
-    categories: ["NPC", "OCA", "Sunagakure"],
-    titles: ["Kazekage"],
-    nc: 28,
-    position: "Kazekage",
-    role: "?",
-    description: "",
-    hp: 0,
-    chakra: 0,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F44%20-%20Theta%2FTheta.png?alt=media",
-    techniques: [],
-    stats: { strength: 0, dexterity: 0, agility: 0, intelligence: 0, spirit: 0, vigor: 0, perception: 0 },
-    powers: [
-      { name: "Sakin", level: 0 },
-      { name: "Satetsu", level: 0 },
-      { name: "Saton", level: 0 },
-      { name: "Doton", level: 0 },
-      { name: "Fuuton", level: 0 },
-      { name: "Iryou Ninjutsu", level: 0 },
-      { name: "Fuinjutsu", level: 0 }
-    ],
-    aptitudes: [
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-      "Desconhecido",
-    ],
-  },
-  {
-    id: 45,
+    id: 55,
     name: "Daichi Muuji",
     clan: "Muujin",
     categories: ["NPC", "NoGuns", "Iwagakure"],
@@ -3561,6 +3398,10 @@ export const initialData: Character[] = [
     hp: 133,
     chakra: 64,
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F45%20-%20Daichi%20Muuji%2FDaichi%20Muuji.png?alt=media",
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FDaichi%20Muuji%2F3__Temporada.png?alt=media&v=1784751312034", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FDaichi%20Muuji%2F5__Temporada.png?alt=media&v=1784751313537", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 7, dexterity: 18, agility: 7, intelligence: 17, spirit: 18, vigor: 11, perception: 18 },
     powers: [
       { name: "Jinton", level: 9 },
@@ -3580,7 +3421,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 46,
+    id: 56,
     name: "Koji Ishizuma",
     clan: "Ishizuma",
     categories: ["NPC", "NoGuns", "Kumogakure"],
@@ -3594,6 +3435,9 @@ export const initialData: Character[] = [
     isDead: true,
     killedBy: "Hades",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F46%20-%20Koji%20Ishizuma%2FKoji%20Ishizuma.png?alt=media",
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKoji%20Ishizuma%2F3__Temporada.png?alt=media&v=1784751323948", caption: "3ª Temporada", category: "era" },
+    ],
     stats: { strength: 18, dexterity: 7, agility: 18, intelligence: 7, spirit: 18, vigor: 18, perception: 10 },
     powers: [
       { name: "Bakuton", level: 9 },
@@ -3614,7 +3458,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 47,
+    id: 57,
     name: "Yuuto Han",
     clan: "Han",
     categories: ["NPC", "NoGuns", "OCA", "Kirigakure"],
@@ -3640,6 +3484,9 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F47%20-%20Yuuto%20Han%2FTecnicas%2F01%20-%20K%C5%8Dk%C5%ABmon%3A%20Koku%C5%8D%20Hakugin%20Ansatsu%20Keitai.png?alt=media"
       },
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYuuto%20Han%2F3__Temporada.png?alt=media&v=1784751372606", caption: "3ª Temporada", category: "era" },
+    ],
     stats: { strength: 18, dexterity: 7, agility: 18, intelligence: 10, spirit: 18, vigor: 18, perception: 7 },
     powers: [
       { name: "Kokuo", level: 9 },
@@ -3660,7 +3507,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 48,
+    id: 58,
     name: "Shin Mizukari",
     clan: "Mizukari",
     categories: ["NPC", "NoGuns", "Iwagakure"],
@@ -3674,6 +3521,9 @@ export const initialData: Character[] = [
     isDead: true,
     killedBy: "Hades",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F48%20-%20Shin%20Mizukari%2FShin%20Mizukari.png?alt=media",
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShin%20Mizukari%2F3__Temporada.png?alt=media&v=1784751360239", caption: "3ª Temporada", category: "era" },
+    ],
     stats: { strength: 18, dexterity: 10, agility: 18, intelligence: 7, spirit: 18, vigor: 18, perception: 7 },
     powers: [
       { name: "Jiogu", level: 9 },
@@ -3698,7 +3548,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 49,
+    id: 59,
     name: "Shikure Chinoike",
     clan: "Chinoike",
     categories: ["NPC", "NoGuns", "OCA", "Sunagakure"],
@@ -3722,6 +3572,10 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F49%20-%20Shikure%20Chinoike%2FTecnicas%2F01%20-%20Ketsuryugan%3A%20Akeganai%20no%20Ketsu%20Gen'ei.png?alt=media"
       },
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShikure%20Chinoike%2F3__Temporada.png?alt=media&v=1784751357179", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShikure%20Chinoike%2F5__Temporada.png?alt=media&v=1784751358761", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 7, dexterity: 18, agility: 7, intelligence: 18, spirit: 18, vigor: 10, perception: 18 },
     powers: [
       { name: "Ketton", level: 9 },
@@ -3744,50 +3598,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 50,
-    name: "Togo Kage",
-    clan: "Desconhecido",
-    categories: ["NPC", "NoGuns", "OCA", "Konohagakure"],
-    titles: ["Esquizofrênico", "Arma Secreta da NoGuns", "Traidor da NoGuns"],
-    nc: 18,
-    position: "NoGuns",
-    role: "DPS",
-    description: "Shikatsu Nara, conhecido hoje como Togo Kage, é o que restou de um sonho que foi quebrado cedo demais. Nascido no clã Nara, cresceu como uma criança feliz, curiosa e orgulhosa de seu nome, cercado por figuras lendárias — seus pais eram próximos de Hashirama e Tobirama, e por isso Shikatsu viveu parte de sua infância ao lado dos Senju. Ele jantava com eles, ouvia histórias, aprendia estratégias e carregava um único objetivo no coração: se tornar Hokage. Tobirama era seu herói. Hashirama, sua inspiração. Mas tudo isso morreu na noite da invasão da Vila da Nuvem. Seus pais lutaram até o fim para proteger Konoha, sacrificando suas vidas com orgulho. Shikatsu assistiu tudo. E então viu aquilo que destruiu sua mente por completo: Tobirama, o homem que ele mais admirava, passar por ele sem sequer olhar para trás, seguindo sozinho para enfrentar Hades. Para o mundo, foi um ato de coragem. Para Shikatsu, foi abandono. Traição. Nesse momento, algo dentro dele quebrou de forma irreversível. Sem família, sem propósito e sem seu herói, sua mente colapsou. Ele fugiu, desapareceu, e ao longo dos anos se perdeu completamente de si mesmo. A esquizofrenia induzida pelo trauma fragmentou sua identidade, apagando o garoto que queria ser Hokage. Em seu lugar, nasceu Togo — uma sombra instintiva em forma humana. Vagando por florestas e campos de batalha, atacava por reflexo, sobrevivia por impulso e existia sem direção. Até encontrar Daichi. No primeiro encontro, tentou matá-lo como fazia com todos… mas foi derrotado. E poupado. Mais do que isso — foi visto. Daichi lhe fez uma promessa: encontraria uma cura. Pela primeira vez desde a queda dos Nara, alguém o tratou como humano. Desde então, Togo passou a existir preso a esse único fio de realidade. Hoje, ele é instável, silencioso e imprevisível — incapaz de viver em sociedade, mas extremamente letal em combate. Sua mente pode estar quebrada, mas seu instinto nunca falha. E enquanto o mundo o enxerga como um fragmento perdido… Togo ainda caminha, sustentado apenas por uma promessa que se recusa a esquecer.",
-    hp: 130,
-    chakra: 64,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F50%20-%20Togo%20Kage%2FTogo%20Kage.png?alt=media",
-    techniques: [
-      {
-        name: "Kage Shinkai: Yami no Kyoshin Ensei",
-        classification: "S++",
-        nature: "Ninjutsu de Sombras + Chakra Profano da Oca + Manifestação Psíquica",
-        description: "Togo Kage funde seu domínio absoluto das sombras com o chakra profano adquirido na Oca, permitindo que sua mente fragmentada projete entidades sombrias físicas no mundo real. Sua percepção distorcida da realidade se converte em força material, dando origem a manifestações colossais como hidras de múltiplas cabeças, gigantes de sombra e dragões abissais. Essas criaturas não são invocações comuns, mas extensões diretas da consciência de Togo, conectadas ao seu fluxo de chakra e capazes de agir simultaneamente em diferentes direções. As sombras assumem forma tangível, podendo esmagar, perfurar ou envolver alvos em escuridão absoluta que drena energia vital e chakra gradualmente.",
-        destruction: "Nível de devastação massiva. As manifestações podem destruir grandes áreas do campo de batalha, esmagar múltiplos oponentes e criar zonas de escuridão que anulam percepção sensorial e mobilidade. O dano continua mesmo após o impacto devido ao consumo energético das sombras.",
-        history: "Despertada após a exposição prolongada ao chakra profano da Oca, quando a instabilidade mental de Togo passou a influenciar diretamente sua manipulação das sombras. Desde então, suas manifestações tornaram-se progressivamente maiores e mais autônomas.",
-        status: "Extremamente perigosa para o usuário. Requer alto consumo de chakra e estabilidade mental mínima para controle. Perda de foco pode fazer as manifestações agirem de forma caótica e indiscriminada.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F50%20-%20Togo%20Kage%2FTecnicas%2F01%20-%20Kage%20Shinkai%3A%20Yami%20no%20Kyoshin%20Ensei.png?alt=media"
-      },
-    ],
-    stats: { strength: 7, dexterity: 18, agility: 7, intelligence: 18, spirit: 18, vigor: 10, perception: 18 },
-    powers: [
-      { name: "Kage Mane", level: 9 },
-      { name: "Kuchiyose", level: 9 }
-    ],
-    aptitudes: [
-      "Maestria: CD",
-      "Intuição",
-      "Ponto Cego",
-      "Acuidade",
-      "Perito em Prestidigitação",
-      "Ilusão Profunda",
-      "Usar Katana",
-      "Saque Rápido",
-      "Técnica Poderosa",
-      "Potencializar",
-    ],
-  },
-  {
-    id: 51,
+    id: 60,
     name: "Akira Dokuhana",
     clan: "Dokuhana",
     categories: ["NPC", "NoGuns", "Sunagakure"],
@@ -3799,6 +3610,10 @@ export const initialData: Character[] = [
     hp: 130,
     chakra: 64,
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F51%20-%20Akira%20Dokuhana%2FAkira%20Dokuhana.png?alt=media",
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAkira%20Dokuhana%2F3__Temporada.png?alt=media&v=1784751293430", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FAkira%20Dokuhana%2F5__Temporada.png?alt=media&v=1784751295515", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 7, dexterity: 18, agility: 7, intelligence: 18, spirit: 18, vigor: 10, perception: 18 },
     powers: [
       { name: "Dokujutsu", level: 9 },
@@ -3821,7 +3636,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 52,
+    id: 30,
     name: "Katsuo Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -3896,6 +3711,10 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [34],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsuo%20Uzumaki%2F1__Temporada.png?alt=media&v=1784751321003", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsuo%20Uzumaki%2F5__Temporada.png?alt=media&v=1784751322513", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 9, dexterity: 24, agility: 9, intelligence: 24, spirit: 24, vigor: 18, perception: 24 },
     powers: [
       { name: "Fuinjutsu", level: 12 },
@@ -3921,19 +3740,28 @@ export const initialData: Character[] = [
     ]
   },
   {
-    id: 53,
+    id: 17,
     name: "Naomi Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure", "OCA"],
     titles: ["Gênia de Konoha", "Aprendiz de Tobirama", "Criança da Profecia"],
-    nc: 28,
+    nc: 30,
     position: "3 Sannins Lendários",
     role: "DPS",
-    description: "Naomi Uzumaki, irmã de Yumi e Mito Uzumaki, nasceu cercada por expectativas impossíveis de alcançar — reconhecida desde o início como a criança com a maior reserva de chakra da história ninja. Após a morte de sua irmã durante a guerra, Mito tomou uma decisão que mudaria tudo: selou a Kurama em Naomi, mantendo esse segredo oculto até mesmo da vila. Desde então, Naomi passou a carregar um poder que a colocava acima de todos — e, ao mesmo tempo, a condenava. Nishinoya era completamente apaixonado por ela, mas Naomi nunca lhe deu uma chance, limitando-se a observá-lo à distância, em silêncio. Quando ele invadiu a cúpula do Hokage em busca de aprender o Hiraishin, Naomi o seguiu, e foi nesse momento que Tobirama decidiu treinar ambos pessoalmente. Dotada de afinidade natural com o Suiton, Naomi rapidamente ultrapassou todos os limites conhecidos, sendo considerada, possivelmente, a maior usuária desse elemento em toda a história. Aos 15 anos, partiu em uma missão ao lado de Nishinoya, Naoki, Hisoka e Ryuta — uma missão que terminaria em tragédia. Ryuta foi morto, e Naomi capturada. Desde então, ela permanece há 7 anos dentro da fortaleza Yumei, sendo submetida a torturas constantes enquanto seus captores tentam, sem sucesso, extrair o chakra monstruoso que habita dentro dela. Mesmo à beira da morte, dia após dia, Naomi continua resistindo, lutando silenciosamente para não quebrar.",
+    description: "Naomi Uzumaki, irmã de Yumi e Mito Uzumaki, nasceu cercada por expectativas impossíveis de alcançar — reconhecida desde o início como a criança com a maior reserva de chakra da história ninja. Após a morte de sua irmã durante a guerra, Mito tomou uma decisão que mudaria tudo: selou a Kurama em Naomi, mantendo esse segredo oculto até mesmo da vila. Desde então, Naomi passou a carregar um poder que a colocava acima de todos — e, ao mesmo tempo, a condenava. Nishinoya era completamente apaixonado por ela, mas Naomi nunca lhe deu uma chance, limitando-se a observá-lo à distância, em silêncio. Quando ele invadiu a cúpula do Hokage em busca de aprender o Hiraishin, Naomi o seguiu, e foi nesse momento que Tobirama decidiu treinar ambos pessoalmente. Dotada de afinidade natural com o Suiton, Naomi rapidamente ultrapassou todos os limites conhecidos, sendo considerada, possivelmente, a maior usuária desse elemento em toda a história. Aos 15 anos, partiu em uma missão ao lado de Nishinoya, Naoki, Hisoka e Ryuta — uma missão que terminaria em tragédia. Ryuta foi morto, e Naomi capturada. Desde então, ela permaneceu 7 anos dentro da fortaleza Yumei, sendo submetida a torturas constantes enquanto seus captores tentavam, sem sucesso, extrair o chakra monstruoso que habitava dentro dela. Mesmo à beira da morte, dia após dia, Naomi resistiu, lutando silenciosamente para não quebrar.\n\nSua libertação só veio com a Luta contra os Kages. Quando as linhas de frente se romperam e a fortaleza Yumei ficou exposta em meio ao caos da guerra, Nishinoya foi um dos que chegaram até ela — anos depois de tê-la seguido até a cúpula do Hokage, ainda apaixonado, ainda incapaz de desistir. Encontrou-a quebrada pelo cativeiro, mas viva. No meio da batalha que se seguiu, à beira do próprio colapso, Nishinoya abriu seu Modo Sábio ao limite para conseguir tirá-la de lá — e foi nesse contato, entre o chakra natural dele e o de Kurama pulsando dentro de Naomi, que algo se rompeu e se reorganizou nela. Kurama, que por anos apenas sobrevivera trancada junto com sua hospedeira, reconheceu naquela energia externa um equilíbrio que já devia ter encontrado por conta própria — e o usou como catalisador para finalmente se fundir por completo à natureza de Naomi. Ela saiu da Yumei sem o Modo Sábio de Nishinoya, mas com o seu próprio, nascido daquele instante: a fusão entre sua ligação com a Bijuu e o Suiton que sempre foi seu.",
     hp: 204,
     chakra: 188,
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F53%20-%20Naomi%20Uzumaki%2FNaomi%20Uzumaki.png?alt=media",
     techniques: [
+      {
+        name: "Sennin Fuka: Ketsuryū Sennin",
+        classification: "S++",
+        nature: "Senjutsu + Kurama + Suiton",
+        description: "Naomi fecha os olhos e, por um instante, para de lutar contra o próprio corpo — deixa de tentar separar sua energia da de Kurama e permite que as duas se equilibrem. Energia natural é absorvida pelo ambiente e flui direto para o vínculo entre ela e a Bijuu, banhando seu chakra em um vermelho mais escuro, quase negro nas bordas, com marcas finas subindo pelo rosto e braços como veios de tinta líquida. Diferente do Kyūbi no Manto, aqui não há fúria — há controle absoluto. Cada movimento de Naomi passa a carregar o peso e a precisão da natureza ao seu redor, e sua afinidade com o Suiton deixa de ser apenas técnica: a água ao seu redor responde antes mesmo de ela gesticular, como se fizesse parte do próprio corpo dela.",
+        destruction: "Amplifica de forma homogênea tudo que Naomi já é — força, velocidade, densidade de chakra e alcance de suas técnicas de Suiton — sem o custo emocional do manto de Kurama. Permite sustentar batalhas de atrito prolongado sem o desgaste vital que suas outras fusões com a Bijuu exigem.",
+        history: "Nascida no instante em que Nishinoya a tirou da fortaleza Yumei durante a Luta contra os Kages. Ao abrir seu próprio Modo Sábio ao limite para resgatá-la, o chakra natural dele entrou em contato com o de Kurama, ainda pulsando dentro de Naomi depois de anos de cativeiro — e serviu de catalisador para algo que a Bijuu, sozinha, nunca havia conseguido: equilibrar por completo sua energia com a de Naomi. Ela não herdou o modo de Nishinoya; herdou dele apenas o empurrão necessário para finalmente alcançar o seu.",
+        status: "Estável mesmo após longos períodos de ativação, desde que Naomi mantenha o vínculo com Kurama calmo — diferente do Kyūbi no Manto, picos de raiva ou desespero não fortalecem o Sennin Fuka, apenas o desestabilizam.",
+      },
       {
         name: "Ketsuryū Kaiyō",
         classification: "Z",
@@ -3976,12 +3804,20 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [32, 41],
-    stats: { strength: 12, dexterity: 28, agility: 12, intelligence: 28, spirit: 28, vigor: 18, perception: 28 },
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaomi%20Uzumaki%2FPr_logo.png?alt=media&v=1784569527682750", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaomi%20Uzumaki%2FCl_ssico.png?alt=media&v=1784569525287575", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaomi%20Uzumaki%2F3__Temporada.png?alt=media&v=1784569520193805", caption: "3ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaomi%20Uzumaki%2FLuta_contra_os_Kages.png?alt=media&token=8d6cbf75-9b4e-4751-a708-c875c18e1ae6&v=1785765028095", caption: "Luta contra os Kages", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNaomi%20Uzumaki%2F5__Temporada.png?alt=media&v=1784569522812022", caption: "5ª Temporada", category: "era" },
+    ],
+    stats: { strength: 12, dexterity: 30, agility: 12, intelligence: 24, spirit: 30, vigor: 24, perception: 30 },
     powers: [
-      { name: "Kurama", level: 14 },
-      { name: "Suiton", level: 14 },
-      { name: "Rasengan", level: 14 },
-      { name: "Fuinjutsu", level: 14 }
+      { name: "Kurama", level: 15 },
+      { name: "Suiton", level: 15 },
+      { name: "Rasengan", level: 15 },
+      { name: "Fuinjutsu", level: 15 },
+      { name: "Senjutsu", level: 15 }
     ],
     aptitudes: [
       "Acuidade",
@@ -3996,7 +3832,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 54,
+    id: 37,
     name: "Shoyu Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4098,7 +3934,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 55,
+    id: 39,
     name: "Reika Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4169,7 +4005,7 @@ export const initialData: Character[] = [
     ]
   },
   {
-    id: 56,
+    id: 38,
     name: "Souma Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4247,7 +4083,7 @@ export const initialData: Character[] = [
     ]
   },
   {
-    id: 57,
+    id: 15,
     name: "Kuromi Uchiha",
     clan: "Uchiha",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4322,6 +4158,13 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [29, 36, 37],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKuromi%20Uchiha%2FPr_logo.png?alt=media&v=1784751331220", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKuromi%20Uchiha%2FCl_ssico.png?alt=media&v=1784751329983", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKuromi%20Uchiha%2F1__Temporada.png?alt=media&v=1784751325422", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKuromi%20Uchiha%2F4__Temporada.png?alt=media&v=1784751326929", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKuromi%20Uchiha%2F5__Temporada.png?alt=media&v=1784751328466", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 16, spirit: 16, vigor: 8, perception: 16 },
     powers: [
       { name: "Katon", level: 8 },
@@ -4344,7 +4187,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 58,
+    id: 33,
     name: "Shikaki Nara",
     clan: "Nara",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4399,6 +4242,13 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [38],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShikaki%20Nara%2FPr_logo.png?alt=media&v=1784751349125", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShikaki%20Nara%2FCl_ssico.png?alt=media&v=1784751347894", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShikaki%20Nara%2F1__Temporada.png?alt=media&v=1784658591854338", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShikaki%20Nara%2F4__Temporada.png?alt=media&v=1784658594089126", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShikaki%20Nara%2F5__Temporada.png?alt=media&v=1784751346459", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 16, spirit: 16, vigor: 8, perception: 16 },
     powers: [
       { name: "Kage Mane", level: 8 },
@@ -4420,7 +4270,7 @@ export const initialData: Character[] = [
     ]
   },
   {
-    id: 59,
+    id: 40,
     name: "Nagi Yuki",
     clan: "Yuki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4494,6 +4344,11 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F59%20-%20Nagi%20Yuki%2FTecnicas%2F06%20-%20Kuchiyose%3A%20Yuki%20Fukur%C5%8D.png?alt=media"
       }
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNagi%20Yuki%2F1__Temporada.png?alt=media&v=1784665893401007", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNagi%20Yuki%2F4__Temporada.png?alt=media&v=1784658581849728", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNagi%20Yuki%2F5__Temporada.png?alt=media&v=1784751332824", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 13, spirit: 16, vigor: 11, perception: 16 },
     powers: [
       { name: "Hyōton", level: 8 },
@@ -4515,7 +4370,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 60,
+    id: 41,
     name: "Yasuo Kurogane",
     clan: "Kurogane",
     categories: ["NPC", "Sunagakure", "OCA"],
@@ -4579,6 +4434,11 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F60%20-%20Yasuo%20Kurogane%2FTecnicas%2F05%20-%20Sabaku%3A%20Kin%20no%20K%C5%8Dtei.png?alt=media"
       }
     ],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYasuo%20Kurogane%2F1__Temporada.png?alt=media&v=1784665900580592", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYasuo%20Kurogane%2F4__Temporada.png?alt=media&v=1784658611008184", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYasuo%20Kurogane%2F5__Temporada.png?alt=media&v=1784751368845", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 6, dexterity: 16, agility: 6, intelligence: 13, spirit: 16, vigor: 11, perception: 16 },
     powers: [
       { name: "Kinjiton", level: 8 },
@@ -4600,7 +4460,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 61,
+    id: 16,
     name: "Apollo Sarutobi",
     clan: "Sarutobi",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4695,6 +4555,13 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [39],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FApollo%20Sarutobi%2FPr_logo.png?alt=media&v=1784658534789158", caption: "Prólogo", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FApollo%20Sarutobi%2FCl_ssico.png?alt=media&v=1784751302134", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FApollo%20Sarutobi%2F1__Temporada.png?alt=media&v=1784751297490", caption: "1ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FApollo%20Sarutobi%2F4__Temporada.png?alt=media&v=1784751299027", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FApollo%20Sarutobi%2F5__Temporada.png?alt=media&v=1784751300695", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 16, dexterity: 6, agility: 16, intelligence: 9, spirit: 15, vigor: 16, perception: 6 },
     powers: [
       { name: "Senjutsu", level: 8 },
@@ -4715,7 +4582,7 @@ export const initialData: Character[] = [
     ]
   },
   {
-    id: 62,
+    id: 50,
     name: "Yuji Yotsuki",
     clan: "Yotsuki",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -4800,6 +4667,10 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [50, 49, 60],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYuji%20Yotsuki%2F4__Temporada.png?alt=media&v=1784658616065338", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYuji%20Yotsuki%2F5__Temporada.png?alt=media&v=1784751370128", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 10, dexterity: 24, agility: 10, intelligence: 24, spirit: 24, vigor: 16, perception: 24 },
     powers: [
       { name: "Ranton", level: 11 },
@@ -4817,7 +4688,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 63,
+    id: 51,
     name: "Reito Kurogami",
     clan: "Kurogami",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -4882,6 +4753,9 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FReito%20Kurogami%2F4__Temporada.png?alt=media&v=1784658589886957", caption: "4ª Temporada", category: "era" },
+    ],
     stats: { strength: 20, dexterity: 8, agility: 20, intelligence: 8, spirit: 20, vigor: 20, perception: 12 },
     powers: [
       { name: "Raiton", level: 10 },
@@ -4907,7 +4781,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 64,
+    id: 52,
     name: "Yoru Kurogami",
     clan: "Kurogami",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -4962,6 +4836,9 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [51, 52, 46],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FYoru%20Kurogami%2F4__Temporada.png?alt=media&v=1784658613297962", caption: "4ª Temporada", category: "era" },
+    ],
     stats: { strength: 8, dexterity: 20, agility: 8, intelligence: 20, spirit: 12, vigor: 20, perception: 20 },
     powers: [
       { name: "Ranton", level: 10 },
@@ -4979,7 +4856,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 65,
+    id: 53,
     name: "Mika Yotsuki",
     clan: "Yotsuki",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -5054,7 +4931,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 66,
+    id: 54,
     name: "Enrai Hanzo",
     clan: "Hanzo",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -5151,7 +5028,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 67,
+    id: 42,
     name: "Hana Sabaku",
     clan: "Sabaku",
     categories: ["NPC", "Sunagakure"],
@@ -5226,6 +5103,10 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [59],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHana%20Sabaku%2F4__Temporada.png?alt=media&v=1784569487205904", caption: "4ª Temporada", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FHana%20Sabaku%2F5__Temporada.png?alt=media&v=1784569489558874", caption: "5ª Temporada", category: "era" },
+    ],
     stats: { strength: 12, dexterity: 30, agility: 30, intelligence: 30, spirit: 30, vigor: 18, perception: 12 },
     powers: [
       { name: "Shukaku", level: 15 },
@@ -5252,7 +5133,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 68,
+    id: 43,
     name: "Reto Sabaku",
     clan: "Sabaku",
     categories: ["NPC", "Sunagakure"],
@@ -5327,6 +5208,9 @@ export const initialData: Character[] = [
       }
     ],
     arsenal: [55, 57, 58, 59],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FReto%20Sabaku%2F5__Temporada.png?alt=media&v=1784751339155", caption: "5ª Temporada", category: "era" },
+    ],
     stats: {strength: 9, dexterity: 27, agility: 27, intelligence: 27, spirit: 27, vigor: 14, perception: 27},
     powers: [
       { name: "Satetsu", level: 13 },
@@ -5352,7 +5236,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 69,
+    id: 46,
     name: "Chigiri Chinoike",
     clan: "Chinoike",
     categories: ["NPC", "Sunagakure"],
@@ -5388,7 +5272,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 70,
+    id: 44,
     name: "Tetsu Sabaku",
     clan: "Sabaku",
     categories: ["NPC", "Sunagakure"],
@@ -5402,6 +5286,10 @@ export const initialData: Character[] = [
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F70%20-%20Tetsu%20Sabaku%2FTetsu%20Sabaku.png?alt=media",
     techniques: [],
     arsenal: [55, 58],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTetsu%20Sabaku%2FCl_ssico.png?alt=media&v=1784569565103032", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FTetsu%20Sabaku%2F4__Temporada.png?alt=media&v=1784569562464968", caption: "4ª Temporada", category: "era" },
+    ],
     stats: {strength: 8, dexterity: 23, agility: 8, intelligence: 14, spirit: 23, vigor: 23, perception: 23},
     powers: [
       { name: "Satetsu", level: 11 },
@@ -5422,9 +5310,8 @@ export const initialData: Character[] = [
       "Técnica Poderosa"
     ],
   },
-
   {
-    id: 71,
+    id: 47,
     name: "Mizue Dokuhana",
     clan: "Dokuhana",
     categories: ["NPC", "Sunagakure", "Guardiões de Sunagakure"],
@@ -5458,9 +5345,8 @@ export const initialData: Character[] = [
       "Técnica Poderosa"
     ],
   },
-
   {
-    id: 72,
+    id: 48,
     name: "Tessai Enshaku",
     clan: "Enshaku",
     categories: ["NPC", "Sunagakure"],
@@ -5495,9 +5381,8 @@ export const initialData: Character[] = [
       "Técnica Poderosa"
     ],
   },
-
   {
-    id: 73,
+    id: 45,
     name: "Sayuri Sabaku",
     clan: "Sabaku",
     categories: ["NPC", "Sunagakure"],
@@ -5511,6 +5396,10 @@ export const initialData: Character[] = [
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F73%20-%20Sayuri%20Sabaku%2FSayuri%20Sabaku.png?alt=media",
     techniques: [],
     arsenal: [53, 57],
+    gallery: [
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FSayuri%20Sabaku%2FCl_ssico.png?alt=media&v=1784569555078223", caption: "Clássico", category: "era" },
+      { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FSayuri%20Sabaku%2F4__Temporada.png?alt=media&v=1784569553200186", caption: "4ª Temporada", category: "era" },
+    ],
     stats: {
       strength: 8,
       dexterity: 21,
@@ -5539,7 +5428,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 74,
+    id: 49,
     name: "Kurohime Kazeori",
     clan: "Kurohime",
     categories: ["NPC", "Sunagakure"],
@@ -5582,5 +5471,627 @@ export const initialData: Character[] = [
       "Intuição",
       "Técnica Poderosa"
     ],
+  }
+,
+  {
+    id: 70,
+    name: "Katakana Yotsuki (Alpha)",
+    clan: "Yotsuki",
+    categories: [
+      "NPC",
+      "OCA",
+      "Kumogakure"
+    ],
+    titles: [
+      "Raikage",
+      "Deus do Raiton"
+    ],
+    nc: 28,
+    position: "Raikage",
+    role: "?",
+    description: "",
+    hp: 0,
+    chakra: 0,
+    isDead: true,
+    killedBy: "Yuji Yotsuki",
+    image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1771556333/Alpha_ca88z7.jpg",
+    techniques: [
+      {
+        status: "Consumo colossal de chakra e extrema exigência de controle. Requer marcação prévia do alvo e manutenção da conexão eletromagnética. Uso contínuo pode causar sobrecarga severa no sistema nervoso e colapso físico devido à quantidade de energia canalizada.",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501468/alpha1_c7uziy.jpg",
+        name: "Shiroki Kaminari: Ten no Ikazuchi — Kōsaton no Shūen",
+        destruction: "Nível apocalíptico inevitável. O ataque ignora evasão, atravessa defesas absolutas e causa aniquilação total no ponto de impacto. Pode ser repetido enquanto a marca estiver ativa, tornando a sobrevivência praticamente impossível.",
+        nature: "Shiroki Kaminari + Kōsaton",
+        description: "Alpha expande sua percepção ao limite absoluto e conecta o campo eletromagnético do ambiente diretamente ao fluxo do Kōsaton. Ao identificar o alvo, ele o marca com uma assinatura invisível de Shiroki Kaminari que não apenas rastreia, mas fixa sua existência como um ponto inevitável dentro da rede eletromagnética. Essa marca ignora distância, velocidade e ocultação, tornando impossível escapar ou se esconder. No instante seguinte, Alpha converte seu próprio corpo em um canal de luz fluida e estabelece uma conexão direta entre o alvo e os céus. Um raio primordial de energia branca desce instantaneamente, não viajando pelo espaço, mas surgindo já conectado ao ponto marcado. A descarga é composta por Purazomaton luminoso e energia eletromagnética absoluta, atravessando qualquer defesa, desintegrando matéria e colapsando o chakra no impacto. Caso o alvo resista, a conexão permanece ativa, permitindo que novos raios sejam reconectados repetidamente até a completa aniquilação. Durante a execução, o campo ao redor sofre ionização extrema, distorcendo percepção, movimento e estabilidade energética.",
+        history: "Desenvolvida quando Alpha compreendeu que o Shiroki Kaminari poderia não apenas reconectar pontos no espaço, mas também ligar diretamente o campo de batalha a fontes naturais de energia absoluta. Ao combinar essa propriedade com o fluxo do Kōsaton, ele criou uma técnica onde o próprio céu se torna um instrumento de execução inevitável.",
+        classification: "Z"
+      },
+      {
+        destruction: "Baixo direto, porém extremamente perigoso taticamente. Pode reposicionar inimigos para situações fatais, redirecionar ataques de nível alto ou remover completamente defesas do campo.",
+        status: "Consome grande quantidade de chakra e exige percepção extrema. Uso contínuo pode sobrecarregar o sistema nervoso devido à leitura constante do campo eletromagnético.",
+        name: "Shiroki Kaminari: Amenotejikara",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501468/alpha2_ycayaw.jpg",
+        nature: "Shiroki Kaminari",
+        classification: "Z",
+        description: "Alpha expande sua percepção eletromagnética ao máximo e infunde seu chakra no campo eletromagnético natural do ambiente. Ao conectar-se a essa rede invisível que permeia tudo, ele transcende o deslocamento físico e realiza uma troca instantânea de posição. Diferente de um simples teletransporte, Alpha pode trocar qualquer coisa dentro de seu campo de visão por outra — aliados, inimigos, ataques ou até partes do ambiente. O deslocamento ocorre através do Shiroki Kaminari, um raio branco que atravessa o espaço-tempo e reconecta as posições de forma instantânea, ignorando distância, barreiras físicas e até defesas de chakra profano.",
+        history: "Desenvolvida após Alpha compreender que o Shiroki Kaminari não apenas destrói, mas também pode 'reconectar' pontos no espaço-tempo através de campos eletromagnéticos."
+      },
+      {
+        destruction: "Nível apocalíptico. O impacto atravessa tudo em linha reta, podendo apagar múltiplas camadas de defesa e causar destruição massiva em larga escala.",
+        status: "Consumo extremo de chakra. Requer preparo e canalização prévia. Pode causar colapso físico se o corpo não suportar a energia condensada.",
+        name: "Shiroki Kaminari: Hakai no Raijin",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501469/alpha3_etzunc.jpg",
+        nature: "Shiroki Kaminari",
+        classification: "Z",
+        description: "Alpha invoca uma tempestade absoluta e canaliza o poder elétrico ao seu limite, condensando nuvens carregadas em um vórtice acima do campo. Um raio primordial desce dos céus e é convertido em Shiroki Kaminari — um raio branco puro que transcende matéria e energia. Em suas mãos, a eletricidade se transforma em uma lança divina de luz branca. No mesmo instante, um dragão colossal de relâmpago branco e Purazomaton ionizado desce dos céus, sincronizado com o arremesso da lança. O impacto duplo atravessa o espaço ao redor, rompendo barreiras dimensionais e desintegrando qualquer forma de defesa, incluindo técnicas espirituais ou de chakra profano.",
+        history: "Evolução do conceito do Kaminoyari elevada ao estado absoluto através do Shiroki Kaminari."
+      },
+      {
+        history: "Desenvolvida como a manifestação máxima da velocidade do Kōsaton, onde Alpha abandona completamente o deslocamento físico e passa a lutar como um fluxo luminoso contínuo.",
+        description: "Alpha ativa o Kōsaton em seu estado máximo e converte completamente seu corpo em um fluxo de luz ionizada fluida. Nesse estado, ele deixa de se mover de forma linear e passa a se propagar instantaneamente pelo campo como um raio líquido, surgindo diretamente no ponto de impacto. Cada avanço já é um golpe concluído, conectando socos e chutes sem trajetória perceptível. Durante o fluxo, seu corpo se fragmenta em feixes luminosos que se reconectam no momento do ataque, permitindo que ele atinja o alvo de múltiplos ângulos em sequência contínua. O movimento não pode ser rastreado por meios convencionais, tornando impossível prever ou reagir com base em velocidade ou reflexo.",
+        classification: "Z",
+        nature: "Kōsaton",
+        destruction: "Extremamente alto em combate direto. Cada impacto ocorre com força máxima sem possibilidade de defesa tradicional, permitindo execução rápida de alvos de alto nível.",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501469/alpha4_h1i4cv.jpg",
+        name: "Kōsaton: Hikari Ryūdō — Raijin Senkō",
+        status: "Consumo extremo de chakra por segundo. Exige controle absoluto para reconstrução corporal após cada movimento. Uso prolongado pode causar instabilidade física e falhas na recomposição do corpo."
+      },
+      {
+        nature: "Shiroki Kaminari",
+        classification: "S++",
+        description: "Alpha condensa o Shiroki Kaminari em múltiplos pontos ao seu redor, criando cortes de raio branco que atravessam o espaço instantaneamente. Esses cortes não viajam — eles simplesmente surgem já conectando dois pontos diferentes, rasgando tudo entre eles. O resultado é uma sequência de fendas luminosas que ignoram distância e defesa, atingindo o alvo de múltiplos ângulos simultaneamente. Cada corte deixa uma instabilidade residual no espaço, dificultando regeneração e reconstrução de chakra.",
+        history: "Criada como aplicação refinada do Shiroki Kaminari, focada em precisão absoluta ao invés de destruição em massa.",
+        destruction: "Extremamente alto e preciso. Ideal para eliminar alvos de alto nível ou cortar múltiplas defesas simultaneamente.",
+        status: "Alto consumo de chakra e exige percepção espacial extrema. Uso excessivo pode causar instabilidade no próprio espaço ao redor do usuário.",
+        name: "Shiroki Kaminari: Kūkan Senretsu",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501469/alpha5_qzhl1f.jpg"
+      }
+    ],
+    arsenal: [],
+    stats: {
+      strength: 0,
+      dexterity: 0,
+      agility: 0,
+      intelligence: 0,
+      spirit: 0,
+      vigor: 0,
+      perception: 0
+    },
+    powers: [
+      {
+        name: "Kosaton",
+        level: 0
+      },
+      {
+        name: "Futon",
+        level: 0
+      },
+      {
+        name: "Suiton",
+        level: 0
+      },
+      {
+        name: "Raiton",
+        level: 0
+      },
+      {
+        name: "Ranton",
+        level: 0
+      },
+      {
+        name: "Nintaijutsu",
+        level: 0
+      }
+    ],
+    aptitudes: [
+      "Shiroki Kaminari",
+      "Kaminari",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido"
+    ],
+    timelineAppearance: "3ª Temporada",
+    timelineDeath: "4ª Temporada",
+    timelineSkipped: [],
+    birthVillage: "Kumogakure"
+  },
+  {
+    id: 71,
+    name: "Ganmasen Yuki (Gama)",
+    clan: "Yuki",
+    categories: [
+      "NPC",
+      "OCA",
+      "Kirigakure"
+    ],
+    titles: [
+      "Mizukage",
+      "O Íon Vivo"
+    ],
+    nc: 28,
+    position: "Mizukage",
+    role: "?",
+    description: "Desconhecido",
+    hp: 0,
+    chakra: 0,
+    isDead: true,
+    killedBy: "oDDY UCHIHA",
+    image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1772116105/Gama_smiv1x.png",
+    techniques: [
+      {
+        nature: "Saiken + Purazumaton",
+        classification: "Z",
+        description: "Gama ativa a Invocação Absoluta de Saiken e entra em sincronização total com sua Bijū de nascença. Diferente do simples Manto, Saiken manifesta-se fisicamente e tem seu corpo convertido em uma entidade de Purazomaton soberano através da Kekkei Tōta: Purazumaton. A lesma colossal transforma-se em uma forma energética massiva composta por Purazomaton ultraviscoso e corrosivo, envolto por descargas eletromagnéticas violentas. Suas caudas tornam-se correntes de Purazomaton líquido ionizado, capazes de atravessar matéria sólida e desintegrar chakra ao contato. Gama permanece no núcleo da entidade, fundindo completamente seu fluxo de chakra ao da Bijū e controlando a forma como uma extensão direta de sua consciência. Ao liberar a técnica, um domínio de Purazomaton absoluto se expande pelo campo de batalha. O solo se liquefaz sob temperaturas extremas, o ar ioniza-se violentamente e tempestades eletromagnéticas se formam instantaneamente. Técnicas inimigas começam a se dissipar e superaquecer antes mesmo de serem concluídas, enquanto o alvo pode ser aprisionado em uma esfera de contenção plasmática que consome e desintegra chakra continuamente até a completa aniquilação estrutural.",
+        history: "Despertada quando Gama abandonou a separação entre jinchūriki e Bijū, aceitando Saiken como parte inseparável de sua própria essência. Ao fundir completamente a Kekkei Tōta Purazumaton ao chakra integral da Seis-Caudas, nasceu a forma suprema de domínio plasmático no mundo shinobi.",
+        destruction: "Nível apocalíptico. Capaz de transformar cidades inteiras em um inferno de Purazomaton ionizado. Estruturas físicas são vaporizadas sob calor extremo e defesas de chakra avançadas entram em colapso devido à instabilidade eletromagnética contínua. O dano é progressivo, energético e praticamente irreversível.",
+        status: "Uso extremamente perigoso. Consome quantidades colossais de chakra de Gama e de Saiken simultaneamente. A instabilidade natural do Purazomaton exige controle mental absoluto. Caso a sincronização falhe, o domínio pode colapsar em uma explosão termoeletromagnética indiscriminada, atingindo aliados e inimigos sem distinção.",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1772124972/Gama1_kkdvwb.png",
+        name: "Saiken + Purazumaton"
+      },
+      {
+        description: "O portador envolve seu corpo com o Manto do Saiken, liberando a   energia viscosa e corrosiva da lesma de seis caudas. Em seguida, ativa sua Kekkei Tōta: Purazumaton, convertendo essa secreção energética em Purazomaton ultraviscoso ionizado. O manto assume tons azul-violeta intensos com relâmpagos internos constantes, enquanto correntes de Purazomaton líquido envolvem o corpo como uma armadura viva. Tentáculos colossais emergem das costas, formados por Purazomaton semi-estável envolto em descargas elétricas e névoa superaquecida. Cada movimento libera ondas de choque térmicas e pulsos eletromagnéticos que desintegram matéria e dissipam técnicas de chakra por sobrecarga energética.",
+        history: "Desenvolvida após o domínio absoluto do Manto do Saiken e o despertar completo da Kekkei Tōta Purazumaton. Ao compreender que a viscosidade corrosiva poderia servir como meio condutor para geração de Purazomaton estável, o usuário criou uma forma de combate onde ataque, supressão energética e aniquilação coexistem em um único domínio vivo.",
+        classification: "Z",
+        nature: "Saiken + Purazumaton",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1772124972/Gama2_dswlzu.png",
+        name: "Saiken: Gensho Nenshō Honryū",
+        status: "Consome quantidades extremas de chakra e exige controle absoluto da estabilidade plasmática. Se mal controlada, pode causar colapso energético interno no próprio usuário. Utilizada apenas em batalhas de escala Kage ou confrontos onde contenção e destruição total são necessárias.",
+        destruction: "Massivo, progressivo e energético. O campo de batalha é convertido em uma zona de ionização extrema, onde estruturas são vaporizadas e defesas de chakra entram em colapso por instabilidade molecular. O dano persiste devido à radiação térmica e aos pulsos eletromagnéticos contínuos."
+      },
+      {
+        nature: "Saiken + Purazumaton",
+        history: "Despertado quando Gama abandonou qualquer limitação entre jinchūriki e Bijū, permitindo que Saiken lutasse em sua forma completa enquanto envolvida pela supremacia do Purazumaton. Ao compreender que o Purazomaton poderia amplificar exponencialmente a natureza corrosiva e massiva da Seis-Caudas, nasceu o Modo Bijū mais destrutivo já registrado.",
+        description: "Gama realiza a invocação completa de Saiken em sua forma física verdadeira. Diferente de uma manifestação parcial ou manto, a Bijū surge integralmente no campo de batalha. No instante da materialização, Gama libera sua Kekkei Tōta: Purazumaton e envolve todo o corpo colossal da Seis-Caudas com camadas densas de Purazomaton ionizado ultraviscoso. O corpo de Saiken passa a brilhar em tons violeta-azulados intensos, com correntes elétricas cruzando sua superfície como veias luminosas. As seis caudas transformam-se em chicotes de Purazomaton líquido, capazes de atravessar montanhas e vaporizar oceanos ao impacto. O muco natural da Bijū é convertido em Purazomaton corrosivo superpressurizado, formando tempestades eletrotérmicas ao redor da entidade. Gama posiciona-se sobre o topo da cabeça de Saiken ou funde parcialmente seu corpo ao núcleo da Bijū, sincronizando totalmente seus fluxos de chakra. Cada movimento da criatura gera tsunamis de calor e ondas de choque eletromagnéticas que desintegram matéria e interrompem técnicas inimigas antes mesmo da finalização.",
+        classification: "Z",
+        status: "Consumo absurdo de chakra. Exige sincronização mental perfeita entre Gama e Saiken. A instabilidade plasmática aumenta proporcionalmente à intensidade emocional do usuário. Caso o controle vacile, pode ocorrer uma explosão termoeletromagnética de proporções devastadoras, afetando aliados e o próprio invocador.",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1772124972/Gama3_mfgzfp.png",
+        name: "Saiken: Purazuma Ōgi",
+        destruction: "Catastrófico em escala continental. A simples presença do Modo Bijū Plasmático eleva drasticamente a temperatura da região, ioniza a atmosfera e provoca colapsos estruturais massivos. Golpes diretos podem apagar cadeias montanhosas inteiras e evaporar grandes massas de água. Técnicas de alto nível sofrem instabilidade energética e podem ser dissipadas por interferência eletromagnética extrema."
+      },
+      {
+        nature: "Ranton + Santon + Enton ",
+        description: "Gama eleva seu fluxo de chakra ao limite e ativa simultaneamente três Kekkei Genkai. Com a mão direita, condensa Ranton, formando uma esfera de tempestade azul-esbranquiçada composta por relâmpagos líquidos e vapor comprimido. Com a esquerda, manifesta Santon, criando um núcleo de ácido verde-luminescente ultraviscoso capaz de corroer chakra e matéria física. Ao redor do corpo, Enton se expande como chamas negras densas e intensas que não se apagam até consumirem o alvo. No clímax da técnica, Gama funde as três naturezas em um único vórtice giratório acima de sua cabeça. A tempestade ioniza o ácido, transformando-o em chuva corrosiva eletrificada, enquanto as chamas do Enton aderem às partículas ácidas, criando uma combustão infernal contínua. O resultado é uma supertempestade negra-esmeralda que avança como um furacão incendiário, derretendo defesas, neutralizando técnicas baseadas em chakra e incendiando o campo de batalha com relâmpagos flamejantes.",
+        history: "Criada após Gama dominar o equilíbrio entre destruição térmica, corrosão química e instabilidade atmosférica. Ao perceber que a tempestade poderia amplificar o alcance do ácido e que o Enton poderia impedir qualquer dissipação natural, ele consolidou a técnica como sua assinatura de supremacia elemental.",
+        classification: "S++",
+        status: "Altíssimo consumo de chakra e extrema exigência de controle. A fusão inadequada das três naturezas pode gerar reação em cadeia descontrolada, atingindo aliados e alterando drasticamente o ambiente ao redor. Requer concentração absoluta e estabilidade emocional para manter a convergência elemental.",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1772124972/Gama5_frx0et.png",
+        name: "Shikō Sanmi Ittai",
+        destruction: "Massivo em escala regional. A técnica pode devastar cidades inteiras, corroer fortificações avançadas e gerar tempestades elétricas contínuas que persistem mesmo após o impacto inicial. A combinação do ácido ionizado com as chamas negras cria danos progressivos, dificultando regeneração e reconstrução imediata."
+      },
+      {
+        description: "Gama interrompe completamente o fluxo externo de chakra e inicia um processo de compressão extrema em seu tenketsu central, acumulando uma quantidade colossal de energia em um único ponto acima de suas mãos erguidas. O chakra começa em estado puro, denso e vibrante, formando um núcleo branco-ofuscante que distorce o ar ao redor. Em seguida, ele aplica simultaneamente as três naturezas. O Ranton envolve o núcleo com correntes elétricas azuladas e nuvens rotativas, estabilizando a compressão através de ionização atmosférica. O Santon é injetado no interior da esfera, transformando o chakra comprimido em uma massa corrosiva verde-luminescente, capaz de deteriorar matéria física e energética. Por fim, o Enton sela a camada externa com chamas negras intensas, criando uma crosta flamejante que impede qualquer dissipação de energia. A esfera final torna-se um astro tri-elemental pulsante, com relâmpagos internos, chuva ácida orbitando sua superfície e labaredas negras serpenteando ao redor. Ao ser lançada, a técnica implode no ponto de impacto antes de expandir violentamente, liberando uma onda eletrotérmica corrosiva em todas as direções.",
+        classification: "S++",
+        history: "Desenvolvida quando Gama compreendeu que o verdadeiro poder não estava apenas na combinação das naturezas, mas na condensação absoluta do chakra antes da aplicação elemental. Ao dominar a compressão energética sem perder estabilidade, ele criou uma técnica capaz de sobrepor qualidade e quantidade em perfeita convergência destrutiva.",
+        nature: "Ranton + Santon + Enton",
+        destruction: "Extremamente elevado em escala regional ampliada. O impacto gera um colapso atmosférico temporário, ioniza o ar, corrói estruturas maciças e incinera defesas com chamas negras persistentes. A área afetada permanece instável por um período prolongado devido à interferência eletromagnética e resíduos ácidos energizados.",
+        name: "Kyokuten Sandon",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1772124972/Gama4_glbjqc.png",
+        status: "Consome enormes reservas de chakra e exige controle minucioso da pressão interna do núcleo. Qualquer falha na sincronização das três naturezas pode provocar uma ruptura prematura, resultando em explosão descontrolada ao redor do próprio usuário. Técnica restrita a situações de combate decisivo."
+      }
+    ],
+    arsenal: [],
+    stats: {
+      strength: 0,
+      dexterity: 0,
+      agility: 0,
+      intelligence: 0,
+      spirit: 0,
+      vigor: 0,
+      perception: 0
+    },
+    powers: [
+      {
+        name: "Saiken",
+        level: 0
+      },
+      {
+        name: "Purazomaton",
+        level: 0
+      },
+      {
+        name: "Katon",
+        level: 0
+      },
+      {
+        name: "Suiton",
+        level: 0
+      },
+      {
+        name: "Raiton",
+        level: 0
+      }
+    ],
+    aptitudes: [
+      "Chakra Expandido: Saiken",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido"
+    ],
+    timelineAppearance: "3ª Temporada",
+    timelineDeath: "4ª Temporada",
+    timelineSkipped: [],
+    birthVillage: "Kirigakure"
+  },
+  {
+    id: 72,
+    name: "Deruta Muujin (Delta)",
+    clan: "Muujin",
+    categories: [
+      "NPC",
+      "OCA",
+      "Iwagakure"
+    ],
+    titles: [
+      "Tsuchikage",
+      "O Núcleo"
+    ],
+    nc: 28,
+    position: "Tsuchikage",
+    role: "?",
+    description: "",
+    hp: 0,
+    chakra: 0,
+    isDead: true,
+    killedBy: "nAJIN hATAKE",
+    image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1771556332/Delta_tvvhqd.jpg",
+    techniques: [
+      {
+        nature: "Juryūkuton + Kotton",
+        description: "Delta funde completamente o poder do Juryūkuton com o Kotton, moldando o campo de batalha em uma forja viva de metal e gravidade. A partir do solo e do próprio ar, ele materializa inúmeros golens colossais de metal, cada um com proporções gigantescas e estrutura densa como aço divino. Esses golens não são meras invocações físicas — cada um possui um núcleo gravitacional próprio, concedendo a eles domínio absoluto sobre vetores gravitacionais ao seu redor. Eles podem aumentar drasticamente o peso de seus ataques, esmagar inimigos com campos gravitacionais ou inverter a gravidade local para arremessar tudo ao redor. Enquanto isso, Delta permanece suspenso no ar, voando livremente ao manipular a gravidade em si mesmo, coordenando suas criações como um soberano absoluto. Os golens podem agir em sincronia, criando zonas de aprisionamento gravitacional, esmagamento contínuo e destruição em larga escala, tornando impossível escapar do campo de batalha.",
+        classification: "Z",
+        history: "Criada após Delta atingir maestria tanto no controle da gravidade quanto na manipulação do metal, percebendo que poderia não apenas destruir o ambiente, mas dominá-lo completamente. Ao unir essas duas naturezas, ele transcendeu o combate individual, passando a controlar múltiplas entidades com poder equivalente a armas de destruição em massa.",
+        status: "Extremamente exaustiva. Requer controle simultâneo de múltiplos núcleos gravitacionais e grande consumo de chakra. Caso perca o controle, os golens podem colapsar desordenadamente, causando destruição indiscriminada.",
+        name: "Juryūkuton: Kōtetsu no Chōjū",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501471/delta1_eijh0d.jpg",
+        destruction: "Nível apocalíptico massivo. Exércitos inteiros são obliterados sob o peso da gravidade combinada com força metálica colossal. Regiões inteiras são esmagadas, deformadas e soterradas por pressão gravitacional contínua."
+      },
+      {
+        nature: "Juryūkuton",
+        classification: "Z",
+        description: "Delta cria um núcleo gravitacional colapsado acima do campo de batalha, semelhante a uma singularidade incompleta. Tudo ao redor começa a ser puxado de forma inevitável — solo, estruturas, técnicas e até o fluxo de chakra dos inimigos. A gravidade distorce o espaço local, fazendo com que ataques percam direção e alvos sejam arrastados mesmo tentando escapar. Ao atingir densidade crítica, o núcleo colapsa sobre si mesmo, comprimindo tudo capturado em um ponto infinitesimal antes de liberar uma implosão silenciosa que apaga completamente matéria e energia na área afetada.",
+        history: "Desenvolvida quando Delta ultrapassou o controle da gravidade e passou a manipular diretamente a curvatura do espaço.",
+        destruction: "Nível apocalíptico. A área atingida é completamente apagada, deixando apenas um vazio comprimido e instável. Defesas convencionais não suportam a compressão absoluta.",
+        status: "Uso extremamente restrito. Consumo colossal de chakra. Pode afetar aliados e o próprio usuário se mal controlada.",
+        name: "Juryūkuton: Shūen no Kyūshū",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501472/delta5_hfji3k.jpg"
+      },
+      {
+        destruction: "Nível apocalíptico global. Regiões inteiras são convertidas em um ecossistema metálico vivo, impossibilitando sobrevivência ou fuga convencional.",
+        name: "Koton: Meidō no Kōtetsu Tensei",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501471/delta2_z21don.jpg",
+        status: "Consumo absurdo de chakra. Técnica extremamente rara. Pode afetar aliados e alterar permanentemente o ambiente.",
+        classification: "Z",
+        description: "Delta toca o solo e ativa uma transmutação em escala massiva, convertendo toda a terra ao redor em um metal negro vivo. O ambiente inteiro passa a se comportar como uma entidade controlada por ele: o chão ondula como um oceano metálico, pilares colossais emergem e lâminas gigantes se erguem do nada. Qualquer inimigo em contato com o solo começa a ser assimilado lentamente, tendo seu corpo convertido em metal e integrado ao campo de batalha. O terreno deixa de existir como natureza e passa a ser um domínio absoluto de Koton.",
+        history: "Criada quando Delta ultrapassou o limite da transmutação, percebendo que poderia reescrever a composição do ambiente em larga escala.",
+        nature: "Koton"
+      },
+      {
+        description: "Delta faz o solo abaixo do inimigo explodir em múltiplas presas metálicas colossais, semelhantes a mandíbulas gigantes. Essas estruturas não são estáticas: elas se movem, se fecham e se reorganizam constantemente, perseguindo o alvo e formando um labirinto mortal de lâminas. As presas podem surgir em sequência, atacando de diferentes ângulos até esmagar completamente o inimigo.",
+        classification: "S++",
+        history: "Desenvolvida como técnica de execução rápida contra oponentes ágeis e difíceis de atingir diretamente.",
+        nature: "Koton",
+        name: "Koton: Kōtetsu Kōrin — Hakai no Kiba",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501471/delta4_xbw1vx.jpg",
+        status: "Alto consumo de chakra, porém eficiente e de ativação rápida.",
+        destruction: "Extremamente alto. Capaz de eliminar múltiplos alvos ou aprisionar inimigos de alto nível sem possibilidade de fuga."
+      },
+      {
+        description: "Delta converte seu próprio corpo em metal vivo avançado, formando uma armadura orgânica perfeita. Esse metal responde instantaneamente à sua vontade: endurece contra impactos, se liquefaz para absorver ataques e se reorganiza para regenerar danos. Além da defesa absoluta, Delta pode expandir essa armadura para fora do corpo, criando lâminas, braços gigantes ou estruturas ofensivas durante o combate.",
+        classification: "S++",
+        history: "Criada quando Delta passou a aplicar o Koton diretamente em si mesmo, alcançando um nível superior de controle.",
+        nature: "Koton",
+        destruction: "Alto (combate direto). Amplifica drasticamente força, resistência e capacidade ofensiva.",
+        name: "Koton: Shinzō no Kinzoku — Tekkai no Ō",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501471/delta3_zhacym.jpg",
+        status: "Consumo constante de chakra. Extremamente estável, mas desgastante em batalhas prolongadas."
+      },
+      {
+        description: "Delta inverte completamente o vetor gravitacional de uma área extensa, fazendo com que o 'céu' e a 'terra' troquem de posição. Inimigos são arremessados violentamente para cima enquanto o ambiente se fragmenta e colide em múltiplas direções. Delta pode redefinir pontos gravitacionais no ar, forçando colisões sucessivas.",
+        classification: "S++",
+        history: "Criada como técnica de domínio total de campo tridimensional.",
+        nature: "Juryūkuton",
+        name: "Juryūkuton: Tenchi Gyakuten",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501472/delta6_bp3yes.jpg",
+        status: "Alto consumo de chakra. Requer controle preciso para não atingir aliados.",
+        destruction: "Massivo. O dano vem de colisões múltiplas, desorientação extrema e destruição do terreno."
+      },
+      {
+        name: "Juryūkuton: Jūryoku Kekkai — Zetsubō no Ori",
+        image: "https://res.cloudinary.com/dokl8hfqz/image/upload/v1777501472/delta7_as98pi.jpg",
+        status: "Consumo elevado, porém mais estável que técnicas de larga escala. Pode ser quebrada apenas por técnicas equivalentes ou habilidades especiais.",
+        destruction: "Extremamente alto e focado. Ideal para eliminação de alvos únicos de alto nível.",
+        classification: "S++",
+        history: "Desenvolvida para neutralizar oponentes que não podem ser derrotados com ataques convencionais.",
+        description: "Delta cria uma barreira esférica de gravidade ao redor do alvo, onde múltiplas forças gravitacionais atuam simultaneamente em direções opostas. O corpo do inimigo é comprimido e distorcido constantemente, impedindo qualquer movimento ou execução de técnicas. A pressão aumenta progressivamente até esmagar completamente o alvo.",
+        nature: "Juryūkuton"
+      }
+    ],
+    arsenal: [],
+    stats: {
+      strength: 0,
+      dexterity: 0,
+      agility: 0,
+      intelligence: 0,
+      spirit: 0,
+      vigor: 0,
+      perception: 0
+    },
+    powers: [
+      {
+        name: "Juryūkuton",
+        level: 0
+      },
+      {
+        name: "Koton",
+        level: 0
+      },
+      {
+        name: "Doton",
+        level: 0
+      },
+      {
+        name: "Raiton",
+        level: 0
+      },
+      {
+        name: "Futon",
+        level: 0
+      }
+    ],
+    aptitudes: [
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido"
+    ],
+    timelineAppearance: "3ª Temporada",
+    timelineDeath: "4ª Temporada",
+    timelineSkipped: [],
+    birthVillage: "Iwagakure"
+  },
+  {
+    id: 73,
+    name: "Shiita Sabaku (Theta)",
+    clan: "Dabado",
+    categories: [
+      "NPC",
+      "OCA",
+      "Sunagakure"
+    ],
+    titles: [
+      "Kazekage"
+    ],
+    nc: 28,
+    position: "Kazekage",
+    role: "?",
+    description: "",
+    hp: 0,
+    chakra: 0,
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F44%20-%20Theta%2FTheta.png?alt=media",
+    techniques: [],
+    stats: {
+      strength: 0,
+      dexterity: 0,
+      agility: 0,
+      intelligence: 0,
+      spirit: 0,
+      vigor: 0,
+      perception: 0
+    },
+    powers: [
+      {
+        name: "Sakin",
+        level: 0
+      },
+      {
+        name: "Satetsu",
+        level: 0
+      },
+      {
+        name: "Saton",
+        level: 0
+      },
+      {
+        name: "Doton",
+        level: 0
+      },
+      {
+        name: "Fuuton",
+        level: 0
+      },
+      {
+        name: "Iryou Ninjutsu",
+        level: 0
+      },
+      {
+        name: "Fuinjutsu",
+        level: 0
+      }
+    ],
+    aptitudes: [
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido",
+      "Desconhecido"
+    ],
+    timelineAppearance: "4ª Temporada",
+    timelineDeath: null,
+    timelineSkipped: [],
+    birthVillage: "Sunagakure"
+  },
+  {
+    id: 20,
+    name: "Ryuta Hyuga",
+    clan: "Hyuga",
+    categories: [],
+    titles: [],
+    nc: 18,
+    position: "",
+    role: "",
+    description: "",
+    hp: 0,
+    chakra: 0,
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F20%20-%20Ryuta%20Hyuga%2FRyuta%20Hyuga.png?alt=media&v=1784756168236",
+    stats: {
+      strength: 0,
+      dexterity: 0,
+      agility: 0,
+      intelligence: 0,
+      spirit: 0,
+      vigor: 0,
+      perception: 0
+    },
+    powers: [],
+    aptitudes: [],
+    timelineAppearance: "Prólogo",
+    timelineDeath: "1ª Temporada",
+    timelineSkipped: [],
+    birthVillage: "Konohagakure"
+  },
+  {
+    id: 34,
+    name: "Shikatsu Nara (Togo Kage)",
+    clan: "Kage",
+    categories: [
+      "NPC",
+      "NoGuns",
+      "OCA",
+      "Konohagakure"
+    ],
+    titles: [
+      "Esquizofrênico",
+      "Arma Secreta da NoGuns",
+      "Traidor da NoGuns"
+    ],
+    nc: 18,
+    position: "NoGuns",
+    role: "DPS",
+    description: "Shikatsu Nara, conhecido hoje como Togo Kage, é o que restou de um sonho que foi quebrado cedo demais. Nascido no clã Nara, cresceu como uma criança feliz, curiosa e orgulhosa de seu nome, cercado por figuras lendárias — seus pais eram próximos de Hashirama e Tobirama, e por isso Shikatsu viveu parte de sua infância ao lado dos Senju. Ele jantava com eles, ouvia histórias, aprendia estratégias e carregava um único objetivo no coração: se tornar Hokage. Tobirama era seu herói. Hashirama, sua inspiração. Mas tudo isso morreu na noite da invasão da Vila da Nuvem. Seus pais lutaram até o fim para proteger Konoha, sacrificando suas vidas com orgulho. Shikatsu assistiu tudo. E então viu aquilo que destruiu sua mente por completo: Tobirama, o homem que ele mais admirava, passar por ele sem sequer olhar para trás, seguindo sozinho para enfrentar Hades. Para o mundo, foi um ato de coragem. Para Shikatsu, foi abandono. Traição. Nesse momento, algo dentro dele quebrou de forma irreversível. Sem família, sem propósito e sem seu herói, sua mente colapsou. Ele fugiu, desapareceu, e ao longo dos anos se perdeu completamente de si mesmo. A esquizofrenia induzida pelo trauma fragmentou sua identidade, apagando o garoto que queria ser Hokage. Em seu lugar, nasceu Togo — uma sombra instintiva em forma humana. Vagando por florestas e campos de batalha, atacava por reflexo, sobrevivia por impulso e existia sem direção. Até encontrar Daichi. No primeiro encontro, tentou matá-lo como fazia com todos… mas foi derrotado. E poupado. Mais do que isso — foi visto. Daichi lhe fez uma promessa: encontraria uma cura. Pela primeira vez desde a queda dos Nara, alguém o tratou como humano. Desde então, Togo passou a existir preso a esse único fio de realidade. Hoje, ele é instável, silencioso e imprevisível — incapaz de viver em sociedade, mas extremamente letal em combate. Sua mente pode estar quebrada, mas seu instinto nunca falha. E enquanto o mundo o enxerga como um fragmento perdido… Togo ainda caminha, sustentado apenas por uma promessa que se recusa a esquecer.",
+    hp: 130,
+    chakra: 64,
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F50%20-%20Togo%20Kage%2FTogo%20Kage.png?alt=media",
+    techniques: [
+      {
+        name: "Kage Shinkai: Yami no Kyoshin Ensei",
+        classification: "S++",
+        nature: "Ninjutsu de Sombras + Chakra Profano da Oca + Manifestação Psíquica",
+        description: "Togo Kage funde seu domínio absoluto das sombras com o chakra profano adquirido na Oca, permitindo que sua mente fragmentada projete entidades sombrias físicas no mundo real. Sua percepção distorcida da realidade se converte em força material, dando origem a manifestações colossais como hidras de múltiplas cabeças, gigantes de sombra e dragões abissais. Essas criaturas não são invocações comuns, mas extensões diretas da consciência de Togo, conectadas ao seu fluxo de chakra e capazes de agir simultaneamente em diferentes direções. As sombras assumem forma tangível, podendo esmagar, perfurar ou envolver alvos em escuridão absoluta que drena energia vital e chakra gradualmente.",
+        destruction: "Nível de devastação massiva. As manifestações podem destruir grandes áreas do campo de batalha, esmagar múltiplos oponentes e criar zonas de escuridão que anulam percepção sensorial e mobilidade. O dano continua mesmo após o impacto devido ao consumo energético das sombras.",
+        history: "Despertada após a exposição prolongada ao chakra profano da Oca, quando a instabilidade mental de Togo passou a influenciar diretamente sua manipulação das sombras. Desde então, suas manifestações tornaram-se progressivamente maiores e mais autônomas.",
+        status: "Extremamente perigosa para o usuário. Requer alto consumo de chakra e estabilidade mental mínima para controle. Perda de foco pode fazer as manifestações agirem de forma caótica e indiscriminada.",
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F50%20-%20Togo%20Kage%2FTecnicas%2F01%20-%20Kage%20Shinkai%3A%20Yami%20no%20Kyoshin%20Ensei.png?alt=media"
+      }
+    ],
+    stats: {
+      strength: 7,
+      dexterity: 18,
+      agility: 7,
+      intelligence: 18,
+      spirit: 18,
+      vigor: 10,
+      perception: 18
+    },
+    powers: [
+      {
+        name: "Kage Mane",
+        level: 9
+      },
+      {
+        name: "Kuchiyose",
+        level: 9
+      }
+    ],
+    aptitudes: [
+      "Maestria: CD",
+      "Intuição",
+      "Ponto Cego",
+      "Acuidade",
+      "Perito em Prestidigitação",
+      "Ilusão Profunda",
+      "Usar Katana",
+      "Saque Rápido",
+      "Técnica Poderosa",
+      "Potencializar"
+    ],
+    timelineAppearance: "Prólogo",
+    timelineDeath: null,
+    timelineSkipped: [
+      "3ª Temporada"
+    ],
+    birthVillage: "Konohagakure"
   }
 ];

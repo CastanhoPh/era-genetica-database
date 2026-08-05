@@ -10,7 +10,11 @@ export const arsenalData: Equipment[] = [
     description: "A lendária kunai de Nishinoya, o Terceiro Hokage, forjada em metal condutor de chakra e gravada com selos complexos do Hiraishin. Ela possui a capacidade única de armazenar fragmentos do chakra da Matatabi, permitindo que a lâmina ignore a resistência física e corte através do espaço-tempo. Quando ativa, os selos em sua superfície brilham em um azul intenso, emitindo uma aura de calor espiritual que distorce o ar ao redor. Além de servir como ponto de teleporte, a kunai pode expandir sua lâmina em uma projeção de fogo azul denso. É considerada o símbolo máximo da Vontade do Fogo de Nishinoya, reagindo apenas ao toque de quem possui o vínculo com a Duas-Caudas.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F01%20-%20S%C5%8Den%20no%20Kage.png?alt=media",
     originalOwner: "Nishinoya Senju",
-    currentOwner: "Nishinoya Senju"
+    currentOwner: "Nishinoya Senju",
+    variants: [
+      { name: "Guren no Kage", owner: "Kaito Senju", image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F03%20-%20Guren%20no%20Kage.png?alt=media", description: "Uma variação única da Sōen no Kage, herdada por Kaito Senju e marcada por uma mutação energética sem precedentes. Originalmente imbuída com o chakra azul da Matatabi, a arma reagiu ao fluxo de chakra vital de Kaito, transmutando sua essência para um tom vermelho carmesim profundo. Esse fenômeno indica uma sincronia absoluta entre o herdeiro e a vontade da arma, liberando chamas de calor solar que podem incinerar o campo de batalha em segundos. A kunai mantém as propriedades de teleporte do Hiraishin, mas cada salto deixa para trás uma explosão de chamas vermelhas residuais. Suas lâminas de chakra podem estender-se para formar chicotes de fogo ou barreiras defensivas impenetráveis. É considerada uma 'arma viva' que evolui conforme o espírito de Kaito se fortalece, simbolizando o despertar de um novo poder ancestral." },
+      { name: "Shiden no Kage", owner: "Naomi Uzumaki", image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2Fvariantes%2FGuren%20no%20Kage%2FShiden%20no%20Kage.png?alt=media&v=1785956662899" }
+    ]
   },
   {
     id: 2,
@@ -21,21 +25,13 @@ export const arsenalData: Equipment[] = [
     description: "O manto lendário de Nishinoya Senju, tecido com fibras especiais impregnadas por selos avançados de fuinjutsu que o tornam indestrutível por meios convencionais. Este traje atua como um núcleo secundário de chakra, conectado diretamente ao selo da Sōen no Kage, permitindo que o usuário acumule energia natural e chakra da Matatabi passivamente. Durante o combate, o manto pode liberar essa energia para formar uma armadura de chamas azuis ou amortecer impactos físicos e espirituais de nível catastrófico. Suas bordas são reforçadas com lâminas de chakra invisíveis que cortam inimigos que se aproximam demais do portador. Além disso, o tecido oculta completamente a assinatura de chakra do usuário, tornando-o um mestre da infiltração. É a vestimenta definitiva para um Jinchuuriki que alcançou a maestria total sobre sua besta.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F02%20-%20S%C5%8Den%20no%20Gaunt%C5%8D.png?alt=media",
     originalOwner: "Nishinoya Senju",
-    currentOwner: "Oddy Uchiha"
+    currentOwner: "Oddy Uchiha",
+    variants: [
+      { name: "Shiden no Gauntō", owner: "Naomi Uzumaki", image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2Fvariantes%2FS%C5%8Den%20no%20Gaunt%C5%8D%2FShiden%20no%20Gaunt%C5%8D.png?alt=media&v=1785956662899" }
+    ]
   },
   {
     id: 3,
-    name: "Guren no Kage",
-    classification: "Z",
-    nature: "Fuinjutsu + Senjutsu + Bijuu",
-    origin: "Konohagakure",
-    description: "Uma variação única da Sōen no Kage, herdada por Kaito Senju e marcada por uma mutação energética sem precedentes. Originalmente imbuída com o chakra azul da Matatabi, a arma reagiu ao fluxo de chakra vital de Kaito, transmutando sua essência para um tom vermelho carmesim profundo. Esse fenômeno indica uma sincronia absoluta entre o herdeiro e a vontade da arma, liberando chamas de calor solar que podem incinerar o campo de batalha em segundos. A kunai mantém as propriedades de teleporte do Hiraishin, mas cada salto deixa para trás uma explosão de chamas vermelhas residuais. Suas lâminas de chakra podem estender-se para formar chicotes de fogo ou barreiras defensivas impenetráveis. É considerada uma 'arma viva' que evolui conforme o espírito de Kaito se fortalece, simbolizando o despertar de um novo poder ancestral.",
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F03%20-%20Guren%20no%20Kage.png?alt=media",
-    originalOwner: "Nishinoya Senju",
-    currentOwner: "Kaito Senju"
-  },
-  {
-    id: 4,
     name: "Shinrin no Kanmuri",
     classification: "Z",
     nature: "Mokuton + Senju",
@@ -43,10 +39,11 @@ export const arsenalData: Equipment[] = [
     description: "A lendária espada Shinrin no Kanmuri, empunhada originalmente pelo Primeiro Hokage, Hashirama Senju, como o símbolo de seu domínio sobre a vida. Sua lâmina é forjada a partir de metal orgânico que contém veios vivos da madeira ancestral do Shinju, pulsando com um chakra natural verde esmeralda. A arma funciona como uma extensão direta do Mokuton, permitindo ao usuário manifestar raízes e florestas inteiras instantaneamente a partir do ponto de impacto. Ela possui a capacidade passiva de absorver o chakra ambiental e do inimigo, convertendo-o em energia vital que cura as feridas do portador em tempo real. Em seu estado despertado, a espada pode liberar ondas de choque vegetais que imobilizam exércitos e drenam sua vontade de lutar. É uma relíquia que carrega a essência primordial da floresta, sendo quase impossível de ser empunhada por alguém que não possua a linhagem Senju ou o Modo Sábio.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F04%20-%20Shinrin%20no%20Kanmuri.png?alt=media",
     originalOwner: "Hashirama Senju",
+    pastOwners: ["Oddy Uchiha"],
     currentOwner: "Kaito Senju"
   },
   {
-    id: 5,
+    id: 4,
     name: "Homura no Chikai",
     classification: "Z",
     nature: "Purazomaton + Doton Ancestral",
@@ -57,7 +54,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Oddy Uchiha"
   },
   {
-    id: 6,
+    id: 5,
     name: "Kusanagi",
     classification: "S++",
     nature: "Uchiha",
@@ -68,7 +65,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Oddy Uchiha"
   },
   {
-    id: 7,
+    id: 6,
     name: "Akaryū no Yubiwa",
     classification: "S++",
     nature: "Katon + Uchiha",
@@ -79,7 +76,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Oddy Uchiha"
   },
   {
-    id: 8,
+    id: 7,
     name: "Ishi no Kubikazari",
     classification: "S",
     nature: "Doton",
@@ -90,7 +87,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Oddy Uchiha"
   },
   {
-    id: 9,
+    id: 8,
     name: "Ganryū no Omori",
     classification: "A+",
     nature: "Doton",
@@ -101,7 +98,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Katsumi Hyuga"
   },
   {
-    id: 10,
+    id: 9,
     name: "Kubikiribōchō",
     classification: "S+",
     nature: "Sete Espadas da Névoa",
@@ -112,7 +109,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Najin Hatake"
   },
   {
-    id: 11,
+    id: 10,
     name: "Luvas de Chakra Profano 'F'",
     classification: "S+",
     nature: "Chakra Profano",
@@ -123,7 +120,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Najin Hatake"
   },
   {
-    id: 12,
+    id: 11,
     name: "Hyōton Artificial",
     classification: "S",
     nature: "Chakra Artificial",
@@ -134,7 +131,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Takeshi Hatake"
   },
   {
-    id: 13,
+    id: 12,
     name: "Shōton Artificial",
     classification: "S",
     nature: "Chakra Artificial",
@@ -145,18 +142,18 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Takeshi Hatake"
   },
   {
-    id: 14,
+    id: 13,
     name: "Colar dos Hatake",
     classification: "S+",
     nature: "Chakra Profano",
     origin: "Konohagakure",
-    description: "Este colar é uma relíquia familiar de valor inestimável que pertenceu ao lendário Raikun Hatake, agora passado para Najin como símbolo de sua herança. Ele atua como um amplificador passivo para o sistema nervoso do usuário, elevando os reflexos e a coordenação muscular a níveis que superam os limites biológicos humanos. Quando energizado com chakra, o colar libera uma leve aura elétrica constante que atua como um radar sensorial, permitindo detectar movimentos no ar e ataques invisíveis com precisão instintiva. Além de melhorar o desempenho físico, o artefato ajuda a estabilizar as flutuações do chakra profano, impedindo que a energia corruptora afete a mente do portador. É um foco de determinação que emite um brilho azulado suave quando o usuário atinge o ápice de sua concentração em batalha. Para um Hatake, este item é mais do que um acessório; é a conexão espiritual com as gerações passadas de guerreiros da vila.",
+    description: "Este colar profano nasceu de uma parceria entre Rock Gunma e Hiroshi Hanzo, forjado enquanto os dois estavam em Konoha durante o mandato de Nishinoya Senju como Terceiro Hokage. Sua origem é sombria: o núcleo de chakra profano que o alimenta foi extraído do chip da OCA implantado em Raikun Hatake — o mesmo que o matou —, recuperado por Takeshi Hatake após sua morte. Takeshi foi o primeiro a usá-lo, e o colar permaneceu com ele até ser passado a Oddy Uchiha, quando Najin Hatake morreu. Ele atua como um amplificador passivo para o sistema nervoso do usuário, elevando os reflexos e a coordenação muscular a níveis que superam os limites biológicos humanos. Quando energizado com chakra, o colar libera uma leve aura elétrica constante que atua como um radar sensorial, permitindo detectar movimentos no ar e ataques invisíveis com precisão instintiva. Além de melhorar o desempenho físico, o artefato ajuda a estabilizar as flutuações do chakra profano, impedindo que a energia corruptora afete a mente do portador. É um foco de determinação que emite um brilho azulado suave quando o usuário atinge o ápice de sua concentração em batalha. Mesmo fora das mãos de um Hatake, o colar carrega a marca de quem o criou, de quem forneceu — à força — sua energia, e de quem o usou primeiro.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F14%20-%20Colar%20dos%20Hatake.png?alt=media",
-    originalOwner: "Raikun Hatake",
-    currentOwner: "Takeshi Hatake"
+    originalOwner: "Takeshi Hatake",
+    currentOwner: "Oddy Uchiha"
   },
   {
-    id: 15,
+    id: 14,
     name: "Nuibari",
     classification: "S+",
     nature: "Sete Espadas da Névoa",
@@ -167,7 +164,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Takeshi Hatake"
   },
   {
-    id: 16,
+    id: 15,
     name: "Reigan",
     classification: "S",
     nature: "Chakra Profano",
@@ -178,7 +175,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Furyuzan Chinoike"
   },
   {
-    id: 17,
+    id: 16,
     name: "Presilha de Cabelo de Etsuko",
     classification: "A+",
     nature: "Chakra Profano",
@@ -189,7 +186,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Furyuzan Chinoike"
   },
   {
-    id: 18,
+    id: 17,
     name: "Samehada",
     classification: "S+",
     nature: "Sete Espadas da Névoa",
@@ -200,7 +197,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Nagare Uzumaki"
   },
   {
-    id: 19,
+    id: 18,
     name: "Ishi no Seimei",
     classification: "S",
     nature: "Doton",
@@ -211,7 +208,7 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Oddy Uchiha"
   },
   {
-    id: 20,
+    id: 19,
     name: "Pergaminho de Invocação",
     classification: "A+",
     nature: "Fuinjutsu",
@@ -222,18 +219,18 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Nagare Uzumaki"
   },
   {
-    id: 21,
+    id: 20,
     name: "Sōryū no Seikonseki",
     classification: "S++",
     nature: "Chakra Profano + Doton Ancestral",
     origin: "Iwagakure",
-    description: "A Sōryū no Seikonseki, ou 'Colar da Alma do Dragão Gêmeo', é uma relíquia milenar guardada pelos monges guerreiros do País da Pedra como um tesouro de poder espiritual. Ela abriga em seu núcleo uma densa concentração de chakra profano ancestral que ressoa com a energia vital das montanhas de Iwagakure. Ao ser ativada, a pedra canaliza essa energia para o usuário, permitindo a manifestação de formas espirituais dracônicas que atacam tanto o corpo quanto a alma do inimigo. O chakra emitido pela pedra possui uma densidade tão alta que pode distorcer a gravidade ao seu redor, tornando cada movimento do usuário esmagador. É um artefato de dupla natureza, exigindo que o portador mantenha um equilíbrio perfeito entre paz espiritual e a fúria do chakra profano contido. Kenma Soryo utiliza a pedra para elevar suas técnicas de Doton Ancestral a um nível onde a própria terra parece ganhar consciência e atacar sob seu comando. É considerada uma das três chaves para despertar o verdadeiro potencial dos monges de elite do País da Pedra.",
+    description: "A Sōryū no Seikonseki, ou 'Colar da Alma do Dragão Gêmeo', é uma relíquia milenar guardada pelos monges guerreiros do País da Pedra como um tesouro de poder espiritual. Ela abriga em seu núcleo uma densa concentração de chakra profano ancestral que ressoa com a energia vital das montanhas de Iwagakure. Ao ser ativada, a pedra canaliza essa energia para o usuário, permitindo a manifestação de formas espirituais dracônicas que atacam tanto o corpo quanto a alma do inimigo. O chakra emitido pela pedra possui uma densidade tão alta que pode distorcer a gravidade ao seu redor, tornando cada movimento do usuário esmagador. É um artefato de dupla natureza, exigindo que o portador mantenha um equilíbrio perfeito entre paz espiritual e a fúria do chakra profano contido. Kenma Soryo utiliza a pedra para elevar suas técnicas de Doton Ancestral a um nível onde a própria terra parece ganhar consciência e atacar sob seu comando. É um dos três artefatos sagrados guardados pelos monges de elite do País da Pedra — relíquia à parte do trio de pedras-chave Ryokushin, Aoshin e Akashin.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F21%20-%20S%C5%8Dry%C5%AB%20no%20Seikonseki.png?alt=media",
     originalOwner: "Oryō Soryo",
     currentOwner: "Kenma Soryo"
   },
   {
-    id: 22,
+    id: 21,
     name: "Sōryo no Kōwan",
     classification: "S++",
     nature: "Chakra Profano + Doton Ancestral",
@@ -244,13 +241,24 @@ export const arsenalData: Equipment[] = [
     currentOwner: "Kenma Soryo"
   },
   {
-    id: 23,
+    id: 22,
     name: "Ryokushin no Seikonseki",
     classification: "S++",
     nature: "Chakra Profano + Doton Ancestral",
     origin: "Iwagakure",
-    description: "A Ryokushin no Seikonseki é a segunda das três pedras lendárias dos monges, focada especificamente na amplificação da resistência física e vitalidade espiritual. Conhecida como a 'Pedra Verde do Corpo Divino', ela emite uma pulsação constante que regenera o chakra profano do usuário conforme ele luta, criando um ciclo de energia quase inesgotável. Quando ativa, a pedra reveste o corpo do portador com uma película invisível de energia densa que anula impactos físicos de médio nível e dissipa técnicas elementais fracas. Ela é utilizada por Kenma Soryo como um núcleo de estabilidade, permitindo que ele suporte a carga mental de manipular jutsus ancestrais por longos períodos sem colapsar. A pedra também pode ser disparada como um projétil de energia concentrada que explode em uma onda de choque esmeralda ao atingir o alvo. Sua cor vibrante é resultado da fusão entre a energia vital da natureza e a corrupção controlada do chakra profano dos monges. É o pilar que sustenta a imortalidade temporária dos guerreiros de elite de Iwagakure no campo de batalha.",
+    description: "A Ryokushin no Seikonseki é uma das três pedras-chave sagradas dos monges, focada especificamente na amplificação da resistência física e vitalidade espiritual. Conhecida como a 'Pedra Verde do Corpo Divino', ela emite uma pulsação constante que regenera o chakra profano do usuário conforme ele luta, criando um ciclo de energia quase inesgotável. Quando ativa, a pedra reveste o corpo do portador com uma película invisível de energia densa que anula impactos físicos de médio nível e dissipa técnicas elementais fracas. Ela é utilizada por Kenma Soryo como um núcleo de estabilidade, permitindo que ele suporte a carga mental de manipular jutsus ancestrais por longos períodos sem colapsar. A pedra também pode ser disparada como um projétil de energia concentrada que explode em uma onda de choque esmeralda ao atingir o alvo. Sua cor vibrante é resultado da fusão entre a energia vital da natureza e a corrupção controlada do chakra profano dos monges. É o pilar que sustenta a imortalidade temporária dos guerreiros de elite de Iwagakure no campo de batalha.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F23%20-%20Ryokushin%20no%20Seikonseki.png?alt=media",
+    originalOwner: "Oryō Soryo",
+    currentOwner: "Kenma Soryo"
+  },
+  {
+    id: 23,
+    name: "Akashin no Seikonseki",
+    classification: "S++",
+    nature: "Chakra Profano + Doton Ancestral",
+    origin: "Iwagakure",
+    description: "A Akashin no Seikonseki, ou 'Pedra Vermelha da Alma Ancestral', é a terceira e mais cobiçada das pedras-chave sagradas dos monges de Iwagakure — dizem que guarda um fragmento da própria vontade ancestral, purificado em sangue e fogo. Seu brilho vermelho intenso amplifica a ligação espiritual do portador a níveis quase divinos, permitindo enxergar e manipular almas diretamente, dissolvendo defesas mentais e espirituais do oponente. Kenma Soryo a mantém guardada como último recurso, temendo o preço que sua própria alma pagaria por usá-la sem controle absoluto. Junto de Ryokushin e Aoshin, completa o trio de pedras-chave que os monges de elite do País da Pedra consideram capaz de despertar o verdadeiro potencial de um guerreiro profano.",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F76%20-%20Akashin%20no%20Seikonseki.png?alt=media&v=1785775302899",
     originalOwner: "Oryō Soryo",
     currentOwner: "Kenma Soryo"
   },
@@ -260,7 +268,7 @@ export const arsenalData: Equipment[] = [
     classification: "S++",
     nature: "Chakra Profano + Doton Ancestral",
     origin: "Iwagakure",
-    description: "A Aoshin no Seikonseki, ou 'Pedra Azul da Alma Sagrada', completa a tríade de relíquias dos monges de Iwagakure, sendo a que possui a maior afinidade com a percepção espiritual e o mundo das sombras. Ela emite um brilho azul profundo e hipnótico que pode ser usado para paralisar a vontade de inimigos mais fracos ou revelar a presença de seres espirituais e usuários de camuflagem. O chakra profano contido em seu núcleo é puramente espiritual, permitindo que o usuário projete sua consciência ou crie ilusões tangíveis que atacam diretamente a mente do alvo. Kenma utiliza a pedra para coordenar o campo de batalha, enviando comandos silenciosos através de ressonância de chakra para seus aliados ou detectando armadilhas ocultas. Em seu estado de liberação total, a pedra cria um domínio de névoa azulada onde a percepção do tempo é distorcida, facilitando assassinatos rápidos e precisos. É a relíquia mais misteriosa e perigosa, pois lida diretamente com a alma e o subconsciente daqueles que entram em seu alcance. Sua posse garante que o portador nunca seja pego de surpresa, agindo como um terceiro olho que enxerga a verdadeira natureza de tudo ao redor.",
+    description: "A Aoshin no Seikonseki, ou 'Pedra Azul da Alma Sagrada', é uma das três pedras-chave sagradas dos monges de Iwagakure, sendo a que possui a maior afinidade com a percepção espiritual e o mundo das sombras. Ela emite um brilho azul profundo e hipnótico que pode ser usado para paralisar a vontade de inimigos mais fracos ou revelar a presença de seres espirituais e usuários de camuflagem. O chakra profano contido em seu núcleo é puramente espiritual, permitindo que o usuário projete sua consciência ou crie ilusões tangíveis que atacam diretamente a mente do alvo. Kenma utiliza a pedra para coordenar o campo de batalha, enviando comandos silenciosos através de ressonância de chakra para seus aliados ou detectando armadilhas ocultas. Em seu estado de liberação total, a pedra cria um domínio de névoa azulada onde a percepção do tempo é distorcida, facilitando assassinatos rápidos e precisos. É a relíquia mais misteriosa e perigosa, pois lida diretamente com a alma e o subconsciente daqueles que entram em seu alcance. Sua posse garante que o portador nunca seja pego de surpresa, agindo como um terceiro olho que enxerga a verdadeira natureza de tudo ao redor.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F24%20-%20Aoshin%20no%20Seikonseki.png?alt=media",
     originalOwner: "Oryō Soryo",
     currentOwner: "Kenma Soryo"
@@ -425,10 +433,10 @@ export const arsenalData: Equipment[] = [
     classification: "Z",
     nature: "Senjutsu",
     origin: "Konohagakure",
-    description: "O Kongōnyo é o bastão sagrado de Rank Z que serviu como a arma principal do Terceiro Hokage, Hiruzen Sarutobi, possuindo a dureza lendária do diamante e a flexibilidade da natureza. Este artefato místico tem a capacidade única de converter o chakra natural do usuário em força física bruta e calor térmico concentrado em cada impacto. O bastão pode alterar seu comprimento e peso instantaneamente, permitindo ataques que cobrem quilômetros de distância ou esmagam montanhas com a facilidade de um graveto. Apollo Netsu utiliza a Kongōnyo para manifestar o verdadeiro poder dos Sarutobi, combinando golpes devastadores com explosões de chakra solar liberadas pelas extremidades da arma. Em seu estado despertado, o bastão pode se dividir em centenas de fragmentos guiados pela vontade do mestre ou transformar-se em uma gaiola indestrutível de energia Senjutsu. É uma relíquia de sabedoria e destruição, simbolizando o pilar inabalável da Vila da Folha que protege seus herdeiros com a força do Rei Macaco. Sua posse garante que o guerreiro seja uma força da natureza imparável no combate corpo a corpo.",
+    description: "O Kongōnyo é o bastão sagrado de Rank Z que serviu como a arma principal do Terceiro Hokage, Hiruzen Sarutobi, possuindo a dureza lendária do diamante e a flexibilidade da natureza. Este artefato místico tem a capacidade única de converter o chakra natural do usuário em força física bruta e calor térmico concentrado em cada impacto. O bastão pode alterar seu comprimento e peso instantaneamente, permitindo ataques que cobrem quilômetros de distância ou esmagam montanhas com a facilidade de um graveto. Apollo Sarutobi utiliza a Kongōnyo para manifestar o verdadeiro poder dos Sarutobi, combinando golpes devastadores com explosões de chakra solar liberadas pelas extremidades da arma. Em seu estado despertado, o bastão pode se dividir em centenas de fragmentos guiados pela vontade do mestre ou transformar-se em uma gaiola indestrutível de energia Senjutsu. É uma relíquia de sabedoria e destruição, simbolizando o pilar inabalável da Vila da Folha que protege seus herdeiros com a força do Rei Macaco. Sua posse garante que o guerreiro seja uma força da natureza imparável no combate corpo a corpo.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F39%20-%20Kong%C5%8Dnyo.png?alt=media",
     originalOwner: "Hiruzen Sarutobi",
-    currentOwner: "Apollo Netsu"
+    currentOwner: "Apollo Sarutobi"
   },
   {
     id: 40,
@@ -637,6 +645,7 @@ export const arsenalData: Equipment[] = [
     description: "O Satetsu no Rinne, ou 'Samsara da Areia de Ferro', é uma máscara ancestral de Rank Z que concede ao portador o domínio total e absoluto sobre o magnetismo planetário. Este artefato permite extrair ferro diretamente do solo, da atmosfera e até do sangue de seres vivos, transformando-os em poeira metálica sob o comando do usuário. A máscara atua como um núcleo de processamento que permite manifestar defesas e ataques de escala catastrófica, como tempestades de areia de ferro que cobrem países inteiros ou lanças gravitacionais que partem a crosta terrestre. Sayuri Sabaku utiliza esta relíquia para governar as correntes magnéticas do mundo, tornando-se imune a qualquer ataque metálico e capaz de desviar jutsus elementais de nível divino. O uso da máscara exige uma resistência mental sobre-humana para não ser consumido pela consciência coletiva das dunas que nela reside. É o símbolo supremo do Kazekage, representando o ciclo eterno de vida e morte através da poeira de metal que compõe o deserto. Sua ativação mergulha o mundo em um campo magnético tão denso que a própria luz se distorce, anunciando a chegada da soberana absoluta da areia.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F58%20-%20Satetsu%20no%20Rinne.png?alt=media",
     originalOwner: "Reto Sabaku",
+    pastOwners: ["Sayuri Sabaku"],
     currentOwner: "Tetsu Sabaku"
   },
   {
@@ -648,6 +657,7 @@ export const arsenalData: Equipment[] = [
     description: "O Sakin no Shinra, o 'Domínio Universal do Ouro', é um cetro relíquia de Rank Z que serve como o símbolo da linhagem real inquebrável de Sunagakure. Este artefato atua como um núcleo gravitacional que permite ao portador transmutar instantaneamente a paisagem em ouro líquido ultra-denso e invocar construções gigantescas com a dureza de materiais celestiais. O cetro concede autoridade sobre a gravidade específica dos materiais, permitindo ao usuário esmagar exércitos sob o peso de toneladas de ouro ou criar defesas impenetráveis que duram eras. Passado de geração em geração entre os governantes da areia, o cetro está atualmente sob a posse da Segunda Kazekage, Sayuri Sabaku, que o utiliza para estabilizar a economia e a defesa de sua nação. A energia dourada emitida pelo cetro purifica o chakra do usuário e anula venenos e debilitações físicas em aliados próximos através de uma aura de prosperidade e ordem. É uma arma de domínio total e benevolência imperial, representando a riqueza infinita e a força inabalável que Sunagakure deseja projetar ao mundo. Sua posse garante que o portador seja a âncora inamovível da civilização no centro do caos do deserto.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F59%20-%20Sakin%20no%20Shinra.png?alt=media",
     originalOwner: "Reto Sabaku",
+    pastOwners: ["Sayuri Sabaku"],
     currentOwner: "Hana Sabaku"
   },
   {
@@ -810,10 +820,10 @@ export const arsenalData: Equipment[] = [
     classification: "Z",
     nature: "Chakra Profano + Fujogan",
     origin: "Konohagakure",
-    description: "A Espada do Dragão Branco foi forjada pessoalmente por Minoru Hyūga utilizando chakra profano puro comprimido em forma sólida. Diferente de armas convencionais, sua estrutura não é metálica — a lâmina inteira é composta apenas de chakra cristalizado, tornando-a parcialmente etérea e extremamente instável para qualquer usuário comum. Graças à conexão direta com o Fujogan, Katsumi consegue absorver completamente a espada para dentro de seu próprio sistema de chakra, armazenando-a internamente e materializando-a instantaneamente durante o combate. A Hakuryū no Ken não causa dano físico tradicional; seus golpes atravessam matéria superficial e atingem diretamente as linhas de chakra do alvo, interrompendo circulação, bloqueando tenketsus, causando colapso energético e desestabilizando técnicas em execução. Em confrontos prolongados, a espada pode literalmente enfraquecer o sistema de chakra do inimigo até impedir completamente o uso de ninjutsu.",
+    description: "A Espada do Dragão Branco foi forjada pessoalmente por Minoru Hyuga utilizando chakra profano puro comprimido em forma sólida. Diferente de armas convencionais, sua estrutura não é metálica — a lâmina inteira é composta apenas de chakra cristalizado, tornando-a parcialmente etérea e extremamente instável para qualquer usuário comum. Graças à conexão direta com o Fujogan, Katsumi consegue absorver completamente a espada para dentro de seu próprio sistema de chakra, armazenando-a internamente e materializando-a instantaneamente durante o combate. A Hakuryū no Ken não causa dano físico tradicional; seus golpes atravessam matéria superficial e atingem diretamente as linhas de chakra do alvo, interrompendo circulação, bloqueando tenketsus, causando colapso energético e desestabilizando técnicas em execução. Em confrontos prolongados, a espada pode literalmente enfraquecer o sistema de chakra do inimigo até impedir completamente o uso de ninjutsu.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F74%20-%20Hakury%C5%AB%20no%20Ken.png?alt=media",
-    originalOwner: "Minoru Hyūga",
-    currentOwner: "Katsumi Hyūga"
+    originalOwner: "Minoru Hyuga",
+    currentOwner: "Katsumi Hyuga"
   },
   {
     id: 75,
@@ -821,9 +831,29 @@ export const arsenalData: Equipment[] = [
     classification: "Z",
     nature: "Chakra Profano + Fujogan",
     origin: "Konohagakure",
-    description: "A Máscara do Dragão Branco é um artefato lendário criado por Minoru Hyūga durante a era mais obscura do clã. Posteriormente, foi passada para Hoshiro, reconhecido como sucessor legítimo do legado Hyūga. Hoshiro, porém, deixou a máscara guardada no armazém secreto de Konoha, onde permaneceu até ser encontrada e reivindicada por Katsumi. A máscara cobre parcialmente o rosto do usuário e possui canais internos feitos de chakra profano condensado, sincronizando diretamente com o Fujogan. Ao ser ativada, amplifica absurdamente a capacidade analítica ocular, permitindo enxergar microexpressões, mínimas alterações musculares, fluxo de chakra, intenção hostil e irregularidades invisíveis ao olho comum. Graças à precisão extrema do Fujogan potencializado, o usuário se torna praticamente imune a Genjutsu visuais e mentais, além de neutralizar fintas, ilusões corporais e movimentos falsos em combate. Cada detalhe do campo de batalha passa a ser captado instantaneamente, transformando Katsumi em um observador absoluto capaz de prever padrões antes mesmo da execução inimiga.",
+    description: "A Máscara do Dragão Branco é um artefato lendário criado por Minoru Hyuga durante a era mais obscura do clã. Posteriormente, foi passada para Hoshiro, reconhecido como sucessor legítimo do legado Hyuga. Hoshiro, porém, deixou a máscara guardada no armazém secreto de Konoha, onde permaneceu até ser encontrada e reivindicada por Katsumi. A máscara cobre parcialmente o rosto do usuário e possui canais internos feitos de chakra profano condensado, sincronizando diretamente com o Fujogan. Ao ser ativada, amplifica absurdamente a capacidade analítica ocular, permitindo enxergar microexpressões, mínimas alterações musculares, fluxo de chakra, intenção hostil e irregularidades invisíveis ao olho comum. Graças à precisão extrema do Fujogan potencializado, o usuário se torna praticamente imune a Genjutsu visuais e mentais, além de neutralizar fintas, ilusões corporais e movimentos falsos em combate. Cada detalhe do campo de batalha passa a ser captado instantaneamente, transformando Katsumi em um observador absoluto capaz de prever padrões antes mesmo da execução inimiga.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F75%20-%20Hakury%C5%AB%20no%20Men.png?alt=media",
-    originalOwner: "Minoru Hyūga",
-    currentOwner: "Katsumi Hyūga"
+    originalOwner: "Minoru Hyuga",
+    pastOwners: ["Hoshiro Hyuga"],
+    currentOwner: "Katsumi Hyuga"
+  }
+,
+  {
+    id: 76,
+    name: "Hokage no Haori",
+    classification: "Z",
+    nature: "Fuinjutsu + Vontade do Fogo",
+    origin: "Konohagakure",
+    description: "O manto branco dos Hokage, tecido com fibras seladas que absorvem e registram o chakra de cada líder que o veste. Usado primeiro por Hashirama Senju, fundador da vila, e depois herdado por Tobirama e por Nishinoya — cada um deixando sua própria marca de fuinjutsu impressa no tecido. O haori amplifica a Vontade do Fogo do portador, protegendo-o de venenos e genjutsu leves, e é reconhecido em toda Konoha como símbolo máximo de autoridade. Seu paradeiro é desconhecido desde a morte de Nishinoya.",
+    image: "",
+    originalOwner: "Hashirama Senju",
+    pastOwners: [
+      "Tobirama Senju",
+      "Nishinoya Senju"
+    ],
+    diedHolding: [
+      "Nishinoya Senju"
+    ],
+    currentOwner: ""
   }
 ];
