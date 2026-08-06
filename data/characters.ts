@@ -3760,7 +3760,8 @@ export const initialData: Character[] = [
     ],
     aptitudes: ["Chakra Expandido Namikaze"],
     arsenal: [34, 77, 78, 79],
-    timelineAppearance: "5ª Temporada",
+    timelineAppearance: "Prólogo",
+    timelineSkipped: ["Clássico", "1ª Temporada", "2ª Temporada", "3ª Temporada", "4ª Temporada"],
   },
   {
     id: 17,
