@@ -3835,7 +3835,7 @@ export const initialData: Character[] = [
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F53%20-%20Naomi%20Uzumaki%2FNaomi%20Uzumaki.png?alt=media",
     techniques: [
       {
-        name: "Sennin Fuka: Ketsuryū Sennin",
+        name: "Sennin Fuka",
         classification: "S++",
         nature: "Senjutsu + Kurama + Suiton",
         description: "Naomi fecha os olhos e, por um instante, para de lutar contra o próprio corpo — deixa de tentar separar sua energia da de Kurama e permite que as duas se equilibrem. Energia natural é absorvida pelo ambiente e flui direto para o vínculo entre ela e a Bijuu, banhando seu chakra em um vermelho mais escuro, quase negro nas bordas, com marcas finas subindo pelo rosto e braços como veios de tinta líquida. Diferente do Kyūbi no Manto, aqui não há fúria — há controle absoluto. Cada movimento de Naomi passa a carregar o peso e a precisão da natureza ao seu redor, e sua afinidade com o Suiton deixa de ser apenas técnica: a água ao seu redor responde antes mesmo de ela gesticular, como se fizesse parte do próprio corpo dela.",
