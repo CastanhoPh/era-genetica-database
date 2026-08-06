@@ -381,7 +381,8 @@ export const arsenalData: Equipment[] = [
     description: "O Uzumaki no Kon é um nunchaku lendário forjado em Konohagakure, composto por dois bastões de metal adamanto ultra-denso conectados por uma corrente de chakra vivo. Projetado especificamente para canalizar o chakra de selamento característico do clã Uzumaki, o nunchaku pode manifestar elos adicionais de Correntes de Chakra a partir de suas extremidades, permitindo prender e imobilizar oponentes à distância. Cada golpe físico desferido com o Uzumaki no Kon injeta um pulso de fuinjutsu que desestabiliza e sela temporariamente o fluxo de chakra do alvo no ponto de impacto. O nunchaku também possui um selo central que permite armazenar e liberar reservas de chakra, funcionando como um estabilizador perfeito para o portador. É um tesouro inestimável que carrega a resiliência e o poder de selamento espiritual da antiga terra de redemoinhos.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F34%20-%20Uzumaki%20no%20Kon.png?alt=media",
     originalOwner: "Mito Uzumaki",
-    currentOwner: "Katsuo Uzumaki"
+    pastOwners: ["Katsuo Uzumaki"],
+    currentOwner: "Satoshi Namikaze"
   },
   {
     id: 35,
@@ -855,5 +856,38 @@ export const arsenalData: Equipment[] = [
       "Nishinoya Senju"
     ],
     currentOwner: ""
+  },
+  {
+    id: 77,
+    name: "Gama no Kaeruba",
+    classification: "Z",
+    nature: "Senjutsu + Suiton + Fuinjutsu",
+    origin: "Konohagakure",
+    description: "Um disco de combate curvo, moldado para lembrar a língua enrolada de um sapo gigante, com a borda inteira afiada e selos de fuinjutsu gravados em espiral por toda a superfície. O nome carrega um trocadilho proposital do clã: \"kaeru\" significa tanto \"sapo\" quanto \"retornar\" — e é exatamente isso que a arma faz. Ao ser lançada, absorve energia natural do ambiente e do próprio arremesso, curva a trajetória em pleno ar como se fosse recolhida por uma língua invisível, e retorna à mão do usuário na mesma velocidade em que partiu, cortando qualquer coisa em seu caminho de volta como cortou na ida. Em contato com água, a lâmina desliza sem perder velocidade, permitindo curvas praticamente impossíveis para uma arma arremessada. Os selos gravados nela reconhecem apenas o chakra de quem partilha do Modo Sábio dos Sapos — em qualquer outra mão, o Gama no Kaeruba simplesmente cai no chão depois do lançamento, como uma língua que não reconhece a boca que a comanda.",
+    image: "",
+    originalOwner: "Satoshi Namikaze",
+    currentOwner: "Satoshi Namikaze"
+  },
+  {
+    id: 78,
+    name: "Gama no Zōri",
+    classification: "S++",
+    nature: "Senjutsu",
+    origin: "Konohagakure",
+    description: "Um par de sandálias seladas, com solas grossas de couro tratado que imitam a textura da pele de um sapo sábio. Cada passo do usuário libera um pulso quase imperceptível de energia natural pelas plantas dos pés, que se acumula e se converte em impulso puro no instante do salto — permitindo saltos que desafiam a lógica humana, tanto em altura quanto em distância, e quedas de qualquer altura absorvidas sem dano, como se o chão fosse sempre líquido sob os pés de quem as usa. Em combate, o Gama no Zōri transforma cada esquiva em um deslocamento absurdo, e cada avanço em um golpe que chega antes do oponente terminar de reagir. Diferente de técnicas de velocidade que consomem chakra a cada uso, as sandálias trabalham em ciclo com a energia natural do Modo Sábio — quanto mais tempo o usuário permanece com o Senjutsu ativo, mais eficiente e silencioso se torna cada salto.",
+    image: "",
+    originalOwner: "Satoshi Namikaze",
+    currentOwner: "Satoshi Namikaze"
+  },
+  {
+    id: 79,
+    name: "Gama Sennin no Keiyaku",
+    classification: "S++",
+    nature: "Senjutsu + Kuchiyose",
+    origin: "Konohagakure",
+    description: "O pergaminho sagrado que formaliza o pacto entre a linhagem Namikaze e os Sapos Sábios — diferente do Pergaminho de Invocação genérico, este só se abre para quem carrega o sangue do clã. Assinado com uma gota de sangue e chakra sobre o papel amarelado, o contrato grava simultaneamente o nome do usuário na pele de sua própria mão e nos registros vivos do território sábio dos sapos, criando uma linha de invocação que nunca se rompe enquanto ambas as partes existirem. Uma vez selado, permite convocar desde pequenos sapos mensageiros até colossos de guerra, e é considerado o primeiro passo formal para qualquer Namikaze que deseje um dia alcançar o próprio Modo Sábio — não ensina o Senjutsu por si só, mas abre a porta que todos os sapos sábios exigem estar aberta antes de aceitar ensinar quem quer que seja.",
+    image: "",
+    originalOwner: "Satoshi Namikaze",
+    currentOwner: "Satoshi Namikaze"
   }
 ];

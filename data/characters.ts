@@ -2085,7 +2085,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 35,
+    id: 36,
     name: "Hirato Ishi",
     clan: "Ishi",
     categories: ["NPC", "Iwagakure"],
@@ -2125,7 +2125,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 36,
+    id: 37,
     name: "Hikaru Ishi",
     clan: "Ishi",
     categories: ["NPC", "Iwagakure"],
@@ -2164,7 +2164,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 69,
+    id: 70,
     name: "Kaien Ishi (Omega)",
     clan: "Ishi",
     categories: ["NPC", "OCA", "Iwagakure"],
@@ -2254,7 +2254,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 61,
+    id: 62,
     name: "Akairo Uchiha (A)",
     clan: "Uchiha",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -2350,7 +2350,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 62,
+    id: 63,
     name: "Borashi Hyuga (B)",
     clan: "Hyuga",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -2443,7 +2443,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 63,
+    id: 64,
     name: "Chisaki Dokuhana (C)",
     clan: "Dokuhana",
     categories: ["NPC", "OCA", "Sunagakure"],
@@ -2513,7 +2513,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 64,
+    id: 65,
     name: "Daiki Uzumaki (D)",
     clan: "Uzumaki",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -2607,7 +2607,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 65,
+    id: 66,
     name: "Etsuko Senju (E)",
     clan: "Senju",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -2662,7 +2662,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 66,
+    id: 67,
     name: "Fuyuki Dokuhana (F)",
     clan: "Dokuhana",
     categories: ["NPC", "OCA", "Sunagakure"],
@@ -2713,7 +2713,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 67,
+    id: 68,
     name: "Genei (G)",
     clan: "Desconhecido",
     categories: ["NPC", "OCA"],
@@ -2785,7 +2785,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 68,
+    id: 69,
     name: "Hayato Hanzo (H)",
     clan: "Hanzo",
     categories: ["NPC", "OCA", "Kumogakure"],
@@ -2843,7 +2843,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 31,
+    id: 32,
     name: "Hashirama Senju",
     clan: "Senju",
     categories: ["NPC", "Konohagakure"],
@@ -2887,7 +2887,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 32,
+    id: 33,
     name: "Madara Uchiha",
     clan: "Uchiha",
     categories: ["NPC", "Konohagakure"],
@@ -3241,7 +3241,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 75,
+    id: 76,
     name: "Hades",
     clan: "Desconhecido",
     categories: ["NPC", "OCA"],
@@ -3284,7 +3284,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 74,
+    id: 75,
     name: "Beta",
     clan: "Desconhecido",
     categories: ["NPC", "OCA", "Konohagakure"],
@@ -3386,7 +3386,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 55,
+    id: 56,
     name: "Daichi Muuji",
     clan: "Muujin",
     categories: ["NPC", "NoGuns", "Iwagakure"],
@@ -3421,7 +3421,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 56,
+    id: 57,
     name: "Koji Ishizuma",
     clan: "Ishizuma",
     categories: ["NPC", "NoGuns", "Kumogakure"],
@@ -3458,7 +3458,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 57,
+    id: 58,
     name: "Yuuto Han",
     clan: "Han",
     categories: ["NPC", "NoGuns", "OCA", "Kirigakure"],
@@ -3507,7 +3507,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 58,
+    id: 59,
     name: "Shin Mizukari",
     clan: "Mizukari",
     categories: ["NPC", "NoGuns", "Iwagakure"],
@@ -3548,7 +3548,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 59,
+    id: 60,
     name: "Shikure Chinoike",
     clan: "Chinoike",
     categories: ["NPC", "NoGuns", "OCA", "Sunagakure"],
@@ -3598,7 +3598,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 60,
+    id: 61,
     name: "Akira Dokuhana",
     clan: "Dokuhana",
     categories: ["NPC", "NoGuns", "Sunagakure"],
@@ -3710,7 +3710,6 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F52%20-%20Katsuo%20Uzumaki%2FTecnicas%2F06%20-%20F%C5%ABinjutsu%3A%20Shinkai%20F%C5%ABsa.jpg?alt=media"
       }
     ],
-    arsenal: [34],
     gallery: [
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsuo%20Uzumaki%2F1__Temporada.png?alt=media&v=1784751321003", caption: "1ª Temporada", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FKatsuo%20Uzumaki%2F5__Temporada.png?alt=media&v=1784751322513", caption: "5ª Temporada", category: "era" },
@@ -3738,6 +3737,25 @@ export const initialData: Character[] = [
       "Mestre dos Selos",
       "Kongou Fuusa"
     ]
+  },
+  {
+    id: 31,
+    name: "Satoshi Namikaze",
+    clan: "Namikaze",
+    categories: ["Personagem", "Konohagakure"],
+    titles: [],
+    nc: 27,
+    position: "",
+    role: "",
+    description: "",
+    hp: 0,
+    chakra: 0,
+    image: "",
+    stats: { strength: 0, dexterity: 0, agility: 0, intelligence: 0, spirit: 0, vigor: 0, perception: 0 },
+    powers: [],
+    aptitudes: [],
+    arsenal: [34, 77, 78, 79],
+    timelineAppearance: "5ª Temporada",
   },
   {
     id: 17,
@@ -3832,7 +3850,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 37,
+    id: 38,
     name: "Shoyu Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -3934,7 +3952,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 39,
+    id: 40,
     name: "Reika Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4005,7 +4023,7 @@ export const initialData: Character[] = [
     ]
   },
   {
-    id: 38,
+    id: 39,
     name: "Souma Uzumaki",
     clan: "Uzumaki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4187,7 +4205,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 33,
+    id: 34,
     name: "Shikaki Nara",
     clan: "Nara",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4270,7 +4288,7 @@ export const initialData: Character[] = [
     ]
   },
   {
-    id: 40,
+    id: 41,
     name: "Nagi Yuki",
     clan: "Yuki",
     categories: ["NPC", "Konohagakure", "OCA"],
@@ -4370,7 +4388,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 41,
+    id: 42,
     name: "Yasuo Kurogane",
     clan: "Kurogane",
     categories: ["NPC", "Sunagakure", "OCA"],
@@ -4582,7 +4600,7 @@ export const initialData: Character[] = [
     ]
   },
   {
-    id: 50,
+    id: 51,
     name: "Yuji Yotsuki",
     clan: "Yotsuki",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -4688,7 +4706,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 51,
+    id: 52,
     name: "Reito Kurogami",
     clan: "Kurogami",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -4781,7 +4799,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 52,
+    id: 53,
     name: "Yoru Kurogami",
     clan: "Kurogami",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -4856,7 +4874,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 53,
+    id: 54,
     name: "Mika Yotsuki",
     clan: "Yotsuki",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -4931,7 +4949,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 54,
+    id: 55,
     name: "Enrai Hanzo",
     clan: "Hanzo",
     categories: ["NPC", "Kiba", "Kumogakure"],
@@ -5028,7 +5046,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 42,
+    id: 43,
     name: "Hana Sabaku",
     clan: "Sabaku",
     categories: ["NPC", "Sunagakure"],
@@ -5133,7 +5151,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 43,
+    id: 44,
     name: "Reto Sabaku",
     clan: "Sabaku",
     categories: ["NPC", "Sunagakure"],
@@ -5236,7 +5254,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 46,
+    id: 47,
     name: "Chigiri Chinoike",
     clan: "Chinoike",
     categories: ["NPC", "Sunagakure"],
@@ -5272,7 +5290,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 44,
+    id: 45,
     name: "Tetsu Sabaku",
     clan: "Sabaku",
     categories: ["NPC", "Sunagakure"],
@@ -5311,7 +5329,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 47,
+    id: 48,
     name: "Mizue Dokuhana",
     clan: "Dokuhana",
     categories: ["NPC", "Sunagakure", "Guardiões de Sunagakure"],
@@ -5346,7 +5364,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 48,
+    id: 49,
     name: "Tessai Enshaku",
     clan: "Enshaku",
     categories: ["NPC", "Sunagakure"],
@@ -5382,7 +5400,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 45,
+    id: 46,
     name: "Sayuri Sabaku",
     clan: "Sabaku",
     categories: ["NPC", "Sunagakure"],
@@ -5428,7 +5446,7 @@ export const initialData: Character[] = [
     ],
   },
   {
-    id: 49,
+    id: 50,
     name: "Kurohime Kazeori",
     clan: "Kurohime",
     categories: ["NPC", "Sunagakure"],
@@ -5474,7 +5492,7 @@ export const initialData: Character[] = [
   }
 ,
   {
-    id: 70,
+    id: 71,
     name: "Katakana Yotsuki (Alpha)",
     clan: "Yotsuki",
     categories: [
@@ -5618,7 +5636,7 @@ export const initialData: Character[] = [
     birthVillage: "Kumogakure"
   },
   {
-    id: 71,
+    id: 72,
     name: "Ganmasen Yuki (Gama)",
     clan: "Yuki",
     categories: [
@@ -5758,7 +5776,7 @@ export const initialData: Character[] = [
     birthVillage: "Kirigakure"
   },
   {
-    id: 72,
+    id: 73,
     name: "Deruta Muujin (Delta)",
     clan: "Muujin",
     categories: [
@@ -5918,7 +5936,7 @@ export const initialData: Character[] = [
     birthVillage: "Iwagakure"
   },
   {
-    id: 73,
+    id: 74,
     name: "Shiita Sabaku (Theta)",
     clan: "Dabado",
     categories: [
@@ -6023,7 +6041,7 @@ export const initialData: Character[] = [
     birthVillage: "Konohagakure"
   },
   {
-    id: 34,
+    id: 35,
     name: "Shikatsu Nara (Togo Kage)",
     clan: "Kage",
     categories: [
