@@ -3748,14 +3748,14 @@ export const initialData: Character[] = [
     position: "Sannin de Elite",
     role: "",
     description: "Satoshi Namikaze, irmão mais novo de Sakura Namikaze, sempre viveu à sombra da irmã mais velha — até decidir seguir um caminho que não pertencia a mais ninguém da família. Ainda jovem, partiu sozinho rumo ao Monte Myōboku, decidido a dominar o Modo Sábio dos Sapos por conta própria, sem pedir permissão e sem levar ninguém junto.\n\nAntes de partir, Katsuo Uzumaki — já àquela altura um homem marcado pelo próprio sacrifício — entregou a Satoshi os lendários nunchakos do clã Uzumaki, o Uzumaki no Kon, como única garantia de que ele teria como se defender numa jornada que ninguém mais estava disposto a fazer.\n\nHoje, aos 24 anos, Satoshi é o guardião do Monte Myōboku. A notícia da morte da irmã e do cunhado, Kawarama Senju, chegou até ele tarde demais para qualquer despedida — e pouco depois, o mesmo aconteceu com os relatos da morte de Naomi Uzumaki e de Katsuo, o homem que uma vez lhe deu os meios de sobreviver sozinho na montanha. Foi esse peso acumulado que o fez se dedicar de corpo e alma à defesa de Myōboku, quando a OCA voltou os olhos para o chakra natural da montanha, tentando extraí-lo à força.\n\nMas a verdade, como sempre no mundo shinobi, era mais complicada do que os relatos. Satoshi descobriu que Katsuo estava vivo — e que Naomi também. Sem hesitar, deixou os próprios Sapos Sábios que treinara como novos protetores da montanha em seu lugar, e partiu à procura dos dois, decidido a não deixar mais nenhuma notícia de morte passar sem confirmação.",
-    hp: 0,
-    chakra: 0,
+    hp: 187,
+    chakra: 137,
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F31%20-%20Satoshi%20Namikaze%2FSatoshi%20Namikaze.png?alt=media&v=1786038790882",
     gallery: [
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FSatoshi%20Namikaze%2FPr%C3%B3logo.png?alt=media&v=1786038793699", caption: "Prólogo", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FSatoshi%20Namikaze%2F5%C2%AA%20Temporada.png?alt=media&v=1786038795533", caption: "5ª Temporada", category: "era" },
     ],
-    stats: { strength: 0, dexterity: 0, agility: 0, intelligence: 0, spirit: 0, vigor: 0, perception: 0 },
+    stats: { strength: 9, dexterity: 27, agility: 27, intelligence: 27, spirit: 27, vigor: 14, perception: 27 },
     powers: [
       { name: "Fuuton", level: 13 },
       { name: "Senjutsu", level: 13 },
