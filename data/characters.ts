@@ -3062,7 +3062,7 @@ export const initialData: Character[] = [
     description: "",
     hp: 138,
     chakra: 58,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F37%20-%20Ayumi%20Uchiha%2FAyumi%20Uchiha.png?alt=media",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F37%20-%20Ayumi%20Uchiha%2FAyumi%20Uchiha.png?alt=media&v=1786045693527",
     techniques: [
       {
         name: "Katon: Fênix do Trovão Carmesim",
