@@ -1244,7 +1244,7 @@ export const initialData: Character[] = [
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FTecnicas%2F10%20-%20Kagura%20Shingan.png?alt=media"
       }
     ],
-    arsenal: [17, 19],
+    arsenal: [17, 19, 66],
     gallery: [
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FNagare%20Uzumaki%2FPr_logo.png?alt=media&v=1784658579901730", caption: "Prólogo", category: "era" },
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F09%20-%20Nagare%20Uzumaki%2FGaleria%2FLinha%20do%20Tempo%2F02%20-%20Cl%C3%A1ssico.png?alt=media", caption: "Clássico", category: "era" },

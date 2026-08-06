@@ -470,6 +470,7 @@ export const arsenalData: Equipment[] = [
     description: "A Hiramekarei é a 'Espada Gêmea' de Rank S+, possuindo dois cabos e uma lâmina massiva capaz de armazenar e moldar o chakra do usuário em formas sólidas de energia pura. Este artefato atua como uma bateria energética que se torna mais poderosa conforme a quantidade de chakra injetada, podendo manifestar-se como martelos gigantes, foices ou lâminas estendidas. A versatilidade da Hiramekarei permite ao espadachim adaptar-se instantaneamente a qualquer cenário, alternando entre ataques de força bruta e golpes de longo alcance com fluidez magistral. Quando totalmente carregada, a espada emite um brilho azulado intenso que pode ser liberado em uma explosão de energia capaz de pulverizar defesas de Rank S. É a arma favorita para combatentes que possuem grandes reservas de chakra e buscam dominar o campo através da criatividade e do poder destrutivo mutável. Nas mãos de um mestre, a Hiramekarei não é apenas uma espada, mas uma ferramenta de engenharia de combate que molda a vitória conforme a vontade do portador. Sua posse representa a dualidade entre a técnica refinada e a força esmagadora característica da elite de Kirigakure.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F42%20-%20Hiramekarei.png?alt=media",
     originalOwner: "",
+    pastOwners: ["Nagare Uzumaki"],
     currentOwner: ""
   },
   {
@@ -736,7 +737,7 @@ export const arsenalData: Equipment[] = [
     description: "O Guren é o tridente profano de Rank S++ criado para simbolizar o Impulso entre os 7 Espectros do Yang, forjado a partir do chakra profano de Asami durante rituais secretos de aceleração cinética. Este tridente de cor vermelha vibrante libera pulsos de chakra extremamente rápidos que permitem ao portador executar ataques instantâneos que parecem ignorar o tempo de reação do inimigo. Quanto mais impulsivo, agressivo e incessante for o avanço do usuário, maior se torna a velocidade de movimento e a cadência de golpes permitida pela arma. O Guren foi considerado pela OCA a arma mais difícil de controlar devido ao seu poder explosivo e à tendência de forçar o usuário a entrar em um estado de transe de combate hiper-agressivo. Cada ponta do tridente pode disparar feixes de energia profana que perfuram defesas e causam combustão espontânea no ponto de impacto. É a arma definitiva para o combatente de vanguarda que busca decidir a batalha nos primeiros segundos através de uma ofensiva avassaladora e imparável. No campo de batalha, o Guren manifesta-se como um borrão escarlate que atravessa as linhas inimigas com a força e a velocidade de um meteoro profano.",
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Arsenal%2F66%20-%20Guren.png?alt=media",
     originalOwner: "Hades",
-    currentOwner: ""
+    currentOwner: "Nagare Uzumaki"
   },
   {
     id: 67,
