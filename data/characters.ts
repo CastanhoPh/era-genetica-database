@@ -3784,6 +3784,15 @@ export const initialData: Character[] = [
         history: "Gurenmaru foi invocado por Satoshi ainda nos primeiros anos de treinamento no Monte Myōboku, e a irmandade entre os dois se consolidou numa batalha contra uma invocação rival — a cicatriz que atravessa o rosto do sapo é a lembrança viva desse dia. Desde então, Gurenmaru se recusa a ser chamado de servo ou montaria: para ele, o pacto de invocação é uma aliança entre guerreiros de valor igual.",
         status: "Invocação de altíssimo custo de chakra, reservada para combates que exigem poder bruto e a presença de um aliado colossal em campo. Gurenmaru só responde ao chamado de Satoshi, e combate ao lado dele — nunca sob ordens diretas.",
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F31%20-%20Satoshi%20Namikaze%2FTecnicas%2F02%20-%20Senpo%20Kuchiyose%3A%20Gurenmaru.png?alt=media&v=1786041723206"
+      },
+      {
+        name: "Senpo: Hiraishin",
+        classification: "S",
+        nature: "Hiraishin + Senjutsu",
+        description: "Satoshi aplica energia natural sobre uma versão simplificada do Hiraishin, aprendida a partir de anotações e fragmentos deixados por seu sobrinho Nishinoya — nunca chegou a estudar a técnica original de Tobirama diretamente, e por isso jamais refinou o Hiraishin ao mesmo nível que o próprio Nishinoya alcançou. Ainda assim, ao marcar um alvo ou ponto do campo com um selo simples carregado de chakra sábio, consegue se deslocar instantaneamente até ele, aparecendo como um borrão translúcido acompanhado por uma leve corrente de vento. Sob o Modo Sábio, seus reflexos e percepção se ampliam o suficiente para encadear pequenos teleportes em sequência, ainda que sem a mesma fluidez e alcance do original.",
+        destruction: "Não é pensada para destruição em área — sua força está em reposicionar Satoshi instantaneamente durante duelos, permitindo ataques surpresa e fugas de golpes que, de outra forma, seriam certeiros. Cada salto carrega um pequeno redemoinho de vento residual, resquício do próprio Fūton de Satoshi se misturando à técnica.",
+        history: "Satoshi teve contato com fragmentos do Hiraishin através de registros deixados por Nishinoya, seu sobrinho, antes de partir para o Monte Myōboku. Sem tempo ou orientação para dominar a técnica por completo, acabou desenvolvendo uma versão mais simples e limitada — o suficiente para se manter vivo em combates rápidos, mas muito distante do domínio absoluto que fez de Nishinoya o Relâmpago Azul de Konoha.",
+        status: "Exige selos previamente posicionados e Modo Sábio ativo para funcionar com consistência. Sem prática constante, Satoshi ainda hesita entre um salto e outro — um detalhe que, em combates de alto nível, pode custar caro."
       }
     ],
     arsenal: [34, 77, 78, 79],
