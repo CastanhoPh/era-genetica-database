@@ -380,7 +380,7 @@ export const initialData: Character[] = [
         destruction: "O Byakko avança arrasando qualquer coisa em seu caminho, suas garras rasgando tanto carne quanto rocha, e seu rugido libera uma onda de calor e pressão sísmica capaz de derrubar estruturas inteiras. Nada resiste ao encontro simultâneo de fogo e terra na mesma criatura.",
         history: "Nascida no dia em que Oddy recebeu o coração de Najin Hatake e jurou honrar tudo que ele representou em vida. Najin, o Tigre Branco de Konoha, sempre lutou como protetor — nunca por glória, sempre pelos outros. Ao sentir os dois corações pulsando como um só dentro do próprio peito, Oddy compreendeu que a única forma de honrar essa herança era manifestá-la em combate, não guardá-la em silêncio.",
         status: "Extremamente exigente — exige domínio simultâneo de Katon e Doton em quantidades massivas, além do peso emocional de invocar a própria homenagem a alguém que já não está mais vivo. Cada uso deixa Oddy fisicamente exausto e emocionalmente abalado, como se revivesse a perda a cada vez.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FTecnicas%2F13%20-%20Katon%20Doton%3A%20Byakko%20no%20Hakai.png?alt=media&v=1786044776934"
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FTecnicas%2F13%20-%20Katon%20Doton%3A%20Byakko%20no%20Hakai.png?alt=media&v=1786045094949"
       },
       {
         name: "Enton Jinton: Amaterasu Genkai Hakuri",
