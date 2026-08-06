@@ -3794,6 +3794,16 @@ export const initialData: Character[] = [
         history: "Satoshi teve contato com o Hiraishin ainda em sua fase mais rudimentar, quando a técnica era só um experimento incompleto de Tobirama — anos antes de Nishinoya, seu sobrinho e ainda criança nessa época, herdar e refinar o mesmo princípio até a perfeição. Ao partir para o Monte Myōboku pouco depois, Satoshi carregou consigo apenas essa versão inicial, sem nunca acompanhar o desenvolvimento completo da técnica — o que deixou seu Hiraishin permanentemente estagnado no estágio mais cru que Tobirama um dia experimentou.",
         status: "Exige o Gama no Kaeruba em mãos e Modo Sábio ativo — sem o bumerangue, Satoshi simplesmente não consegue ativar o Hiraishin, já que nunca testou nem estabilizou a técnica em nenhuma outra superfície ou selo. Sem prática constante, ainda hesita entre um salto e outro, um detalhe que em combates de alto nível pode custar caro.",
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F31%20-%20Satoshi%20Namikaze%2FTecnicas%2F03%20-%20Senpo%3A%20Hiraishin.png?alt=media&v=1786042790745"
+      },
+      {
+        name: "Kusari Rasengan: Enji",
+        classification: "S++",
+        nature: "Fuuton + Rasengan + Fuinjutsu",
+        description: "Satoshi gira uma das pontas do Uzumaki no Kon em amplos círculos, como um mangual, enquanto concentra chakra na ponta oposta do bastão — não na própria mão. Ali, forma um Rasengan que nenhuma outra pessoa consegue reproduzir: uma esfera de coloração vinho profundo, tingida pela mistura única entre seu próprio chakra e a energia natural absorvida durante anos no Monte Myōboku. Como a esfera gira solta na ponta da corrente, sem duas mãos para estabilizá-la, Satoshi a envolve numa camada compacta de Fūton que funciona como uma casca de vento comprimido, impedindo que a rotação a desfaça antes do impacto. Os selos gravados no nunchaku reagem ao movimento, reforçando a coesão da esfera até o instante exato da colisão.",
+        destruction: "O impacto combina a força rotacional do Rasengan com a velocidade de um golpe de mangual — perfura defesas físicas e de chakra ao mesmo tempo, e a camada de vento ao redor da esfera se expande no contato, ampliando o dano além do ponto de acerto direto.",
+        history: "Nascida da tentativa de Satoshi de aplicar o Rasengan sem depender das duas mãos, essa técnica só se tornou estável depois de incontáveis tentativas fracassadas — e várias esferas desfeitas antes da hora. A coloração vinho surgiu sem explicação aparente na primeira vez que conseguiu, e nunca mudou desde então; ele nunca confirmou por que a cor do seu Rasengan difere de qualquer outro que já viu.",
+        status: "Técnica rara e de altíssimo custo de chakra — Satoshi só a usa como aposta final, já que o próprio ato de girar o nunchaku antes do golpe avisa claramente ao oponente o que está por vir. Não é surpresa; é uma decisão consciente de arriscar tudo em um único golpe.",
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F31%20-%20Satoshi%20Namikaze%2FTecnicas%2F04%20-%20Kusari%20Rasengan%3A%20Guren.png?alt=media&v=1786043945542"
       }
     ],
     arsenal: [34, 77, 78, 79],
