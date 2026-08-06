@@ -791,11 +791,13 @@ const CharacterModal: React.FC<CharacterModalProps> = ({ char, onClose, isAdmin,
                                             </div>
                                         )}
 
-                                        <div className="absolute bottom-0 left-0 right-0 h-14 p-2 bg-black/90 backdrop-blur-sm border-t border-tech-border group-hover:border-tech-accent transition-colors z-20 flex flex-col justify-center">
-                                            <div className="text-[9px] text-white font-bold uppercase leading-tight line-clamp-2 break-words">
-                                                {weapon.name}
+                                        {!hideMask && (
+                                            <div className="absolute bottom-0 left-0 right-0 h-14 p-2 bg-black/90 backdrop-blur-sm border-t border-tech-border group-hover:border-tech-accent transition-colors z-20 flex flex-col justify-center">
+                                                <div className="text-[9px] text-white font-bold uppercase leading-tight line-clamp-2 break-words">
+                                                    {weapon.name}
+                                                </div>
                                             </div>
-                                        </div>
+                                        )}
 
                                         <div className="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
                                             <div className="bg-tech-accent text-black p-1">
