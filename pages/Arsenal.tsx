@@ -58,17 +58,22 @@ const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, is
 
   // Filter logic
   const filteredItems = useMemo(() => {
+    const searchLower = searchTerm.toLowerCase();
+
+    // Busca só por nome do arsenal (incluindo nome de variação) e por usuários (donos, em
+    // qualquer papel) — nature/origem/classificação continuam como filtros à parte, não
+    // entram mais na busca por texto.
+    const matchesName = (item: Equipment) =>
+      item.name.toLowerCase().includes(searchLower) ||
+      (item.variants || []).some(v => v.name.toLowerCase().includes(searchLower));
+    const matchesOwner = (item: Equipment) =>
+      (item.originalOwner || '').toLowerCase().includes(searchLower) ||
+      (item.currentOwner || '').toLowerCase().includes(searchLower) ||
+      (item.pastOwners || []).some(o => o.toLowerCase().includes(searchLower)) ||
+      (item.variants || []).some(v => v.owner.toLowerCase().includes(searchLower));
+
     const filtered = arsenalData.filter(item => {
-      const searchLower = searchTerm.toLowerCase();
-      const matchesSearch =
-        item.name.toLowerCase().includes(searchLower) ||
-        item.origin.toLowerCase().includes(searchLower) ||
-        item.nature.toLowerCase().includes(searchLower) ||
-        item.classification.toLowerCase().includes(searchLower) ||
-        (item.originalOwner || '').toLowerCase().includes(searchLower) ||
-        (item.currentOwner || '').toLowerCase().includes(searchLower) ||
-        (item.pastOwners || []).some(o => o.toLowerCase().includes(searchLower)) ||
-        (item.variants || []).some(v => v.name.toLowerCase().includes(searchLower) || v.owner.toLowerCase().includes(searchLower));
+      const matchesSearch = !searchLower || matchesName(item) || matchesOwner(item);
 
       const matchesClassification =
         selectedClassification === 'Todos' || item.classification === selectedClassification;
@@ -84,6 +89,13 @@ const Arsenal: React.FC<ArsenalProps> = ({ arsenalItems, loading, onOpenItem, is
 
     // Apply Sorting
     return [...filtered].sort((a, b) => {
+      // Com busca ativa, resultado por nome sempre vem antes de resultado só por usuário —
+      // dentro de cada grupo, mantém o critério de ordenação escolhido.
+      if (searchLower) {
+        const rankA = matchesName(a) ? 0 : 1;
+        const rankB = matchesName(b) ? 0 : 1;
+        if (rankA !== rankB) return rankA - rankB;
+      }
       if (sortBy === 'classificacao') {
         const priorityA = classificationPriority[a.classification || 'F'] || 0;
         const priorityB = classificationPriority[b.classification || 'F'] || 0;
