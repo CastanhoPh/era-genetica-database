@@ -955,7 +955,7 @@ export const initialData: Character[] = [
     chakra: 64,
     isDead: true,
     killedBy: "Omega",
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F07%20-%20Shoei%20Sarutobi%2FShoei%20Sarutobi.jpg?alt=media",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F07%20-%20Shoei%20Sarutobi%2FShoei%20Sarutobi.jpg?alt=media&v=1786021292678",
     arsenal: [9],
     gallery: [
       { url: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Galeria%2FLinha%20do%20Tempo%2FShoei%20Sarutobi%2FPr_logo.png?alt=media&v=1784658602065060", caption: "Prólogo", category: "era" },
@@ -1292,7 +1292,7 @@ export const initialData: Character[] = [
     chakra: 46,
     isDead: true,
     killedBy: "Omega",
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F10%20-%20Kazuki%20Hoshigaki%2FKazuki%20Hoshigaki.jpg?alt=media",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F10%20-%20Kazuki%20Hoshigaki%2FKazuki%20Hoshigaki.jpg?alt=media&v=1786021095229",
     techniques: [
       {
         name: "Kraken: Oodama Rasengan",

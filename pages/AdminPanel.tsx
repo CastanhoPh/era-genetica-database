@@ -72,6 +72,14 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
   const [bulkError, setBulkError] = useState<string | null>(null);
   const [bulkPreviewOpen, setBulkPreviewOpen] = useState(false);
 
+  // Download em lote das Capas: mesma ideia da Linha do Tempo acima, só que sem o passo de
+  // "fase" — a capa é a própria `character.image`, um personagem = uma imagem.
+  const [bulkCapaChars, setBulkCapaChars] = useState<Set<string>>(new Set());
+  const [bulkCapaCharSearch, setBulkCapaCharSearch] = useState('');
+  const [bulkCapaDownloading, setBulkCapaDownloading] = useState(false);
+  const [bulkCapaProgress, setBulkCapaProgress] = useState<{ done: number; total: number } | null>(null);
+  const [bulkCapaError, setBulkCapaError] = useState<string | null>(null);
+
   const [expandedVillages, setExpandedVillages] = useState<Set<string>>(new Set());
   const [expandedClans, setExpandedClans] = useState<Set<string>>(new Set());
   const [expandedArsenalOrigins, setExpandedArsenalOrigins] = useState<Set<string>>(new Set());
@@ -393,6 +401,17 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
       .sort((a, b) => (charIdByName.get(a.temporada) ?? 999) - (charIdByName.get(b.temporada) ?? 999));
   }, [bulkMatches, charIdByName]);
 
+  const bulkCapaAvailableChars = useMemo(() => {
+    const term = bulkCapaCharSearch.trim().toLowerCase();
+    return characters
+      .filter(c => !!c.image && (!term || c.name.toLowerCase().includes(term)))
+      .sort((a, b) => a.id - b.id)
+      .map(c => c.name);
+  }, [characters, bulkCapaCharSearch]);
+  const bulkCapaMatches = useMemo(() => {
+    return characters.filter(c => !!c.image && (bulkCapaChars.size === 0 || bulkCapaChars.has(c.name)));
+  }, [characters, bulkCapaChars]);
+
   const toggleInSet = (set: Set<string>, setSet: (s: Set<string>) => void, value: string) => {
     const next = new Set(set);
     if (next.has(value)) next.delete(value); else next.add(value);
@@ -461,6 +480,53 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
       setBulkProgress(null);
     }
   }, [bulkMatches]);
+
+  const handleBulkCapaDownload = useCallback(async () => {
+    if (bulkCapaMatches.length === 0) return;
+    setBulkCapaDownloading(true);
+    setBulkCapaError(null);
+    setBulkCapaProgress({ done: 0, total: bulkCapaMatches.length });
+    const failed: string[] = [];
+    try {
+      const zip = new JSZip();
+      const usedNames = new Set<string>();
+      for (let i = 0; i < bulkCapaMatches.length; i++) {
+        const char = bulkCapaMatches[i];
+        try {
+          const blob = await fetchImageWithRetry(char.image!);
+          const ext = blob.type.includes('png') ? 'png' : blob.type.includes('webp') ? 'webp' : 'jpg';
+          let fileName = `${char.name}.${ext}`;
+          let n = 2;
+          while (usedNames.has(fileName)) { fileName = `${char.name} (${n}).${ext}`; n++; }
+          usedNames.add(fileName);
+          zip.file(fileName, blob);
+        } catch (e) {
+          console.error(`Falha ao baixar capa de ${char.name}:`, e);
+          failed.push(char.name);
+        }
+        setBulkCapaProgress({ done: i + 1, total: bulkCapaMatches.length });
+      }
+      if (failed.length === bulkCapaMatches.length) {
+        throw new Error('Nenhuma imagem pôde ser baixada.');
+      }
+      const content = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(content);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `capas-${Date.now()}.zip`;
+      a.click();
+      URL.revokeObjectURL(url);
+      if (failed.length > 0) {
+        setBulkCapaError(`${failed.length} imagem(ns) não entraram no zip (falha ao baixar): ${failed.join(', ')}`);
+      }
+    } catch (e) {
+      console.error('Erro ao baixar capas em lote:', e);
+      setBulkCapaError('Não foi possível gerar o zip.');
+    } finally {
+      setBulkCapaDownloading(false);
+      setBulkCapaProgress(null);
+    }
+  }, [bulkCapaMatches]);
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
@@ -787,6 +853,85 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ characters, arsenalItems }) => 
                 <span className="flex items-center gap-1.5 text-red-400 text-xs"><AlertTriangle size={13} /> {bulkError}</span>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="text-[10px] font-black text-tech-primary/60 uppercase tracking-widest mb-3 flex items-center gap-2">
+          <span>Baixar Capas em Lote</span>
+          <span className="flex-1 h-px bg-tech-border"></span>
+        </div>
+
+        <div className="border border-tech-border bg-tech-panel/30 p-5 space-y-5">
+          <div className="flex items-center gap-2 text-tech-primary/70">
+            <Images size={14} />
+            <span className="text-[10px] font-black uppercase tracking-widest">Capas — escolha o(s) personagem(ns)</span>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="text-[9px] text-tech-primary/50 uppercase tracking-widest flex items-center gap-1.5">
+                <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-tech-primary/15 text-tech-primary text-[9px] font-black">1</span>
+                Personagens
+                {bulkCapaChars.size === 0
+                  ? <span className="normal-case text-tech-primary/30">· nenhum marcado, incluindo todos ({bulkCapaAvailableChars.length})</span>
+                  : <span className="normal-case text-tech-primary">· {bulkCapaChars.size} marcado(s)</span>}
+              </div>
+              <div className="flex items-center gap-3">
+                <button type="button" onClick={() => setBulkCapaChars(new Set([...bulkCapaChars, ...bulkCapaAvailableChars]))} className="text-[9px] text-tech-primary/50 hover:text-tech-primary flex items-center gap-1">
+                  <CheckSquare size={10} /> marcar visíveis ({bulkCapaAvailableChars.length})
+                </button>
+                {bulkCapaChars.size > 0 && (
+                  <button type="button" onClick={() => setBulkCapaChars(new Set())} className="text-[9px] text-tech-primary/50 hover:text-tech-primary flex items-center gap-1">
+                    <X size={10} /> limpar
+                  </button>
+                )}
+              </div>
+            </div>
+            <div className="w-full sm:w-64 bg-black border border-tech-border flex items-center px-3 h-9 group focus-within:border-tech-primary transition-all mb-2">
+              <Search size={13} className="text-tech-dim group-focus-within:text-tech-primary transition-colors" />
+              <input
+                type="text"
+                placeholder="BUSCAR_PERSONAGEM..."
+                value={bulkCapaCharSearch}
+                onChange={(e) => setBulkCapaCharSearch(e.target.value)}
+                className="bg-transparent border-none outline-none text-tech-primary w-full ml-2 placeholder:text-tech-dim uppercase text-xs"
+              />
+            </div>
+            <div className="max-h-48 overflow-y-auto border border-tech-border/60 bg-black/30 p-2 flex flex-wrap gap-1.5">
+              {bulkCapaAvailableChars.map(name => (
+                <button
+                  key={name}
+                  type="button"
+                  onClick={() => toggleInSet(bulkCapaChars, setBulkCapaChars, name)}
+                  className={`px-2 py-1 border text-[10px] font-bold transition-all ${bulkCapaChars.has(name) ? 'bg-tech-primary text-black border-tech-primary' : 'border-tech-border text-tech-primary/70 hover:border-tech-primary/50'}`}
+                >
+                  {name}
+                </button>
+              ))}
+              {bulkCapaAvailableChars.length === 0 && (
+                <span className="text-tech-primary/40 text-[10px] uppercase tracking-widest">Nenhum personagem encontrado.</span>
+              )}
+            </div>
+          </div>
+
+          <div className="border-t border-tech-border/60 pt-4 flex items-center gap-3 flex-wrap">
+            <button
+              type="button"
+              onClick={handleBulkCapaDownload}
+              disabled={bulkCapaDownloading || bulkCapaMatches.length === 0}
+              className="flex items-center gap-1.5 px-3 py-2 border border-tech-primary/40 text-tech-primary text-[10px] font-bold uppercase hover:bg-tech-primary hover:text-black transition-all disabled:opacity-50"
+            >
+              {bulkCapaDownloading ? <Loader size={12} className="animate-spin" /> : <Download size={12} />}
+              {bulkCapaDownloading ? `Baixando ${bulkCapaProgress?.done ?? 0}/${bulkCapaProgress?.total ?? 0}...` : `Baixar ZIP (${bulkCapaMatches.length} ${bulkCapaMatches.length === 1 ? 'capa' : 'capas'})`}
+            </button>
+            {bulkCapaMatches.length === 0 && (
+              <span className="text-tech-primary/40 text-[10px] uppercase tracking-wide">Nenhum personagem com capa cadastrada bate com essa seleção.</span>
+            )}
+            {bulkCapaError && (
+              <span className="flex items-center gap-1.5 text-red-400 text-xs"><AlertTriangle size={13} /> {bulkCapaError}</span>
+            )}
           </div>
         </div>
       </section>
