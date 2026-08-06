@@ -3774,6 +3774,16 @@ export const initialData: Character[] = [
         history: "Nascida da combinação entre os dois artefatos que Satoshi carrega desde que se tornou guardião de Myōboku: o contrato que o liga aos Sapos Sábios e as sandálias que sempre usou. Descobriu por acidente, durante um treinamento solitário, que ativar os dois ao mesmo tempo emprestava à sua transformação uma estabilidade e um poder muito além do que seu próprio domínio do Senjutsu permitiria sozinho.",
         status: "Dependente dos dois artefatos — sem o Gama Sennin no Keiyaku ou o Gama no Zōri equipados, Satoshi só consegue acessar seu Modo Sábio no estágio Completo Elevado, seu limite natural sem ajuda externa.",
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F31%20-%20Satoshi%20Namikaze%2FTecnicas%2F01%20-%20Sennin%20Fuka%3A%20Gama%20Kanzentai.png?alt=media&v=1786040736090"
+      },
+      {
+        name: "Senpo Kuchiyose: Gurenmaru",
+        classification: "Z",
+        nature: "Senjutsu + Kuchiyose",
+        description: "Satoshi invoca Gurenmaru, o Sapo das Presas Rubras — um sapo sábio colossal do Monte Myōboku, com quase 20 metros de altura quando ereto, corpo vinho quase negro marcado por manchas vermelho-escuras e cicatrizes de antigas batalhas. Gurenmaru surge já empunhando o Guren no Sōsai, seu par de Sai colossais forjados em metal negro extraído das profundezas da montanha e maturados em óleo de sapo por décadas, cujas lâminas brilham em vermelho-vinho quando ele canaliza Senjutsu através das inscrições de Fūinjutsu gravadas nelas. Diferente de uma invocação comum, Gurenmaru não age como montaria ou ferramenta — luta como irmão de batalha de Satoshi, lendo os movimentos do inimigo para prender armas e membros nas guardas dos Sai, avançando em saltos que abrem crateras, e usando a própria língua, revestida de energia natural, como uma corda de aço capaz de capturar oponentes ou lançar o próprio Satoshi contra um alvo.",
+        destruction: "O simples impacto dos saltos de Gurenmaru já provoca crateras e ondas sísmicas locais. Os golpes do Guren no Sōsai perfuram e imobilizam com precisão cirúrgica apesar do tamanho colossal das armas, e sua língua reforçada por Senjutsu pode arrancar armas, capturar inimigos ou lançar aliados em alta velocidade pelo campo de batalha.",
+        history: "Gurenmaru foi invocado por Satoshi ainda nos primeiros anos de treinamento no Monte Myōboku, e a irmandade entre os dois se consolidou numa batalha contra uma invocação rival — a cicatriz que atravessa o rosto do sapo é a lembrança viva desse dia. Desde então, Gurenmaru se recusa a ser chamado de servo ou montaria: para ele, o pacto de invocação é uma aliança entre guerreiros de valor igual.",
+        status: "Invocação de altíssimo custo de chakra, reservada para combates que exigem poder bruto e a presença de um aliado colossal em campo. Gurenmaru só responde ao chamado de Satoshi, e combate ao lado dele — nunca sob ordens diretas.",
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F31%20-%20Satoshi%20Namikaze%2FTecnicas%2F02%20-%20Senpo%20Kuchiyose%3A%20Gurenmaru.png?alt=media&v=1786041723206"
       }
     ],
     arsenal: [34, 77, 78, 79],
