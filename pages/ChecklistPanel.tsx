@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ListChecks, CheckSquare, Square, Clock, ChevronDown, Search, Radio, Pencil, X, Trash2, ChevronUp, Plus, Check, Lock, LayoutGrid } from 'lucide-react';
+import { ListChecks, CheckSquare, Square, Clock, ChevronDown, Search, Radio, Pencil, X, Trash2, ChevronUp, Plus, Check, Lock, LayoutGrid, Image as ImageIcon } from 'lucide-react';
 import { subscribeChecklist, setChecklistItemDone, updateChecklistItem, addChecklistItem, deleteChecklistItem } from '../data/firestore';
 import { groupItems } from '../data/checklistGrouping';
 import { ChecklistItem } from '../types';
@@ -31,7 +31,7 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
   const [pending, setPending] = useState<Set<string>>(new Set());
   const [editMode, setEditMode] = useState(false);
   const [activeFilter, setActiveFilter] = useState<'none' | 'pendentes' | 'sem-galeria'>('none');
-  const [activeType, setActiveType] = useState<'evento' | 'timeline' | 'geral'>('geral');
+  const [activeType, setActiveType] = useState<'evento' | 'timeline' | 'capa' | 'geral'>('geral');
 
   // formulários de "adicionar" abertos (chave = temporada, temporada::arco, ou temporada::arco::subarco)
   const [addingTemporada, setAddingTemporada] = useState(false);
@@ -65,7 +65,11 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
   }, [activeType]);
 
   const isTimeline = activeType === 'timeline';
+  const isCapa = activeType === 'capa';
   const isGeral = activeType === 'geral';
+  // Tipo usado ao criar um item novo — a aba "Geral" mistura os outros tipos, então criar
+  // por lá sempre cai em "evento" (comportamento já existente, só nomeado agora).
+  const currentType: ChecklistItem['type'] = isTimeline ? 'timeline' : isCapa ? 'capa' : 'evento';
   const labels = isTimeline
     ? {
       subtitle: 'Marque aqui as imagens já finalizadas da linha do tempo de cada personagem',
@@ -78,29 +82,41 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
       addArcoTitle: 'Adicionar fase',
       emptyChecklist: 'Nenhum item na linha do tempo ainda.',
     }
-    : isGeral
+    : isCapa
       ? {
-        subtitle: 'Todas as imagens de Eventos e Linha do Tempo, juntas',
-        temporadaLabel: '',
+        subtitle: 'Marque aqui quais personagens já têm a capa (imagem de perfil) atualizada',
+        temporadaLabel: 'Personagem',
         arcoLabel: '',
-        newTemporadaBtn: '',
-        temporadaPlaceholder: '',
+        newTemporadaBtn: 'Novo Personagem',
+        temporadaPlaceholder: 'Nome do personagem',
         firstArcoPlaceholder: '',
         arcoPlaceholder: '',
         addArcoTitle: '',
-        emptyChecklist: 'Nenhum item na checklist ainda.',
+        emptyChecklist: 'Nenhuma capa cadastrada ainda.',
       }
-      : {
-        subtitle: 'Marque aqui as imagens já finalizadas de cada temporada/arco',
-        temporadaLabel: 'Temporada',
-        arcoLabel: 'Arco',
-        newTemporadaBtn: 'Nova Temporada',
-        temporadaPlaceholder: 'Nome da temporada',
-        firstArcoPlaceholder: 'Nome do primeiro arco',
-        arcoPlaceholder: 'Nome do arco',
-        addArcoTitle: 'Adicionar arco',
-        emptyChecklist: 'Nenhum item na checklist ainda. Envie a lista (temporada, arco, subarco e nomes) para que ela seja adicionada aqui.',
-      };
+      : isGeral
+        ? {
+          subtitle: 'Todas as imagens de Eventos, Linha do Tempo e Capa, juntas',
+          temporadaLabel: '',
+          arcoLabel: '',
+          newTemporadaBtn: '',
+          temporadaPlaceholder: '',
+          firstArcoPlaceholder: '',
+          arcoPlaceholder: '',
+          addArcoTitle: '',
+          emptyChecklist: 'Nenhum item na checklist ainda.',
+        }
+        : {
+          subtitle: 'Marque aqui as imagens já finalizadas de cada temporada/arco',
+          temporadaLabel: 'Temporada',
+          arcoLabel: 'Arco',
+          newTemporadaBtn: 'Nova Temporada',
+          temporadaPlaceholder: 'Nome da temporada',
+          firstArcoPlaceholder: 'Nome do primeiro arco',
+          arcoPlaceholder: 'Nome do arco',
+          addArcoTitle: 'Adicionar arco',
+          emptyChecklist: 'Nenhum item na checklist ainda. Envie a lista (temporada, arco, subarco e nomes) para que ela seja adicionada aqui.',
+        };
 
   const typedItems = useMemo(
     () => isGeral ? items : items.filter(i => (i.type ?? 'evento') === activeType),
@@ -228,7 +244,7 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
     // +0.5 (não +1): com order sequencial sem lacunas, +1 colidiria exatamente com o
     // primeiro item do próximo arco, embaralhando a visão "Geral" (que não agrupa por temporada).
     const order = maxOrder(scopeItems) + 0.5;
-    await addChecklistItem({ type: isTimeline ? 'timeline' : 'evento', temporada, arco, subarco: subarco ?? undefined, name, order, done: false, placeholder: false });
+    await addChecklistItem({ type: currentType, temporada, arco, subarco: subarco ?? undefined, name, order, done: false, placeholder: false });
     setAddingItemFor(null);
     setNewItemText('');
   };
@@ -244,23 +260,24 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
     const order = maxOrder(scopeItems) + 0.5;
     if (isTimeline) {
       // Na Linha do Tempo não existe subarco/item separado: a "fase" já é o item (name = arco).
-      await addChecklistItem({ type: isTimeline ? 'timeline' : 'evento', temporada, arco, name: arco, order, done: false, placeholder: false });
+      await addChecklistItem({ type: currentType, temporada, arco, name: arco, order, done: false, placeholder: false });
       setAddingArcoFor(null);
       return;
     }
     const name = newArcoFields.item.trim();
     if (!name) return;
-    await addChecklistItem({ type: isTimeline ? 'timeline' : 'evento', temporada, arco, subarco: newArcoFields.subarco.trim() || undefined, name, order, done: false, placeholder: false });
+    await addChecklistItem({ type: currentType, temporada, arco, subarco: newArcoFields.subarco.trim() || undefined, name, order, done: false, placeholder: false });
     setAddingArcoFor(null);
   };
 
   const confirmAddTemporada = async () => {
     const temporada = newTemporadaFields.temporada.trim();
-    const arco = newTemporadaFields.arco.trim();
-    const name = newTemporadaFields.item.trim();
+    // Em Capa não existe fase/item separado: o personagem já É o item (arco = name = temporada).
+    const arco = isCapa ? temporada : newTemporadaFields.arco.trim();
+    const name = isCapa ? temporada : newTemporadaFields.item.trim();
     if (!temporada || !arco || !name) return;
     const order = maxOrder(items) + 1;
-    await addChecklistItem({ type: isTimeline ? 'timeline' : 'evento', temporada, arco, name, order, done: false, placeholder: false });
+    await addChecklistItem({ type: currentType, temporada, arco, name, order, done: false, placeholder: false });
     setAddingTemporada(false);
     setNewTemporadaFields({ temporada: '', arco: '', item: '' });
   };
@@ -302,7 +319,7 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
           </div>
         ) : (
           <ImageUploadButton
-            pathPrefix={item.type === 'timeline' ? `Galeria/Linha do Tempo/${item.temporada}` : `Galeria/${item.temporada}/${item.arco}${item.subarco ? `/${item.subarco}` : ''}`}
+            pathPrefix={item.type === 'timeline' ? `Galeria/Linha do Tempo/${item.temporada}` : item.type === 'capa' ? `Galeria/Capas/${item.temporada}` : `Galeria/${item.temporada}/${item.arco}${item.subarco ? `/${item.subarco}` : ''}`}
             fileName={item.name}
             onUploaded={url => handleSetImage(item, url)}
             iconOnly
@@ -436,6 +453,13 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
           >
             <Clock size={12} /> Linha do Tempo
           </button>
+          <button
+            type="button"
+            onClick={() => setActiveType('capa')}
+            className={`flex items-center gap-1.5 h-10 px-3 text-[10px] font-black uppercase tracking-widest transition-all border-l border-tech-border ${activeType === 'capa' ? 'bg-tech-primary text-black' : 'text-tech-primary hover:bg-tech-primary/10'}`}
+          >
+            <ImageIcon size={12} /> Capa
+          </button>
         </div>
 
         {canEdit && (
@@ -479,16 +503,20 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
             onChange={e => setNewTemporadaFields(f => ({ ...f, temporada: e.target.value }))}
             className="bg-black border border-tech-border text-white text-sm px-2 py-1.5 flex-1 outline-none focus:border-tech-accent"
           />
-          <input
-            type="text" placeholder={labels.firstArcoPlaceholder} value={newTemporadaFields.arco}
-            onChange={e => setNewTemporadaFields(f => ({ ...f, arco: e.target.value }))}
-            className="bg-black border border-tech-border text-white text-sm px-2 py-1.5 flex-1 outline-none focus:border-tech-accent"
-          />
-          <input
-            type="text" placeholder="Nome do primeiro item" value={newTemporadaFields.item}
-            onChange={e => setNewTemporadaFields(f => ({ ...f, item: e.target.value }))}
-            className="bg-black border border-tech-border text-white text-sm px-2 py-1.5 flex-1 outline-none focus:border-tech-accent"
-          />
+          {!isCapa && (
+            <input
+              type="text" placeholder={labels.firstArcoPlaceholder} value={newTemporadaFields.arco}
+              onChange={e => setNewTemporadaFields(f => ({ ...f, arco: e.target.value }))}
+              className="bg-black border border-tech-border text-white text-sm px-2 py-1.5 flex-1 outline-none focus:border-tech-accent"
+            />
+          )}
+          {!isCapa && (
+            <input
+              type="text" placeholder="Nome do primeiro item" value={newTemporadaFields.item}
+              onChange={e => setNewTemporadaFields(f => ({ ...f, item: e.target.value }))}
+              className="bg-black border border-tech-border text-white text-sm px-2 py-1.5 flex-1 outline-none focus:border-tech-accent"
+            />
+          )}
           <div className="flex gap-2">
             <button type="button" onClick={confirmAddTemporada} className="px-3 border border-tech-primary text-tech-primary hover:bg-tech-primary hover:text-black transition-all"><Check size={14} /></button>
             <button type="button" onClick={() => setAddingTemporada(false)} className="px-3 border border-tech-border text-tech-primary/50 hover:text-white transition-all"><X size={14} /></button>
@@ -522,12 +550,12 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
             const tDone = doneCount(group.items);
             const tTotal = countable(group.items).length;
             const tPct = tTotal ? (tDone / tTotal) * 100 : 0;
-            // Cada grupo é 100% de um tipo só (evento OU timeline) — decide pelo item, não pela aba
-            // ativa, porque na aba "Geral" os dois tipos aparecem juntos, grupo a grupo.
-            const groupIsTimeline = group.items[0]?.type === 'timeline';
-            // Linha do Tempo não tem subarco: cada "fase" já É o item, então mostramos tudo
-            // direto sob o personagem, sem o nível extra de arco (menos cliques, menos redundância).
-            const flatTimelineItems = groupIsTimeline ? group.arcos.flatMap(a => a.subarcos.flatMap(s => s.items)) : [];
+            // Cada grupo é 100% de um tipo só (evento, timeline ou capa) — decide pelo item, não
+            // pela aba ativa, porque na aba "Geral" os tipos aparecem juntos, grupo a grupo.
+            // Timeline e Capa não têm subarco: cada "fase"/personagem já É o item, então mostramos
+            // tudo direto sob o personagem, sem o nível extra de arco (menos cliques, menos redundância).
+            const groupIsFlat = group.items[0]?.type === 'timeline' || group.items[0]?.type === 'capa';
+            const flatItems = groupIsFlat ? group.arcos.flatMap(a => a.subarcos.flatMap(s => s.items)) : [];
             return (
               <div key={group.temporada} className="border border-tech-border bg-tech-panel/20">
                 <div className="w-full flex items-center justify-between gap-3 px-4 py-3 hover:bg-tech-primary/5 transition-colors">
@@ -540,7 +568,7 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
                     <span className="text-white font-black uppercase tracking-wide truncate text-lg">{group.temporada}</span>
                   </button>
                   <div className="flex items-center gap-3 shrink-0">
-                    {canEdit && editMode && !isGeral && (
+                    {canEdit && editMode && !isGeral && !isCapa && (
                       <button type="button" onClick={() => openAddArco(group.temporada)} title={labels.addArcoTitle} className="p-1 border border-tech-accent/40 text-tech-accent hover:bg-tech-accent/10">
                         <Plus size={13} />
                       </button>
@@ -580,9 +608,9 @@ const ChecklistPanel: React.FC<ChecklistPanelProps> = ({ canEdit, displayName, o
 
                 {temporadaOpen && (
                   <div className="border-t border-tech-border px-3 py-3 space-y-2">
-                    {groupIsTimeline ? (
+                    {groupIsFlat ? (
                       <div className="flex flex-col gap-1.5">
-                        {flatTimelineItems.map(item => renderItemRow(item, flatTimelineItems))}
+                        {flatItems.map(item => renderItemRow(item, flatItems))}
                       </div>
                     ) : group.arcos.map(arco => {
                       const arcoKey = `${group.temporada}::${arco.arco}`;

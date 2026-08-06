@@ -37,10 +37,13 @@ export const EVENT_SEASONS = ['1ª Temporada', '2ª Temporada', '3ª Temporada',
 // Item da checklist de produção de imagens (organizada por Temporada > Arco > Subarco).
 // Também reaproveitado para a Linha do Tempo (type: "timeline"): nesse caso
 // `temporada` guarda o nome do personagem e `arco` guarda a fase da linha do tempo.
+// E para Capa (type: "capa"): um item por personagem, com `temporada`, `arco` e `name`
+// todos iguais ao nome do personagem (mesmo padrão "achatado" da Linha do Tempo, um nível
+// mais raso — não existe fase, só a capa em si).
 export interface ChecklistItem {
   docId?: string;
-  /** Ausente ou "evento" = checklist de Eventos (padrão). "timeline" = Linha do Tempo. */
-  type?: 'evento' | 'timeline';
+  /** Ausente ou "evento" = checklist de Eventos (padrão). "timeline" = Linha do Tempo. "capa" = Capa. */
+  type?: 'evento' | 'timeline' | 'capa';
   temporada: string;
   arco: string;
   subarco?: string;

@@ -14,7 +14,7 @@ export const initialData: Character[] = [
     chakra: 200,
     isDead: true,
     killedBy: "Omega",
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FNishinoya%20Senju.jpg?alt=media",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F01%20-%20Nishinoya%20Senju%2FNishinoya%20Senju.jpg?alt=media&v=1785963904577",
     techniques: [
       {
         name: "Senpo Enka Aoi Katon: Bijuudama OodamaRasenShuriken",
@@ -370,7 +370,7 @@ export const initialData: Character[] = [
     description: "O herdeiro do fogo. Um espadachim moldado pela dor.\nO homem que se recusa a deixar Konoha morrer.\n\nDesde muito jovem, Oddy Uchiha já era reconhecido por sua determinação e liderança natural, mesmo carregando o fardo de ser filho de Madara Uchiha. Seu poder não nasceu da ambição por domínio, mas da vontade de proteger a vila que escolheu como lar. Ainda criança, despertou o Sharingan ao perder o pai no Vale do Fim, marcando o início de um destino selado pela dor e pela escolha.\n\nApós ingressar na Nova ANBU, Oddy lutou na linha de frente contra a OCA, presenciando a queda de Konoha e a morte de figuras que moldaram sua vida — Nishinoya, Tobirama, Sho Uchiha e seus companheiros. Foi nesse massacre que despertou o Mangekyō Sharingan, não movido pelo ódio, mas pela perda absoluta de tudo o que jurou proteger.\n\nOddy é capaz de unir o poder do Katon Uchiha, o Mangekyō Sharingan e o caminho das duas lâminas, empunhando a Kusanagi do clã Uchiha e a Homura no Chikai, a espada de fogo herdada de Hirato. Seu estilo permite que ele use as chamas tanto para destruir quanto para salvar, manifestando a verdadeira Vontade do Fogo em sua forma mais pura.\n\nOddy Uchiha busca se tornar um deus shinobi, não por título, mas para que ninguém mais precise nascer das cinzas\n\nCriador e usuário de técnicas únicas, entre elas:\n\n- Amaterasu: Hi no Ishi (Chamas da Extinção e da Vida)\n- Katon: Ryūen no Jutsu (Dragão de Fogo)\n- Katon: Flechas Ígneas\n- Estilo Ryūka no Nintō (O Caminho das Dos Chamas)",
     hp: 138,
     chakra: 74,
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FOddy%20Uchiha.jpg?alt=media",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FOddy%20Uchiha.jpg?alt=media&v=1785962064699",
     techniques: [
       {
         name: "Enton Jinton: Amaterasu Genkai Hakuri",
@@ -684,7 +684,7 @@ export const initialData: Character[] = [
     chakra: 55,
     isDead: true,
     killedBy: "9º Portão: Ressureição",
-    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FNajin%20Hatake.png?alt=media",
+    image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F05%20-%20Najin%20Hatake%2FNajin%20Hatake.png?alt=media&v=1785965358386",
     techniques: [
       {
         name: "Mangekyou Kyômon: Chōtotsu Mōshin Susanoo no Shingeki",
