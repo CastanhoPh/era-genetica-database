@@ -373,6 +373,16 @@ export const initialData: Character[] = [
     image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FOddy%20Uchiha.jpg?alt=media&v=1785962064699",
     techniques: [
       {
+        name: "Katon Doton: Byakko no Hakai",
+        classification: "S++",
+        nature: "Katon + Doton",
+        description: "Desde que recebeu o coração de Najin Hatake, Oddy carrega dentro do próprio peito um segundo pulso que nunca é só seu. Ao concentrar Katon e Doton simultaneamente, ambos os batimentos se sincronizam, e das chamas que emergem de seu corpo se ergue a forma colossal de um tigre branco — o Byakko, homenagem direta ao título que Najin carregava em vida, o Tigre Branco de Konoha. O corpo da fera é esculpido em terra endurecida e envolto por um pelame de fogo branco-azulado, cada passo tremendo o solo como se a própria terra reconhecesse o peso do protetor que a fera representa. Oddy não invoca o tigre como uma arma qualquer — ele o convoca como uma promessa cumprida, carregando dentro de si tudo que Najin foi e continua sendo.",
+        destruction: "O Byakko avança arrasando qualquer coisa em seu caminho, suas garras rasgando tanto carne quanto rocha, e seu rugido libera uma onda de calor e pressão sísmica capaz de derrubar estruturas inteiras. Nada resiste ao encontro simultâneo de fogo e terra na mesma criatura.",
+        history: "Nascida no dia em que Oddy recebeu o coração de Najin Hatake e jurou honrar tudo que ele representou em vida. Najin, o Tigre Branco de Konoha, sempre lutou como protetor — nunca por glória, sempre pelos outros. Ao sentir os dois corações pulsando como um só dentro do próprio peito, Oddy compreendeu que a única forma de honrar essa herança era manifestá-la em combate, não guardá-la em silêncio.",
+        status: "Extremamente exigente — exige domínio simultâneo de Katon e Doton em quantidades massivas, além do peso emocional de invocar a própria homenagem a alguém que já não está mais vivo. Cada uso deixa Oddy fisicamente exausto e emocionalmente abalado, como se revivesse a perda a cada vez.",
+        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FTecnicas%2F13%20-%20Katon%20Doton%3A%20Byakko%20no%20Hakai.png?alt=media&v=1786044776934"
+      },
+      {
         name: "Enton Jinton: Amaterasu Genkai Hakuri",
         classification: "S++",
         nature: "Enton + Jinton + Mangekyō Sharingan",
@@ -491,16 +501,6 @@ export const initialData: Character[] = [
         history: "Desenvolvida como uma evolução de técnicas clássicas de Katon, esta variação foi criada para batalhas em larga escala, onde a simples Gōkakyū não seria suficiente. Usuários que dominam essa técnica demonstram controle avançado de compressão e expansão de chakra elemental.",
         status: "Alto consumo de chakra. Requer excelente controle respiratório e resistência física. O uso excessivo pode causar exaustão severa e danos internos devido à pressão e ao calor acumulados durante a execução.",
         image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FTecnicas%2F12%20-%20Katon%3A%20Ensh%C5%8D%20Daiendan.png?alt=media"
-      },
-      {
-        name: "Katon Doton: Byakko no Hakai",
-        classification: "S++",
-        nature: "Katon + Doton",
-        description: "Desde que recebeu o coração de Najin Hatake, Oddy carrega dentro do próprio peito um segundo pulso que nunca é só seu. Ao concentrar Katon e Doton simultaneamente, ambos os batimentos se sincronizam, e das chamas que emergem de seu corpo se ergue a forma colossal de um tigre branco — o Byakko, homenagem direta ao título que Najin carregava em vida, o Tigre Branco de Konoha. O corpo da fera é esculpido em terra endurecida e envolto por um pelame de fogo branco-azulado, cada passo tremendo o solo como se a própria terra reconhecesse o peso do protetor que a fera representa. Oddy não invoca o tigre como uma arma qualquer — ele o convoca como uma promessa cumprida, carregando dentro de si tudo que Najin foi e continua sendo.",
-        destruction: "O Byakko avança arrasando qualquer coisa em seu caminho, suas garras rasgando tanto carne quanto rocha, e seu rugido libera uma onda de calor e pressão sísmica capaz de derrubar estruturas inteiras. Nada resiste ao encontro simultâneo de fogo e terra na mesma criatura.",
-        history: "Nascida no dia em que Oddy recebeu o coração de Najin Hatake e jurou honrar tudo que ele representou em vida. Najin, o Tigre Branco de Konoha, sempre lutou como protetor — nunca por glória, sempre pelos outros. Ao sentir os dois corações pulsando como um só dentro do próprio peito, Oddy compreendeu que a única forma de honrar essa herança era manifestá-la em combate, não guardá-la em silêncio.",
-        status: "Extremamente exigente — exige domínio simultâneo de Katon e Doton em quantidades massivas, além do peso emocional de invocar a própria homenagem a alguém que já não está mais vivo. Cada uso deixa Oddy fisicamente exausto e emocionalmente abalado, como se revivesse a perda a cada vez.",
-        image: "https://firebasestorage.googleapis.com/v0/b/era-genetica-db.firebasestorage.app/o/Characters%2F03%20-%20Oddy%20Uchiha%2FTecnicas%2F13%20-%20Katon%20Doton%3A%20Byakko%20no%20Hakai.png?alt=media&v=1786044776934"
       }
     ],
     arsenal: [4, 2, 5, 6, 7, 18],
