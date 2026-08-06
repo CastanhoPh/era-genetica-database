@@ -3760,7 +3760,8 @@ export const initialData: Character[] = [
       { name: "Fuuton", level: 13 },
       { name: "Senjutsu", level: 13 },
       { name: "Rasengan", level: 13 },
-      { name: "Fuinjutsu", level: 13 }
+      { name: "Fuinjutsu", level: 13 },
+      { name: "Kuchiyose", level: 13 }
     ],
     aptitudes: ["Chakra Expandido Namikaze"],
     techniques: [
