@@ -3763,6 +3763,17 @@ export const initialData: Character[] = [
       { name: "Fuinjutsu", level: 13 }
     ],
     aptitudes: ["Chakra Expandido Namikaze"],
+    techniques: [
+      {
+        name: "Sennin Fuka: Gama Kanzentai",
+        classification: "S++",
+        nature: "Senjutsu + Fuuton + Fuinjutsu",
+        description: "Ao ativar o Modo Sábio, Satoshi não depende só da própria energia natural absorvida — ele abre simultaneamente o Gama Sennin no Keiyaku, puxando um fluxo direto de chakra natural do próprio Monte Myōboku através do pacto selado em sua mão, enquanto o Gama no Zōri estabiliza esse excesso de energia pelos pés, impedindo que o corpo colapse sob a sobrecarga. O resultado é uma transformação que ultrapassa o que o próprio treinamento de Satoshi alcançaria sozinho: marcas de chakra verde-musgo sobem por seus braços e rosto, seus olhos assumem pupilas horizontais como as de um sapo, e uma pressão de vento constante circula ao seu redor, amplificada pelo Fūton que já era natural dele. Isso permite acesso a um Sennin Fuka completo e perfeito, mesmo sem Satoshi ter, por conta própria, ultrapassado o estágio Completo Elevado.",
+        destruction: "Amplifica proporcionalmente toda a força física, velocidade e o Fūton de Satoshi a um nível que, sozinho, ele não sustentaria — cada golpe carrega o peso extra de energia natural emprestada diretamente da montanha.",
+        history: "Nascida da combinação entre os dois artefatos que Satoshi carrega desde que se tornou guardião de Myōboku: o contrato que o liga aos Sapos Sábios e as sandálias que sempre usou. Descobriu por acidente, durante um treinamento solitário, que ativar os dois ao mesmo tempo emprestava à sua transformação uma estabilidade e um poder muito além do que seu próprio domínio do Senjutsu permitiria sozinho.",
+        status: "Dependente dos dois artefatos — sem o Gama Sennin no Keiyaku ou o Gama no Zōri equipados, Satoshi só consegue acessar seu Modo Sábio no estágio Completo Elevado, seu limite natural sem ajuda externa."
+      }
+    ],
     arsenal: [34, 77, 78, 79],
     timelineAppearance: "Prólogo",
     timelineSkipped: ["Clássico", "1ª Temporada", "2ª Temporada", "3ª Temporada", "4ª Temporada"],
